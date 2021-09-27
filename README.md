@@ -1,4 +1,4 @@
-# Spring A조 포트폴리오
+# Spring C조 포트폴리오
 * spring framework 기반의 웹사이트 개발<br/>
 * 2021.09.23~2021.10.31
 
