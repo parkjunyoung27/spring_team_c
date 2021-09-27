@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"	
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="login">
+	
+	<select id="login" parameterType="HashMap" resultType="HashMap">
+		SELECT no, name, id 
+		FROM memberview 
+		WHERE id=#{id} AND pw=HEX(AES_ENCRYPT(#{pw}, 'teamc'))  
+	</select>
+	
+	<select id="login1" parameterType="HashMap" resultType="HashMap">
+		SELECT no, name, id
+		FROM memberview
+		WHERE id=#{id} AND (AES_DECRYPT(UNHEX(pw), 'teamc'))=#{pw}
+	</select>
+	
+</mapper>

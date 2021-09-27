@@ -20,6 +20,19 @@
 <body>
 	<div id="wrap">
 		<header></header>
+			<c:choose>
+			<c:when test="${sessionScope.name ne null}">
+				<h2>${sessionScope.name }님 반갑습니다.
+			</c:when>
+			<c:otherwise>
+				<form action="./login.do" method="post">
+					<input type="text" name="id">
+					<input type="password" name="pw">
+					<button type="submit">로그인하기</button>
+				</form>
+			</c:otherwise>
+		</c:choose>
+			
 		<nav></nav>
 		<aside></aside>
 		<main>
