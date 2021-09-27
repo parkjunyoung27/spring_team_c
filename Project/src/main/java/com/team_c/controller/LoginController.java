@@ -30,8 +30,18 @@ public class LoginController {
 		System.out.println("나온 값 : " + login);
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("name", login.get("name"));
-		session.setAttribute("id", login.get("id"));
+		session.setAttribute("name", login.get("member_name"));
+		session.setAttribute("id", login.get("member_id"));
+		session.setAttribute("channel", login.get("member_channel"));
+		return "redirect:/index.do";
+	}
+	
+	@GetMapping("/logout.do")
+	public String logout(CommandMap commandMap, HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		session.invalidate();
+		System.out.println("************** 로그아웃 성공");
 		return "redirect:/index.do";
 	}
 

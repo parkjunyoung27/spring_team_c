@@ -28,8 +28,9 @@ public class JoinController {
 		System.out.println(commandMap.getMap());
 
 		Map<String, Object> join = joinService.join(commandMap.getMap());
+		System.out.println(join);
 				
-		HttpSession session = request.getSession();
+//		HttpSession session = request.getSession();
 		return "redirect:/index.do";
 	}
 

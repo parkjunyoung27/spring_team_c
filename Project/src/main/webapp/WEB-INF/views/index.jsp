@@ -16,13 +16,19 @@
 		main { float: left; width: 700px; height: 600px; background: #444; }
 		footer	{ clear: both; width: 1000px; height: 100px; background: #555; }
 	</style>
+	<script type="text/javascript">
+	function onLogoutClick() {
+		location.href = '${pageContext.request.contextPath}/logout.do';
+	}
+	</script>
 </head>
 <body>
 	<div id="wrap">
 		<header>
 			<c:choose>
 				<c:when test="${sessionScope.name ne null}">
-					<h2>${sessionScope.name }님 반갑습니다.
+					<h2>${sessionScope.name }님 반갑습니다.(${sessionScope.channel }회원)
+					<button onclick="onLogoutClick();">로그아웃</button>
 				</c:when>
 				<c:otherwise>
 					<form action="./login.do" method="post">
@@ -30,7 +36,7 @@
 						<input type="password" name="pw">
 						<button type="submit">로그인하기</button>
 					</form>
-						<a href="join.do">가입하기</a>
+						<a href="join.do"><button>가입하기</button></a>
 				</c:otherwise>
 			</c:choose>
 		</header>

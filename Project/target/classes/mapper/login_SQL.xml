@@ -4,15 +4,15 @@
 <mapper namespace="login">
 	
 	<select id="login" parameterType="HashMap" resultType="HashMap">
-		SELECT no, name, id 
+		SELECT member_no, member_name, member_id, member_channel 
 		FROM memberview 
-		WHERE id=#{id} AND pw=HEX(AES_ENCRYPT(#{pw}, 'teamc'))  
+		WHERE member_id=#{id} AND member_pw=HEX(AES_ENCRYPT(#{pw}, 'teamc'))  
 	</select>
 	
 	<select id="login1" parameterType="HashMap" resultType="HashMap">
-		SELECT no, name, id
+		SELECT member_no, member_name, member_id, member_channel
 		FROM memberview
-		WHERE id=#{id} AND (AES_DECRYPT(UNHEX(pw), 'teamc'))=#{pw}
+		WHERE member_id=#{id} AND (AES_DECRYPT(UNHEX(member_pw), 'teamc'))=#{pw}
 	</select>
 	
 </mapper>
