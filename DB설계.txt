@@ -1,0 +1,70 @@
+- DB 설계 
+
+회원 테이블 (member) 
+
+member_no(PK)     	  	멤버 번호
+member_id             		멤버 아이디
+member_pw            		멤버 패스워드 
+member_email         		멤버 이메일 
+member_name          		멤버 이름
+member_birth           		멤버 생일
+member_grade          		멤버 등급 (0:관리자, 1: 사용자, 2: 가맹점)
+
+board 게시판 (board)
+
+board_no(PK)			게시판 번호
+board_title			게시판 제목
+board_content			게시판 내용
+board_count			조회수
+board_like			좋아요
+board_category			게시판 카테고리(0:공지사항, 1:사용자, 2:가맹점)
+board_delete 			게시판 삭제여부 
+board_date			게시판 날짜 
+member_no			멤버 번호 
+board_orifile			게시판 첨부 파일명
+board_file			게시판 첨부 파일경로
+
+
+게시판 댓글 (board_comment)
+
+board_cno 			게시판 댓글 번호
+board_no(FK)			게시판 번호
+member_no(FK)			회원 번호
+comment_content			댓글 내용
+comment_delete			댓글 삭제여부
+comment_date			댓글 작성날짜
+
+가맹점 (shop)
+
+shop_no				가맹점 번호
+member_no			회원 번호(가맹점)
+shop_name			가맹점 이름
+shop_tel				가맹점 전화번호
+shop_loc				가맹점 주소
+shop_notice			가맹점 주의점
+shop_like				가맹점 추천수
+shop_edit			가맹점 수정하기 
+shop_delete			가맹점 삭제
+
+예약 (reservation)
+
+reservation_no			예약 번호
+owner(member_no(FK))		가맹점주 멤버 번호
+user(member_no(FK)) 		이용자 멤버 번호
+shop_no				가맹점 번호
+reservation_date			예약 날짜
+people				예약 인원 
+reservation_time			예약 접수 시간
+reservation_edit			예약 수정
+reservation_delete			예약 삭제 
+reservation_status			예약 상태
+
+문의하기 (question)
+
+question_no			문의 번호
+shop_no				가맹점 번호
+member_no			회원 번호
+question_content 			문의 내용
+question_delete			문의 내용 삭제
+question_status			읽음 여부 
+question_date			문의 날짜 		
