@@ -25,20 +25,13 @@ public class LoginController {
 
 	@PostMapping("/login.do")
 	public String login(CommandMap commandMap, HttpServletRequest request) {
-		// System.out.println(commandMap.getMap());
-
+		
 		Map<String, Object> login = loginService.login(commandMap.getMap());
 		System.out.println("나온 값 : " + login);
-		// 나온 값 : {sm_no=4, sm_id=poseidon, sm_name=poseidon}
-		// 세션만들어주기
-		//ServletWebRequest servletRequest =  (ServletWebRequest) RequestContextHolder.getRequestAttributes();
-		//HttpServletRequest request = servletRequest.getRequest();
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("name", login.get("name"));
 		session.setAttribute("id", login.get("id"));
-		// sm_name
-		// sm_id
 		return "redirect:/index.do";
 	}
 
