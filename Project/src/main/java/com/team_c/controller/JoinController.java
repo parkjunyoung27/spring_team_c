@@ -19,17 +19,29 @@ public class JoinController {
 	private JoinServiceImpl joinService;
 
 	@GetMapping("/join.do")
-	public String join() {
+	public String join(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		
+		if (session.getAttribute("joinChannel") != "web") {
+			return "redirect:/oAuthJoin.do";
+		}
+		
 		return "join";
+	}
+
+	@GetMapping("/oAuthJoin.do")
+	public String oAuthJoin() {
+		return "oAuthJoin";
 	}
 
 	@PostMapping("/join.do")
 	public String join(CommandMap commandMap, HttpServletRequest request) {
+
 		System.out.println(commandMap.getMap());
 
 		Map<String, Object> join = joinService.join(commandMap.getMap());
 		System.out.println(join);
-				
+
 //		HttpSession session = request.getSession();
 		return "redirect:/index.do";
 	}
