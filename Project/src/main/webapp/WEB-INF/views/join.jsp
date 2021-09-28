@@ -12,7 +12,7 @@
 	<!-- <a href="kakaoLogin.do">카카오</a> -->
 	<c:set var="clientId" value="188766d70b45863a165fa74d7d8a455b" />
 	<c:set var="redirectUri"
-		value="http://localhost:8080/Project/kakaoLogin.do" />
+		value="http://localhost:8080/GSupport/kakaoLogin.do" />
 	<br>
 	<a
 		href="https://kauth.kakao.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code">
