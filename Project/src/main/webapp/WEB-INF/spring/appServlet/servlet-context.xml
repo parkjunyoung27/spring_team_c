@@ -32,6 +32,9 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
+	
+	<!-- 네이버 -->
+	<beans:bean id="naverLoginBO" class="com.team_c.controller.NaverLoginBO" />
 
 	<context:component-scan	base-package="com.team_c.*" />
 

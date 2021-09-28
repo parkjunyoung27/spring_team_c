@@ -22,7 +22,10 @@ public class JoinController {
 	public String join(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		
-		if (session.getAttribute("joinChannel") != "web") {
+//		System.out.println(session.getAttribute("joinChannel"));
+//		System.out.println(session.getAttribute("joinChannel") != null);
+		
+		if (session.getAttribute("joinChannel") != null) {
 			return "redirect:/oAuthJoin.do";
 		}
 		

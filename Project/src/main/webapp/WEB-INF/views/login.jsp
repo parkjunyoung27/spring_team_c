@@ -15,6 +15,15 @@
 		e.value = e.value.replace(/[^a-z0-9@.-_]/ig, '')
 	}
 	
+	// 네이버 로그인 버튼 클릭
+	function naverLogin() {
+	    $.ajax({
+	        url: '/users/naverlogin',
+	        type: 'get',
+	    }).done(function (res) {
+	        location.href = res;
+	    });
+	}
 	</script>
 </head>
 <body>
@@ -26,8 +35,8 @@
 				</c:when>
 				<c:otherwise>
 					<form action="${pageContext.request.contextPath}/login.do" method="post">
-						<input type="text" name="id" oninput="handleOnInput(this)">
-						<input type="password" name="pw">
+						<input type="text" name="id" required="required" oninput="handleOnInput(this)">
+						<input type="password" required="required" name="pw">
 						<button type="submit">로그인하기</button>
 					</form>
 						<!-- <a href="kakaoLogin.do">카카오</a> -->
@@ -37,7 +46,10 @@
 						<a href="https://kauth.kakao.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code">
 						카카오
 						</a>
-					<a href="join.do"><button>가입하기</button></a>
+						
+						<a href="naverlogin.do">네이버</a>
+						
+						<a href="join.do"><button>가입하기</button></a>
 				</c:otherwise>
 			</c:choose>
 					<a href="index.do"><button>홈</button></a>

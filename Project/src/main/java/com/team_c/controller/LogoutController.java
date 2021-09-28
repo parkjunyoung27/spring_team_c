@@ -17,7 +17,13 @@ public class LogoutController {
 
 		HttpSession session = request.getSession();
 
-		if (session.getAttribute("authUser") != "web") {
+		String authUserValue = session.getAttribute("authUser").toString();
+//		String kakao = "kakao";
+//		System.out.println(session.getAttribute("authUser").getClass().getName());
+//		System.out.println(kakao.getClass().getName());
+//		System.out.println(authUserValue.equals("kakao"));
+
+		if (authUserValue.equals("kakao")) {
 
 			session.invalidate();
 
@@ -32,11 +38,8 @@ public class LogoutController {
 
 			session.invalidate();
 			return "redirect:/index.do";
-
 		}
 
 		return null;
-
 	}
-
 }
