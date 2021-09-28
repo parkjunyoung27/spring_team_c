@@ -9,10 +9,22 @@
 		WHERE member_id=#{id} AND member_pw=HEX(AES_ENCRYPT(#{pw}, 'teamc'))  
 	</select>
 	
+	<select id="loginByEmail" parameterType="String" resultType="HashMap">
+		SELECT member_no, member_name, member_id, member_channel 
+		FROM memberview 
+		WHERE member_email=#{email}  
+	</select>
+	
 	<select id="login1" parameterType="HashMap" resultType="HashMap">
 		SELECT member_no, member_name, member_id, member_channel
 		FROM memberview
 		WHERE member_id=#{id} AND (AES_DECRYPT(UNHEX(member_pw), 'teamc'))=#{pw}
+	</select>
+	
+	<select id="emailCheck" resultType="integer">
+		SELECT count(*) 
+		FROM memberview
+		WHERE member_email=#{email}  
 	</select>
 	
 </mapper>

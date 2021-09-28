@@ -17,5 +17,14 @@ public class LoginServiceImpl implements LoginService {
 		return loginDAO.login(map);
 	}
 
+	@Override
+	public int emailCheck(String email) {
+		return loginDAO.emailCheck(email);
+	}
 
+	@Override
+	public Map<String, Object> loginByEmail(String email) {
+		return loginDAO.loginByEmail(email);
+	}
+	
 }

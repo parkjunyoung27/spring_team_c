@@ -8,6 +8,7 @@
 	<meta charset="UTF-8">
 	<title>Index</title>
 	<style>
+		h2 { color: white; }
 		body { margin: 0; padding: 0; }
 		#wrap { width: 1000px; margin: 0 auto; }
 		header { width: 1000px; height: 100px; background: #111; }
@@ -20,23 +21,20 @@
 	function onLogoutClick() {
 		location.href = '${pageContext.request.contextPath}/logout.do';
 	}
+	
 	</script>
 </head>
 <body>
 	<div id="wrap">
 		<header>
-			<c:choose>
+				<c:choose>
 				<c:when test="${sessionScope.name ne null}">
-					<h2>${sessionScope.name }님 반갑습니다.(${sessionScope.channel }회원)
+					<h2>${sessionScope.name }님 반갑습니다.(${sessionScope.authUser }회원)</h2>
 					<button onclick="onLogoutClick();">로그아웃</button>
 				</c:when>
 				<c:otherwise>
-					<form action="./login.do" method="post">
-						<input type="text" name="id">
-						<input type="password" name="pw">
-						<button type="submit">로그인하기</button>
-					</form>
-						<a href="join.do"><button>가입하기</button></a>
+					<a href="${pageContext.request.contextPath}/login.do"><button>로그인</button></a>
+					<a href="join.do"><button>가입하기</button></a>
 				</c:otherwise>
 			</c:choose>
 		</header>
