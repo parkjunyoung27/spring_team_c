@@ -73,3 +73,4 @@ Servers/
 target/
 Project/target/m2e-wtp/web-resources/META-INF/maven/com.team_c/web/pom.properties
 GSupport/target/m2e-wtp/web-resources/META-INF/maven/com.team_c/web/pom.properties
+GSupport/src/main/webapp/WEB-INF/views/index.jsp
