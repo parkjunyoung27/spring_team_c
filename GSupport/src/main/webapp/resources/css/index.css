@@ -24,10 +24,13 @@ body{
 
 /*navbar*/
 .navbar{
+	height:60px;
     overflow:hidden;
-    background-color:#728FCE;
+    background-color:#728FCE50;
     font-family: 'Jua';
+    padding-left: 20px;
 }
+
 
 .navbar #menu{
 	float:right;
@@ -44,14 +47,14 @@ body{
 }
 
 .navbar #menu li a{
-	color: white;
-	font-size:20px;
-	text-decoration:none;
+	color: darkslategray;
+    font-size: 20px;
+    text-decoration: none;
 }
 
 .navbar .logo{
-height:55px;
-width:70px;
+	width:140px;
+	margin-top: 3px;
 } 
 
 /*main화면 음식점 리스트*/

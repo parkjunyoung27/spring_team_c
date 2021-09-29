@@ -14,7 +14,7 @@
 	<style>
 		#login-form{
 			margin: 0 auto;
-			height: 500px;
+			height: 520px;
 			width: 500px;
 			margin-top: 100px;
 			border: none;
@@ -96,7 +96,7 @@
 	
 	<main>
 	<div id="login-form">
-		<p><img src="./resources/images/logo.png" alt="logo" class="logo" width="50px"><br> 
+		<p><img src="./resources/images/logo2.png" alt="logo" class="logo" width="70%"><br> 
 		"Don't you get hungry"</p>
 		
 		<form action="${pageContext.request.contextPath}/login.do" method="post">

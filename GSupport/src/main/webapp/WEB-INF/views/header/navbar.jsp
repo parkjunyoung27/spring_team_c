@@ -5,7 +5,7 @@
 
     <!-- Navigation -->
     <div class="navbar">
-	    <img src="./resources/images/logo.png" alt="logo" class="logo"> 
+	    <img src="./resources/images/logo2.png" alt="logo" class="logo"> 
     
     	<ul id="menu">
 	       <li> <a href="" class="">About</a></li>
