@@ -5,8 +5,9 @@
 
     <!-- Navigation -->
     <div class="navbar">
-	    <img src="./resources/images/logo2.png" alt="logo" class="logo"> 
-    
+	    <a href="./">
+	    	<img src="./resources/images/logo2.png" alt="logo" class="logo"> 
+    	</a>
     	<ul id="menu">
 	       <li> <a href="" class="">About</a></li>
 	       <li> <a href="" class="">가맹점 찾기</a></li>

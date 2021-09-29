@@ -53,8 +53,8 @@ body{
 }
 
 .navbar .logo{
-	width:140px;
-	margin-top: 3px;
+	height: 95%;
+    margin-top: 2px;
 } 
 
 /*main화면 음식점 리스트*/
