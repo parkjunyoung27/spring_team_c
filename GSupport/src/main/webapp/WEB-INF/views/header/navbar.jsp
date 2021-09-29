@@ -13,11 +13,10 @@
 	       <li> <a href="" class="">가맹점주</a></li>
 		   <li><c:choose>
 				<c:when test="${sessionScope.name ne null}">
-					<a onclick="onLogoutClick();">로그아웃</a>
+					${sessionScope.name }님 &ensp;<a onclick="onLogoutClick();">로그아웃</a>
 				</c:when>
 				<c:otherwise>
 					<a href="${pageContext.request.contextPath}/login.do">로그인</a>
-					<!-- <a href="join.do"><button>가입하기</button></a>-->
 				</c:otherwise>
 			</c:choose>
 			</li>
