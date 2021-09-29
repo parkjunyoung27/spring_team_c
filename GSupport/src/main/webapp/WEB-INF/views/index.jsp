@@ -25,8 +25,6 @@
 	</script>
 </head>
 <body>
-	수정하기 
-
 	<div id="wrap">
 		<header>
 				<c:choose>

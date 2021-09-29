@@ -39,7 +39,20 @@
 	<beans:bean id="naverLoginBO"
 		class="com.team_c.controller.NaverLoginBO" />
 
+<!-- 	
+	<bean id="googleConnectionFactory"
+		class="org.springframework.social.google.connect.GoogleConnectionFactory">
+		<constructor-arg value="***************************" />
+		<constructor-arg value="***********************" />
+	</bean>
 
+	<bean id="googleOAuth2Parameters"
+		class="org.springframework.social.oauth2.OAuth2Parameters">
+		<property name="scope"
+			value="https://www.googleapis.com/auth/plus.login" />
+		<property name="redirectUri" value="내가 프로젝트에 적은 url" />
+	</bean>
+ -->
 	<context:component-scan
 		base-package="com.team_c.*" />
 
