@@ -21,7 +21,7 @@
 <body>
 
 	<!-- navbar -->
-	<%@ include file= "./header/navbar.jsp"%>
+	<%@ include file= "./component/navbar.jsp"%>
 
 	<!-- main -->
  
@@ -159,7 +159,7 @@
     </div>
 					
 	<!-- footer -->
-	<%@ include file= "./header/footer.jsp"%>
+	<%@ include file= "./component/footer.jsp"%>
 	
 </body>
 </html>
