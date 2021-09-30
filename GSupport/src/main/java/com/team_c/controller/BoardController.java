@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class BoardController {
 	
-	@RequestMapping("/bossBoard")
+	@RequestMapping(value="/component/bossBoard")
 	public ModelAndView board(HttpServletRequest request) {
 		ModelAndView mv= new ModelAndView("bossBoard");
 	
