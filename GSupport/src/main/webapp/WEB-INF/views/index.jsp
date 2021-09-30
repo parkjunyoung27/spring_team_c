@@ -19,8 +19,9 @@
 	</script>
 </head>
 <body>
+
 	<!-- navbar -->
-	<%@ include file= "navbar.jsp"%>
+	<%@ include file= "./header/navbar.jsp"%>
 
 	<!-- main -->
  
@@ -152,14 +153,13 @@
                         </div>		
                     </a>
                 </div>
-
             </div>
         </div>
 
     </div>
 					
 	<!-- footer -->
-	<%@ include file= "footer.jsp"%>
+	<%@ include file= "./header/footer.jsp"%>
 	
 </body>
 </html>
