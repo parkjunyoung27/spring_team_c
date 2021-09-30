@@ -6,6 +6,9 @@
 	<select id="jongnoStoreList" parameterType="HashMap" resultType="HashMap">
 		SELECT * FROM shop WHERE shop_loc LIKE '%종로구%' LIMIT 0, 20
 	</select>
-
+	
+	<select id="storeDetail" parameterType="HashMap" resultType="HashMap">
+		SELECT * FROM shop WHERE shop_no=#{shop_no}
+	</select>
 	
 </mapper>

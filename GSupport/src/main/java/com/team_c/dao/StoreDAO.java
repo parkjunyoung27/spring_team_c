@@ -12,4 +12,11 @@ public class StoreDAO extends AbstractDAO{
 		return (ArrayList<Map<String, Object>>) selectList("store.jongnoStoreList");
 	}
 
+	public Map<String, Object> storeDetail(Map<String, Object> map) {
+		return selectOne("store.storeDetail", map);
+	}
+
+	
+
+	
 }

@@ -40,4 +40,7 @@ public class AbstractDAO {
 		printQueryId(queryID);
 		return sqlSession.selectOne(queryID, email);
 	}
+	
+	
+	
 }
