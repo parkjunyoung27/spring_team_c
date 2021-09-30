@@ -9,14 +9,6 @@
 	<title>Index</title>
 	<link href="./resources/css/index.css" rel="stylesheet">
 
-	<style>
-
-	</style>
-	<script type="text/javascript">
-	function onLogoutClick() {
-		location.href = '${pageContext.request.contextPath}/logout.do';
-	}
-	</script>
 </head>
 <body>
 

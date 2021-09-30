@@ -18,13 +18,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.github.scribejava.core.model.OAuth2AccessToken;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.team_c.common.CommandMap;
+import com.team_c.service.GoogleLoginService;
 import com.team_c.service.KakaoLoginService;
 import com.team_c.service.LoginServiceImpl;
 
 @Controller
 public class LoginController {
+	private static final String GOOGLE_CLIENT_ID = "883272106142-4gqb73kjc3q4c1gbr34na98dp4usff37.apps.googleusercontent.com";
+	private static final String GOOGLE_REDIRECT_URI = "http://localhost:8080/GSupport/googleCallBack.do";
+
 	@Resource(name = "loginService")
 	private LoginServiceImpl loginService;
 
@@ -63,7 +71,7 @@ public class LoginController {
 
 		HttpSession session = request.getSession();
 		String authorize_code = request.getParameter("code");
-		System.out.println(authorize_code);
+//		System.out.println(authorize_code);
 
 		String access_Token = kakaoLoginService.getAccessToken(authorize_code);
 
@@ -71,20 +79,24 @@ public class LoginController {
 
 		String email = userInfo.get("email").toString();
 
+		/* oAuth 임의 비밀번호을 토큰의 일부로 사용 */
+		String memberPw = access_Token.toString().substring(0, 10);
+
 		// 기존 회원인지 확인
 		int emailCheck = loginService.emailCheck(email);
 
-		System.out.println("emailCheck : " + emailCheck);
+//		System.out.println("emailCheck : " + emailCheck);
 
 		if (emailCheck != 1) {
 			session.setAttribute("joinChannel", "kakao");
 			session.setAttribute("memberEmail", email);
+			session.setAttribute("memberPw", memberPw);
 			return "redirect:/join.do";
 		}
 
 		Map<String, Object> login = loginService.loginByEmail(email);
 
-		System.out.println("login : " + login);
+//		System.out.println("login : " + login);
 		session.setAttribute("name", login.get("member_name"));
 		session.setAttribute("id", login.get("member_id"));
 		session.setAttribute("authUser", login.get("member_channel"));
@@ -93,27 +105,20 @@ public class LoginController {
 
 	// 로그인 첫 화면 요청 메소드
 	@RequestMapping(value = "/naverlogin.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String login(Model model, HttpSession session) {
+	public void login(HttpSession session, HttpServletRequest req, HttpServletResponse res) throws Exception {
 
 		/* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */
 		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
 
-		// https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=sE***************&
-		// redirect_uri=http%3A%2F%2F211.63.89.90%3A8090%2Flogin_project%2Fcallback&state=e68c269c-5ba9-4c31-85da-54c16c658125
-		System.out.println("네이버:" + naverAuthUrl);
+		res.sendRedirect(naverAuthUrl);
 
-		// 네이버
-		model.addAttribute("url", naverAuthUrl);
-
-		/* 생성한 인증 URL을 View로 전달 */
-		return "naverLogin";
 	}
 
 	// 네이버 로그인 성공시 callback호출 메소드
 	@RequestMapping(value = "/callback.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session)
 			throws IOException {
-		System.out.println("****************** callback");
+//		System.out.println("****************** callback");
 		OAuth2AccessToken oauthToken;
 		oauthToken = naverLoginBO.getAccessToken(session, code, state);
 		// 로그인 사용자 정보를 읽어온다.
@@ -122,27 +127,86 @@ public class LoginController {
 		model.addAttribute("result", apiResult);
 		System.out.println("result" + apiResult);
 		/* 네이버 로그인 성공 페이지 View 호출 */
-//      JSONObject jsonobj = jsonparse.stringToJson(apiResult, "response");
-//      String snsId = jsonparse.JsonToString(jsonobj, "id");
+		JsonParser parser = new JsonParser();
+		JsonElement element = parser.parse(apiResult);
 
-//      String name = jsonparse.JsonToString(jsonobj, "name");
-//
-//      UserVO vo = new UserVO();
-//      vo.setUser_snsId(snsId);
-//      vo.setUser_name(name);
-//
-//      System.out.println(name);
-//      try {
-//          vo = service.naverLogin(vo);
-//      } catch (Exception e) {
-//          // TODO Auto-generated catch block
-//          e.printStackTrace();
-//      }
+		JsonObject responseObj = element.getAsJsonObject().get("response").getAsJsonObject();
 
-//      session.setAttribute("login",vo);
-//      return new ModelAndView("user/loginPost", "result", vo);
+		String email = responseObj.getAsJsonObject().get("email").getAsString();
 
-		return "nidSuccess";
+		/* oAuth 임의 비밀번호을 토큰의 일부로 사용 */
+		String memberPw = oauthToken.toString().substring(0, 10);
+
+		// 기존 회원인지 확인
+		int emailCheck = loginService.emailCheck(email);
+
+		if (emailCheck != 1) {
+			session.setAttribute("joinChannel", "naver");
+			session.setAttribute("memberEmail", email);
+			session.setAttribute("memberPw", memberPw);
+			return "redirect:/join.do";
+		}
+		Map<String, Object> login = loginService.loginByEmail(email);
+
+//		System.out.println("login : " + login);
+		session.setAttribute("name", login.get("member_name"));
+		session.setAttribute("id", login.get("member_id"));
+		session.setAttribute("authUser", login.get("member_channel"));
+		return "redirect:/index.do";
+	}
+
+	@RequestMapping("/googleLogin")
+	public void googleLogin(HttpSession session, HttpServletRequest req, HttpServletResponse res) throws Exception {
+
+		// 구글 로그인 URL 생성
+		String googleUrl = "https://accounts.google.com/o/oauth2/v2/auth?" + "scope=email" + "&response_type=code"
+				+ "&state=security_token%3D138r5719ru3e1%26url%3Dhttps://oauth2.example.com/token" + "&client_id="
+				+ GOOGLE_CLIENT_ID + "&redirect_uri=" + GOOGLE_REDIRECT_URI + "&access_type=offline";
+
+		res.sendRedirect(googleUrl);
+	}
+
+	// 구글 로그인 콜백
+	@RequestMapping(value = "/googleCallBack.do")
+	public String googleLogin(@RequestParam("code") String code, HttpSession session, Model model) throws Exception {
+
+		// 코드 확인
+		System.out.println("code : " + code);
+
+		// Access Token 발급
+		JsonNode jsonToken = GoogleLoginService.getAccessToken(code);
+		String accessToken = jsonToken.get("access_token").toString();
+//		String refreshToken = "";
+//		if (jsonToken.has("refresh_token")) {
+//			refreshToken = jsonToken.get("refresh_token").toString();
+//		}
+//		String expiresTime = jsonToken.get("expires_in").toString();
+
+		// Access Token으로 사용자 정보 반환
+		JsonNode userInfo = GoogleLoginService.getGoogleUserInfo(accessToken);
+		System.out.println(userInfo.toString());
+
+		String email = userInfo.get("email").asText();
+
+		///* oAuth 임의 비밀번호을 토큰의 일부로 사용 */
+		String memberPw = accessToken.toString().substring(0, 10);
+
+		// 기존 회원인지 확인
+		int emailCheck = loginService.emailCheck(email);
+
+		if (emailCheck != 1) {
+			session.setAttribute("joinChannel", "google");
+			session.setAttribute("memberEmail", email);
+			session.setAttribute("memberPw", memberPw);
+			return "redirect:/join.do";
+		}
+		
+		Map<String, Object> login = loginService.loginByEmail(email);
+
+		session.setAttribute("name", login.get("member_name"));
+		session.setAttribute("id", login.get("member_id"));
+		session.setAttribute("authUser", login.get("member_channel"));
+		return "redirect:/index.do";
 	}
 
 }

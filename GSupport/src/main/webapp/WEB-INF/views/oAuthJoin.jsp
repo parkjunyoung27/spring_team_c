@@ -10,13 +10,13 @@
 </head>
 <body>
 	
-	<form action="join.do" method="post">
-		<input type="text" name="id" placeholder="id"><br>
-		<input type="password" name="pw" placeholder="pw"><br>
+	<form action="oAuthJoin.do" method="post">
+		<input type="hidden" name="id" placeholder="id" value="${sessionScope.memberEmail }">
+		<input type="hidden" name="pw" placeholder="pw" value="${sessionScope.memberPw }">
 		<input type="text" name="name" placeholder="name"><br>
-		<input type="email" name="email" placeholder="email" value="${sessionScope.memberEmail }"><br>
+		<input type="hidden" name="email" placeholder="email" value="${sessionScope.memberEmail }">
 		<input type="date" name="birthDate" placeholder="birth"><br>
-		<input type="text" name="channel" value="${sessionScope.joinChannel }"><br>
+		<input type="hidden" name="channel" value="${sessionScope.joinChannel }">
 		<button type="submit">가입</button>
 	</form>
 </body>
