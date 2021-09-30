@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"	
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="store">
+	
+	<select id="jongnoStoreList" parameterType="HashMap" resultType="HashMap">
+		SELECT * FROM shop WHERE shop_loc LIKE '%종로구%' LIMIT 0, 20
+	</select>
+
+	
+</mapper>

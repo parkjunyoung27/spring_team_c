@@ -273,7 +273,7 @@ function checkID(){
 <body>
 	<header>
 		<!-- navbar -->
-		<%@ include file= "./header/navbar.jsp"%>
+		<%@ include file= "./component/navbar.jsp"%>
 	</header>
 	
 	<main>
@@ -332,7 +332,7 @@ function checkID(){
 	</main>
 	
 	<footer>
-		<%@ include file= "./header/footer.jsp"%>	
+		<%@ include file= "./component/footer.jsp"%>	
 	</footer>
 	
 </body>
