@@ -53,7 +53,7 @@ marker.setMap(map);
 
 var positions = [
     {
-        content: '<div><img src="resources/images/logo.png" width="100" height="80" text-align: center;></div>'+'<div><b>${l.shop_name}</b></div>'+
+        content: '<div><img src="resources/images/logo.png" width="100%" height="80" text-align: center;></div>'+'<div><b>${l.shop_name}</b></div>'+
         '<div style="font-size:small;">${l.shop_tel}</div>'+'<div style="font-size:small;">${l.shop_loc}</div>', 
         latlng: new kakao.maps.LatLng(${l.shop_wido }, ${l.shop_kyungdo })
     },

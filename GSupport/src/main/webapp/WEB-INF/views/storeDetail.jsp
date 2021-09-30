@@ -17,6 +17,16 @@
 	float: right;
 }
 </style>
+<script type="text/javascript">
+function doOpenCheck(chk){
+    var obj = document.getElementsByName("reservTime");
+    for(var i=0; i<obj.length; i++){
+        if(obj[i] != chk){
+            obj[i].checked = false;
+        }
+    }
+}
+</script>
 </head>
 <body>
 	<div id="storeName">
@@ -58,8 +68,8 @@ marker.setMap(map);
 			이름 : <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required="required"> <br> 
 			연락처 : <input type="text" id="phoneNum" name="phoneNum" placeholder="연락처를 입력하세요" required="required"> <br> 
 			날짜 : <input type="date" required="required"><br>
-			시간 : 오전 <input type="checkbox" name="amTime" value="amTime">
-			오후 <input type="checkbox" name="pmTime" value="pmTime"><br>
+			시간 : 	오전 <input type="checkbox" name="reservTime" value="amTime" onclick="doOpenCheck(this);">
+					오후 <input type="checkbox" name="reservTime" value="pmTime" onclick="doOpenCheck(this);"><br>
 			<p><button onclick="location.href='./storeReserv.do?shop_no=${storeDetail.shop_no}'">예약하기</button>
 		</div>
 	</form>
