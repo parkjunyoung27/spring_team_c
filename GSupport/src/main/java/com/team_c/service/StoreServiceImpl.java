@@ -1,0 +1,20 @@
+package com.team_c.service;
+
+import java.util.ArrayList;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.team_c.dao.StoreDAO;
+
+@Service("storeService")
+public class StoreServiceImpl implements StoreService {
+	
+	@Autowired
+	private StoreDAO storeDAO;
+
+	public ArrayList<Map<String, Object>> jongnoStoreList() {
+		return storeDAO.jongnoStoreList();
+	}
+}
