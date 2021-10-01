@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"	
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="question">
+	
+	<select id="messageList" parameterType="HashMap" resultType="HashMap">
+		SELECT question_no, question_sender, question_recipient, member_name, member_id, question_date, question_read 
+		FROM questionview 
+		WHERE question_recipient=(SELECT member_no FROM member WHERE member_id=#{member_id})
+	</select>
+	
+	<select id="detail" parameterType="HashMap" resultType="HashMap">
+		SELECT question_no, question_sender, member_name, member_id, 
+				question_recipient, question_date, question_content, question_read   
+		FROM questionview 
+		WHERE question_no=#{openmsg} AND 
+		question_recipient=(SELECT member_no FROM member WHERE member_id=#{member_id})
+	</select>
+	
+	<update id="readMessage" parameterType="HashMap">
+		UPDATE question SET question_read=1 WHERE question_no=#{openmsg}
+		AND question_recipient=(SELECT member_no FROM member WHERE member_id=#{member_id})
+	</update>
+	
+	<select id="getName" parameterType="HashMap" resultType="String">
+		SELECT member_id FROM member WHERE member_no=#{sendmsg }
+	</select>
+
+	<insert id="sendMessage" parameterType="HashMap">
+      INSERT INTO question(question_sender, question_recipient, question_content) VALUES 
+      (
+       (SELECT member_no FROM member WHERE member_id=#{member_id}),
+       (SELECT member_no FROM member WHERE member_id=#{sendID}),
+        #{content}
+       )
+   </insert>
+	
+	<delete id="delMsg" parameterType="HashMap">
+		DELETE FROM question WHERE question_no=#{no} AND
+		question_recipient=(SELECT member_no FROM member WHERE member_id=#{member_id})
+	</delete>
+	
+	
+	
+	
+</mapper>

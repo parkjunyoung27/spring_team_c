@@ -19,6 +19,7 @@
 	       <li> <a href="" class="">가맹점주</a></li>
 		   <li><c:choose>
 				<c:when test="${sessionScope.name ne null}">
+	      			 <a href="./message.do" class="">Q</a>
 					${sessionScope.name}님 ${sessionScope.authUser}&ensp;<a onclick="onLogoutClick();">로그아웃</a>
 				</c:when>
 				<c:otherwise>
