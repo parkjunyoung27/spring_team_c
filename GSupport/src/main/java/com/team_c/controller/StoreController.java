@@ -86,5 +86,9 @@ public class StoreController {
 			return "redirect:/storeDetail.do?shop_no="+shop_no;
 		}
 	}
-
+	@GetMapping("/storeGuList.do")
+	public ModelAndView storeGuList(CommandMap commandMap) {
+		ModelAndView mv = new ModelAndView("storeGuList");
+		return mv;
+	}
 }

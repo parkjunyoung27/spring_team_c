@@ -15,7 +15,7 @@
     	</a>
     	<ul id="menu">
 	       <li> <a href="" class="">About</a></li>
-	       <li> <a href="" class="">가맹점 찾기</a></li>
+	       <li> <a href="./storeGuList.do" class="">가맹점 찾기</a></li>
 	       <li> <a href="" class="">가맹점주</a></li>
 		   <li><c:choose>
 				<c:when test="${sessionScope.name ne null}">
