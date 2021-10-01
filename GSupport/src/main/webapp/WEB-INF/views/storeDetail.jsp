@@ -26,6 +26,16 @@ function doOpenCheck(chk){
         }
     }
 }
+//이게 예약 취소버튼을 눌러도 예약이 된것처럼 DB에 올라가서 처리가 됩니다. 
+function ask(){
+	if(confirm("예약하시겠습니까?")){
+		alert("예약 되었습니다.")
+		location.href='./storeReserv.do?shop_no=${storeDetail.shop_no}';
+	} else {
+		alert("예약이 취소되었습니다.");	
+		return false;
+	}
+}
 </script>
 </head>
 <body>
@@ -67,10 +77,11 @@ marker.setMap(map);
 		<div id="storeReservDetail">
 			이름 : <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required="required"> <br> 
 			연락처 : <input type="text" id="phoneNum" name="phoneNum" placeholder="연락처를 입력하세요" required="required"> <br> 
-			날짜 : <input type="date" required="required"><br>
+			날짜 : <input type="date" id="date" name="date" required="required"><br>
 			시간 : 	오전 <input type="checkbox" name="reservTime" value="amTime" onclick="doOpenCheck(this);">
 					오후 <input type="checkbox" name="reservTime" value="pmTime" onclick="doOpenCheck(this);"><br>
-			<p><button onclick="location.href='./storeReserv.do?shop_no=${storeDetail.shop_no}'">예약하기</button>
+					<input type="hidden" name="shop_no" value="${storeDetail.shop_no }">
+			<p><button onclick="return ask();">예약하기</button>
 		</div>
 	</form>
 </div>
