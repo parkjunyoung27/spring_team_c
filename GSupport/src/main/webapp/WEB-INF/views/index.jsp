@@ -17,9 +17,7 @@
 
 	<!-- main -->
  
-    <div class="header-img">
-        <img src="./resources/images/header.jpg" width="100%" height="350px">
-    </div>
+    <div class="header-img"></div>
 
     <div class="main_list">
 			
