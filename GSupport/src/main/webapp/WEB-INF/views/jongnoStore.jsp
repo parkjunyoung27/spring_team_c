@@ -12,7 +12,7 @@
 <h1>종로구 가맹점</h1>
 <hr>
 <!-- 카카오맵api -->
-<div id="map" style="width:500px;height:400px;"></div>
+<div id="map" style="width:100%;height:400px;"></div>
 <script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3d03474ad9928948587986771d90bb4e
 "></script>
@@ -53,7 +53,8 @@ marker.setMap(map);
 
 var positions = [
     {
-        content: '<div><img src="resources/images/logo.png" width="100" height="80" text-align: center;></div>'+'<div><b>${l.shop_name}</b></div>', 
+        content: '<div><img src="resources/images/logo.png" width="100%" height="80" text-align: center;></div>'+'<div><b>${l.shop_name}</b></div>'+
+        '<div style="font-size:small;">${l.shop_tel}</div>'+'<div style="font-size:small;">${l.shop_loc}</div>', 
         latlng: new kakao.maps.LatLng(${l.shop_wido }, ${l.shop_kyungdo })
     },
    
@@ -123,7 +124,23 @@ for (var i = 0; i < positions.length; i ++) {
 */
 
 </c:forEach>
-	</script>
-	<hr>
+</script>	
+<hr>
+<table>
+	<tr>
+		<th>매장명</th>
+		<th>연락처</th>
+		<th>운영시간</th>
+		<th>위치</th>
+	</tr>
+	<c:forEach items="${list }" var="l">
+	<tr>
+		<td>${l.shop_name }</td>
+		<td>${l.shop_tel }</td>
+		<td>${l.shop_opentime } ~ ${l.shop_closetime }</td>
+		<td>${l.shop_loc } <button onclick="location.href='./storeDetail.do?shop_no=${l.shop_no}'">자세히보기</button></td>
+	</tr>
+	</c:forEach>
+</table>
 </body>
 </html>

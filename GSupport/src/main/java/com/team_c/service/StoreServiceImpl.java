@@ -17,4 +17,14 @@ public class StoreServiceImpl implements StoreService {
 	public ArrayList<Map<String, Object>> jongnoStoreList() {
 		return storeDAO.jongnoStoreList();
 	}
+
+	public Map<String, Object> storeDetail(Map<String, Object> map) {
+		return storeDAO.storeDetail(map);
+	}
+
+	public int storeReserv(Map<String, Object> map) {
+		return storeDAO.storeReserv(map);
+	}
+
+	
 }

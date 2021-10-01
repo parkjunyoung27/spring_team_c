@@ -9,14 +9,6 @@
 	<title>Index</title>
 	<link href="./resources/css/index.css" rel="stylesheet">
 
-	<style>
-
-	</style>
-	<script type="text/javascript">
-	function onLogoutClick() {
-		location.href = '${pageContext.request.contextPath}/logout.do';
-	}
-	</script>
 </head>
 <body>
 
@@ -25,9 +17,7 @@
 
 	<!-- main -->
  
-    <div class="header-img">
-        <img src="./resources/images/header.jpg" width="100%" height="350px">
-    </div>
+    <div class="header-img"></div>
 
     <div class="main_list">
 			

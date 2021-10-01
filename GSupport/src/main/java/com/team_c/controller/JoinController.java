@@ -48,5 +48,20 @@ public class JoinController {
 //		HttpSession session = request.getSession();
 		return "redirect:/index.do";
 	}
+	
+	@PostMapping("/oAuthJoin.do")
+	public String oAuthJoin(CommandMap commandMap, HttpServletRequest request) {
+
+		
+		
+		
+		System.out.println(commandMap.getMap());
+
+		Map<String, Object> join = joinService.join(commandMap.getMap());
+		System.out.println(join);
+
+//		HttpSession session = request.getSession();
+		return "redirect:/index.do";
+	}
 
 }

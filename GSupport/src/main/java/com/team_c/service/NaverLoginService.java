@@ -90,9 +90,6 @@ public class NaverLoginService {
 			// 요청에 필요한 Header에 포함될 내용
 			conn.setRequestProperty("Authorization", "Bearer " + access_token);
 
-//			int responseCode = conn.getResponseCode();
-//			System.out.println("responseCode : " + responseCode);
-
 			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
 			String line = "";
@@ -106,10 +103,8 @@ public class NaverLoginService {
 			JsonParser parser = new JsonParser();
 			JsonElement element = parser.parse(result);
 
-			JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
 			JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
 
-			// String nickname = properties.getAsJsonObject().get("nickname").getAsString();
 			String email = kakao_account.getAsJsonObject().get("email").getAsString();
 
 			userInfo.put("access_token", access_token);
@@ -118,10 +113,6 @@ public class NaverLoginService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		// String nickname = (String) userInfo.get("nickname");
-		// String email = (String) userInfo.get("email");
-//		System.out.println("*****KakaoLoginService getKakaoUserInfo() passed");
 
 		return userInfo;
 

@@ -123,9 +123,14 @@
 					</a>
 					<!-- 네이버 로그인 화면으로 이동 시키는 URL -->
 					<!-- 네이버 로그인 화면에서 ID, PW를 올바르게 입력하면 callback 메소드 실행 요청 -->
-					<a href="http://gsupport.xyz/naverlogin.do" class="login_other_img"> <img
+					<a href="http://gsupport.xyz/naverlogin.do" class="login_other_img">
+						<img
 						src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png" />
 					</a>
+
+					<!-- 구글 로그인 화면으로 이동 시키는 URL -->
+					<!-- 구글 로그인 화면에서 ID, PW를 올바르게 입력하면 oauth2callback 메소드 실행 요청-->
+					<a href="./googleLogin.do">구글</a>
 				</div>
 
 				<div class="links">

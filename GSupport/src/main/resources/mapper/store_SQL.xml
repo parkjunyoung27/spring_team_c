@@ -6,6 +6,13 @@
 	<select id="jongnoStoreList" parameterType="HashMap" resultType="HashMap">
 		SELECT * FROM shop WHERE shop_loc LIKE '%종로구%' LIMIT 0, 20
 	</select>
-
 	
+	<select id="storeDetail" parameterType="HashMap" resultType="HashMap">
+		SELECT * FROM shop WHERE shop_no=#{shop_no}
+	</select>
+	
+	<insert id="storeReserv" parameterType="HashMap">
+		INSERT INTO reservation (user, shop_no, reservation_reservDate, reservation_reservTime, reservation_status, reservation_phonenum) 
+		VALUES ((SELECT member_no FROM member WHERE member_id=#{id}), #{shop_no}, #{date}, #{time}, 'success', #{phoneNum})
+	</insert>
 </mapper>
