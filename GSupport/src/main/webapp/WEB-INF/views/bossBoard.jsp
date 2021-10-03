@@ -19,5 +19,6 @@
 			<th>즐겨찾기</th>
 		</tr>
 	</table>
+	<p><a href="/GSupport">홈으로</a></p>
 </body>
 </html>
