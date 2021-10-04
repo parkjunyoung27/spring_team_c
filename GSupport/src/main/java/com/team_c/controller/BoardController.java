@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class BoardController {
 	
+	//매핑 작업
 	@RequestMapping(value="/bossBoard", method = RequestMethod.GET)
 	public ModelAndView board(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("bossBoard");
