@@ -15,4 +15,9 @@
 		INSERT INTO reservation (user, shop_no, reservation_reservDate, reservation_reservTime, reservation_status, reservation_phonenum) 
 		VALUES ((SELECT member_no FROM member WHERE member_id=#{id}), #{shop_no}, #{date}, #{time}, 'success', #{phoneNum})
 	</insert>
+	
+	<select id="guStore" parameterType="HashMap" resultType="HashMap">
+		SELECT * FROM shop WHERE shop_loc LIKE '%#{guName}%' LIMIT 0, 20
+	</select>
+	
 </mapper>

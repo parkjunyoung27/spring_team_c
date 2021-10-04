@@ -26,5 +26,9 @@ public class StoreServiceImpl implements StoreService {
 		return storeDAO.storeReserv(map);
 	}
 
+	public ArrayList<Map<String, Object>> guStore(Map<String, Object> map) {
+		return storeDAO.guStore(map);
+	}
+
 	
 }

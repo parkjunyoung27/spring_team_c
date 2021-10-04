@@ -7,30 +7,13 @@
 <title>서울특별시 구 목록</title>
 </head>
 <body>
-	<ul>
-		<li onclick="location.href='./jongnoStore.do'"><input type="hidden" name="guName" value="종로구">종로구</li>
-		<li>중랑구</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-	</ul>
+	<form action="./guStore.do" method="get">
+		<input type="hidden" name="guName" value="종로구">
+		<button type="submit">종로구</button>
+	</form>
+	<form action="./guStore.do" method="get">
+		<input type="hidden" name="guName" value="광진구">
+		<button type="submit">광진구</button>
+	</form>
 </body>
 </html>

@@ -21,10 +21,11 @@ public class StoreController {
 	private StoreServiceImpl storeService;
 
 	@GetMapping("/jongnoStore.do")
-	public ModelAndView jongnoStore() {
+	public ModelAndView jongnoStore(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("jongnoStore");
+		//String guName = request.getParameter("guName");
 		ArrayList<Map<String, Object>> list = storeService.jongnoStoreList();
-
+		//System.out.println("구네임 : " + guName);
 		mv.addObject("list", list);
 
 		return mv;
@@ -91,4 +92,19 @@ public class StoreController {
 		ModelAndView mv = new ModelAndView("storeGuList");
 		return mv;
 	}
+	
+	@GetMapping("/guStore.do")
+	public ModelAndView guStore(CommandMap commandMap, HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("guStore");
+		String guName = request.getParameter("guName");
+		System.out.println("구네임 : " + guName);
+		commandMap.put("guName", guName);
+		ArrayList<Map<String, Object>> list = storeService.guStore(commandMap.getMap());
+		mv.addObject("list", list);
+		
+		return mv;
+		
+	}
+	
+	
 }
