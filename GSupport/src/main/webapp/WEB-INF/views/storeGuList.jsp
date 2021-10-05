@@ -7,7 +7,7 @@
 <title>서울특별시 구 목록</title>
 </head>
 <body>
-		<button type="submit" onclick="location.href='./guStore.do?guName=강남구'">강남구</button>
+		<button type="submit" onclick="location.href='./guStore.do?guName=강남구&shop_wido=37.49169211&shop_kyungdo=127.0875892'">강남구</button>
 		<button type="submit" onclick="location.href='./guStore.do?guName=강동구'">강동구</button>
 		<button type="submit" onclick="location.href='./guStore.do?guName=강북구'">강북구</button>
 		<button type="submit" onclick="location.href='./guStore.do?guName=강서구'">강서구</button>
