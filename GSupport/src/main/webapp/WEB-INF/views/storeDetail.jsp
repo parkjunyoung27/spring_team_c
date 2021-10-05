@@ -42,7 +42,7 @@ function ask(){
 
 	<script>
 	//마커가 표시될 위치입니다 
-	var markerPosition  = new kakao.maps.LatLng(${storeDetail.shop_wido}, ${storeDetail.shop_kyungdo}); 
+	var markerPosition  = new kakao.maps.LatLng(${storeDetail.shop_wido}, ${storeDetail.shop_kyungdo});  
 	
 	//마커를 생성합니다
 	var marker = new kakao.maps.Marker({

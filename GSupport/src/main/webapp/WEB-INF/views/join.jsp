@@ -227,12 +227,12 @@ function join(){
 		return false;
 	}		
 }
-/*ajax*/
+/*ajax
 $(function(){
 	$("#join_join").prop("disabled", true); //가입하기 버튼 비활성화
 	$("#resultText").css("color","red");
 });
-
+*/
 // id 중복확인
 function checkID(){
 	var id = $("#id").val();
@@ -281,13 +281,11 @@ function checkID(){
 		<div id ="join_form">
 			<h2>회 원 가 입</h2>
 			
-			<button onclick="return checkID()" id="check_id">중복확인</button>
-				
-			<form action="./join" method="post" onsubmit="return join()">
+			<form action="./join.do" method="post" onsubmit="return join()">
 				<div id="jactionp">
 					<p id="join_id" class="join_p">
 					<span class="jtitle">아이디</span>
-					<input type="text" name="id" id="id" onchange="checkID()">
+					<input type="text" name="id" id="id">
 					</p>
 									
 					<p id="join_name" class="join_p">
@@ -297,7 +295,7 @@ function checkID(){
 									
 					<p id="join_pw" class="join_p_pw">
 						<span class="jtitle">비밀번호</span>
-						<input type="password" id="pw1" name="pw1" class="jpw1" placeholder="비밀번호를 입력해주세요" ><br>
+						<input type="password" id="pw1" name="pw" class="jpw1" placeholder="비밀번호를 입력해주세요" ><br>
 						<input type="password" id="pw2" name="pw2" class="jpw2" placeholder="비밀번호 확인" onchange="isSame()">
 						<span id="same"></span>
 					</p>
@@ -306,21 +304,17 @@ function checkID(){
 						<span class="jtitle">이메일</span>
 						<input type="email" name="email" id="email" >
 					</p>	
-					
-					<p id="join_phone" class="join_p">
-						<span class="jtitle">핸드폰 번호</span>
-						<input type="text" name="phone" id="phone" >
-					</p>
-									
+											
 					<p id="join_birth" class="join_p">
 						<span class="jtitle">생년월일</span>
 						<input type="date" name="birthDate" id="date">
 					</p>
+					<input type="hidden" name="channel" value="web">
+					<button type="submit">가입</button>
 				</div>
 							
 				<div id="jsubb">
-					<p id="resultText">ID중복확인을 먼저 실행하셔야 가입가능합니다.</p>
-						<button type="submit" id="join_join" disabled="disabled">가입하기</button>
+						<button type="submit" id="join_join">가입하기</button>
 						<p id="jsarea">
 						<button type="reset" id="join_reset">초기화하기</button> &nbsp;|&nbsp;
 						<a href="./login.do" id="join_index">로그인하러가기</a>						
