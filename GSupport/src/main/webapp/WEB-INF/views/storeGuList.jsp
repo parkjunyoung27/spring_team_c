@@ -9,7 +9,8 @@
 <body>
 	<form action="./guStore.do" method="get">
 		<input type="hidden" name="guName" value="종로구">
-		<button type="submit">종로구</button>
+		<button type="button" onclick="location.href='./guStore.do?guName=종로구&shop_wido=37.56945089&shop_kyungdo=126.9867203560'">종로구</button>
+		
 	</form>
 	<form action="./guStore.do" method="get">
 		<input type="hidden" name="guName" value="광진구">
