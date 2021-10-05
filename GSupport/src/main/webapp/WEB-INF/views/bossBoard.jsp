@@ -18,6 +18,15 @@
 			<th>날짜</th>
 			<th>즐겨찾기</th>
 		</tr>
+		<c:forEach items="${list}" var="l">
+		<tr>
+			<td>${l.board_no }</td>
+			<td>${l.board_title}</td>
+			<td>${l.member_id}</td>
+			<td>${l.board_date}</td>
+			<td>${l.board_like}</td>
+		</tr>
+		</c:forEach>
 	</table>
 	<p><a href="/GSupport">홈으로</a></p>
 </body>
