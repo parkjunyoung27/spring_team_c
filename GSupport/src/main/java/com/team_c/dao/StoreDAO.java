@@ -25,6 +25,10 @@ public class StoreDAO extends AbstractDAO{
 		return (ArrayList<Map<String, Object>>) selectList("store.storeList", map);
 	}
 
+	public ArrayList<Map<String, Object>> storeGuList(Map<String, Object> map) {
+		return (ArrayList<Map<String, Object>>) selectList("store.storeGuList", map);
+	}
+
 	
 
 	
