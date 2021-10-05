@@ -179,6 +179,25 @@ function isSame(){
 	}
 }
 
+function checkID(){
+	var id = $("#id").val();
+	var email = $("#email").val();
+	var agent = navigator.userAgent.toLowerCase();
+	
+	$("#email").val($("#id").val());
+	
+	if(id == "" || id.length < 4){
+		$("#joinErr").text("이메일을 다시 확인해주세요.");
+		$("#id").focus();
+	}
+	
+	if(id.length < 5 || id.indexOf('.') == -1 || id.indexOf('@') == -1){
+		$("#joinErr").text("이메일을 다시 확인해주세요.");
+		$("#id").focus();
+	}
+	
+}
+
 function join(){
 	var id = document.getElementById('id');
 	var name = document.getElementById('name');
@@ -233,41 +252,7 @@ $(function(){
 	$("#resultText").css("color","red");
 });
 */
-// id 중복확인
-function checkID(){
-	var id = $("#id").val();
-	
-	if(id.length < 5){
-		alert('아이디를 5자 이상 입력해주세요.');
-		return false;
-	}
-	
-	$.ajax({
-		type: "POST",
-		dataType: 'text',
-		data: 'id='+id,
-		url: './idCheck',
-		success: function(rData,textStatus, xhr){
-			var checkResult = textStatus;
-			//alert("성공 : "+ rData); //rData = result
-			
-			if(rData == 1){//return 값
-				alert(id+"는 이미 등록되어 있습니다.");
-				$("#resultText").css("color","red");
-				$("#resultText").text(id+"는 이미 등록되어 있습니다.");
-				$("#join_join").attr("disabled",true);
-			}else{
-				alert("사용할 수 있는 ID 입니다.");
-				$("#join_join").attr("disabled", false);
-				$("#resultText").css("color","blue");
-				$("#resultText").text(id+"는 가입할 수 있습니다.");
-			}
-		},
-		error: function(xhr, status, e){
-			alert("문제 발생 : " + e)
-		}
-	});
-}
+
 </script>
 
 <body>
@@ -279,13 +264,14 @@ function checkID(){
 	<main>
 	<div id= "board">
 		<div id ="join_form">
-			<h2>회 원 가 입</h2>
+			<h2>회 원 가 입</h2><br>
+			<p id="joinErr"></p>
 			
 			<form action="./join.do" method="post" onsubmit="return join()">
 				<div id="jactionp">
 					<p id="join_id" class="join_p">
-					<span class="jtitle">아이디</span>
-					<input type="text" name="id" id="id">
+					<span class="jtitle">이메일</span>
+					<input type="text" name="id" id="id" onchange="checkID()">
 					</p>
 									
 					<p id="join_name" class="join_p">
@@ -302,7 +288,7 @@ function checkID(){
 									
 					<p id="join_email" class="join_p">
 						<span class="jtitle">이메일</span>
-						<input type="email" name="email" id="email" >
+						<input type="email" name="email" id="email" hidden="hidden">
 					</p>	
 											
 					<p id="join_birth" class="join_p">
