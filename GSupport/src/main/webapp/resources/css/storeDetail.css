@@ -50,6 +50,17 @@
 #storeReservDetail{
 	padding-left: 10px;
 }
+#storeReservDetail p{
+	width:
+	height:
+}
+
+
+#storeReservDetail p:after{
+	content: "";
+	display: block;
+	clear: both;
+}
 
 .reserv_input{
 	float: right;
@@ -60,6 +71,7 @@
 
 div#reserve_btn_area {
     display: flex;
+    clear:both;
 }
 
 .reserv_btn1{

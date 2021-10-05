@@ -12,6 +12,7 @@
 		background-color: #aaaaaa;
 		cursor: pointer;
 	}
+	
 </style>
 </head>
 <body>
@@ -23,9 +24,9 @@
 <div class="header-img"></div>
 
 <h1>가맹점 찾기</h1>
+<h3 style="margin:10px 10px;">*종로구 가맹점*</h3>
 <hr>
 <div id="storeSearchContainer">
-	<h2>종로구 가맹점</h2>
 	
 	<div id="searchButton">
 		<button>종로구</button>
