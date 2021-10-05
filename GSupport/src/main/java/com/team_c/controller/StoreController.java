@@ -95,6 +95,7 @@ public class StoreController {
 		System.out.println("구네임 : " + guName);
 		commandMap.put("guName", guName);
 		ArrayList<Map<String, Object>> list = storeService.guStore(commandMap.getMap());
+		//ArrayList<Map<String, Object>> list2 = storeService.storeMap(commandMap.getMap());
 		mv.addObject("list", list);
 		
 		return mv;
