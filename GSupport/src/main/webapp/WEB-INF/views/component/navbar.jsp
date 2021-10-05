@@ -27,7 +27,7 @@
     	<ul id="menu">
 	       <li class="menuli"> <a href="" class="">About</a></li>
 	       <li class="menuli"> <a href="./storeGuList.do" class="">가맹점 찾기</a></li>
-	       <li class="menuli"> <a href="" class="">게시판</a>
+	       <li class="menuli"> <a href="./board.do" class="">게시판</a>
 					<ul class="son">
 						<li><a>공지사항</a></li>
 						<li><a>가맹점주</a></li>

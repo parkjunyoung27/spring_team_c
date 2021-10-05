@@ -19,6 +19,9 @@
     float: left;
     border-right: 1px solid gray;
 }
+#storeName p{
+	margin-top: 10px;
+}
 
 #storeName img{
 	margin-bottom: 17px;
@@ -45,14 +48,15 @@
 #reservForm{
     background-color: white;
     height: 800px;
+    width: 100%;
 }
 
 #storeReservDetail{
 	padding-left: 10px;
 }
 #storeReservDetail p{
-	width:
-	height:
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 
