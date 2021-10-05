@@ -58,22 +58,25 @@ div#map{
 }
 
 #searchButton input{
-  background:#1AAB8A;
-  color:#fff;
-  border:none;
-  position:relative;
-  height:60px;
-  font-size:1.6em;
-  padding:0 2em;
-  cursor:pointer;
-  transition:800ms ease all;
-  outline:none;
+	background: #ebebeb;
+    color: black;
+    border: 1px solid black;
+    position: relative;
+    height: 50px;
+    width: 17%;
+    font-size: 1em;
+    padding: 0 2em;
+    cursor: pointer;
+    transition: 800ms ease all;
+    outline: none;
 }
-#searchButton button:hover{
-  background:#fff;
-  color:#1AAB8A;
+#searchButton input:hover{
+  background:gray;
+  color:white;
+  font-weight:700;
+  font-size: larger;
 }
-#searchButton button:before,#searchButton button:after{
+#searchButton input:before,#searchButton input:after{
   content:'';
   position:absolute;
   top:0;

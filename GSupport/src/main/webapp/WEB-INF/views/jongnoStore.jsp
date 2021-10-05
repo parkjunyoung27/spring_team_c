@@ -29,7 +29,6 @@
 	<div id="searchButton">
 		<input type="button" class="time_btn" value="종로구">
 	</div>
-	
 	<hr>
 		<!-- 카카오맵api -->
 		<div id="map" style="width:95%;height:400px;"></div>
