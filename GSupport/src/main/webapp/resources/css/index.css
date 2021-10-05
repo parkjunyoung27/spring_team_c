@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 /*전체 기본값 */
 
-
+/*main페이지*/
 *{
 	box-sizing: border-box;
 }
@@ -13,6 +13,34 @@ body{
 	padding: 0;
 }
 
+#storeSearchContainer{
+	margin-bottom: 80px;
+}
+
+
+div#map{
+	margin: 0 auto;	
+}
+
+#storeSearchTable{
+	width: 100%;
+}
+
+#storeSearchColumn {
+    background-color: forestgreen;
+    height: 37px;
+    font-weight: 600;
+    color: white;
+    font-size: larger;
+    letter-spacing: 5px;
+}
+
+#storeSearchList {
+    height: 35px;
+    text-align: center;
+    font-size: medium;
+    font-weight: 500;
+}
 
 /*header-img*/
 .header-img{
@@ -24,6 +52,47 @@ body{
     margin-top: 10px;
 }
 
+#searchButton input{
+	text-align: center;
+	
+}
+
+#searchButton input{
+  background:#1AAB8A;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:60px;
+  font-size:1.6em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+#searchButton button:hover{
+  background:#fff;
+  color:#1AAB8A;
+}
+#searchButton button:before,#searchButton button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+#searchButton input:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+#searchButton input:hover:before,#searchButton input:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
 
 
 /*navbar*/
@@ -84,11 +153,12 @@ body{
     justify-content: space-between;
     padding-bottom: 25px;
     border-bottom: 1px solid black;
+    width: 100%;
 }
 
 .cs_service{
     box-sizing: border-box;
-    margin-right: 50px;
+    margin-right: 0px;
     margin-bottom: 20px;
 }
 
@@ -138,12 +208,13 @@ body{
 
 .footer_menu{
 	display: flex;
-	width: 700px;
+	width: 50%;
 	margin-left: 30px;
+	
 }
 
 .menu_box{
-	width: 250px;
+	width: 200px;
 }
 
 .menu_title{

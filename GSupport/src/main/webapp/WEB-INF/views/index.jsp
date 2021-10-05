@@ -11,16 +11,14 @@
 
 </head>
 <body>
-	
+
 	<!-- navbar -->
 	<%@ include file= "./component/navbar.jsp"%>
 
 	<!-- main -->
- 
     <div class="header-img"></div>
 
 
-					
 	<!-- footer -->
 	<%@ include file= "./component/footer.jsp"%>
 	

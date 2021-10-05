@@ -54,14 +54,9 @@ public class StoreController {
 		int shop_no = Integer.parseInt(request.getParameter("shop_no"));
 		
 		
-		
-		
-		
 		System.out.println(name); System.out.println(phoneNum);
 		System.out.println(date);
 		System.out.println(id); System.out.println(shop_no);
-		
-		
 		 
 
 		if (name != null && phoneNum != null && date != null && reservTime != null) {

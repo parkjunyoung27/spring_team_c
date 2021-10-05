@@ -16,7 +16,7 @@
                             <p class="sc_text">운영시간 : 평일 09:00 ~ 18:00(주말, 공휴일 휴무)</p>
                             <p class="sc_text">점심시간 : 13:00 ~ 14:00</p>
                         </div>
-                        <p class="sc_text">고객문의는 운영시간 카카오 플러스 친구 채팅으로 가능합니다.</p>
+                        <p class="sc_text">문의는 운영시간 카카오플러스 채팅으로 가능합니다.</p>
                         <div class="sc_button">
                             <a href="./board" type="button" class="sc_btn">자주 묻는 질문</a>
                         </div>

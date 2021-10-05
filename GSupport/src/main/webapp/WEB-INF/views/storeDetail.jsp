@@ -70,7 +70,7 @@ function ask(){
 		</div>
 		<div id="storeReserv">
 			<form action="./storeReserv.do" method="post" id="reservForm">
-				<div id="map" style="width:82%;height:210px; border: 1px solid black;"></div>
+				<div id="map" style="width:80%;height:210px; border: 1px solid black; margin-right: 18%;"></div>
 				
 				<script type="text/javascript"
 						src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3d03474ad9928948587986771d90bb4e"></script>

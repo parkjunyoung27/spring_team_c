@@ -22,7 +22,7 @@
 
 #storeName img{
 	margin-bottom: 17px;
-	border : 3px solid black;
+	border : 3px solid #ebebeb;
 	padding: 5px;
 }
 
@@ -49,7 +49,6 @@
 
 #storeReservDetail{
 	padding-left: 10px;
-	
 }
 
 .reserv_input{
