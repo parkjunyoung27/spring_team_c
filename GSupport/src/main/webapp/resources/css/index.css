@@ -52,13 +52,13 @@ div#map{
     margin-top: 10px;
 }
 
-#searchButton input{
+#searchButton button{
 	text-align: center;
 	
 }
 
-#searchButton input{
-	background: #ebebeb;
+#searchButton button{
+	background: white;
     color: black;
     border: 1px solid black;
     position: relative;
@@ -70,29 +70,29 @@ div#map{
     transition: 800ms ease all;
     outline: none;
 }
-#searchButton input:hover{
-  background:gray;
+#searchButton button:hover{
+  background:black;
   color:white;
   font-weight:700;
   font-size: larger;
 }
-#searchButton input:before,#searchButton input:after{
+#searchButton button:before,#searchButton button:after{
   content:'';
   position:absolute;
   top:0;
   right:0;
   height:2px;
   width:0;
-  background: #1AAB8A;
+  background: white;
   transition:400ms ease all;
 }
-#searchButton input:after{
+#searchButton button:after{
   right:inherit;
   top:inherit;
   left:0;
   bottom:0;
 }
-#searchButton input:hover:before,#searchButton input:hover:after{
+#searchButton button:hover:before,#searchButton button:hover:after{
   width:100%;
   transition:800ms ease all;
 }
