@@ -16,7 +16,7 @@
 		VALUES ((SELECT member_no FROM member WHERE member_id=#{id}), #{shop_no}, #{date}, #{time}, 'success', #{phoneNum})
 	</insert>
 	
-	<select id="guStore" parameterType="HashMap" resultType="HashMap">
+	<select id="storeList" parameterType="HashMap" resultType="HashMap">
 		SELECT * FROM shop WHERE shop_gu=#{guName} LIMIT 0, 20
 	</select>
 	

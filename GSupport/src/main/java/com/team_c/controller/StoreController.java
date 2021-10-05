@@ -88,13 +88,13 @@ public class StoreController {
 		return mv;
 	}
 	
-	@GetMapping("/guStore.do")
+	@GetMapping("/storeList.do")
 	public ModelAndView guStore(CommandMap commandMap, HttpServletRequest request) {
-		ModelAndView mv = new ModelAndView("guStore");
+		ModelAndView mv = new ModelAndView("storeList");
 		String guName = request.getParameter("guName");
 		System.out.println("구네임 : " + guName);
 		commandMap.put("guName", guName);
-		ArrayList<Map<String, Object>> list = storeService.guStore(commandMap.getMap());
+		ArrayList<Map<String, Object>> list = storeService.storeList(commandMap.getMap());
 		//ArrayList<Map<String, Object>> list2 = storeService.storeMap(commandMap.getMap());
 		mv.addObject("list", list);
 		
