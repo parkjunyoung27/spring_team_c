@@ -148,7 +148,7 @@
 		</script>	
 	<hr>
 	<c:choose>
-		<c:when test="${fn:length(list) > 0 || list.shop_wido ne '' || list.shop_kyungdo ne ''}">
+		<c:when test="${fn:length(list) > 0}">
 		<table id="storeSearchTable">
 		<tr id="storeSearchColumn">
 			<th>매장명</th>
