@@ -30,6 +30,10 @@ public class StoreServiceImpl implements StoreService {
 		return storeDAO.storeList(map);
 	}
 
+	public ArrayList<Map<String, Object>> storeGuList(Map<String, Object> map) {
+		return storeDAO.storeGuList(map);
+	}
+
 	
 	
 }

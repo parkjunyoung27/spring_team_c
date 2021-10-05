@@ -42,7 +42,7 @@ function ask(){
 
 	<script>
 	//마커가 표시될 위치입니다 
-	var markerPosition  = new kakao.maps.LatLng(${storeDetail.shop_wido}, ${storeDetail.shop_kyungdo}); 
+	var markerPosition  = new kakao.maps.LatLng(${storeDetail.shop_wido}, ${storeDetail.shop_kyungdo});  
 	
 	//마커를 생성합니다
 	var marker = new kakao.maps.Marker({
@@ -56,7 +56,7 @@ function ask(){
 
 	<div class="detail_container">
 		<div id="storeName">
-			<img alt="storeImg" src="resources/images/logo.png" style="width: 150px; height:150px;"><br>
+			<img alt="storeImg" src="resources/images/logo.png" style="max-width: 85%; max-height: 250px;"><br>
 			<h2>${storeDetail.shop_name } </h2><br> 
 			<hr style="margin:0; height: 2px; margin-bottom:10px; width: 70%;">
 			<p><b>연락처 : </b> ${storeDetail.shop_tel } </p> 
@@ -96,7 +96,7 @@ function ask(){
 				</script>
 			
 				<div id="storeReservDetail">
-					<h2>예약하기</h2>
+					<h2 style="margin-top:10px; margin-bottom:10px;">예약하기</h2>
 					<div id="possible_time">
 					<% for(int i=9; i<=22; i++){ %>
 						<%for(int j=0; j<2; j++) {%>
