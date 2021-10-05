@@ -20,7 +20,6 @@ public class MypageController {
 	@GetMapping("myPage.do")
 	public ModelAndView myPage(CommandMap commandMap) {
 		ModelAndView mv = new ModelAndView("myPage");
-		List<Map<String, Object>>
 		return mv;
 	}
 }
