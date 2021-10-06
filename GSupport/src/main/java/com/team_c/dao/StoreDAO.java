@@ -1,6 +1,7 @@
 package com.team_c.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Insert;
@@ -21,12 +22,16 @@ public class StoreDAO extends AbstractDAO{
 		return Insert("store.storeReserv", map);
 	}
 
-	public ArrayList<Map<String, Object>> storeList(Map<String, Object> map) {
-		return (ArrayList<Map<String, Object>>) selectList("store.storeList", map);
+	public List<Map<String, Object>> storeList(Map<String, Object> map) {
+		return selectList("store.storeList", map);
 	}
 
 	public ArrayList<Map<String, Object>> storeGuList(Map<String, Object> map) {
 		return (ArrayList<Map<String, Object>>) selectList("store.storeGuList", map);
+	}
+
+	public int totalCount(Map<String, Object> map) {
+		return Integer.parseInt(String.valueOf(selectOne("store.totalCount", map).get("totalCount")));
 	}
 
 	

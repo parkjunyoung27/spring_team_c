@@ -2,6 +2,7 @@ package com.team_c.controller;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -15,6 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.team_c.common.CommandMap;
 import com.team_c.service.StoreServiceImpl;
+
+import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 @Controller
 public class StoreController {
@@ -100,10 +103,45 @@ public class StoreController {
 		String guName = request.getParameter("guName");
 		System.out.println("구네임 : " + guName);
 		commandMap.put("guName", guName);
-		ArrayList<Map<String, Object>> list = storeService.storeList(commandMap.getMap());
+		
+		//페이지 번호가 오는지 확인하기
+		int pageNo = 1;
+		if(commandMap.containsKey("pageNo")) {
+			pageNo = Integer.parseInt(String.valueOf(commandMap.get("pageNo")));
+		}
+		int listScale = 10;
+		int pageScale = 10;
+		
+		//토탈카운트
+		int totalCount = storeService.totalCount(commandMap.getMap());
+		System.out.println("totalCount = " + totalCount);
+		
+		//전자정부 페이징 불러오기
+		PaginationInfo paginationInfo = new PaginationInfo();
+		paginationInfo.setCurrentPageNo(pageNo);
+		paginationInfo.setRecordCountPerPage(listScale);
+		paginationInfo.setPageSize(pageScale);
+		paginationInfo.setTotalRecordCount(totalCount);
+		
+		//계산하기		
+		int startPage = paginationInfo.getFirstRecordIndex();//시작페이지
+		int lastPage = paginationInfo.getRecordCountPerPage();//마지막페이지
+		
+		//DB로 보내기 위해서 map에 담아주기
+		commandMap.put("startPage", startPage);
+		commandMap.put("lastPage", lastPage);
+		
+		//질의
+		List<Map<String, Object>> list = storeService.storeList(commandMap.getMap());
 		ArrayList<Map<String, Object>> list2 = storeService.storeGuList(commandMap.getMap());
+		//담기
 		mv.addObject("list", list);
 		mv.addObject("list2", list2);
+		mv.addObject("paginationInfo", paginationInfo);
+		mv.addObject("pageNo", pageNo);
+		mv.addObject("totalCount", totalCount);
+		mv.addObject("guName", guName);
+		
 		
 		return mv;
 		

@@ -1,6 +1,7 @@
 package com.team_c.service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +27,16 @@ public class StoreServiceImpl implements StoreService {
 		return storeDAO.storeReserv(map);
 	}
 
-	public ArrayList<Map<String, Object>> storeList(Map<String, Object> map) {
+	public List<Map<String, Object>> storeList(Map<String, Object> map) {
 		return storeDAO.storeList(map);
 	}
 
 	public ArrayList<Map<String, Object>> storeGuList(Map<String, Object> map) {
 		return storeDAO.storeGuList(map);
+	}
+
+	public int totalCount(Map<String, Object> map) {
+		return storeDAO.totalCount(map);
 	}
 
 	

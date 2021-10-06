@@ -26,7 +26,7 @@
     	</a>
     	<ul id="menu">
 	       <li class="menuli"> <a href="./about.do" class="">About</a></li>
-	       <li class="menuli"> <a href="./storeGuList.do" class="">가맹점 찾기</a></li>
+	       <li class="menuli"> <a href="./storeList.do" class="">가맹점 찾기</a></li>
 	       <li class="menuli"> <a href="./board.do" class="">게시판</a>
 					<ul class="son">
 						<li><a>공지사항</a></li>

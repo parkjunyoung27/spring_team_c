@@ -2,12 +2,18 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>${param.guName } 가맹점</title>
 <link href="./resources/css/index.css" rel="stylesheet">
+<script type="text/javascript">
+function linkPage(pageNo){
+	location.href="./storeList.do?guName=${guName}&shop_wido=${list[0].shop_wido }&shop_kyungdo=${list[0].shop_kyungdo }&pageNo="+pageNo;
+}
+</script>
 <style>
 	#storeSearchList:hover{
 		background-color: #aaaaaa;
@@ -180,6 +186,18 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	
+	<!-- 페이징 -->
+	<!-- 1.
+	1. pom설정
+	2. pagination설정
+	3. 데이터베이스에서 값 가져오기 - 페이징 해보기
+	4. 데이터 묶어오기
+	 -->
+		<div id="paging">
+			<ui:pagination paginationInfo="${paginationInfo }" type="text" jsFunction="linkPage"/>
+		</div>
+	
 		</c:when>
 		<c:otherwise>
 		해당 지역에 가맹점이 존재하지 않습니다.

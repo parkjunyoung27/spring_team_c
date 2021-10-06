@@ -17,11 +17,15 @@
 	</insert>
 	
 	<select id="storeList" parameterType="HashMap" resultType="HashMap">
-		SELECT * FROM shop WHERE shop_gu=#{guName} LIMIT 0, 20
+		SELECT * FROM shop WHERE shop_gu=#{guName} LIMIT #{startPage}, #{lastPage}
 	</select>
 	
 	<select id="storeGuList" parameterType="HashMap" resultType="HashMap">
 		SELECT * FROM shop_gu 
+	</select>
+	
+	<select id="totalCount" parameterType="HashMap" resultType="HashMap">
+		SELECT count(*) as totalCount FROM shop WHERE shop_gu=#{guName}
 	</select>
 	
 </mapper>
