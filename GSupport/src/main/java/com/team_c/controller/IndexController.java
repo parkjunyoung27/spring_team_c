@@ -27,16 +27,4 @@ public class IndexController {
 		return mv;
 	}
 	
-	@GetMapping("write.do")
-	public ModelAndView write() throws Exception {
-		ModelAndView mv = new ModelAndView("write");
-		return mv;
-	}
-
-	@PostMapping("write.do")
-	public ModelAndView write(CommandMap commandMap) throws Exception {
-		ModelAndView mv = new ModelAndView("");
-		System.out.println(commandMap.getMap());
-		return mv;
-	}
 }

@@ -7,8 +7,10 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.team_c.common.CommandMap;
 import com.team_c.service.BoardService;
 
 
@@ -27,5 +29,18 @@ public class BoardController {
 		return mv;
 	}
 	
+	@GetMapping("write.do")
+	public ModelAndView write() throws Exception {
+		ModelAndView mv = new ModelAndView("write");
+		System.out.println("글쓰기");
+		return mv;
+	}
+
+	@PostMapping("write.do")
+	public ModelAndView write(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("");
+		System.out.println(commandMap.getMap());
+		return mv;
+	}
 	
 }
