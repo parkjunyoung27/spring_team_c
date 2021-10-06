@@ -1,5 +1,6 @@
 package com.team_c.controller;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -46,37 +47,39 @@ public class StoreController {
 	@RequestMapping("/storeReserv.do")
 	public String storeReserv(CommandMap commandMap, HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		String name = request.getParameter("name");
+		String name = (String)session.getAttribute("name");
 		String phoneNum = request.getParameter("phoneNum");
 		String date = request.getParameter("date");
 		String reservTime = request.getParameter("reservTime");
 		String id = (String)session.getAttribute("id");
+		String reservRequest = request.getParameter("request");
+		int people = Integer.parseInt(request.getParameter("people"));
 		int shop_no = Integer.parseInt(request.getParameter("shop_no"));
 		
 		
 		System.out.println(name); System.out.println(phoneNum);
-		System.out.println(date);
+		System.out.println(date); System.out.println(reservRequest);
 		System.out.println(id); System.out.println(shop_no);
+		System.out.println(people); System.out.println(reservTime);
 		 
 
-		if (name != null && phoneNum != null && date != null && reservTime != null) {
+		if (name != null && phoneNum != null && date != null && reservTime != null && id != null) {
 			commandMap.put("name", name);
 			commandMap.put("phoneNum", phoneNum);
 			commandMap.put("date", date);
 			commandMap.put("id", id);
 			commandMap.put("shop_no", shop_no);
-			if(reservTime.equals("amTime")) {
-				int time = 0;
-				System.out.println(time);
-				commandMap.put("time", time);
-			}else if(reservTime.equals("pmTime")){
-				int time = 1;
-				System.out.println(time);
-				commandMap.put("time", time);
-			}
+			commandMap.put("reservTime", reservTime);
+			commandMap.put("reservRequest", reservRequest);
+			commandMap.put("people", people);
 			
 			storeService.storeReserv(commandMap.getMap());
-			return "redirect:/jongnoStore.do?shop_no="+shop_no;
+			//return "redirect:/reservSuccess.do";
+			
+
+
+			
+			return "redirect:/storeList.do";
 			
 		}else {
 			return "redirect:/storeDetail.do?shop_no="+shop_no;
@@ -98,9 +101,9 @@ public class StoreController {
 		System.out.println("구네임 : " + guName);
 		commandMap.put("guName", guName);
 		ArrayList<Map<String, Object>> list = storeService.storeList(commandMap.getMap());
-		//ArrayList<Map<String, Object>> list2 = storeService.storeGuList(commandMap.getMap());
+		ArrayList<Map<String, Object>> list2 = storeService.storeGuList(commandMap.getMap());
 		mv.addObject("list", list);
-		//mv.addObject("list2", list2);
+		mv.addObject("list2", list2);
 		
 		return mv;
 		

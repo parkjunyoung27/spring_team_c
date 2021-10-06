@@ -27,9 +27,13 @@
 <hr>
 <div id="storeSearchContainer">
 	<h2>${param.guName } 가맹점</h2>
+	
 	<div id="searchButton">
-		<input type="button" class="time_btn" value="종로구">
+		<c:forEach items="${list2 }" var="l2">
+			<button type="submit" onclick="location.href='./storeList.do?guName=${l2.shop_gu}&shop_wido=${l2.gu_wido }&shop_kyungdo=${l2.gu_kyungdo }'">${l2.shop_gu }</button>
+		</c:forEach>
 	</div>
+	
 	<hr>
 	
 		<!-- 카카오맵api -->
@@ -161,7 +165,16 @@
 			<tr id="storeSearchList" onclick="location.href='./storeDetail.do?shop_no=${l.shop_no}'">
 				<td>${l.shop_name }</td>
 				<td>${l.shop_tel }</td>
-				<td>${l.shop_opentime } ~ ${l.shop_closetime }</td>
+				<td>
+				<c:choose>
+				<c:when test="${l.shop_opentime eq '00:00' && l.shop_closetime eq '00:00' }">
+					00:00 ~ 24:00
+				</c:when>
+				<c:otherwise>
+					${l.shop_opentime } ~ ${l.shop_closetime }
+				</c:otherwise>
+				</c:choose>
+				</td>
 				<td>${l.shop_loc }</td>
 			</tr>
 			</c:forEach>
@@ -169,7 +182,7 @@
 	</table>
 		</c:when>
 		<c:otherwise>
-		가맹점이 없습니다.
+		해당 지역에 가맹점이 존재하지 않습니다.
 		</c:otherwise>
 	</c:choose>
 	

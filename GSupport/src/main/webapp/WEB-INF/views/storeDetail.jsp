@@ -14,14 +14,6 @@
 </style>
 
 <script type="text/javascript">
-function doOpenCheck(chk){
-    var obj = document.getElementsByName("reservTime");
-    for(var i=0; i<obj.length; i++){
-        if(obj[i] != chk){
-            obj[i].checked = false;
-        }
-    }
-}
 //이게 예약 취소버튼을 눌러도 예약이 된것처럼 DB에 올라가서 처리가 됩니다. 
 function ask(){
 	if(confirm("예약하시겠습니까?")){
@@ -95,25 +87,34 @@ function ask(){
 					marker.setMap(map);
 				</script>
 			
+				<c:choose>
+				<c:when test="${sessionScope.id ne null }">
 				<div id="storeReservDetail">
 					<h2 style="margin-top:10px; margin-bottom:10px;">예약하기</h2>
 					<div id="possible_time">
 					<% for(int i=9; i<=22; i++){ %>
 						<%for(int j=0; j<2; j++) {%>
-							<input type="button" class="time_btn" value="<%=i%>:<%=j*3%>0">
+							<input type="radio" class="time_btn" id="reservTime" name="reservTime" required="required" value="<%=i%>:<%=j*3%>0"><%=i%>:<%=j*3%>0
 						<%} %>
 					<% }%>	
 					
 					</div>
-					<p>이름 : <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required="required" class="reserv_input"></p> 
+					<p>이름 : <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required="required" class="reserv_input" value="${sessionScope.name }" disabled="disabled"></p> 
 					<p>연락처 : <input type="text" id="phoneNum" name="phoneNum" placeholder="연락처를 입력하세요" required="required" class="reserv_input"> </p>
 					<p>인원 : <input type="number" value="1" min="1" max="5" id="people" name="people"required="required" class="reserv_input" style="width:10%"> </p>
-					<p>날짜 : <input type="date" required="required" class="reserv_input"></p>
-					<p>요구사항 : <input type="text" name="request" placeholder="특이사항 있으시면 입력해주세요." class="reserv_input" style="text-align:right;"></p>
-					<div id="reserve_btn_area"><button class="reserv_btn1"  onclick="location.href='./storeReserv.do?shop_no=${storeDetail.shop_no}'">예약하기</button></div>				
-						<button class="reserv_btn" onclick="location.href='./jongnoStore.do'" style="margin-right:20%">돌아가기</button>
+					<p>날짜 : <input type="date" required="required" class="reserv_input" id="date" name="date"></p>
+					<p>요구사항 : <input type="text" id="request" name="request" placeholder="특이사항 있으시면 입력해주세요." class="reserv_input" style="text-align:right;"></p>
+					<input type="hidden" id="shop_no" name="shop_no" value="${storeDetail.shop_no }">
+					<div id="reserve_btn_area"><button class="reserv_btn1" type="submit" onclick="return ask()">예약하기</button></div>				
+						<button class="reserv_btn" onclick="location.href='./storeList.do'" style="margin-right:20%">돌아가기</button>
 						<button class="reserv_btn"  type="reset" id="join_reset" style="margin-right:3%">초기화하기</button>
 				</div>
+				</c:when>
+				<c:otherwise>
+					예약을 원하시면 로그인 해주세요.<br>
+					<a href='./login.do'>로그인하기</a>
+				</c:otherwise>
+				</c:choose>
 				
 			</form>
 		</div>
