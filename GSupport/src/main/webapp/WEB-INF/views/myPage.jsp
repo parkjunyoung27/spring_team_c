@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
 
 <!DOCTYPE html>
 <html>
@@ -42,9 +42,9 @@
 	border-radius: 20px;
 }
 
-.customer_side{
-	margin-top:25px;
-	margin-bottom:25px;
+.customer_side {
+	margin-top: 25px;
+	margin-bottom: 25px;
 }
 
 .customer_side ul {
@@ -79,11 +79,28 @@
 	border: 0 none;
 	width: 25%;
 	text-align: center;
-	display:inline-block;
+	display: inline-block;
 }
 
 .card .card-body {
 	padding: 15px 15px 10px
+}
+
+.customer_content_reservHistory {
+	border-top: 1px solid #141414;
+	background-color: #ffffff;
+	margin-top: 20px;
+	padding: 10px;
+}
+
+.customer_content_reservHistory_header {
+	border-bottom: 1px solid #e5e5e5;
+	margin-bottom: 20px;
+}
+
+.customer_content_reservHistory_content {
+	border-bottom: 1px solid #e5e5e5;
+	padding: 20px;
 }
 </style>
 <body>
@@ -164,33 +181,59 @@
 						</div>
 					</div>
 				</div>
-				
+
+				<c:forEach items="${reserve }" var="r">
+					<div class="customer_content">
+						<h1>예약 리스트</h1>
+						<div class="customer_content_reservHistory">
+							<div class="customer_content_reservHistory_header">
+							예약 번호 : ${r.reservation_no } </div>
+							<div class="customer_content_reservHistory_content">
+								<div class="customer_content_reservHistory_content_detail">
+									가게이름 : ${r.shop_no } <br> 
+									예약날짜 : ${r.reservation_reservDate } <br> 
+									예약시간 : ${r.reservation_reservTime } <br> 
+									몇 명 : ${r.reservation_people } <br>
+
+								</div>
+							</div>
+						</div>
+				</c:forEach>
 				<div class="customer_content">
-				<h1> 예약 리스트</h1>
-				<div class="customer_content_reservation">
-		<c:forEach items="${list }" var="w">
+					<h1>즐겨찾기 리스트</h1>
+					<div class="customer_content_reservHistory">
+						<div class="customer_content_reservHistory_header">
+							<div class="customer_content_reservHistory_content">
+								<div class="customer_content_reservHistory_content_detail">
+
+									<%-- <c:forEach items="${list }" var="w">
  		${w.board_no} / 
  		${w.board_title }<br>
-				</c:forEach>
-				
-				</div>
-				
-				
+					</c:forEach> --%>
+								</div>
+							</div>
+						</div>
+
+
+
+
+					</div>
+
+
 				</div>
 			</div>
-		</div>
-
-
 
 
 		</div>
+	</div>
+
+
+	</div>
 
 
 
 
 	<!-- footer -->
 	<%@ include file="./component/footer.jsp"%>
-
-
 </body>
 </html>

@@ -7,4 +7,9 @@
 	<select id="myPageList" parameterType="HashMap" resultType="HashMap">
 		SELECT * FROM board
 	</select>
+
+	<select id="reservation" parameterType="HashMap" resultType="HashMap">
+		SELECT * 
+		FROM reservation 
+	</select>
 </mapper>

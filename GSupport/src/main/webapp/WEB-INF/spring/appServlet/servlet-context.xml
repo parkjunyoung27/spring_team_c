@@ -42,5 +42,19 @@
 	
 	<context:component-scan
 		base-package="com.team_c.*" />
+		
+		
+	<!-- 전자정부 페이징 -->
+	<beans:bean id="imageRenderer" class="com.team_c.util.ImagePaginationRenderer"/>
+	<beans:bean id="textRenderer" class="egovframework.rte.ptl.mvc.tags.ui.pagination.DefaultPaginationRenderer"/>
+	<beans:bean id="paginationManager" class="egovframework.rte.ptl.mvc.tags.ui.pagination.DefaultPaginationManager">
+		<beans:property name="rendererType">
+			<beans:map>
+				<beans:entry key="image" value-ref="imageRenderer"/>
+				<beans:entry key="text" value-ref="textRenderer"/>
+			</beans:map>
+		</beans:property>
+	</beans:bean>
+	
 
 </beans:beans>

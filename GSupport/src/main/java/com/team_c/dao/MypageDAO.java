@@ -18,4 +18,8 @@ public class MypageDAO extends AbstractDAO{
 		return null;
 	}
 	
+	public List<Map<String, Object>> reservation(Map<String, Object> map){
+		return selectList("myPage.reservation", map);
+	}
+	
 }

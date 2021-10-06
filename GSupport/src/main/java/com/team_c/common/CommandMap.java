@@ -48,4 +48,8 @@ public class CommandMap {
 	public Map<String, Object> getMap() {
 		return map;
 	}
+
+	public Object get(String key) {
+		return map.get(key);
+	}
 }
