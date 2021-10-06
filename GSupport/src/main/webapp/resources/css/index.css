@@ -161,9 +161,10 @@ div#searchButton {
 /* footer 스타일*/
 
 .footer{
+	margin-top:10px; 
 	padding: 50px 40px;
     border-top: 1px solid #ebebeb;
-	background-color: white;
+    background-color:white;
 }
 
 .footer .footer_content{
@@ -241,7 +242,6 @@ div#searchButton {
 	display: flex;
 	width: 50%;
 	margin-left: 30px;
-	
 }
 
 .menu_box{

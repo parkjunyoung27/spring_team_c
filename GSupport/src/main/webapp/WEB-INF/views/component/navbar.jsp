@@ -25,7 +25,7 @@
 	    	<img src="./resources/images/logo2.png" alt="logo" class="logo"> 
     	</a>
     	<ul id="menu">
-	       <li class="menuli"> <a href="" class="">About</a></li>
+	       <li class="menuli"> <a href="./about.do" class="">About</a></li>
 	       <li class="menuli"> <a href="./storeGuList.do" class="">가맹점 찾기</a></li>
 	       <li class="menuli"> <a href="./board.do" class="">게시판</a>
 					<ul class="son">
@@ -40,7 +40,7 @@
 		      			 <a href="./message.do" class="">Q</a>
 						${sessionScope.name}님 ${sessionScope.authUser}&ensp;<a onclick="onLogoutClick();">로그아웃</a>
 						<ul class="son">
-							<li><a>내정보</a></li>
+							<li><a href="./myPage.do">내 정보</a></li>
 							<li><a>쪽지</a></li>
 							<li><a>로그아웃</a></li>
 						</ul>
