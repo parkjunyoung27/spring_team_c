@@ -42,6 +42,7 @@ public class StoreController {
 	public String storeReserv(CommandMap commandMap, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String name = (String)session.getAttribute("name");
+		String shop_name = request.getParameter("shop_name");
 		String phoneNum = request.getParameter("phoneNum");
 		String date = request.getParameter("date");
 		String reservTime = request.getParameter("reservTime");
@@ -55,6 +56,7 @@ public class StoreController {
 		System.out.println(date); System.out.println(reservRequest);
 		System.out.println(id); System.out.println(shop_no);
 		System.out.println(people); System.out.println(reservTime);
+		System.out.println(shop_name);
 		 
 
 		if (name != null && phoneNum != null && date != null && reservTime != null && id != null) {
@@ -66,6 +68,7 @@ public class StoreController {
 			commandMap.put("reservTime", reservTime);
 			commandMap.put("reservRequest", reservRequest);
 			commandMap.put("people", people);
+			commandMap.put("shop_name", shop_name);
 			
 			storeService.storeReserv(commandMap.getMap());
 			//return "redirect:/reservSuccess.do";
@@ -131,13 +134,24 @@ public class StoreController {
 		
 	}
 	
-	@PostMapping("/storeLike.do")
-	public ModelAndView storeLike(CommandMap commandMap) {
-		ModelAndView mv = new ModelAndView("storeLike");
+	@RequestMapping("/storeLike.do")
+	public String storeLike(CommandMap commandMap, HttpServletRequest request) {
 		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		String shop_no = request.getParameter("shop_no");
+		//System.out.println("id : " + id);
+		//System.out.println("shop_no : " + shop_no);
+		if(id != null && shop_no != null) {
+			commandMap.put("id", id);
+			commandMap.put("shop_no", shop_no);
+			
+			storeService.storeLike(commandMap.getMap());
+			System.out.println("즐찾 성공");
+			return "redirect:/storeDetail.do?shop_no="+shop_no;
+		}
 		
-		
-		return mv;
+		return "redirect:/storeDetail.do?shop_no="+shop_no;
 	}
 	
 	

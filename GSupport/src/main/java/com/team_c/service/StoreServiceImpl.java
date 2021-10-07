@@ -39,6 +39,10 @@ public class StoreServiceImpl implements StoreService {
 		return storeDAO.totalCount(map);
 	}
 
+	public void storeLike(Map<String, Object> map) {
+		storeDAO.storeLike(map);
+	}
+
 	
 	
 }
