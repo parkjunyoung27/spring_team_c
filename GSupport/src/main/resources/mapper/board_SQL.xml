@@ -3,19 +3,35 @@
 <mapper	namespace="board">
 
 	<select	id="boardList" resultType="HashMap">
-		SELECT * FROM board_view limit #{startPage}, #{lastPage}
+		SELECT * FROM board_view
+		<if test="searchName == 'title' and search != null">
+			WHERE board_title LIKE CONCAT('%', #{search}, '%')
+		</if> 
+		<if test="searchName == 'content' and search != null">
+			WHERE board_content LIKE CONCAT('%', #{search}, '%')
+		</if> 
+		<if test="searchName == 'writer' and search != null">
+			WHERE member_id LIKE CONCAT('%', #{search}, '%')
+		</if> 
+		limit #{startPage}, #{lastPage}
+	</select>
+	
+	<select	id="totalCount" parameterType="HashMap" resultType="HashMap">
+		SELECT COUNT(*) as totalCount FROM board_view
+		<if test="searchName == 'title' and search != null">
+			WHERE board_title LIKE CONCAT('%', #{search}, '%')
+		</if> 
+		<if test="searchName == 'content' and search != null">
+			WHERE board_content LIKE CONCAT('%', #{search}, '%')
+		</if> 
+		<if test="searchName == 'writer' and search != null">
+			WHERE member_id LIKE CONCAT('%', #{search}, '%')
+		</if>
 	</select>
 	
 	<select	id="categoryList" resultType="HashMap">
 		SELECT * FROM board_cate
 	</select>
 	
-	<select	id="board" parameterType="HashMap" resultType="HashMap">
-		SELECT * FROM board_view limit #{startPage}, #{lastPage}
-	</select>
-	
-	<select	id="totalCount" parameterType="HashMap" resultType="HashMap">
-		SELECT COUNT(*) as totalCount FROM board_view
-	</select>
 	
 </mapper>

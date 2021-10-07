@@ -9,12 +9,11 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team_c.common.CommandMap;
 import com.team_c.service.BoardServiceImpl;
+import com.team_c.util.Util;
 
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
@@ -26,18 +25,35 @@ public class BoardController {
 	
 	@Autowired
 	private BoardServiceImpl boardService;
+	@Autowired
+	private Util util;
 		
 	@GetMapping("/board")
 	public ModelAndView board(CommandMap map) {
 		ModelAndView mv = new ModelAndView("board");
- 
-		//페이징
+
+		//*****검색기능*****
+		//출력해보기
+		System.out.println(map.getMap());//search값이 오는지 확인
+		
+		//검색값을 jsp로 넘기기
+		if(map.containsKey("searchName")) {
+			mv.addObject("searchName", map.get("searchName"));
+			mv.addObject("search", map.get("search"));
+		}
+		
+		//*****보드 카테고리*****
+		//보드 카테고리 불러오기 
+		
+		List<Map<String, Object>> categoryList = boardService.categoryList(map.getMap());
+		
+		//*****페이징*****
 		//페이지 번호가 오는지 확인하기
 		int pageNo = 1;
 		if(map.containsKey("pageNo")) {
 			pageNo = Integer.parseInt(String.valueOf(map.get("pageNo")));
 		}
-		int listScale = 20;//리스트 크기
+		int listScale = 10;//리스트 크기
 		int pageScale = 10;
 				
 		//토탈 카운트
@@ -63,12 +79,17 @@ public class BoardController {
 		
 		//담기
 		mv.addObject("list", list);
+		if(list.size() > 0 ) {
+			System.out.println(map.getMap());
+		}
 		mv.addObject("paginationInfo", paginationInfo);
 		mv.addObject("pageNo", pageNo);
 		mv.addObject("totalCount", totalCount);
 				
+		//*****
 		
-		//보드 카테고리 불러오기		
+		
+		
 		return mv;
 	}
 

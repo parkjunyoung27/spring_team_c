@@ -9,7 +9,14 @@
 <title>G원사격 | 게시판</title>
 <script type="text/javascript">
 function linkPage(pageNo){
-	location.href="./board.do?pageNo=" + pageNo;
+	<c:if test="${searchName != null}">
+		var search = "&searchName=${searchName}&search=${search}";
+		location.href="./board.do?pageNo=" + pageNo + search;
+	</c:if>
+	<c:if test="${searchName == null}">
+		location.href="./board.do?pageNo=" + pageNo;
+	</c:if>
+	
 }
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -86,6 +93,20 @@ function linkPage(pageNo){
 			<div id="boardPaging">
 				<ui:pagination paginationInfo="${paginationInfo }" type="text" jsFunction="linkPage"/>
 			</div>
+		
+		<form action="./board.do" >
+			<select name="searchName">
+				<option value="title" <c:if test="${searchName eq 'title' }">selected="selected"</c:if>>
+				제목</option>
+				<option value="content" <c:if test="${searchName eq 'content' }">selected="selected"</c:if>>
+				내용</option>
+				<option value="writer"<c:if test="${searchName eq 'writer' }">selected="selected"</c:if>>
+				글쓴이</option>
+			</select>
+			<input type="text" name="search" value="${search}">
+			<button type="submit">검색</button>
+		</form>
+		
 		</div>
 	</div>
 	

@@ -27,11 +27,11 @@
     	<ul id="menu">
 	       <li class="menuli"> <a href="./about.do" class="">About</a></li>
 	       <li class="menuli"> <a href="./storeList.do" class="">가맹점 찾기</a></li>
-	       <li class="menuli"> <a href="./board.do" class="">게시판</a>
+	       <li class="menuli"> <a href="./board.do?boardNo=0" class="">게시판</a>
 					<ul class="son">
 						<li><a href="./board.do?boardNo=0">공지사항</a></li>
 						<li><a href="./board.do?boardNo=1">가맹점주</a></li>
-						<li><a Href="./board.do?boardNo=2">사용자</a></li>
+						<li><a Href="./board.do?boardNo=2">문의사항</a></li>
 					</ul>
 	       </li>
 		   <li class="menuli">

@@ -10,10 +10,7 @@ function bwrite(){
 			location.href="./login.do";
 		}
 	}else{
-		var result = confirm("글을 작성하시곘습니가?")
-		if(result == true){
-			location.href="./write"
-		}
+			location.href="./write.do"
 	}
 }
 
