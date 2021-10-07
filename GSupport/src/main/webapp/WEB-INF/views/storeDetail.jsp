@@ -49,7 +49,11 @@ function ask(){
 	<div class="detail_container">
 		<div id="storeName">
 			<img alt="storeImg" src="resources/images/logo.png" style="max-width: 85%; max-height: 250px;"><br>
-			<h2>${storeDetail.shop_name } </h2><br> 
+			<h2>${storeDetail.shop_name } </h2> 
+			<c:if test="${sessionScope.id ne null }">
+				<a href="./storeLike.do?shop_no=${storeDetail.shop_no }">즐겨찾기</a>
+			</c:if>
+			<br> 
 			<hr style="margin:0; height: 2px; margin-bottom:10px; width: 70%;">
 			<p><b>연락처 : </b> ${storeDetail.shop_tel } </p> 
 			<p><b>운영시간 : </b>${storeDetail.shop_opentime } ~ ${storeDetail.shop_closetime } </p> 
