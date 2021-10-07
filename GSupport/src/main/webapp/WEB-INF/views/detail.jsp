@@ -65,8 +65,11 @@ function board_delete(no){
 				<button onclick="location.href='./update.do'">수정하기</button>
 				<c:if test="${sessionScope.id eq boardDTO.member_id}"> <button onclick="return board_delete(${boardDTO.board_no})">삭제하기</button> </c:if>
 			</div>
+		
+			<!-- 댓글달기 -->
+			<%@ include file="./component/comment.jsp"%>
+		
 		</div>
-
 	</div>
 	
 	<!-- footer -->
