@@ -71,7 +71,6 @@ public class BoardController {
 	}
 
 	
-	
 	@GetMapping("write.do")
 	public ModelAndView write() throws Exception {
 		ModelAndView mv = new ModelAndView("write");

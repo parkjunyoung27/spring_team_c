@@ -46,6 +46,7 @@ div#map{
 
 div#searchButton {
     padding: 20px;
+   	text-align: center;
 }
 
 #searchButton button{
@@ -58,12 +59,13 @@ div#searchButton {
     border: 1px solid black;
     position: relative;
     height: 50px;
-    width: 17%;
+    width: 19%;
     font-size: 0.8em;
     padding: 0 2em;
     cursor: pointer;
     transition: 800ms ease all;
     outline: none;
+    margin: 3px;
 }
 #searchButton button:hover{
   background:black;
@@ -92,6 +94,8 @@ div#searchButton {
   transition:800ms ease all;
 }
 
+
+
 /*header-img*/
 .header-img{
 	height: 300px;
@@ -102,6 +106,16 @@ div#searchButton {
     margin-top: 10px;
 }
 
+#storeListNone {
+    width: 100%;
+    height: 300px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 300px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: larger;
+}
 
 /*navbar*/
 .navbar{

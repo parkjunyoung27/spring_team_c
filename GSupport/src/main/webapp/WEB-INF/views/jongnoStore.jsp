@@ -12,6 +12,22 @@
 		background-color: #aaaaaa;
 		cursor: pointer;
 	}
+
+	div#paging {
+	    text-align: center;
+	    margin-top: 30px;
+	    text-decoration: none;
+	    color: black;
+	    font-size: larger;
+	}	
+	
+	div#paging a{
+		text-decoration:none;
+	}
+	
+	div#paging a hover:{
+		font-weight:700;
+	}
 	
 </style>
 </head>

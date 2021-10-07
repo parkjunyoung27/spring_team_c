@@ -19,6 +19,23 @@ function linkPage(pageNo){
 		background-color: #aaaaaa;
 		cursor: pointer;
 	}
+
+	div#paging {
+	    text-align: center;
+	    margin-top: 30px;
+	    text-decoration: none;
+	    font-size: large;
+	    letter-spacing: 1px;
+	}	
+	
+	div#paging a{
+		text-decoration:none;
+		color: black;
+	}
+	
+	div#paging a:hover{
+		font-weight:700;
+	}
 </style>
 </head>
 <body>
@@ -200,7 +217,7 @@ function linkPage(pageNo){
 	
 		</c:when>
 		<c:otherwise>
-		해당 지역에 가맹점이 존재하지 않습니다.
+		<div id="storeListNone">해당 지역에 가맹점이 존재하지 않습니다.</div>
 		</c:otherwise>
 	</c:choose>
 	
