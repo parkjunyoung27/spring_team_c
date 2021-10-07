@@ -15,6 +15,16 @@ function linkPage(pageNo){
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link href="./resources/css/index.css" rel="stylesheet">
 <link href="./resources/css/board.css" rel="stylesheet">
+<style>
+#boardLine{
+	width: 100%;
+	padding: 0px;
+	cursor:pointer;
+}
+
+#boardLineClick:hover{font-weight:700;'}
+
+</style>
 </head>
 <body>
 
@@ -41,10 +51,10 @@ function linkPage(pageNo){
 				<li class="fl tc w10 title t_line">글쓴이</li>
 				<li class="fl tc w20 title">작성일</li>
 			</ul>
-			<ul class="board" onclick="location.href='./detail?board_no=${board_no}'">
+			<ul id="boardLine" onclick="location.href='./detail?board_no=${board_no}'">
 				<c:forEach items="${list }" var="l">
 					<li class="fl tc w10 list t_line lt_line">${l.board_no }</li>
-					<li class="fl tc w50 list t_line lt_line">${l.board_title}[${l.board_count }]</li>
+					<li class="fl tc w50 list t_line lt_line" id="boardLineClick">${l.board_title}[${l.board_count }]</li>
 					<li class="fl tc w10 list t_line lt_line">
 						<c:choose>
 							<c:when test="${member_grade eq 3 }">관리자</c:when>

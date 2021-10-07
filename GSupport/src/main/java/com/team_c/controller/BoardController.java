@@ -79,4 +79,9 @@ public class BoardController {
 		return mv;
 	}
 	
+	@GetMapping("detail.do")
+	public String detail() {
+		return "detail";
+	}
+	
 }
