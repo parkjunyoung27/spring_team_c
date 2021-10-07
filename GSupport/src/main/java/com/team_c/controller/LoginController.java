@@ -67,6 +67,24 @@ public class LoginController {
 		return "redirect:/index.do";
 	}
 
+	
+	@GetMapping("/member.do")
+	public String member() {
+		return "member";
+	}
+	
+	@GetMapping("/findMember.do")
+	public void findMember(HttpServletResponse response, HttpServletRequest request, @RequestParam String email) throws Exception {
+		
+		
+		Map<String, Object> channel = loginService.loginByEmail(email);
+
+		HttpSession session = request.getSession();
+		session.setAttribute("joinChannel", channel.get("member_channel"));
+		
+	}
+	
+	
 	@GetMapping("/kakaoLogin.do")
 	public String login(HttpServletResponse response, HttpServletRequest request) throws Exception {
 

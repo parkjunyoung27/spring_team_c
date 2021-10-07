@@ -86,7 +86,6 @@
 	function handleOnInput(e) {
 		e.value = e.value.replace(/[^a-z0-9@.-_]/ig, '')
 	}
-	
 </script>
 
 </head>
@@ -135,7 +134,8 @@
 				</div>
 
 				<div class="links">
-					<a href="./join.do">회원 가입</a> &emsp;|&emsp;<a href="./member.do">PW 찾기</a>
+					<a href="./join.do">회원 가입</a> &emsp;|&emsp; <a href="./idSearch.do">ID
+						찾기</a> &emsp;|&emsp; <a href="./pwSearch.do">PW 찾기</a>
 				</div>
 			</form>
 
