@@ -16,14 +16,33 @@ function linkPage(pageNo){
 <link href="./resources/css/index.css" rel="stylesheet">
 <link href="./resources/css/board.css" rel="stylesheet">
 <style>
-#boardLine{
-	width: 100%;
-	padding: 0px;
-	cursor:pointer;
-}
 
-#boardLineClick:hover{font-weight:700;'}
+	#boardPaging {
+	    text-align: center;
+	    margin-top: 30px;
+	    text-decoration: none;
+	    font-size: large;
+	    letter-spacing: 1px;
+	}	
+	
+	#boardPaging a{
+		text-decoration:none;
+		color: black;
+	}
+	
+	#boardPaging a:hover{
+		font-weight:700;
+	}
 
+	#boardLine{
+		width: 100%;
+	    padding: 0px;
+	    cursor: pointer;
+	    min-height: 1400px;
+	}
+	
+	#boardLineClick:hover{font-weight:700;}
+	
 </style>
 </head>
 <body>
@@ -64,8 +83,10 @@ function linkPage(pageNo){
 					<li class="fl tc w20 list lt_line">${l.board_date}</li>
 				</c:forEach>
 			</ul>
+			<div id="boardPaging">
+				<ui:pagination paginationInfo="${paginationInfo }" type="text" jsFunction="linkPage"/>
+			</div>
 		</div>
-		<ui:pagination paginationInfo="${paginationInfo }" type="text" jsFunction="linkPage"/>
 	</div>
 	
 

@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,10 +37,10 @@ function writeCheck(){
 		
 		<div id="write_form">
 			<div id="content_title"> 
-				<h2> 글쓰기 </h2>
+				<h2> 수정하기 </h2>
 			</div>
 			<div id="wrtie_area">
-				<form action="./write" method="post" onsubmit="return writeCheck()" enctype="multipart/form-data">
+				<form action="./update.do" method="post" onsubmit="return writeCheck()" enctype="multipart/form-data">
 					<select id="write_select" name="board_cate">
 						<c:if test="${sessionScope.grade gt 6 }">
 						<option value="1">자주하는질문</option>
@@ -54,7 +52,7 @@ function writeCheck(){
 					<!-- summernote -->
 					<%@ include file="./component/summernote.jsp"%>	
 					
-					<button id="write_submit_btn">글쓰기</button>
+					<button id="write_submit_btn">수정하기</button>
 				
 				</form>
 			</div>

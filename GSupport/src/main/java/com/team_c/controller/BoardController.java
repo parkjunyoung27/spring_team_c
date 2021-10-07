@@ -3,6 +3,8 @@ package com.team_c.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -81,6 +83,18 @@ public class BoardController {
 	@GetMapping("detail.do")
 	public String detail() {
 		return "detail";
+	}
+	
+	@GetMapping("/update")
+	public ModelAndView update(HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("update");
+		//글 번호 가져오기
+		//int bno = Integer.parseInt(request.getParameter("bno"));
+		
+		//TestDTO dto = testService.detail(bno);
+		//mv.addObject("dto", dto);
+		
+		return mv;
 	}
 	
 }
