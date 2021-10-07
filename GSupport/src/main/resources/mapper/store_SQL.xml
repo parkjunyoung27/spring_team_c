@@ -17,7 +17,11 @@
 	</insert>
 	
 	<select id="storeList" parameterType="HashMap" resultType="HashMap">
-		SELECT * FROM shop WHERE shop_gu=#{guName} LIMIT #{startPage}, #{lastPage}
+		SELECT * FROM shop WHERE shop_gu=#{guName} 
+		<if test="search != null">
+		AND shop_name LIKE CONCAT('%', #{search}, '%') 
+		</if>
+		LIMIT #{startPage}, #{lastPage}
 	</select>
 	
 	<select id="storeGuList" parameterType="HashMap" resultType="HashMap">
@@ -26,6 +30,9 @@
 	
 	<select id="totalCount" parameterType="HashMap" resultType="HashMap">
 		SELECT count(*) as totalCount FROM shop WHERE shop_gu=#{guName}
+		<if test="search != null">
+		AND shop_name LIKE CONCAT('%', #{search}, '%') 
+		</if>
 	</select>
 	
 	<update id="storeLike" parameterType="HashMap">

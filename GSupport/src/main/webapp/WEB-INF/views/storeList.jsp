@@ -11,7 +11,12 @@
 <link href="./resources/css/index.css" rel="stylesheet">
 <script type="text/javascript">
 function linkPage(pageNo){
+	<c:if test="${search != null}">
+	location.href="./storeList.do?guName=${guName}&shop_wido=${list[0].shop_wido }&shop_kyungdo=${list[0].shop_kyungdo }&pageNo="+pageNo+"&search=${search}";
+	</c:if>
+	<c:if test="${search == null}">
 	location.href="./storeList.do?guName=${guName}&shop_wido=${list[0].shop_wido }&shop_kyungdo=${list[0].shop_kyungdo }&pageNo="+pageNo;
+	</c:if>
 }
 </script>
 <style>
@@ -213,6 +218,20 @@ function linkPage(pageNo){
 	 -->
 		<div id="paging">
 			<ui:pagination paginationInfo="${paginationInfo }" type="text" jsFunction="linkPage"/>
+		</div>
+	
+			<!-- 검색 -->
+		<div style="text-align: center;">
+		<form action="./storeList.do">
+			<!--<select name="searchGuList">
+				<option value="searchGuList">${guName }</option>
+			</select>-->
+			<input type="hidden" name="guName" value="${guName}">
+			<input type="hidden" name="shop_wido" value="${list[0].shop_wido }">
+			<input type="hidden" name="shop_kyungdo" value="${list[0].shop_kyungdo }">
+			<input type="text" name="search" value="${search }">
+			<button type="submit">검색</button>
+		</form>
 		</div>
 	
 		</c:when>

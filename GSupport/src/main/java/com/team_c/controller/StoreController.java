@@ -91,6 +91,12 @@ public class StoreController {
 		System.out.println("구네임 : " + guName);
 		commandMap.put("guName", guName);
 		
+		//검색값을 jsp로 넘기기
+		if(commandMap.containsKey("search")) {
+			mv.addObject("search", commandMap.get("search"));
+		}
+		
+		
 		//페이지 번호가 오는지 확인하기
 		int pageNo = 1;
 		if(commandMap.containsKey("pageNo")) {
