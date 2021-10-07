@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -24,16 +25,6 @@ public class StoreController {
 	@Resource(name = "storeService")
 	private StoreServiceImpl storeService;
 
-	@GetMapping("/jongnoStore.do")
-	public ModelAndView jongnoStore(HttpServletRequest request) {
-		ModelAndView mv = new ModelAndView("jongnoStore");
-		//String guName = request.getParameter("guName");
-		ArrayList<Map<String, Object>> list = storeService.jongnoStoreList();
-		//System.out.println("구네임 : " + guName);
-		mv.addObject("list", list);
-
-		return mv;
-	}
 
 	// storeDetail.do?shop_no=1
 	@GetMapping("/storeDetail.do")
@@ -88,14 +79,7 @@ public class StoreController {
 			return "redirect:/storeDetail.do?shop_no="+shop_no;
 		}
 	}
-	@GetMapping("/storeGuList.do")
-	public ModelAndView storeGuList(CommandMap commandMap) {
-		ModelAndView mv = new ModelAndView("storeGuList");
-		ArrayList<Map<String, Object>> list = storeService.storeGuList(commandMap.getMap());
-		mv.addObject("list", list);
-		
-		return mv;
-	}
+	
 	
 	@GetMapping("/storeList.do")
 	public ModelAndView guStore(CommandMap commandMap, HttpServletRequest request) {
@@ -145,6 +129,15 @@ public class StoreController {
 		
 		return mv;
 		
+	}
+	
+	@PostMapping("/storeLike.do")
+	public ModelAndView storeLike(CommandMap commandMap) {
+		ModelAndView mv = new ModelAndView("storeLike");
+		
+		
+		
+		return mv;
 	}
 	
 	
