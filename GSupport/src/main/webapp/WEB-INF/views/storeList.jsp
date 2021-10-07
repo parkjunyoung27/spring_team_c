@@ -223,9 +223,11 @@ function linkPage(pageNo){
 			<!-- 검색 -->
 		<div style="text-align: center;">
 		<form action="./storeList.do">
-			<!--<select name="searchGuList">
-				<option value="searchGuList">${guName }</option>
-			</select>-->
+			<select name="searchGu">
+				<c:forEach items="${list2 }" var="l2">
+					<option value="searchGu" >${l2.shop_gu }</option>
+				</c:forEach>
+			</select>
 			<input type="hidden" name="guName" value="${guName}">
 			<input type="hidden" name="shop_wido" value="${list[0].shop_wido }">
 			<input type="hidden" name="shop_kyungdo" value="${list[0].shop_kyungdo }">
