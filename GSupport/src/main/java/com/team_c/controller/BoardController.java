@@ -30,7 +30,7 @@ public class BoardController {
 	@GetMapping("/board")
 	public ModelAndView board(CommandMap map) {
 		ModelAndView mv = new ModelAndView("board");
-
+ 
 		//페이징
 		//페이지 번호가 오는지 확인하기
 		int pageNo = 1;
