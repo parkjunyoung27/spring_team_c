@@ -16,7 +16,20 @@ public class BoardServiceImpl implements BoardService {
 	@Autowired
 	private BoardDAO boardDAO;
 	
-	public List<Map<String, Object>> boardList() {
-		return boardDAO.boardList();
+	public List<Map<String, Object>> boardList(Map<String, Object> map) {
+		return boardDAO.boardList(map);
 	}
+
+	public int totalCount(Map<String, Object> map) {
+		return boardDAO.totalCount(map);
+	}
+
+	@Override
+	public List<Map<String, Object>> boardList() {
+		return null;
+	}
+
+
+
+
 }

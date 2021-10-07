@@ -3,7 +3,19 @@
 <mapper	namespace="board">
 
 	<select	id="boardList" resultType="HashMap">
-		SELECT * FROM board_view
+		SELECT * FROM board_view limit #{startPage}, #{lastPage}
+	</select>
+	
+	<select	id="categoryList" resultType="HashMap">
+		SELECT * FROM board_cate
+	</select>
+	
+	<select	id="board" parameterType="HashMap" resultType="HashMap">
+		SELECT * FROM board_view limit #{startPage}, #{lastPage}
+	</select>
+	
+	<select	id="totalCount" parameterType="HashMap" resultType="HashMap">
+		SELECT COUNT(*) as totalCount FROM board_view
 	</select>
 	
 </mapper>

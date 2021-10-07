@@ -7,7 +7,7 @@ function bwrite(){
 	if("${id}" == ""){
 		var result = confirm("로그인하셔야 합니다. 로그인창으로 이동하시겠습니까?");
 		if(result == true){
-			location.href="./login";
+			location.href="./login.do";
 		}
 	}else{
 		var result = confirm("글을 작성하시곘습니가?")

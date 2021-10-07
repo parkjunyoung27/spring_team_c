@@ -1,12 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>G원사격 | 게시판</title>
+<script type="text/javascript">
+function linkPage(pageNo){
+	location.href="./board.do?pageNo=" + pageNo;
+}
+</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link href="./resources/css/index.css" rel="stylesheet">
 <link href="./resources/css/board.css" rel="stylesheet">
@@ -26,7 +31,7 @@
 
 			<div id="content_title_border">
 				<div id="content_title">
-					<h2>공지사항</h2>
+					<h2></h2><!-- 게시판 이름 연결 -->
 					<!-- <h2> ${category } </h2> -->
 				</div>
 			</div>
@@ -50,7 +55,9 @@
 				</c:forEach>
 			</ul>
 		</div>
+		<ui:pagination paginationInfo="${paginationInfo }" type="text" jsFunction="linkPage"/>
 	</div>
+	
 
 	<!-- footer -->
 	<%@ include file="./component/footer.jsp"%>
