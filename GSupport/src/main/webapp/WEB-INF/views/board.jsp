@@ -45,7 +45,7 @@ function linkPage(pageNo){
 		width: 100%;
 	    padding: 0px;
 	    cursor: pointer;
-	    min-height: 1400px;
+	    min-height: 730px;
 	}
 	
 	#boardLineClick:hover{font-weight:700;}

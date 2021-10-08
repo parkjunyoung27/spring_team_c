@@ -37,12 +37,11 @@
 		   <li class="menuli">
 		   	    <c:choose>
 					<c:when test="${sessionScope.name ne null}">
-		      			 <a href="./message.do" class="">Q</a>
-						${sessionScope.name}님 ${sessionScope.authUser}&ensp;<a onclick="onLogoutClick();">로그아웃</a>
+		      			 <a href="./message.do" class="">Q${sessionScope.name}님 ${sessionScope.authUser}</a>
 						<ul class="son">
 							<li><a href="./myPage.do">내 정보</a></li>
 							<li><a>쪽지</a></li>
-							<li><a>로그아웃</a></li>
+							<li><a onclick="onLogoutClick();">로그아웃</a></li>
 						</ul>
 					</c:when>
 					<c:otherwise>

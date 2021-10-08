@@ -13,7 +13,7 @@ function linkPage(pageNo){
 	location.href="./myPage.do?pageNo="+pageNo;
 }
 </script>
-<!-- <link href="./resources/css/index.css" rel="stylesheet">  -->
+<link href="./resources/css/index.css" rel="stylesheet"> 
 <script src="../assets/js/core/bootstrap.min.js" type="text/javascript"></script>
 <style>
 * {

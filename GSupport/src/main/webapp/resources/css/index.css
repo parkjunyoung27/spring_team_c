@@ -45,7 +45,8 @@ div#map{
 
 div#searchButton {
     padding: 20px;
-   	text-align: center;
+    float: left;
+    margin-left: 5%;
 }
 
 #searchButton button{
@@ -53,12 +54,12 @@ div#searchButton {
 }
 
 #searchButton button{
-	background: white;
+    background: white;
     color: black;
     border: 1px solid black;
     position: relative;
     height: 50px;
-    width: 19%;
+    width: 23%;
     font-size: 0.8em;
     padding: 0 2em;
     cursor: pointer;
