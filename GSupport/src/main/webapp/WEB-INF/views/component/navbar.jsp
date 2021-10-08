@@ -37,7 +37,7 @@
 		   <li class="menuli">
 		   	    <c:choose>
 					<c:when test="${sessionScope.name ne null}">
-		      			 <a href="./message.do" class="">Q${sessionScope.name}님 ${sessionScope.authUser}</a>
+		      			 <a href="./message.do" class="">${sessionScope.name}님 ${sessionScope.authUser}</a>
 						<ul class="son">
 							<li><a href="./myPage.do">내 정보</a></li>
 							<li><a>쪽지</a></li>

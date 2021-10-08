@@ -225,7 +225,7 @@ function linkPage(pageNo){
 		<form action="./storeList.do">
 			<select name="guName">
 				<c:forEach items="${list2 }" var="l2">
-					<option value="${l2.shop_gu }" <c:if test ="${selectedguName
+					<option value="${l2.shop_gu }" <c:if test ="${guName
 							 eq l2.shop_gu}">selected="selected"</c:if>>${l2.shop_gu }</option>
 				</c:forEach>
 			</select>
