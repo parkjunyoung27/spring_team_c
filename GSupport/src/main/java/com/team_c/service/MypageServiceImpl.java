@@ -18,14 +18,14 @@ public class MypageServiceImpl implements MypageService {
 	@Autowired
 	private MypageDAO mypageDAO;
 
-	public ArrayList<Map<String, Object>> myPageList(Map<String, Object> map) {
-		return mypageDAO.myPageList(map);
-	}
-
 	public List<Map<String, Object>> reservation(Map<String, Object> map){
 		return mypageDAO.reservation(map);
 	}
 	
+	public int totalCount(Map<String, Object> map) {
+		return mypageDAO.totalCount(map);
+	}
+
 	@Override
 	public ArrayList<Map<String, Object>> myPageList() {
 		// TODO Auto-generated method stub

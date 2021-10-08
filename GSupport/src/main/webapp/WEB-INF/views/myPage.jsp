@@ -8,12 +8,35 @@
 <head>
 <meta charset="UTF-8">
 <title>My Page</title>
-<link href="./resources/css/index.css" rel="stylesheet">
+<script type="text/javascript">
+function linkPage(pageNo){
+	location.href="./myPage.do?pageNo="+pageNo;
+}
+</script>
+<!-- <link href="./resources/css/index.css" rel="stylesheet">  -->
 <script src="../assets/js/core/bootstrap.min.js" type="text/javascript"></script>
 <style>
 * {
 	box-sizing: border-box;
 }
+
+
+	#boardPaging {
+	    text-align: center;
+	    margin-top: 30px;
+	    text-decoration: none;
+	    font-size: large;
+	    letter-spacing: 1px;
+	}	
+	
+	#boardPaging a{
+		text-decoration:none;
+		color: black;
+	}
+	
+	#boardPaging a:hover{
+		font-weight:700;
+	}
 
 .container {
 	height: 1000px;;
@@ -182,15 +205,16 @@
 					</div>
 				</div>
 
-				<c:forEach items="${reserve }" var="r">
 					<div class="customer_content">
 						<h1>예약 리스트</h1>
+							<c:forEach items="${reserve }" var="r">
 						<div class="customer_content_reservHistory">
 							<div class="customer_content_reservHistory_header">
 							예약 번호 : ${r.reservation_no } </div>
 							<div class="customer_content_reservHistory_content">
 								<div class="customer_content_reservHistory_content_detail">
 									가게이름 : ${r.shop_no } <br> 
+									예약자 : ${r.member_name } <br> 
 									예약날짜 : ${r.reservation_reservDate } <br> 
 									예약시간 : ${r.reservation_reservTime } <br> 
 									몇 명 : ${r.reservation_people } <br>
@@ -199,6 +223,13 @@
 							</div>
 						</div>
 				</c:forEach>
+			</div>
+			<div id="boardPaging" style="background-color: red; display: block; height: 100px">
+				<ui:pagination paginationInfo="${paginationInfo }" type="text" jsFunction="linkPage"/>
+			</div>
+			
+			
+			
 				<div class="customer_content">
 					<h1>즐겨찾기 리스트</h1>
 					<div class="customer_content_reservHistory">
@@ -221,7 +252,6 @@
 
  
 				</div>
-			</div>
 
 
 		</div>

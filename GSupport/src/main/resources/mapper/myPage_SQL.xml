@@ -4,12 +4,16 @@
 
 <mapper namespace="myPage">
 
-	<select id="myPageList" parameterType="HashMap" resultType="HashMap">
-		SELECT * FROM board
-	</select>
 
 	<select id="reservation" parameterType="HashMap" resultType="HashMap">
 		SELECT * 
-		FROM reservation 
+		FROM reservation LIMIT #{startPage}, #{lastPage}
 	</select>
+	
+	<select	id="totalCount" parameterType="HashMap" resultType="HashMap">
+		SELECT COUNT(*) as totalCount FROM reservation
+		
+	</select>
+	
+	
 </mapper>
