@@ -11,6 +11,10 @@
 
 <style type="text/css">
 
+#storeNameTitle span img:hover{
+	background-image: url("./resources/images/star_after.png")
+}
+
 </style>
 
 <script type="text/javascript">
@@ -23,6 +27,10 @@ function ask(){
 		alert("예약이 취소되었습니다.");	
 		return false;
 	}
+}
+
+function star(){
+	confirm("즐겨찾기 하시겠습니까?");
 }
 </script>
 </head>
@@ -49,12 +57,27 @@ function ask(){
 	<div class="detail_container">
 		<div id="storeName">
 			<img alt="storeImg" src="resources/images/logo.png" style="max-width: 85%; max-height: 250px;"><br>
-			<h2>${storeDetail.shop_name } </h2>
+			<div id="storeNameTitle">
+				<h3>${storeDetail.shop_name }
+				<c:choose>
+				<c:when test="true">
+					<span style="line-height: 50px;vertical-align: sub; cursor:pointer;" onclick="return star()">
+						<img src="resources/images/star_before.png">
+					 </span>
+				</c:when>
+				<c:otherwise>
+					<span style="line-height: 50px;vertical-align: sub; cursor:pointer;">
+						<img src="resources/images/star_after.png">
+					 </span>				
+				</c:otherwise>
+				</c:choose>
+				</h3>
+			</div>
 			<%-- <c:if test="${sessionScope.id ne null }">
 				<a href="./storeLike.do?shop_no=${storeDetail.shop_no }">즐겨찾기</a>[ ${storeDetail.shop_like } ]
 			</c:if> --%>
 			<br> 
-			<hr style="margin:0; height: 2px; margin-bottom:10px; width: 70%;">
+			<hr style="margin:0; height: 2px; margin-bottom:10px; width: 85%;">
 			<p><b>연락처 : </b> ${storeDetail.shop_tel } </p> 
 			<p><b>운영시간 : </b>${storeDetail.shop_opentime } ~ ${storeDetail.shop_closetime } </p> 
 			<p><b>위치 : </b>${storeDetail.shop_loc } </p>
@@ -116,8 +139,10 @@ function ask(){
 				</div>
 				</c:when>
 				<c:otherwise>
-					예약을 원하시면 로그인 해주세요.<br>
-					<a href='./login.do'>로그인하기</a>
+					<div id="noReserv">
+						예약을 원하시면 로그인을 해주세요.<br><br>
+						<a href='./login.do'>로그인하기</a>
+					</div>
 				</c:otherwise>
 				</c:choose>
 				

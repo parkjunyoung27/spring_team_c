@@ -20,17 +20,14 @@
     border-right: 1px solid gray;
 }
 #storeName p{
-	margin-top: 10px;
+	margin: 10px 0px;
+}
 }
 
 #storeName img{
 	margin-bottom: 17px;
 	border : 3px solid #ebebeb;
 	padding: 5px;
-}
-
-#storeName  h2{
-	margin: 0;
 }
 
 #storeReserv {
@@ -122,3 +119,26 @@ div#reserve_btn_area {
 input.time_btn {
     width: 53px;
 }
+
+#noReserv{
+    width: 80%;
+    height: 200px;
+    margin-left: 2%;
+    text-align: center;
+    margin-top: 70px;
+    font-size: larger;
+    font-weight: 700;
+}
+
+#storeNameTitle {
+    width: 100%;
+    margin-top: 25px;
+    height: 50px;
+    font-size: larger;
+    line-height: 50px;
+}
+
+#star_img{
+	
+}
+
