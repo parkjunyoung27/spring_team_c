@@ -4,14 +4,15 @@
 
 	<select	id="boardList" resultType="HashMap">
 		SELECT * FROM board_view
+		WHERE board_category = #{boardNo}
 		<if test="searchName == 'title' and search != null">
-			WHERE board_title LIKE CONCAT('%', #{search}, '%')
+			AND board_title LIKE CONCAT('%', #{search}, '%')
 		</if> 
 		<if test="searchName == 'content' and search != null">
-			WHERE board_content LIKE CONCAT('%', #{search}, '%')
+			AND board_content LIKE CONCAT('%', #{search}, '%')
 		</if> 
 		<if test="searchName == 'writer' and search != null">
-			WHERE member_id LIKE CONCAT('%', #{search}, '%')
+			AND member_id LIKE CONCAT('%', #{search}, '%')
 		</if> 
 		limit #{startPage}, #{lastPage}
 	</select>
@@ -19,19 +20,14 @@
 	<select	id="totalCount" parameterType="HashMap" resultType="HashMap">
 		SELECT COUNT(*) as totalCount FROM board_view
 		<if test="searchName == 'title' and search != null">
-			WHERE board_title LIKE CONCAT('%', #{search}, '%')
+			AND board_title LIKE CONCAT('%', #{search}, '%')
 		</if> 
 		<if test="searchName == 'content' and search != null">
-			WHERE board_content LIKE CONCAT('%', #{search}, '%')
+			AND board_content LIKE CONCAT('%', #{search}, '%')
 		</if> 
 		<if test="searchName == 'writer' and search != null">
-			WHERE member_id LIKE CONCAT('%', #{search}, '%')
+			AND member_id LIKE CONCAT('%', #{search}, '%')
 		</if>
 	</select>
-	
-	<select	id="categoryList" resultType="HashMap">
-		SELECT * FROM board_cate
-	</select>
-	
 	
 </mapper>

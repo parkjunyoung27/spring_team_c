@@ -11,10 +11,10 @@
 function linkPage(pageNo){
 	<c:if test="${searchName != null}">
 		var search = "&searchName=${searchName}&search=${search}";
-		location.href="./board.do?pageNo=" + pageNo + search;
+		location.href="./board.do?pageNo=" + pageNo + "&boardNo=" + ${boardNo} + search;
 	</c:if>
 	<c:if test="${searchName == null}">
-		location.href="./board.do?pageNo=" + pageNo;
+		location.href="./board.do?pageNo=" + pageNo; + "&boardNo=" + ${boardNo};
 	</c:if>
 	
 }

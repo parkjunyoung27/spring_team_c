@@ -32,15 +32,4 @@ public class BoardServiceImpl implements BoardService {
 		return boardDAO.totalCount(map);
 	}
 	
-	public List<Map<String, Object>> categoryList(Map<String, Object> map) {
-		int board_cate = 0;
-		if (map.get("boardNo") != null && util.str2Int((String) map.get("boardNo"))) {
-			board_cate = util.str2Int2((String) map.get("boardNo"));
-			System.out.println("보드 카테고리값 : " + board_cate);
-		}
-		
-		List<Map<String, Object>> category = boardDAO.categoryList(map);
-		System.out.println("result : " + category.get(board_cate));
-		return boardDAO.categoryList(map);
-	}
 }

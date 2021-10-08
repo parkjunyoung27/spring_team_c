@@ -20,11 +20,5 @@ public class BoardDAO extends AbstractDAO {
 		return (List<Map<String, Object>>) selectList("board.boardList", map);
 	}
 
-	public List<Map<String, Object>> categoryList(Map<String, Object> map) {
-		return selectList("board.categoryList", map);
-	}
-
-
-
 
 }

@@ -31,6 +31,16 @@ public class BoardController {
 	@GetMapping("/board")
 	public ModelAndView board(CommandMap map) {
 		ModelAndView mv = new ModelAndView("board");
+		
+		//*****카테고리*****
+		//board_cate보내기
+		int board_cate = 0;
+		if(map.containsKey("boardNo")) {//키값이 있느냐 없느냐 물어보는부분 있으면 true반환 없으면 false 반환
+			board_cate = Integer.parseInt(String.valueOf(map.get("boardNo")));//유틸 만들어 놓기.
+		}else {
+			map.put("boardNo", board_cate);
+		}
+		mv.addObject("boardNo", board_cate);
 
 		//*****검색기능*****
 		//출력해보기
@@ -41,11 +51,6 @@ public class BoardController {
 			mv.addObject("searchName", map.get("searchName"));
 			mv.addObject("search", map.get("search"));
 		}
-		
-		//*****보드 카테고리*****
-		//보드 카테고리 불러오기 
-		
-		List<Map<String, Object>> categoryList = boardService.categoryList(map.getMap());
 		
 		//*****페이징*****
 		//페이지 번호가 오는지 확인하기
