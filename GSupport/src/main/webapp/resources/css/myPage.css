@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+* {
+	box-sizing: border-box;
+}
+
+#boardPaging {
+	text-align: center;
+	margin-top: 30px;
+	text-decoration: none;
+	font-size: large;
+	letter-spacing: 1px;
+}
+
+#boardPaging a {
+	text-decoration: none;
+	color: black;
+}
+
+#boardPaging a:hover {
+	font-weight: 700;
+}
+
+.container {
+	margin-top:200px;
+	height: auto;
+}
+
+.row {
+	height: auto;
+}
+
+.title {
+	font-size: 25px;
+}
+
+/* Create two unequal columns that floats next to each other */
+.column {
+	float: left;
+	padding: 20px;
+}
+
+/* Left column */
+.column.side {
+	width: 25%;
+	border-style: solid 1px;
+	height: auto;
+	border-radius: 20px;
+}
+
+.customer_side {
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+.customer_side ul {
+	list-style-type: none;
+}
+/* Middle column */
+.column.middle {
+	margin-left: 10px;
+	width: 70%;
+	background-color: white;
+}
+
+.activity {
+	width: auto;
+}
+
+/* Clear floats after the columns */
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.card {
+	border-radius: $border-radius-extreme;
+	box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);
+	background-color: #FFFFFF;
+	color: $card-black-color;
+	margin-bottom: 20px;
+	margin-right: 0px;
+	position: relative;
+	border: 0 none;
+	width: 25%;
+	text-align: center;
+	display: inline-block;
+}
+
+.card .card-body {
+	padding: 15px 15px 10px
+}
+
+.customer_content_reservHistory {
+	border-top: 1px solid #141414;
+	background-color: #ffffff;
+	margin-top: 20px;
+	padding: 10px;
+}
+
+.customer_content_reservHistory_header {
+	border-bottom: 1px solid #e5e5e5;
+	margin-bottom: 20px;
+}
+
+.customer_content_reservHistory_content {
+	border-bottom: 1px solid #e5e5e5;
+	padding: 20px;
+}

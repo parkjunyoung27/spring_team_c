@@ -21,6 +21,7 @@ public class MypageController {
 	@Autowired
 	private MypageServiceImpl mypageService;
 
+	
 	@GetMapping("/myPage.do")
 	public ModelAndView myPage(CommandMap map) {
 		ModelAndView mv = new ModelAndView("myPage");
@@ -68,6 +69,12 @@ public class MypageController {
 
 		return mv;
 
+	}
+	
+
+	@GetMapping("/myPage_update.do")
+	public String myPage_update() {
+		return "myPage_update";
 	}
 
 }

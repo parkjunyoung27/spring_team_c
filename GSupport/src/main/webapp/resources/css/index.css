@@ -68,7 +68,7 @@ div#searchButton {
     margin: 3px;
 }
 #searchButton button:hover{
-  background:black;
+  background:green;
   color:white;
   font-weight:700;
 }
