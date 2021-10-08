@@ -36,7 +36,11 @@
 	</select>
 	
 	<update id="storeLike" parameterType="HashMap">
-		UPDATE shop set shop_like=shop_like+1 WHERE shop_no=#{shop_no}
+		UPDATE shop set shop_bookmark=shop_bookmark+1 WHERE shop_no=#{shop_no}
+	</update>
+	
+	<update id="storeDislike" parameterType="HashMap">
+		UPDATE shop SET shop_bookmark=shop_bookmark-1 WHERE shop_no=#{shop_no}
 	</update>
 	
 	

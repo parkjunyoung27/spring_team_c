@@ -83,7 +83,15 @@ function star(){
 			<p><b>위치 : </b>${storeDetail.shop_loc } </p>
 			<p><b style="color:red; margin:0;">알립니다.</b></p>
 			<div class="store_notice" style="padding:5px;">
+			<c:choose>
+			
+			<c:when test="${storeDetail.shop_notice ne null}">
+				${storeDetail.shop_notice }
+			</c:when>
+			<c:otherwise>
 				마음껏 연락주세요!
+			</c:otherwise>
+			</c:choose>
 			</div>
 
 		</div>

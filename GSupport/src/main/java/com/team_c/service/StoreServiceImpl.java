@@ -39,8 +39,12 @@ public class StoreServiceImpl implements StoreService {
 		return storeDAO.totalCount(map);
 	}
 
-	public void storeLike(Map<String, Object> map) {
-		storeDAO.storeLike(map);
+	public int storeLike(Map<String, Object> map) {
+		return storeDAO.storeLike(map);
+	}
+
+	public void storeDislike(Map<String, Object> map) {
+		storeDAO.storeDislike(map);
 	}
 
 	

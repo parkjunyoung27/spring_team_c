@@ -71,7 +71,7 @@ function linkPage(pageNo){
 			<script>
 			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		    mapOption = { 
-		        center: new kakao.maps.LatLng(${param.shop_wido}, ${param.shop_kyungdo}), // 지도의 중심좌표
+		        center: new kakao.maps.LatLng(${list[0].shop_wido}, ${list[0].shop_kyungdo}), // 지도의 중심좌표
 		        level: 6 // 지도의 확대 레벨
 		    };
 		
@@ -223,12 +223,13 @@ function linkPage(pageNo){
 			<!-- 검색 -->
 		<div style="text-align: center;">
 		<form action="./storeList.do">
-			<select name="searchGu">
+			<select name="guName">
 				<c:forEach items="${list2 }" var="l2">
-					<option value="searchGu" >${l2.shop_gu }</option>
+					<option value="${l2.shop_gu }" <c:if test ="${selectedguName
+							 eq l2.shop_gu}">selected="selected"</c:if>>${l2.shop_gu }</option>
 				</c:forEach>
 			</select>
-			<input type="hidden" name="guName" value="${guName}">
+			<%-- <input type="hidden" name="guName" value="${guName}"> --%>
 			<input type="hidden" name="shop_wido" value="${list[0].shop_wido }">
 			<input type="hidden" name="shop_kyungdo" value="${list[0].shop_kyungdo }">
 			<input type="text" name="search" value="${search }">

@@ -26,7 +26,7 @@
     	</a>
     	<ul id="menu">
 	       <li class="menuli"> <a href="./about.do" class="">About</a></li>
-	       <li class="menuli"> <a href="./storeList.do" class="">가맹점 찾기</a></li>
+	       <li class="menuli"> <a href="./storeList.do?guName=강남구&shop_wido=37.4979395100853&shop_kyungdo=127.02755368008152" class="">가맹점 찾기</a></li>
 	       <li class="menuli"> <a href="./board.do?boardNo=0" class="">게시판</a>
 					<ul class="son">
 						<li><a href="./board.do?boardNo=0">공지사항</a></li>

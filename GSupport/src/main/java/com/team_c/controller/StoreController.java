@@ -151,9 +151,16 @@ public class StoreController {
 			commandMap.put("id", id);
 			commandMap.put("shop_no", shop_no);
 			
-			storeService.storeLike(commandMap.getMap());
-			System.out.println("즐찾 성공");
-			return "redirect:/storeDetail.do?shop_no="+shop_no;
+			int result = storeService.storeLike(commandMap.getMap());
+			if(result == 1) {
+				System.out.println("즐찾 성공");
+				return "redirect:/storeDetail.do?shop_no="+shop_no;
+			}else {
+				storeService.storeDislike(commandMap.getMap());
+				System.out.println("즐찾 실패");
+				return "redirect:/storeDetail.do?shop_no="+shop_no;
+			}
+			
 		}
 		
 		return "redirect:/storeDetail.do?shop_no="+shop_no;
