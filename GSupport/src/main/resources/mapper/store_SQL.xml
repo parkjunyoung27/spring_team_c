@@ -12,12 +12,16 @@
 	</select>
 	
 	<insert id="storeReserv" parameterType="HashMap">
-		INSERT INTO reservation (user, shop_no, reservation_reservDate, reservation_reservTime, reservation_phonenum, people, reservation_reservRequest, member_name) 
-		VALUES ((SELECT member_no FROM member WHERE member_id=#{id}), #{shop_no}, #{date}, #{reservTime}, #{phoneNum}, #{people}, #{reservRequest}, #{name})
+		INSERT INTO reservation (user, shop_no, shop_name, reservation_reservDate, reservation_reservTime, reservation_phonenum, people, reservation_reservRequest, member_name) 
+		VALUES ((SELECT member_no FROM member WHERE member_id=#{id}), #{shop_no}, #{shop_name}, #{date}, #{reservTime}, #{phoneNum}, #{people}, #{reservRequest}, #{name})
 	</insert>
 	
 	<select id="storeList" parameterType="HashMap" resultType="HashMap">
-		SELECT * FROM shop WHERE shop_gu=#{guName} LIMIT #{startPage}, #{lastPage}
+		SELECT * FROM shop WHERE shop_gu=#{guName} 
+		<if test="search != null">
+		AND shop_name LIKE CONCAT('%', #{search}, '%') 
+		</if>
+		LIMIT #{startPage}, #{lastPage}
 	</select>
 	
 	<select id="storeGuList" parameterType="HashMap" resultType="HashMap">
@@ -26,6 +30,14 @@
 	
 	<select id="totalCount" parameterType="HashMap" resultType="HashMap">
 		SELECT count(*) as totalCount FROM shop WHERE shop_gu=#{guName}
+		<if test="search != null">
+		AND shop_name LIKE CONCAT('%', #{search}, '%') 
+		</if>
 	</select>
+	
+	<update id="storeLike" parameterType="HashMap">
+		UPDATE shop set shop_like=shop_like+1 WHERE shop_no=#{shop_no}
+	</update>
+	
 	
 </mapper>

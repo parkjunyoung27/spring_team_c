@@ -39,20 +39,43 @@
 	<beans:bean id="naverLoginBO"
 		class="com.team_c.controller.NaverLoginBO" />
 
-	
+
 	<context:component-scan
 		base-package="com.team_c.*" />
-		
+
 
 	<!-- 전자정부 페이징 -->
-	<beans:bean id="imageRenderer" class="com.team_c.util.ImagePaginationRenderer"/>
-	<beans:bean id="textRenderer" class="egovframework.rte.ptl.mvc.tags.ui.pagination.DefaultPaginationRenderer"/>
-	<beans:bean id="paginationManager" class="egovframework.rte.ptl.mvc.tags.ui.pagination.DefaultPaginationManager">
+	<beans:bean id="imageRenderer"
+		class="com.team_c.util.ImagePaginationRenderer" />
+	<beans:bean id="textRenderer"
+		class="egovframework.rte.ptl.mvc.tags.ui.pagination.DefaultPaginationRenderer" />
+	<beans:bean id="paginationManager"
+		class="egovframework.rte.ptl.mvc.tags.ui.pagination.DefaultPaginationManager">
 		<beans:property name="rendererType">
 			<beans:map>
-				<beans:entry key="image" value-ref="imageRenderer"/>
-				<beans:entry key="text" value-ref="textRenderer"/>
+				<beans:entry key="image" value-ref="imageRenderer" />
+				<beans:entry key="text" value-ref="textRenderer" />
 			</beans:map>
+		</beans:property>
+	</beans:bean>
+
+	<!-- gmail설정 -->
+	<beans:bean id="mailSender"
+		class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<beans:property name="host" value="smtp.gmail.com" /> <!-- 메이서버 호스트 -->
+		<beans:property name="port" value="587" /> <!-- 메이서버 포트번호 -->
+		<beans:property name="username" value="teamcgsupp0rt@gmail.com" /> <!-- 자신의 이메일 아이디 -->
+		<beans:property name="password" value="teamc1005" /> <!-- 자신의 비밀번호 -->
+		<!-- 보안연결 SSL과 관련된 설정 -->
+		<beans:property name="javaMailProperties">
+			<beans:props>
+			    <beans:prop key="mail.transport.protocol">smtp</beans:prop>
+                <beans:prop key="mail.smtp.auth">true</beans:prop>
+                <beans:prop key="mail.smtp.starttls.enable">true</beans:prop>
+                <beans:prop key="mail.debug">true</beans:prop>
+                <beans:prop key="mail.smtp.ssl.trust">smtp.gmail.com</beans:prop>
+                <beans:prop key="mail.smtp.ssl.protocols">TLSv1.2</beans:prop>
+            </beans:props>
 		</beans:property>
 	</beans:bean>
 </beans:beans>

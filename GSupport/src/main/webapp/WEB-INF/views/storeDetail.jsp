@@ -49,10 +49,10 @@ function ask(){
 	<div class="detail_container">
 		<div id="storeName">
 			<img alt="storeImg" src="resources/images/logo.png" style="max-width: 85%; max-height: 250px;"><br>
-			<h2>${storeDetail.shop_name } </h2> 
-			<c:if test="${sessionScope.id ne null }">
-				<a href="./storeLike.do?shop_no=${storeDetail.shop_no }">즐겨찾기</a>
-			</c:if>
+			<h2>${storeDetail.shop_name } </h2>
+			<%-- <c:if test="${sessionScope.id ne null }">
+				<a href="./storeLike.do?shop_no=${storeDetail.shop_no }">즐겨찾기</a>[ ${storeDetail.shop_like } ]
+			</c:if> --%>
 			<br> 
 			<hr style="margin:0; height: 2px; margin-bottom:10px; width: 70%;">
 			<p><b>연락처 : </b> ${storeDetail.shop_tel } </p> 
@@ -109,6 +109,7 @@ function ask(){
 					<p>날짜 : <input type="date" required="required" class="reserv_input" id="date" name="date"></p>
 					<p>요구사항 : <input type="text" id="request" name="request" placeholder="특이사항 있으시면 입력해주세요." class="reserv_input" style="text-align:right;"></p>
 					<input type="hidden" id="shop_no" name="shop_no" value="${storeDetail.shop_no }">
+					<input type="hidden" id="shop_name" name="shop_name" value="${storeDetail.shop_name }">
 					<div id="reserve_btn_area"><button class="reserv_btn1" type="submit" onclick="return ask()">예약하기</button></div>				
 						<button class="reserv_btn" onclick="location.href='./storeList.do'" style="margin-right:20%">돌아가기</button>
 						<button class="reserv_btn"  type="reset" id="join_reset" style="margin-right:3%">초기화하기</button>

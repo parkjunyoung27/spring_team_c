@@ -1,6 +1,5 @@
 package com.team_c.controller;
 
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -42,6 +40,7 @@ public class StoreController {
 	public String storeReserv(CommandMap commandMap, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String name = (String)session.getAttribute("name");
+		String shop_name = request.getParameter("shop_name");
 		String phoneNum = request.getParameter("phoneNum");
 		String date = request.getParameter("date");
 		String reservTime = request.getParameter("reservTime");
@@ -55,6 +54,7 @@ public class StoreController {
 		System.out.println(date); System.out.println(reservRequest);
 		System.out.println(id); System.out.println(shop_no);
 		System.out.println(people); System.out.println(reservTime);
+		System.out.println(shop_name);
 		 
 
 		if (name != null && phoneNum != null && date != null && reservTime != null && id != null) {
@@ -66,6 +66,7 @@ public class StoreController {
 			commandMap.put("reservTime", reservTime);
 			commandMap.put("reservRequest", reservRequest);
 			commandMap.put("people", people);
+			commandMap.put("shop_name", shop_name);
 			
 			storeService.storeReserv(commandMap.getMap());
 			//return "redirect:/reservSuccess.do";
@@ -87,6 +88,13 @@ public class StoreController {
 		String guName = request.getParameter("guName");
 		System.out.println("구네임 : " + guName);
 		commandMap.put("guName", guName);
+		
+		//검색값을 jsp로 넘기기
+		if(commandMap.containsKey("search")) {
+			mv.addObject("search", commandMap.get("search"));
+			mv.addObject("searchGu", commandMap.get("searchGu"));
+		}
+		
 		
 		//페이지 번호가 오는지 확인하기
 		int pageNo = 1;
@@ -131,13 +139,24 @@ public class StoreController {
 		
 	}
 	
-	@PostMapping("/storeLike.do")
-	public ModelAndView storeLike(CommandMap commandMap) {
-		ModelAndView mv = new ModelAndView("storeLike");
+	@RequestMapping("/storeLike.do")
+	public String storeLike(CommandMap commandMap, HttpServletRequest request) {
 		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		String shop_no = request.getParameter("shop_no");
+		//System.out.println("id : " + id);
+		//System.out.println("shop_no : " + shop_no);
+		if(id != null && shop_no != null) {
+			commandMap.put("id", id);
+			commandMap.put("shop_no", shop_no);
+			
+			storeService.storeLike(commandMap.getMap());
+			System.out.println("즐찾 성공");
+			return "redirect:/storeDetail.do?shop_no="+shop_no;
+		}
 		
-		
-		return mv;
+		return "redirect:/storeDetail.do?shop_no="+shop_no;
 	}
 	
 	

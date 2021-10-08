@@ -253,6 +253,9 @@ $(function(){
 });
 */
 
+
+
+
 </script>
 
 <body>
@@ -285,6 +288,8 @@ $(function(){
 						<input type="password" id="pw2" name="pw2" class="jpw2" placeholder="비밀번호 확인" onchange="isSame()">
 						<span id="same"></span>
 					</p>
+					
+					<a href="./emailCheck.do">이메일 테스트</a>
 									
 					<p id="join_email" class="join_p">
 						<span class="jtitle">이메일</span>
@@ -309,6 +314,8 @@ $(function(){
 			</form>
 		</div>
 	</div>
+	
+	
 	</main>
 	
 	<footer>

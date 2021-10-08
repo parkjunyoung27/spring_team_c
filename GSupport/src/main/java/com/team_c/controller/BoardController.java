@@ -93,7 +93,6 @@ public class BoardController {
 		return mv;
 	}
 
-	
 	@GetMapping("write.do")
 	public ModelAndView write() throws Exception {
 		ModelAndView mv = new ModelAndView("write");
@@ -117,5 +116,6 @@ public class BoardController {
 		
 		return mv;
 	}
+	
 	
 }

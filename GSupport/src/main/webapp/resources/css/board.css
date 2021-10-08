@@ -169,7 +169,7 @@ ul li {list-style:none; }
 	padding: 5px;
 	padding-top: 25px;
     border-bottom: 1px solid black;
-    min-height: 500px;
+    min-height: 300px;
 }
 
 #detail_btn{
@@ -186,10 +186,103 @@ ul li {list-style:none; }
     width: 15%;
 }
 
+/* comment */
+#comment{
+	width:100%;
+	border: none;
+	margin: 0 auto;
+	padding: 5px;
+}
 
+#comment ul {
+    border: none;
+    width: 95%;
+    list-style: none;
+    padding: 5px;
+    margin: 0 auto;
+}
 
+li#commentContainer {
+    width: 100%;
+}
 
+div#commentbox {
+    width: 100%;
+}
 
+.commentInfoText{
+	margin: 0px;
+    width: 50%;
+    display: inline-block;
+}
+
+.commentModify{
+	float:right;
+}
+
+.commentModify a{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    font-size: smaller;
+}
+
+div#commentContent {
+    margin: 10px 5px;
+}
+
+div#commentWrite {
+    border: none;
+    width: 95%;
+    list-style: none;
+    padding: 5px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+#commentWriteText {
+    width: 100%;
+    margin: 0px;
+    padding: 5px;
+    height: 100px;
+}
+
+#commentWriteBtn{
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+    width: 20%;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    height: 30px;
+    background-color: cadetblue;
+    color: white;
+    letter-spacing: 5px;
+    font-size: larger;
+}
+
+#commentWriteBtn:hover{
+	font-weight: 700;
+}
+
+.commentModify a:hover{
+	font-weight: 700;
+}
+
+.modifyWrite textarea{
+	width: 100%;
+    margin: 0px;
+    padding: 5px;
+    height: 130px;
+}
+
+#modifyWriteBtn{
+	width: 100%;
+    margin-top: 10px;
+    text-align: right;
+    background-color: white;
+}
 
 
 
