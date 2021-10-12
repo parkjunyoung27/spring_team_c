@@ -1,6 +1,85 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<style>
+
+input#sidebar {diplay:none;}
+
+header {
+	background-color:#f5f5f5;
+	position:relative;
+	z-index:4;
+}
+header > div {
+	max-width:0;
+	margin: 0 auto;
+	position:relative;
+	min-height:0;
+}
+header label.menu {
+	position:absolute;
+	top:50%;
+	right:10px;
+	transform:translateY(-50%);
+	width:24px;
+	height:24px;
+	background:url('./images/GSupport.png') 0 0 no-repeat;
+	cursor:pointer;
+}
+.container {max-width:1200px; margin:0 auto;}
+.container img {max-width:100%;}
+
+.sidebar_content{
+	position:fixed;
+	top:-300px;
+	right:25%;
+	width:50%;
+	height:300px;
+	background:#999;
+	transition:all .35s;
+	z-index:5;
+}
+
+.sidebar_content > ul {margin:20px;}
+.sidebar_content > ul > li {
+	border_bottom:1px solid #ccc;
+	list-style:none;
+}
+.sidebar_content > ul > li > a {
+	display:inline-block;
+	width:auto;
+	color:#fff;
+	padding:10px;
+	margin:10px;
+	background:#f5f5f5;
+}
+.sidebar_content label[for*='sidebar'] {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	z-index:-1;
+}
+.background{
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background:rgba(0,0,0,.8);
+	transition:all .35s;
+	opacity:0;
+	visibility:hidden;
+	z-index:1;
+}
+input#sidebar:checked ~ header laber {background-position:-24px 0;}
+input#sidebar:checked ~ .sidebar_content {top:25%;}
+input#sidebar:checked ~ .background {opacity:1;visibility:visible;}
+</style>
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>	
 
 	<script>
@@ -50,6 +129,23 @@
 				</c:choose>
 			</li>
     	</ul>
+    	
+    	<input type="checkbox" id="sidebar">
+    	<header>
+    		<div>
+    			<label for="sidebar" class="menu"></label>
+    		</div>
+    	</header>   	
+    	<div class="container"></div>
+    	<div class="sidebar_content">
+    		
+    		<input type="email">
+    		
+    		
+    		
+    	</div>
+    	<label for="sidebar" class="background"></label>
+    	
     </div>
     
     
