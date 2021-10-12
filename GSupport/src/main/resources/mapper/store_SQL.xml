@@ -8,7 +8,7 @@
 	</select>
 	
 	<select id="storeDetail" parameterType="HashMap" resultType="HashMap">
-		SELECT * FROM shop WHERE shop_no=#{shop_no}
+		SELECT * FROM shopview WHERE shop_no=#{shop_no}
 	</select>
 	
 	<insert id="storeReserv" parameterType="HashMap">
@@ -35,13 +35,13 @@
 		</if>
 	</select>
 	
-	<update id="storeLike" parameterType="HashMap">
-		UPDATE shop set shop_bookmark=shop_bookmark+1 WHERE shop_no=#{shop_no}
-	</update>
+	<insert id="storeLike" parameterType="HashMap">
+		INSERT INTO shop_like (shop_no, member_no) VALUES (#{shop_no}, (SELECT member_no FROM member WHERE member_id=#{id}))
+	</insert>
 	
-	<update id="storeDislike" parameterType="HashMap">
-		UPDATE shop SET shop_bookmark=shop_bookmark-1 WHERE shop_no=#{shop_no}
-	</update>
+	<delete id="storeDisLike" parameterType="HashMap">
+		DELETE FROM shop_like WHERE shop_no=#{shop_no}, member_no=(SELECT member_no FROM member WHERE member_id=#{id})
+	</delete>
 	
 	
 </mapper>

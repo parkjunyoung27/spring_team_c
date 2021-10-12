@@ -29,8 +29,10 @@ function ask(){
 	}
 }
 
-function star(){
-	confirm("즐겨찾기 하시겠습니까?");
+function star(no){
+	if(confirm("즐겨찾기 하시겠습니까?")){
+		location.href="./storeLike.do?shop_no="+no
+	}
 }
 </script>
 </head>
@@ -59,10 +61,12 @@ function star(){
 			<img alt="storeImg" src="resources/images/logo.png" style="max-width: 85%; max-height: 250px;"><br>
 			<div id="storeNameTitle">
 				<h3>${storeDetail.shop_name }
+				<c:if test="${sessionScope.id ne null }">
 				<c:choose>
 				<c:when test="true">
-					<span style="line-height: 50px;vertical-align: sub; cursor:pointer;" onclick="return star()">
+					<span style="line-height: 50px;vertical-align: sub; cursor:pointer;" onclick="return star(${storeDetail.shop_no})">
 						<img src="resources/images/star_before.png">
+						[ ${storeDetail.shop_bookmark } ]
 					 </span>
 				</c:when>
 				<c:otherwise>
@@ -71,11 +75,9 @@ function star(){
 					 </span>				
 				</c:otherwise>
 				</c:choose>
+				</c:if>
 				</h3>
 			</div>
-			<%-- <c:if test="${sessionScope.id ne null }">
-				<a href="./storeLike.do?shop_no=${storeDetail.shop_no }">즐겨찾기</a>[ ${storeDetail.shop_like } ]
-			</c:if> --%>
 			<br> 
 			<hr style="margin:0; height: 2px; margin-bottom:10px; width: 85%;">
 			<p><b>연락처 : </b> ${storeDetail.shop_tel } </p> 

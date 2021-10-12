@@ -74,4 +74,8 @@ public class AbstractDAO {
 		return sqlSession.update(queryID, map);
 	}
 	
+	public void delete(String queryID, Map<String, Object> map) {
+		sqlSession.delete(queryID, map);
+	}
+	
 }

@@ -35,11 +35,11 @@ public class StoreDAO extends AbstractDAO{
 	}
 
 	public int storeLike(Map<String, Object> map) {
-		return update2("store.storeLike", map);
+		return Insert("store.storeLike", map);
 	}
 
 	public void storeDislike(Map<String, Object> map) {
-		update("store.storeDislike", map);
+		delete("store.storeDislike", map);
 	}
 
 	
