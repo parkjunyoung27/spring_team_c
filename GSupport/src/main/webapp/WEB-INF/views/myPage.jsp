@@ -17,15 +17,6 @@
 <link href="./resources/css/myPage.css" rel="stylesheet">
 <script src="../assets/js/core/bootstrap.min.js" type="text/javascript"></script>
 <style>
-
-	.container {
-	    margin-top: 30px;
-	    text-decoration: none;
-	    font-size: large;
-	    letter-spacing: 1px;
-	    min-height:1400px;
-	}	
-	
 </style>
 <body>
 
@@ -114,6 +105,5 @@
 
 
 	<!-- footer -->
-	<%@ include file="./component/footer.jsp"%>
 </body>
 </html>
