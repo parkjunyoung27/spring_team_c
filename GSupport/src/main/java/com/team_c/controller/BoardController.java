@@ -33,6 +33,11 @@ public class BoardController {
 		ModelAndView mv = new ModelAndView("board");
 		
 		//*****카테고리*****
+		//게시판 이름 불러오기
+		String boardName = boardService.boardCate(map);
+		System.out.println("보드네임 : " + boardName);
+		mv.addObject("board_name", boardName);
+		
 		//board_cate보내기
 		int board_cate = 0;
 		if(map.containsKey("boardNo")) {//키값이 있느냐 없느냐 물어보는부분 있으면 true반환 없으면 false 반환
@@ -94,7 +99,7 @@ public class BoardController {
 		//*****
 		
 		
-		
+		System.out.println("현재 맵목록 : "+ map.getMap());
 		return mv;
 	}
 

@@ -18,7 +18,7 @@ function bwrite(){
 
 
 <div id="sub_board_menu">
-	<a href="/board"> 게시판 </a>
+	<a href="/board"> ${board_name } </a>
 	<nav>
 		<ul id="sub_list">
 			<c:forEach items="${boardCategoryList}" var="bcl">

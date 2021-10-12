@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.team_c.common.CommandMap;
 import com.team_c.dao.BoardDAO;
 import com.team_c.util.Util;
 
@@ -30,6 +31,13 @@ public class BoardServiceImpl implements BoardService {
 
 	public int totalCount(Map<String, Object> map) {
 		return boardDAO.totalCount(map);
+	}
+	
+	public String boardCate(CommandMap map) {
+		List<Map<String, Object>> boardNameList = boardDAO.boardCate(map.getMap());
+		int boardNo = Integer.parseInt(String.valueOf(map.get("boardNo")));
+		String boardName = (String) boardNameList.get(boardNo).get("board_name");
+		return boardName;
 	}
 	
 }

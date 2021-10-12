@@ -17,7 +17,7 @@ public class LoginDAO extends AbstractDAO{
 	}
 	
 	public int emailCheck(String email) {
-		return selectOne("login.emailCheck", email);
+		return (int) selectOne("login.emailCheck", email);
 	}
 	
 }

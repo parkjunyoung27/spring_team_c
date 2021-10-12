@@ -4,6 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Component;
 
+import com.team_c.common.CommandMap;
+
 @Component
 public class Util {
 	public boolean str2Int(String str) {//참거짓
@@ -41,6 +43,10 @@ public class Util {
 			ip = request.getRemoteAddr();
 		}
 		return ip;
+	}
+	
+	public int toInt(Object obj) {
+		return Integer.parseInt(String.valueOf(obj));
 	}
 
 }

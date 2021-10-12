@@ -73,5 +73,5 @@ public class AbstractDAO {
 	public int update2(String queryID, Map<String, Object> map) {
 		return sqlSession.update(queryID, map);
 	}
-
+	
 }

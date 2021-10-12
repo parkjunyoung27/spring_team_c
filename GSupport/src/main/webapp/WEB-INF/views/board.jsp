@@ -14,7 +14,7 @@ function linkPage(pageNo){
 		location.href="./board.do?pageNo=" + pageNo + "&boardNo=" + ${boardNo} + search;
 	</c:if>
 	<c:if test="${searchName == null}">
-		location.href="./board.do?pageNo=" + pageNo; + "&boardNo=" + ${boardNo};
+		location.href="./board.do?pageNo=" + pageNo + "&boardNo=" + ${boardNo};
 	</c:if>
 	
 }
@@ -67,7 +67,7 @@ function linkPage(pageNo){
 
 			<div id="content_title_border">
 				<div id="content_title">
-					<h2></h2><!-- 게시판 이름 연결 -->
+					<h2>${board_name}</h2><!-- 게시판 이름 연결 -->
 					<!-- <h2> ${category } </h2> -->
 				</div>
 			</div>
