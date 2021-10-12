@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<title>My Page Update</title>
+<title>My Page UpdateView</title>
 <link href="./resources/css/index.css" rel="stylesheet">
 <script type="text/javascript">
 $(document).ready(function(){
@@ -34,7 +34,6 @@ $(document).ready(function(){
 })
 
 </script>
-
 <style>
 .container {
 	margin-top: 30px;
@@ -51,7 +50,8 @@ $(document).ready(function(){
 }
 
 .customer-content-header {
-	padding-bottom: 40px; position : relative;
+	padding-bottom: 40px;
+	position: relative;
 	border-bottom: 5px solid black;
 	background-color: white;
 	font-size: 15px;
@@ -60,6 +60,7 @@ $(document).ready(function(){
 	position: relative;
 }
 
+ㅐㄱ
 .customer-account-container {
 	top: 50%;
 	left: 25%;
@@ -112,16 +113,17 @@ $(document).ready(function(){
 					</div>
 					<div class="customer-account-container">
 						<div class="customer-formbox">
-							<form method="POST" class="" action="account">
+							<form method="POST" class="" action="/myPage_update">
 								<div class="field_row">
 									<div class="field_title">이름</div>
 									<div class="field_label">
-										<input type="text" class="input-text"
-											data-parsley-trigger="keyup"
+										<input class="form-control" type="text" id="id"
+										name="" value="${member.id }"
 											data-parsley-required-message="필수 입력 항목입니다."
 											data-parsley-equalto-message="입력값이 일치하지 않습니다."
-											data-parsley-required="true" placeholder="${sessionScope.name}"
-											readonly="readonly" value="">
+											data-parsley-required="true"
+											placeholder="${sessionScope.name}" readonly="readonly"
+											/>
 									</div>
 
 								</div>
@@ -130,11 +132,12 @@ $(document).ready(function(){
 									<div class="field_title">이메일</div>
 									<div class="field_label">
 										<input type="text" class="input-text"
+											value="${member.email }"
 											data-parsley-trigger="keyup"
 											data-parsley-required-message="필수 입력 항목입니다."
 											data-parsley-equalto-message="입력값이 일치하지 않습니다."
 											data-parsley-required="true" placeholder="이름"
-											readonly="readonly" value="">
+											readonly="readonly" >
 									</div>
 
 								</div>
@@ -143,11 +146,12 @@ $(document).ready(function(){
 									<div class="field_title">연락처</div>
 									<div class="field_label">
 										<input type="text" class="input-text"
+										value="${member.phonenum }"
 											data-parsley-trigger="keyup"
 											data-parsley-required-message="필수 입력 항목입니다."
 											data-parsley-equalto-message="입력값이 일치하지 않습니다."
 											data-parsley-required="true" placeholder="이름"
-											readonly="readonly" value="">
+											>
 									</div>
 
 								</div>
@@ -156,7 +160,8 @@ $(document).ready(function(){
 
 							</form>
 
-							<button class="button_submit" type="submit">회원정보 수정</button>
+							<button class="button_submit" type="submit" id="submit">회원정보 수정</button>
+							<button class="button_submit" type="button" id="submit">취소</button>
 						</div>
 
 					</div>

@@ -2,9 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"	
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="myPage">
-
-
+<mapper namespace="myPage">	
+	
+	
+	<select id="mypageList" parameterType="HashMap" resultType="HashMap">
+		SELECT member_id, member_name, member_pw, member_phonenum, member_email
+		FROM member
+	</select>
+	
+	<update id="mypageUpdate" parameterType="HashMap">
+		UPDATE member
+		SET member_id=#{id}, member_name=#{name}, member_pw=#{pw}, member_phonenum=#{phonenum}, member_email=#{email}
+		WHERE member_id=#{id} and member_pw=#{pw}
+	</update>
+	
 	<select id="reservation" parameterType="HashMap" resultType="HashMap">
 		SELECT * 
 		FROM reservation LIMIT #{startPage}, #{lastPage}
@@ -12,7 +23,6 @@
 	
 	<select	id="totalCount" parameterType="HashMap" resultType="HashMap">
 		SELECT COUNT(*) as totalCount FROM reservation
-		
 	</select>
 	
 	
