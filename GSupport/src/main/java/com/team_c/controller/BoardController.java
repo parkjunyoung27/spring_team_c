@@ -1,18 +1,23 @@
 package com.team_c.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team_c.common.CommandMap;
 import com.team_c.service.BoardServiceImpl;
+import com.team_c.util.FileSave;
 import com.team_c.util.Util;
 
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -22,7 +27,10 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class BoardController {
 	Logger log = Logger.getLogger(this.getClass());
-	
+	@Autowired
+	private ServletContext servletContext;
+	@Autowired
+	private FileSave fileSave;//
 	@Autowired
 	private BoardServiceImpl boardService;
 	@Autowired
@@ -103,14 +111,37 @@ public class BoardController {
 		return mv;
 	}
 
-	@GetMapping("write.do")
-	public ModelAndView write() throws Exception {
-		ModelAndView mv = new ModelAndView("write");
-		System.out.println("글쓰기");
-		return mv;
+	@GetMapping(value="/write")
+	public String write() {
+		//세션검사 필요
+		return "write";
+	}
+	@PostMapping(value="/write")
+	public String write(CommandMap map, MultipartFile file, HttpServletRequest request) throws IOException {
+		
+		System.out.println("request : " + request.getParameter("title"));
+		System.out.println("request : " + request.getParameter("content"));
+		//System.out.println("request : " + request.getParameter("file"));
+		System.out.println("mpf : " + file.getOriginalFilename());
+		
+		//map에 넣어서 출력
+		map.put("title", request.getParameter("title"));
+		map.put("content", request.getParameter("content"));
+		
+		//파일 저장하기
+		//경로지정
+		String realPath = servletContext.getRealPath("resource/");
+		realPath = realPath + "upload";
+		System.out.println("경로" + realPath);
+		String realFileName = fileSave.save(realPath, file);
+		
+		map.put("realFileName", realFileName);
+		//일단 출력만 먼저합니다.
+		System.out.println("map : " + map.getMap());
+		return "redirect:./board.do?boardNo=1";
 	}
 	
-	@GetMapping("detail.do")
+	@GetMapping("/detail")
 	public String detail() {
 		return "detail";
 	}

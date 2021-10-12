@@ -24,7 +24,7 @@ function bwrite(){
 			<c:forEach items="${boardCategoryList}" var="bcl">
 			<li id="menu_margin"><a href="./board?bcno=${bcl.bcno }">${bcl.category_name }</a></li>
 			</c:forEach>
-			<li id="bwrite"><a onclick="bwrite()">글쓰기</a><li>			
+			<li id="bwrite"><a onclick="location.href='write.do?board_cate=1'">글쓰기</a><li>			
 		</ul>		
 	</nav>
 </div>

@@ -42,7 +42,7 @@ function writeCheck(){
 				<h2> 글쓰기 </h2>
 			</div>
 			<div id="wrtie_area">
-				<form action="./write" method="post" onsubmit="return writeCheck()" enctype="multipart/form-data">
+				<form action="./write.do" method="post" enctype="multipart/form-data">
 					<select id="write_select" name="board_cate">
 						<c:if test="${sessionScope.grade gt 6 }">
 						<option value="1">자주하는질문</option>
@@ -53,8 +53,8 @@ function writeCheck(){
 					<input type="text" id="board_title" name="board_title" placeholder="제목을 입력해주세요(40자 이내)">
 					<!-- summernote -->
 					<%@ include file="./component/summernote.jsp"%>	
-					
-					<button id="write_submit_btn">글쓰기</button>
+					<input type="file" name="file">
+					<button type="submit" id="write_submit_btn">글쓰기</button>
 				
 				</form>
 			</div>
