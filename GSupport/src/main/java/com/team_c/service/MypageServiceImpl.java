@@ -27,6 +27,23 @@ public class MypageServiceImpl implements MypageService {
 	}
 
 	@Override
+	public void mypageUpdate(Map<String, Object> map) {
+		mypageDAO.mypageUpdate(map);
+		
+	}
+
+	@Override
+	public void mypageDelete(Map<String, Object> map) {
+		mypageDAO.mypageDelete(map);
+		
+	}
+
+	public Map<String, Object> mypageList(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public ArrayList<Map<String, Object>> myPageList() {
 		// TODO Auto-generated method stub
 		return null;
