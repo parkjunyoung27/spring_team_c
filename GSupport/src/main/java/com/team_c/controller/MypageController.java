@@ -29,6 +29,8 @@ public class MypageController {
 	@Autowired
 	private MypageServiceImpl mypageService;
 
+	private Object myPage_update;
+
 	@GetMapping("/myPage.do")
 	public ModelAndView myPage(CommandMap map, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("myPage");
@@ -87,29 +89,35 @@ public class MypageController {
 //		}
 
 	}
-
-
-	@PostMapping("/myPage_update.do")
-	public String mypageupdate() { 
-		return "myPage_update";
-	}
-	
 	@GetMapping("/myPage_update.do")
-	public String myPageUpdate(CommandMap map, HttpServletRequest request) {
+	public ModelAndView myPageUpdate(CommandMap map, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		System.out.println(session.getAttribute("id"));
 		System.out.println(session.getAttribute("name"));
 		if (session.getAttribute("id") != null && session.getAttribute("name") != null) {
 			map.put("id", session.getAttribute("member_id"));
 			map.put("name", session.getAttribute("member_name"));
-			map.put("phonenum", session.getAttribute("member_phonenum"));
-			map.put("pw", session.getAttribute("member_pw"));
-			mypageService.mypageUpdate(map.getMap());
-			return "redirect:/myPage_update";
+			ModelAndView mv = new ModelAndView("myPage_update");
+			mv.addObject("myPage_update", myPage_update);
+			return mv;
 		} else {
-			return "redirect:/login";
+			return new ModelAndView("/login");
 		}
 
 	}
+	
+//	
+//	@PostMapping("/myPage_updateView.do")
+//	public String mypageupdateView() { 
+//		if (session.getAttribute("id") != null && session.getAttribute("name") != null) {
+//			map.put("id", session.getAttribute("member_id"));
+//			map.put("name", session.getAttribute("member_name"));
+//			map.put("phonenum", session.getAttribute("member_phonenum"));
+//			map.put("pw", session.getAttribute("member_pw"));
+//		mypageService.mypageUpdate(map.getMap());
+//
+//		return "myPage_update";
+//	}
+//	
 
 }

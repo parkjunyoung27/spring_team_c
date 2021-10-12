@@ -12,16 +12,16 @@ import com.team_c.dao.MypageDAO;
 
 @Service("mypageService")
 public class MypageServiceImpl implements MypageService {
-	
+
 	Logger log = Logger.getLogger(this.getClass());
-	
+
 	@Autowired
 	private MypageDAO mypageDAO;
 
-	public List<Map<String, Object>> reservation(Map<String, Object> map){
+	public List<Map<String, Object>> reservation(Map<String, Object> map) {
 		return mypageDAO.reservation(map);
 	}
-	
+
 	public int totalCount(Map<String, Object> map) {
 		return mypageDAO.totalCount(map);
 	}
@@ -29,16 +29,21 @@ public class MypageServiceImpl implements MypageService {
 	@Override
 	public void mypageUpdate(Map<String, Object> map) {
 		mypageDAO.mypageUpdate(map);
-		
+
 	}
 
 	@Override
 	public void mypageDelete(Map<String, Object> map) {
 		mypageDAO.mypageDelete(map);
-		
+
 	}
 
 	public Map<String, Object> mypageList(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ArrayList<Map<String, Object>> myPageList(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return null;
 	}
