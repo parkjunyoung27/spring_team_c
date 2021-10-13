@@ -164,7 +164,6 @@ input[id="tab03"]:checked ~ .con3 {display:block;transition:all .35s;}
     	
     	<input type="checkbox" id="sidebar" hidden="hidden">
     	
-    	<input type="checkbox" id="sidebar">
     	<header>
     		<div>
     			<label for="sidebar" class="menu"></label>
