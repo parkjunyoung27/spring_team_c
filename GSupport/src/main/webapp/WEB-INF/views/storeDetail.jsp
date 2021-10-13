@@ -29,9 +29,14 @@ function ask(){
 	}
 }
 
-function star(no){
-	if(confirm("즐겨찾기 하시겠습니까?")){
+function like(no){
+	if(confirm("즐겨찾기에 추가 하시겠습니까?")){
 		location.href="./storeLike.do?shop_no="+no
+	}
+}
+function disLike(no){
+	if(confirm("즐겨찾기를 해제 하시겠습니까?")){
+		location.href="./storeDisLike.do?shop_no="+no
 	}
 }
 </script>
@@ -63,9 +68,15 @@ function star(no){
 				<h3>${storeDetail.shop_name }
 				<c:if test="${sessionScope.id ne null }">
 				<c:choose>
-				<c:when test="true">
-					<span style="line-height: 50px;vertical-align: sub; cursor:pointer;" onclick="return star(${storeDetail.shop_no})">
+				<c:when test="${list eq 0 }">
+					<span style="line-height: 50px;vertical-align: sub; cursor:pointer;" onclick="return like(${storeDetail.shop_no})">
 						<img src="resources/images/star_before.png">
+						[ ${storeDetail.shop_bookmark } ]
+					 </span>
+				</c:when>
+				<c:when test="${list eq 1 }">
+					<span style="line-height: 50px;vertical-align: sub; cursor:pointer;" onclick="return disLike(${storeDetail.shop_no})">
+						<img src="resources/images/star_after.png">
 						[ ${storeDetail.shop_bookmark } ]
 					 </span>
 				</c:when>
@@ -130,11 +141,11 @@ function star(no){
 					<h2 style="margin-top:10px; margin-bottom:10px;">예약하기</h2>
 					<div id="possible_time">
 					<% for(int i=9; i<=22; i++){ %>
-						<%for(int j=0; j<2; j++) {%>
+					
 						<div class="radio_check">
-							<input type="radio" id="reservTime" name="reservTime" required="required" value="<%=i%>:<%=j*3%>0"><%=i%>:<%=j*3%>0
+							<input type="radio" id="reservTime" name="reservTime" required="required" value="<%=i%>:00"> <%=i%>:00
 						</div>
-						<%} %>
+						
 					<% }%>	
 					
 					</div>

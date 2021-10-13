@@ -32,8 +32,12 @@ public class StoreController {
 		
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
+		String shop_no = request.getParameter("shop_no");
 		System.out.println(id);
+		System.out.println(shop_no);
 		if(id != null) {
+			commandMap.put("id", id);
+			commandMap.put("shop_no", shop_no);
 			int list = storeService.likeList(commandMap.getMap());
 			System.out.println("리스트 : " + list);
 			mv.addObject("list", list);
