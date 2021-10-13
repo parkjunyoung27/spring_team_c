@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${param.guName } 가맹점</title>
+<title>${param.guName }가맹점</title>
 <link href="./resources/css/index.css" rel="stylesheet">
+<link href="./resources/css/base.css" rel="stylesheet">
+
 <script type="text/javascript">
 function linkPage(pageNo){
 	<c:if test="${search != null}">
@@ -20,53 +22,55 @@ function linkPage(pageNo){
 }
 </script>
 <style>
-	#storeSearchList:hover{
-		background-color: #aaaaaa;
-		cursor: pointer;
-	}
+#storeSearchList:hover {
+	background-color: #aaaaaa;
+	cursor: pointer;
+}
 
-	div#paging {
-	    text-align: center;
-	    margin-top: 30px;
-	    text-decoration: none;
-	    font-size: large;
-	    letter-spacing: 1px;
-	}	
-	
-	div#paging a{
-		text-decoration:none;
-		color: black;
-	}
-	
-	div#paging a:hover{
-		font-weight:700;
-	}
+div#paging {
+	text-align: center;
+	margin-top: 30px;
+	text-decoration: none;
+	font-size: large;
+	letter-spacing: 1px;
+}
+
+div#paging a {
+	text-decoration: none;
+	color: black;
+}
+
+div#paging a:hover {
+	font-weight: 700;
+}
 </style>
 </head>
 <body>
 
-<!-- navbar -->
-<%@ include file= "./component/navbar.jsp"%>
+	<!-- navbar -->
+	<%@ include file="./component/navbar.jsp"%>
 
-<!-- main -->
-<div class="header-img"></div>
+	<!-- main -->
+	<div class="container">
+		<div class="header-img"></div>
 
-<h1>가맹점 찾기</h1>
-<hr>
-<div id="storeSearchContainer">
-	<h2>${param.guName } 가맹점</h2>
-	
-	<div id="searchButton">
-		<c:forEach items="${list2 }" var="l2">
-			<button type="submit" onclick="location.href='./storeList.do?guName=${l2.shop_gu}&shop_wido=${l2.gu_wido }&shop_kyungdo=${l2.gu_kyungdo }'">${l2.shop_gu }</button>
-		</c:forEach>
-	</div>
-	
-	<hr>
-	
-		<!-- 카카오맵api -->
-		<div id="map" style="width:95%;height:400px;"></div>
-		<script type="text/javascript"
+		<h1>가맹점 찾기</h1>
+		<hr>
+		<div id="storeSearchContainer">
+			<h2>${param.guName }가맹점</h2>
+
+			<div id="searchButton">
+				<c:forEach items="${list2 }" var="l2">
+					<button type="submit"
+						onclick="location.href='./storeList.do?guName=${l2.shop_gu}&shop_wido=${l2.gu_wido }&shop_kyungdo=${l2.gu_kyungdo }'">${l2.shop_gu }</button>
+				</c:forEach>
+			</div>
+
+			<hr>
+
+			<!-- 카카오맵api -->
+			<div id="map" style="width: 95%; height: 400px;"></div>
+			<script type="text/javascript"
 				src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3d03474ad9928948587986771d90bb4e"></script>
 			<script>
 			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -177,78 +181,81 @@ function linkPage(pageNo){
 		*/
 		</c:if>
 		</c:forEach>
-		</script>	
-	<hr>
-	<c:choose>
-		<c:when test="${fn:length(list) > 0}">
-		<table id="storeSearchTable">
-		<tr id="storeSearchColumn">
-			<th>매장명</th>
-			<th>연락처</th>
-			<th>운영시간</th>
-			<th>위치</th>
-		</tr>
-		<tbody>
-		<c:forEach items="${list }" var="l">
-			<tr id="storeSearchList" onclick="location.href='./storeDetail.do?shop_no=${l.shop_no}'">
-				<td>${l.shop_name }</td>
-				<td>${l.shop_tel }</td>
-				<td>
-				<c:choose>
-				<c:when test="${l.shop_opentime eq '00:00' && l.shop_closetime eq '00:00' }">
+		</script>
+			<hr>
+			<c:choose>
+				<c:when test="${fn:length(list) > 0}">
+					<table id="storeSearchTable">
+						<tr id="storeSearchColumn">
+							<th>매장명</th>
+							<th>연락처</th>
+							<th>운영시간</th>
+							<th>위치</th>
+						</tr>
+						<tbody>
+							<c:forEach items="${list }" var="l">
+								<tr id="storeSearchList"
+									onclick="location.href='./storeDetail.do?shop_no=${l.shop_no}'">
+									<td>${l.shop_name }</td>
+									<td>${l.shop_tel }</td>
+									<td><c:choose>
+											<c:when
+												test="${l.shop_opentime eq '00:00' && l.shop_closetime eq '00:00' }">
 					00:00 ~ 24:00
 				</c:when>
-				<c:otherwise>
+											<c:otherwise>
 					${l.shop_opentime } ~ ${l.shop_closetime }
 				</c:otherwise>
-				</c:choose>
-				</td>
-				<td>${l.shop_loc }</td>
-			</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-	
-	<!-- 페이징 -->
-	<!-- 1.
+										</c:choose></td>
+									<td>${l.shop_loc }</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+
+					<!-- 페이징 -->
+					<!-- 1.
 	1. pom설정
 	2. pagination설정
 	3. 데이터베이스에서 값 가져오기 - 페이징 해보기
 	4. 데이터 묶어오기
 	 -->
-		<div id="paging">
-			<ui:pagination paginationInfo="${paginationInfo }" type="text" jsFunction="linkPage"/>
-		</div>
-	
-			<!-- 검색 -->
-		<div style="text-align: center;">
-		<form action="./storeList.do">
-			<select name="guName">
-				<c:forEach items="${list2 }" var="l2">
-					<option value="${l2.shop_gu }" <c:if test ="${guName
+					<div id="paging">
+						<ui:pagination paginationInfo="${paginationInfo }" type="text"
+							jsFunction="linkPage" />
+					</div>
+
+					<!-- 검색 -->
+					<div style="text-align: center;">
+						<form action="./storeList.do">
+							<select name="guName">
+								<c:forEach items="${list2 }" var="l2">
+									<option value="${l2.shop_gu }"
+										<c:if test ="${guName
 							 eq l2.shop_gu}">selected="selected"</c:if>>${l2.shop_gu }</option>
-				</c:forEach>
-			</select>
-			<%-- <input type="hidden" name="guName" value="${guName}"> --%>
-			<input type="hidden" name="shop_wido" value="${list[0].shop_wido }">
-			<input type="hidden" name="shop_kyungdo" value="${list[0].shop_kyungdo }">
-			<input type="text" name="search" value="${search }">
-			<button type="submit">검색</button>
-		</form>
+								</c:forEach>
+							</select>
+							<%-- <input type="hidden" name="guName" value="${guName}"> --%>
+							<input type="hidden" name="shop_wido"
+								value="${list[0].shop_wido }"> <input type="hidden"
+								name="shop_kyungdo" value="${list[0].shop_kyungdo }"> <input
+								type="text" name="search" value="${search }">
+							<button type="submit">검색</button>
+						</form>
+					</div>
+
+				</c:when>
+				<c:otherwise>
+					<div id="storeListNone">해당 지역에 가맹점이 존재하지 않습니다.</div>
+				</c:otherwise>
+			</c:choose>
+
 		</div>
-	
-		</c:when>
-		<c:otherwise>
-		<div id="storeListNone">해당 지역에 가맹점이 존재하지 않습니다.</div>
-		</c:otherwise>
-	</c:choose>
-	
-	
-</div>
+	</div>
 
 
-<!-- footer -->
-<%@ include file= "./component/footer.jsp"%>
-	
+	<!-- footer -->
+	<%@ include file="./component/footer.jsp"%>
+
 </body>
 </html>

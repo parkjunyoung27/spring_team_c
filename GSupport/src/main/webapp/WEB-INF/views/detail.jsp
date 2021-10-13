@@ -7,6 +7,7 @@
 <title>G원사격 | 상세보기</title>
 <link href="./resources/css/index.css" rel="stylesheet">
 <link href="./resources/css/board.css" rel="stylesheet">
+<link href="./resources/css/base.css" rel="stylesheet">
 
 <style type="text/css">
 

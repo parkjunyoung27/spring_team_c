@@ -60,7 +60,6 @@ $(document).ready(function(){
 	position: relative;
 }
 
-ㅐㄱ
 .customer-account-container {
 	top: 50%;
 	left: 25%;
@@ -172,7 +171,5 @@ $(document).ready(function(){
 	</div>
 
 
-	<!-- footer -->
-	<%@ include file="./component/footer.jsp"%>
 </body>
 </html>

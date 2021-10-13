@@ -4,34 +4,8 @@
 	box-sizing: border-box;
 }
 
-#boardPaging {
-	text-align: center;
-	margin-top: 30px;
-	text-decoration: none;
-	font-size: large;
-	letter-spacing: 1px;
-}
-
-#boardPaging a {
-	text-decoration: none;
-	color: black;
-}
-
-#boardPaging a:hover {
-	font-weight: 700;
-}
-
-.container {
-	margin-top:200px;
-	height: auto;
-}
-
-.row {
-	height: auto;
-}
-
 .title {
-	font-size: 25px;
+	font-size: 20px;
 }
 
 /* Create two unequal columns that floats next to each other */
@@ -48,6 +22,12 @@
 	border-radius: 20px;
 }
 
+.column.side a {
+	text-decoration: none;
+	color: black;
+	
+}
+
 .customer_side {
 	margin-top: 25px;
 	margin-bottom: 25px;
@@ -56,11 +36,17 @@
 .customer_side ul {
 	list-style-type: none;
 }
+
 /* Middle column */
 .column.middle {
 	margin-left: 10px;
 	width: 70%;
 	background-color: white;
+}
+
+.column.middle a{
+	text-decoration: none;
+	color: black;
 }
 
 .activity {
@@ -107,4 +93,22 @@
 .customer_content_reservHistory_content {
 	border-bottom: 1px solid #e5e5e5;
 	padding: 20px;
+}
+
+#boardPaging {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	text-decoration: none;
+	font-size: large;
+	letter-spacing: 1px;
+}
+
+#boardPaging a {
+	text-decoration: none;
+	color: black;
+}
+
+#boardPaging a:hover {
+	font-weight: 700;
 }

@@ -8,14 +8,10 @@
 <meta charset="UTF-8">
 <title>About</title>
 <link href="./resources/css/index.css" rel="stylesheet">
+<link href="./resources/css/base.css" rel="stylesheet">
 <style>
 * {
 	box-sizing: border-box;
-}
-
-.row {
-	margin-top: 200px;
-	height: auto;
 }
 
 .title {
@@ -64,7 +60,6 @@
 
 	<!-- main -->
 	<div class="container">
-		<div class="row">
 			<div class="column side">
 				<div class="title">G원사격</div>
 				<div>
@@ -96,7 +91,6 @@
 				<p>가맹점의 입금 주기가 빨라져 경영사의 어려움을 해소 할 수 있습니다.<br></p>
 			</div>
 		</div>
-	</div>
 
 	<!-- footer -->
 	<%@ include file="./component/footer.jsp"%>

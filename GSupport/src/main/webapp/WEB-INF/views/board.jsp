@@ -22,6 +22,7 @@ function linkPage(pageNo){
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link href="./resources/css/index.css" rel="stylesheet">
 <link href="./resources/css/board.css" rel="stylesheet">
+<link href="./resources/css/base.css" rel="stylesheet">
 <style>
 
 	#boardPaging {

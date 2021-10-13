@@ -4,7 +4,6 @@
 
 <mapper namespace="myPage">	
 	
-	
 	<select id="mypageList" parameterType="HashMap" resultType="HashMap">
 		SELECT member_id, member_name, member_pw, member_phonenum, member_email
 		FROM member
@@ -12,8 +11,8 @@
 	
 	<update id="mypageUpdate" parameterType="HashMap">
 		UPDATE member
-		SET member_id=#{id}, member_name=#{name}, member_pw=#{pw}, member_phonenum=#{phonenum}, member_email=#{email}
-		WHERE member_id=#{id} and member_pw=#{pw}
+		SET member_name=#{name}, member_id=#{id}, member_phonenum=#{phonenum}, member_email=#{email}
+		WHERE member_id=#{member_id}
 	</update>
 	
 	<select id="reservation" parameterType="HashMap" resultType="HashMap">
@@ -25,5 +24,10 @@
 		SELECT COUNT(*) as totalCount FROM reservation
 	</select>
 	
+	<update id="mypageUpdatePW" parameterType="HashMap">
+		UPDATE member
+		SET member_pw=#{pw1} 
+		WHERE member_id=#{member_id}
+	</update>
 	
 </mapper>

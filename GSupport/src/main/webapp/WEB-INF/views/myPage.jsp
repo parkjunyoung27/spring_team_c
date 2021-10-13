@@ -15,16 +15,18 @@
 </script>
 <link href="./resources/css/index.css" rel="stylesheet">
 <link href="./resources/css/myPage.css" rel="stylesheet">
+<link href="./resources/css/base.css" rel="stylesheet">
 <script src="../assets/js/core/bootstrap.min.js" type="text/javascript"></script>
 <style>
+
 </style>
 <body>
 
 	<!-- Navbar -->
 	<%@ include file="./component/navbar.jsp"%>
 
-	<!-- Mypage menu -->
-	<section class="container">
+	<div class="container">
+		<!-- Mypage menu -->
 		<%@ include file="./myPage_menu.jsp"%>
 
 		<!-- Mypage Content -->
@@ -33,24 +35,25 @@
 				<div class="card">
 					<div class="card-body">
 						<h4 class="card-title">예약</h4>
-						<p class="card-text">${sessionScope.reservation }개</p>
+						<p class="card-text">??개</p>
 						<a href="#" class="btn btn-primary">예약 확인</a>
 					</div>
 				</div>
 
 				<div class="card">
+				<a href="" class="">
 					<div class="card-body">
 						<h4 class="card-title">쪽지</h4>
 						<p class="card-text">??개 /안 읽은거 ??개</p>
-						<a href="#" class="btn btn-primary">쪽지함</a>
 					</div>
+				</a>
 				</div>
 
 				<div class="card">
 					<div class="card-body">
 						<h4 class="card-title">즐겨찾기</h4>
 						<p class="card-text">??건</p>
-						<a href="#" class="btn btn-primary">Go somewhere</a>
+						<a href="#" class="btn btn-primary">즐겨찾기</a>
 					</div>
 				</div>
 			</div>
@@ -99,11 +102,14 @@
 
 
 		</div>
-	</section>
+	</div>
 
 
 
 
 	<!-- footer -->
+	<%@ include file= "./component/footer.jsp"%>
+	
+
 </body>
 </html>

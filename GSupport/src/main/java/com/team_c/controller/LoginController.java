@@ -62,6 +62,7 @@ public class LoginController {
 		HttpSession session = request.getSession();
 		session.setAttribute("name", login.get("member_name"));
 		session.setAttribute("id", login.get("member_id"));
+		session.setAttribute("email", login.get("member_email"));
 		session.setAttribute("member_id", login.get("member_id"));
 		session.setAttribute("authUser", login.get("member_channel"));
 		return "redirect:/index.do";

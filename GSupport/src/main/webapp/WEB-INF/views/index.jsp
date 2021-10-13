@@ -8,6 +8,7 @@
 	<meta charset="UTF-8">
 	<title>Index</title>
 	<link href="./resources/css/index.css" rel="stylesheet">
+	<link href="./resources/css/base.css" rel="stylesheet">
 
 </head>
 <body>
@@ -16,8 +17,9 @@
 	<%@ include file= "./component/navbar.jsp"%>
 
 	<!-- main -->
+	<div class="container">
     <div class="header-img"></div>
-
+	</div>
 
 	<!-- footer -->
 	<%@ include file= "./component/footer.jsp"%>

@@ -1,238 +1,82 @@
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
-/*전체 기본값 */
 
-/*main페이지*/
-*{
-	box-sizing: border-box;
-	margin:0;
-	padding:0;
-}
-
-body{
-	margin-right: 15%;
-	margin-left: 15%;
-	padding: 0;
-}
-
-#storeSearchContainer{
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap')
+	;
+#storeSearchContainer {
 	margin-bottom: 80px;
 }
 
-div#map{
-	margin: 0 auto;	
+div#map {
+	margin: 0 auto;
 }
 
-#storeSearchTable{
+#storeSearchTable {
 	width: 100%;
 }
 
 #storeSearchColumn {
-    background-color: forestgreen;
-    height: 37px;
-    font-weight: 600;
-    color: white;
-    font-size: larger;
-    letter-spacing: 5px;
+	background-color: forestgreen;
+	height: 37px;
+	font-weight: 600;
+	color: white;
+	font-size: larger;
+	letter-spacing: 5px;
 }
 
 #storeSearchList {
-    height: 35px;
-    text-align: center;
-    font-size: medium;
-    font-weight: 500;
+	height: 35px;
+	text-align: center;
+	font-size: medium;
+	font-weight: 500;
 }
 
 div#searchButton {
-    padding: 20px;
-    float: left;
-    margin-left: 5%;
-}
-
-#searchButton button{
-	text-align: center;	
-}
-
-#searchButton button{
-    background: white;
-    color: black;
-    border: 1px solid black;
-    position: relative;
-    height: 50px;
-    width: 23%;
-    font-size: 0.8em;
-    padding: 0 2em;
-    cursor: pointer;
-    transition: 800ms ease all;
-    outline: none;
-    margin: 3px;
-}
-#searchButton button:hover{
-  background:green;
-  color:white;
-  font-weight:700;
-}
-
-#searchButton button:before,#searchButton button:after{
-  content:'';
-  position:absolute;
-  top:0;
-  right:0;
-  height:2px;
-  width:0;
-  background: white;
-  transition:400ms ease all;
-}
-#searchButton button:after{
-  right:inherit;
-  top:inherit;
-  left:0;
-  bottom:0;
-}
-#searchButton button:hover:before,#searchButton button:hover:after{
-  width:100%;
-  transition:800ms ease all;
-}
-
-
-
-/*header-img*/
-.header-img{
-	height: 300px;
-    background-image: url(../images/header.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center center;
-    margin-top: 10px;
-}
-
-#storeListNone {
-    width: 100%;
-    height: 300px;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 300px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    font-size: larger;
-}
-
-/*navbar*/
-.navbar{
-	height: 60px;
-    background-color: white;
-    font-family: 'Jua';
-    padding-left: 20px;
-    display: table-cell;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 99;
-}
-
-
-.navbar #menu{
-	float:right;
-	list-style:none;
-	margin: 0;
-	padding: 0;
-	line-height: 60px;	
-	margin-right: 30px;
-}
-
-.navbar #menu li.menuli{
-	width: 120px;
-	text-align: center;
+	padding: 20px;
 	float: left;
-	height:50px;
-	background-color: white;
+	margin-left: 5%;
 }
 
-.navbar #menu li a{
+#searchButton button {
+	text-align: center;
+}
+
+#searchButton button {
+	background: white;
 	color: black;
-    font-size: 18px;
-    text-decoration: none;
-    width:100%;
-}
-
-.navbar .logo{
-	height: 95%;
-    margin-top: 2px;
-} 
-
-.son{
-	width:100%;
-}
-
-.son li{
-	list-style:none;
-	width:100%;
-	background-color: white;
-}
-
-
-/* footer 스타일*/
-
-.footer{
-	margin-top:10px; 
-	padding: 50px 40px;
-    border-top: 1px solid #ebebeb;
-    background-color:white;
-}
-
-.footer .footer_content{
+	border: 1px solid black;
 	position: relative;
+	height: 50px;
+	width: 23%;
+	font-size: 0.8em;
+	padding: 0 2em;
+	cursor: pointer;
+	transition: 800ms ease all;
+	outline: none;
+	margin: 3px;
 }
 
-.manual_info{
-	display: inline-flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: reverse;
-    flex-direction: row-reverse;
-    -webkit-box-pack: justify;
-    justify-content: space-between;
-    padding-bottom: 25px;
-    border-bottom: 1px solid black;
-    width: 100%;
+#searchButton button:hover {
+	background: green;
+	color: white;
+	font-weight: 700;
 }
 
-.cs_service{
-    box-sizing: border-box;
-    margin-right: 0px;
-    margin-bottom: 20px;
+#searchButton button:before, #searchButton button:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 2px;
+	width: 0;
+	background: white;
+	transition: 400ms ease all;
 }
 
-.cs_service_title{
-    display: inline-flex;
-    -webkit-box-align: center;
-    align-items: center;
-    font-size: 17px;
-    letter-spacing: 1.16px;
-    font-weight: 700;
-}
-.cs_service .cs_consultant{
-	margin-left: 4px;
-	letter-spacing: normal;
-	text-decoration: none;
-	color: black;
-	font-size: 17px;
-    font-weight: bold;
-}
-
-.service_time{
-	padding-top: 7px;
-}
-
-.time_box{
-	line-height: 17px;
-}
-
-.sc_text{
-	font-size: 15px;
-    letter-spacing: -0.57px;
-    margin-top: 15px;
-}
+#searchButton button:after {
+	right: inherit;
+	top: inherit;
+	left: 0;
+	bottom: 0;
 }
 
 .sc_button{
@@ -281,21 +125,19 @@ div#searchButton {
 	text-decoration: none;
 	color:black;
 	font-size: 15px;
+#searchButton button:hover:before, #searchButton button:hover:after {
+	width: 100%;
+	transition: 800ms ease all;
 }
 
-.footer_menu_link{
-	display: inline-block;
-	font-size: 15px;
-	letter-spacing: 0.21px;
-}
 
-.notice_info{
+#storeListNone {
+	width: 100%;
+	height: 300px;
 	text-align: center;
-	margin-top: 15px;
-    padding: 10px;
-}
-
-.notice_info p {
-	margin-top: 5px;
-	color: black;
+	vertical-align: middle;
+	line-height: 300px;
+	font-weight: 700;
+	letter-spacing: 1px;
+	font-size: larger;
 }
