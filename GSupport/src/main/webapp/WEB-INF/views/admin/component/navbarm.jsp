@@ -5,7 +5,7 @@
 
 	<script>
 	function onLogoutClick() {
-		location.href = '${pageContext.request.contextPath}/logout.do';
+		location.href = '${pageContext.request.contextPath}/admin/logoutm.do';
 		}
 	
 	$(function(){
@@ -21,7 +21,7 @@
 	
     <!-- Navigation -->
     <div class="navbar">
-	    <a href="./access.do">
+	    <a href="./adminMain.do">
 	    	G원사격 - 관리페이지
     	</a>
     	<ul id="menu">

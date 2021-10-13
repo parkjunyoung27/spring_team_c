@@ -131,7 +131,9 @@ function star(no){
 					<div id="possible_time">
 					<% for(int i=9; i<=22; i++){ %>
 						<%for(int j=0; j<2; j++) {%>
-							<input type="radio" class="time_btn" id="reservTime" name="reservTime" required="required" value="<%=i%>:<%=j*3%>0"><%=i%>:<%=j*3%>0
+						<div class="radio_check">
+							<input type="radio" id="reservTime" name="reservTime" required="required" value="<%=i%>:<%=j*3%>0"><%=i%>:<%=j*3%>0
+						</div>
 						<%} %>
 					<% }%>	
 					

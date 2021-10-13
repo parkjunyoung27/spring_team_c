@@ -21,7 +21,7 @@
 	border-radius: 5px;
 	background-color: #EEEFF177;
 	margin-bottom: 150px;
-	margin-top:20%;
+	margin-top:15%;
 }
 
 #login-form p {
@@ -89,11 +89,11 @@ function accessCheck(){
 			//alert(data); //controller에서 넘어온 return값
 			if (data == 1) { 
 				alert('로그인에 성공했습니다.'); 
-				location.href="${pageContext.request.contextPath}/admin/adminMain.do";
+				location.href="./adminMain.do";
 			} else { 
 				alert("로그인에 실패했습니다." );
 				//window.location.reload();
-				location.href="${pageContext.request.contextPath}/admin/access.do";
+				location.href="./access.do";
 				 }}, 
 		error : function(request, status, error) {
 			alert("code:" + request.status + "\n" + "error:" + error); 

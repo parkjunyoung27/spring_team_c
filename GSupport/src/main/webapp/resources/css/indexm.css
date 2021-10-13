@@ -80,16 +80,17 @@ body{
 
 div#wrapper {
     width: 100%;
-    height: 1000px;
+    height: 800px;
     overflow: hidden;
     clear: both;
     margin-top: 60px;
 }
 
 #adminContainer {
-    width: 85%;
-    height: 85%;
+	width: 85%;
+    height: 90%;
     margin: 0 auto;
+    margin-left: 10%;
     margin-top: 3%;
     background-color: gray;
 }

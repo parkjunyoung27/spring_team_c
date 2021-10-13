@@ -23,7 +23,7 @@
             <!-- 왼쪽 서브 메뉴 -->
             <div class="left_sub_menu">
                 <div class="sub_menu">
-                    <h2>관리자님</h2>
+                    <h2>${sessionScope.name}님</h2>
                     <ul class="big_menu">
                         <li>가맹점 관리 <i class="arrow fas fa-angle-right"></i></li>
                         <ul class="small_menu">
@@ -45,6 +45,9 @@
                             <li><a href="#">가맹점 게시판 관리</a></li>                            
                             <li><a href="#">이용자 게시판 관리</a></li>                            
                         </ul>
+                    </ul>
+                    <ul class="big_menu">
+                        <li>로그 관리<i class="arrow fas fa-angle-right"></i></li>
                     </ul>
                 </div>
             </div>

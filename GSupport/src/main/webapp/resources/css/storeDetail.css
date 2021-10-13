@@ -116,6 +116,16 @@ div#reserve_btn_area {
     margin-bottom: 30px;
 }
 
+.radio_check {
+    width: 23%;
+    display: inline-block;
+    letter-spacing: 1px;
+}
+
+input#reservTime {
+    display: inline-block;
+}
+
 input.time_btn {
     width: 53px;
 }
