@@ -243,13 +243,14 @@ div#searchButton {
 	background-color: darkgray;
     border-radius: 0px;
     color: white;
-    font-size: 17px;
+    font-size: 15px;
     letter-spacing: 1.91px;
     text-decoration: none;
     padding: 5px;
     display: block;
-    width: 55%;
+    width: 42%;
     margin-top: 10px;
+    text-align: center;
 }
 
 .footer_menu{
