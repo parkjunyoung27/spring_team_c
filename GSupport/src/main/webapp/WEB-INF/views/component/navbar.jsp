@@ -27,9 +27,9 @@ header label.menu {
 	background:url('./images/GSupport.png') 0 0 no-repeat;
 	cursor:pointer;
 }
-/* 
-.container {max-width:1200px; margin:0 auto;}
-.container img {max-width:100%;} */
+ 
+.container1 {max-width:1200px; margin:0 auto;}
+.container1 img {max-width:100%;} 
 
 .sidebar_content{
 	position:fixed;
@@ -148,14 +148,14 @@ input[id="tab03"]:checked ~ .con3 {display:block;transition:all .35s;}
     	</ul>
     	
     	<input type="checkbox" id="sidebar" hidden="hidden">
-    	<!-- 
+    	
     	<input type="checkbox" id="sidebar">
     	<header>
     		<div>
     			<label for="sidebar" class="menu"></label>
     		</div>
     	</header>   	
-    	<div class="container">
+    	<div class="container1">
     	</div>
     	<div class="sidebar_content">
     		
@@ -185,7 +185,7 @@ input[id="tab03"]:checked ~ .con3 {display:block;transition:all .35s;}
     		
     		
     	</div>
-    	<label for="sidebar" class="background"></label> -->
+    	<label for="sidebar" class="background"></label>
     	
     </div>
     
