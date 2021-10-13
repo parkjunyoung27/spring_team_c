@@ -26,25 +26,48 @@
 }
 
 #login-form p {
-	margin-top: 5px;
+	position:fixed;
+	top:10%;
+	width: 80%;
+	left:50%;
+	border: none;
+	border-radius: 5px;
+	transform:translate(-50%);
 	text-align: center;
 	margin-bottom: 0px;
 	font-size: 23px;
 }
 
-.text-field {
-	width: 460px;
-	height: 50px;
+#id {
+	position:fixed;
+	width: 60%;
+	left:50%;
+	height: 40px;
 	border: none;
 	border-radius: 5px;
 	font-size: 14px;
-	margin-bottom: 10px;
-	padding: 10px;
+	transform:translate(-50%);
+	bottom:50%;
+}
+
+#pw {
+	position:fixed;
+	width: 60%;
+	left:50%;
+	height: 40px;
+	border: none;
+	border-radius: 5px;
+	font-size: 14px;
+	transform:translate(-50%);
+	bottom:40%;
 }
 
 .submit-btn {
-	width: 100%;
+	position:fixed;
+	width: 60%;
 	height: 50px;
+	left:50%;
+	transform:translate(-50%);
 	border: none;
 	background-color: #728FCE;
 	border-radius: 5px;
@@ -54,12 +77,17 @@
 	padding: 10px;
 	letter-spacing: 5px;
 	font-weight: 600;
+	bottom:18%;
 }
 
 .links {
+	position:fixed;
+	margin: 0 auto;
 	width: 100%;
 	text-align: center;
-	margin-top: 0px;
+	left:50%;
+	transform:translate(-50%);
+	bottom:5%;
 }
 
 .links a {
@@ -71,10 +99,20 @@
 	text-decoration: none;
 }
 
-.login_other_img img {
-	width: 30%;
-	height: auto;
+
+#login_other{
+	position:fixed;
+	margin: 0 auto;
+	left:50%;
+	bottom:10%;
+	transform:translate(-50%);
 }
+
+#login_other > a > img {
+	width: 50px;
+	height: 50px;
+}
+
 </style>
 
 <script type="text/javascript">
@@ -104,6 +142,7 @@
 					name="pw" class="text-field" placeholder="암호를 입력하세요"
 					required="required">
 				<button type="submit" value="로그인" class="submit-btn">LOGIN</button>
+			</form>
 
 				<div id="login_other">
 					<!-- <a href="kakaoLogin.do">카카오</a> -->
@@ -113,24 +152,24 @@
 					<a
 						href="https://kauth.kakao.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code"
 						class="login_other_img"> <img
-						src="./resources/images/kakao_login.png" />
+						src="./resources/images/kakao_icon.png" />
 					</a>
 					<!-- 네이버 로그인 화면으로 이동 시키는 URL -->
 					<!-- 네이버 로그인 화면에서 ID, PW를 올바르게 입력하면 callback 메소드 실행 요청 -->
-					<a href="http://gsupport.xyz/naverlogin.do" class="login_other_img">
+					&emsp;&emsp;<a href="http://gsupport.xyz/naverlogin.do" class="login_other_img">
 						<img
-						src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png" />
+						src="./resources/images/naver_icon.png" />
 					</a>
 
 					<!-- 구글 로그인 화면으로 이동 시키는 URL -->
 					<!-- 구글 로그인 화면에서 ID, PW를 올바르게 입력하면 oauth2callback 메소드 실행 요청-->
-					<a href="./googleLogin.do">구글</a>
+					&emsp;&emsp;<a href="./googleLogin.do"><img
+						src="./resources/images/google_icon.png" /></a>
 				</div>
 
 				<div class="links">
-					<a><label for="tab02">회원 가입</label></a> &emsp;|&emsp;<a href="./member.do">PW 찾기</a>
+					<a><label for="tab02">회원 가입</label></a> &emsp;|&emsp;<a><label for="tab03">PW 찾기</label></a>
 				</div>
-			</form>
 
 		</div>
 

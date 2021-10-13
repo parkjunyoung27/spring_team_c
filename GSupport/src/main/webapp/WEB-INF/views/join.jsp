@@ -253,48 +253,28 @@ $(function(){
 			<h2>회 원 가 입</h2><br>
 			<p id="joinErr"></p>
 			
-			<form action="./join.do" method="post" onsubmit="return join()">
-				<div id="jactionp">
-					<p id="join_id" class="join_p">
-					<span class="jtitle">이메일</span>
-					<input type="text" name="id" id="id" onchange="checkID()">
-					</p>
-									
-					<p id="join_name" class="join_p">
-						<span class="jtitle">이름</span>
-						<input type="text" name="name" id="name">
-					</p>
-									
-					<p id="join_pw" class="join_p_pw">
-						<span class="jtitle">비밀번호</span>
-						<input type="password" id="pw1" name="pw" class="jpw1" placeholder="비밀번호를 입력해주세요" ><br>
-						<input type="password" id="pw2" name="pw2" class="jpw2" placeholder="비밀번호 확인" onchange="isSame()">
-						<span id="same"></span>
-					</p>
-					
-					<a href="./emailCheck.do">이메일 테스트</a>
-									
-					<p id="join_email" class="join_p">
-						<span class="jtitle">이메일</span>
-						<input type="email" name="email" id="email" hidden="hidden">
-					</p>	
-											
-					<p id="join_birth" class="join_p">
-						<span class="jtitle">생년월일</span>
-						<input type="date" name="birthDate" id="date">
-					</p>
-					<input type="hidden" name="channel" value="web">
-					<button type="submit">가입</button>
+			<form action="${pageContext.request.contextPath }/join.do" method="post" autocomplete="off">
+				<div>
+					<input type="text" id="id" name="id" class="join_input" placeholder="아이디" required="required" onchange="checkID()" oninput="handleOnEmail(this)" onfocus="focusID()">
 				</div>
-							
-				<div id="jsubb">
-						<button type="submit" id="join_join">가입하기</button>
-						<p id="jsarea">
-						<button type="reset" id="join_reset">초기화하기</button> &nbsp;|&nbsp;
-						<a id="join_index"><label for="tab01">로그인하러가기</label></a>						
-					</p>
+				<div>
+					<input type="text" id="name" name="name" class="join_input" placeholder="닉네임" required="required" onchange="checkName()" oninput="handleOnInput(this)" onfocus="focusName()">
 				</div>
-			</form>
+				<div>
+					<input type="password" id="password" name="password" class="join_input" placeholder="비밀번호" required="required" onchange="isSame()" onfocus="focusPw()">
+				</div>
+				<div>
+					<input type="password" id="confirmPassword" name="confirmPassword" class="join_input" placeholder="비밀번호 확인" required="required" onchange="isSame()">
+				</div>
+			
+				<div>
+					<input type="date" id="birth_date" name="birth_date" class="join_input" placeholder="생일" required="required" onchange="checkBirth()" onfocus="focusBirth()">
+				</div>
+			
+					<input type="hidden" id="joinSubmit" name="joinSubmit" value="가입하기">
+		</form>
+					<input type="submit" id="joinConfirm" name="joinConfirm" value="확인하기" onclick="joinConfirm()">
+		
 		</div>
 	</div>
 	

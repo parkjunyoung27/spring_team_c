@@ -34,9 +34,11 @@ header label.menu {
 .sidebar_content{
 	position:fixed;
 	top:-500px;
-	right:25%;
+	left:50%;
 	width:50%;
+	max-width:500px;
 	height:500px;
+	transform:translate(-50%);
 	border-radius: 5px;
 	background:#999;
 	overflow:auto;
@@ -77,6 +79,14 @@ header label.menu {
 	visibility:hidden;
 	z-index:1;
 }
+
+#channel_icon {
+	position:relative;
+	width:18px;
+	height:18px;
+	bottom:-2px;
+}
+
 input#sidebar:checked ~ header label {background-position:-24px 0;}
 input#sidebar:checked ~ .sidebar_content {top:25%;}
 input#sidebar:checked ~ .background {opacity:1;visibility:visible;}
@@ -133,10 +143,15 @@ input[id="tab03"]:checked ~ .con3 {display:block;transition:all .35s;}
 		   <li class="menuli">
 		   	    <c:choose>
 					<c:when test="${sessionScope.name ne null}">
-		      			 <a href="./message.do" class="">${sessionScope.name}님 ${sessionScope.authUser}</a>
+		      			 <a>${sessionScope.name}님
+		      			 		<c:if test="${authUser eq 'kakao'}"><img id=channel_icon src="${pageContext.request.contextPath}/resources/images/kakao_channel.png"></c:if>
+		      			 		<c:if test="${authUser eq 'naver'}"><img id=channel_icon src="${pageContext.request.contextPath}/resources/images/naver_channel.png"></c:if>
+		      			 		<c:if test="${authUser eq 'google'}"><img id=channel_icon src="${pageContext.request.contextPath}/resources/images/google_channel.png"></c:if>
+		      			 		<c:if test="${authUser eq 'web'}"><img id=channel_icon src="${pageContext.request.contextPath}/resources/images/web_channel.png"></c:if></a>
+								
 						<ul class="son">
 							<li><a href="./myPage.do">내 정보</a></li>
-							<li><a>쪽지</a></li>
+							<li><a href="./message.do">쪽지</a></li>
 							<li><a onclick="onLogoutClick();">로그아웃</a></li>
 						</ul>
 					</c:when>
@@ -174,10 +189,8 @@ input[id="tab03"]:checked ~ .con3 {display:block;transition:all .35s;}
     			<div class="conbox con2">
 					<c:import url="/WEB-INF/views/join.jsp" />    			
     			</div>
-    			<div class="conbox con3">내용3333333333333333
-    				<label for="tab01">버튼1</label>
-    				<label for="tab02">버튼2</label>
-    				<label for="tab03">버튼3</label>
+    			<div class="conbox con3">
+					<c:import url="/WEB-INF/views/member.jsp" />
     			</div>
     		</div>
     		
