@@ -87,7 +87,7 @@ function disLike(no){
 				</c:otherwise>
 				</c:choose>
 				</c:if>
-					<c:if test="${sessionScope.id ne null }">
+					<%-- <c:if test="${sessionScope.id ne null }">
 						<c:choose>
 							<c:when test="true">
 								<span
@@ -104,7 +104,7 @@ function disLike(no){
 								</span>
 							</c:otherwise>
 						</c:choose>
-					</c:if>
+					</c:if> --%>
 				</h3>
 			</div>
 			<br>
@@ -195,7 +195,7 @@ function disLike(no){
 						<a href='./login.do'>로그인하기</a>
 					</div>
 				</c:otherwise>
-					<c:when test="${sessionScope.id ne null }">
+					<%-- <c:when test="${sessionScope.id ne null }">
 						<div id="storeReservDetail">
 							<h2 style="margin-top: 10px; margin-bottom: 10px;">예약하기</h2>
 							<div id="possible_time">
@@ -259,7 +259,7 @@ function disLike(no){
 							예약을 원하시면 로그인을 해주세요.<br>
 							<br> <a href='./login.do'>로그인하기</a>
 						</div>
-					</c:otherwise>
+					</c:otherwise> --%>
 				</c:choose>
 
 			</form>
