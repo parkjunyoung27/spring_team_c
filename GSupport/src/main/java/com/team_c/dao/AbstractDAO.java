@@ -74,8 +74,23 @@ public class AbstractDAO {
 		return sqlSession.update(queryID, map);
 	}
 	
-	public void delete(String queryID, Map<String, Object> map) {
-		sqlSession.delete(queryID, map);
+	public int delete(String queryID, Map<String, Object> map) {
+		return sqlSession.delete(queryID, map);
+	}
+	
+	//즐겨찾기
+	public void storeLike(String queryID, Map<String, Object> map) {
+		sqlSession.insert(queryID, map);
+	}
+	
+	//즐겨찾기 중복 검사
+	public int likeCheck(String queryID, Map<String, Object> map) {
+		return sqlSession.selectOne(queryID, map);
+	}
+	
+	//즐겨찾기 삭제
+	public void likeDelete(String queryID, Map<String, Object> map) {
+		 sqlSession.delete(queryID, map);
 	}
 	
 }

@@ -39,9 +39,17 @@
 		INSERT INTO shop_like (shop_no, member_no) VALUES (#{shop_no}, (SELECT member_no FROM member WHERE member_id=#{id}))
 	</insert>
 	
-	<delete id="storeDisLike" parameterType="HashMap">
-		DELETE FROM shop_like WHERE shop_no=#{shop_no}, member_no=(SELECT member_no FROM member WHERE member_id=#{id})
+	<delete id="storeDislike" parameterType="HashMap">
+		DELETE FROM shop_like WHERE shop_no=#{shop_no} AND member_no=(SELECT member_no FROM member WHERE member_id=#{id})
 	</delete>
+	
+	<select id="storeLikeCheck" parameterType="HashMap" resultType="Integer">
+		SELECT count(*) FROM shop_like WHERE shop_no=#{shop_no} AND member_no=(SELECT member_no FROM member WHERE member_id=#{id})
+	</select>
+	
+	<select id="likeList" parameterType="HashMap" resultType="Integer">
+		SELECT count(*) FROM shop_like WHERE shop_no=#{shop_no} AND member_no=(SELECT member_no FROM member WHERE member_id=#{id})
+	</select>
 	
 	
 </mapper>

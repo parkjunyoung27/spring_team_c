@@ -34,12 +34,20 @@ public class StoreDAO extends AbstractDAO{
 		return Integer.parseInt(String.valueOf(selectOne("store.totalCount", map).get("totalCount")));
 	}
 
-	public int storeLike(Map<String, Object> map) {
-		return Insert("store.storeLike", map);
+	public void storeLike(Map<String, Object> map) {
+		storeLike("store.storeLike", map);
 	}
 
 	public void storeDislike(Map<String, Object> map) {
-		delete("store.storeDislike", map);
+		likeDelete("store.storeDislike", map);
+	}
+
+	public int storeLikeCheck(Map<String, Object> map) {
+		return likeCheck("store.storeLikeCheck", map);
+	}
+
+	public int likeList(Map<String, Object> map) {
+		return likeCheck("store.likeList", map);
 	}
 
 	

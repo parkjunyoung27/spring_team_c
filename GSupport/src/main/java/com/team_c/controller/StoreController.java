@@ -26,9 +26,19 @@ public class StoreController {
 
 	// storeDetail.do?shop_no=1
 	@GetMapping("/storeDetail.do")
-	public ModelAndView storeDetail(CommandMap commandMap) {
+	public ModelAndView storeDetail(CommandMap commandMap, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("storeDetail");
 		Map<String, Object> storeDetail = storeService.storeDetail(commandMap.getMap());
+		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		System.out.println(id);
+		if(id != null) {
+			int list = storeService.likeList(commandMap.getMap());
+			System.out.println("리스트 : " + list);
+			mv.addObject("list", list);
+		}
+		
 		System.out.println("스토어" + storeDetail);
 		mv.addObject("storeDetail", storeDetail);
 		// mv.setViewName("storeDetail");
@@ -151,19 +161,38 @@ public class StoreController {
 			commandMap.put("id", id);
 			commandMap.put("shop_no", shop_no);
 			
-			int result = storeService.storeLike(commandMap.getMap());
-			if(result == 1) {
-				System.out.println("즐찾 성공");
-				return "redirect:/storeDetail.do?shop_no="+shop_no;
-			}else {
-				storeService.storeDislike(commandMap.getMap());
-				System.out.println("즐찾 실패");
-				return "redirect:/storeDetail.do?shop_no="+shop_no;
-			}
-			
+			storeService.storeLike(commandMap.getMap());
+		
+			System.out.println("즐찾 성공");
+			return "redirect:/storeDetail.do?shop_no="+shop_no;
+				
+		}else {
+			return "redirect:/storeDetail.do?shop_no="+shop_no;
 		}
 		
-		return "redirect:/storeDetail.do?shop_no="+shop_no;
+	}
+	
+	@RequestMapping("/storeDisLike.do")
+	public String storeDisLike(CommandMap commandMap, HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		String shop_no = request.getParameter("shop_no");
+		//System.out.println("id : " + id);
+		//System.out.println("shop_no : " + shop_no);
+		if(id != null && shop_no != null) {
+			commandMap.put("id", id);
+			commandMap.put("shop_no", shop_no);
+			
+			storeService.storeLike(commandMap.getMap());
+		
+			System.out.println("즐찾 취소 성공");
+			return "redirect:/storeDetail.do?shop_no="+shop_no;
+				
+		}else {
+			return "redirect:/storeDetail.do?shop_no="+shop_no;
+		}
+		
 	}
 	
 	
