@@ -16,20 +16,18 @@
 <style>
 #login-form {
 	margin: 0 auto;
-	height: 520px;
-	width: 500px;
-	margin-top: 100px;
+	height: 500px;
+	width: auto;
 	border: none;
-	padding: 20px;
+	padding: 10px;
 	border-radius: 5px;
-	background-color: #EEEFF177;
-	margin-bottom: 150px;
+	background-color: white;
 }
 
 #login-form p {
-	margin-top: 0;
+	margin-top: 5px;
 	text-align: center;
-	margin-bottom: 15px;
+	margin-bottom: 0px;
 	font-size: 23px;
 }
 
@@ -60,7 +58,7 @@
 .links {
 	width: 100%;
 	text-align: center;
-	margin-top: 30px;
+	margin-top: 0px;
 }
 
 .links a {
@@ -73,8 +71,8 @@
 }
 
 .login_other_img img {
-	width: 49%;
-	height: 50px;
+	width: 30%;
+	height: auto;
 }
 </style>
 
@@ -90,17 +88,11 @@
 </script>
 
 </head>
-<body>
-	<header>
-		<!-- navbar -->
-		<%@ include file="./component/navbar.jsp"%>
-	</header>
 
-	<main>
 		<div id="login-form">
 			<p>
 				<img src="./resources/images/logo2.png" alt="logo" class="logo"
-					width="70%"><br> "Don't you get hungry"
+					width="60%"><br> "Don't you get hungry"
 			</p>
 
 			<form action="${pageContext.request.contextPath}/login.do"
@@ -135,14 +127,10 @@
 				</div>
 
 				<div class="links">
-					<a href="./join.do">회원 가입</a> &emsp;|&emsp;<a href="./member.do">PW 찾기</a>
+					<a><label for="tab02">회원 가입</label></a> &emsp;|&emsp;<a href="./member.do">PW 찾기</a>
 				</div>
 			</form>
 
 		</div>
 
-		<footer>
-			<%@ include file="./component/footer.jsp"%>
-		</footer>
-</body>
 </html>

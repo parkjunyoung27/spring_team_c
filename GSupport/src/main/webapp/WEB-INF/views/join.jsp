@@ -12,30 +12,18 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <style>
-#board{
-	margin: 0 auto;
-	width: 700px;
-	min-height: 600px;
-	margin-top:30px;
-	border: 2px white solid;
-	background-color: white;
-	border-radius: 10px;
-	margin-bottom: 100px;
-}
 
 #join_form h2{
 	text-align: center;
-	margin-top: 5px;
 }
 
 #join_form{
-    width: 80%;
+    width: auto;
     min-height: 500px;
-    margin: 10px auto 10px;
-    padding: 10px 0px 0px 10px;
-    position: relative;
+    margin: 0 auto;
+    padding: 10px;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     font-size: 18px;
     font-weight: 700;
     background-color: #EEEFF177;
@@ -115,7 +103,7 @@
 }
 
 #jsubb{
-	padding: 5px;
+	padding: 0;
 }
 
 #resultText{
@@ -258,13 +246,7 @@ $(function(){
 
 </script>
 
-<body>
-	<header>
-		<!-- navbar -->
-		<%@ include file= "./component/navbar.jsp"%>
-	</header>
-	
-	<main>
+
 	<div id= "board">
 		<div id ="join_form">
 			<h2>회 원 가 입</h2><br>
@@ -308,7 +290,7 @@ $(function(){
 						<button type="submit" id="join_join">가입하기</button>
 						<p id="jsarea">
 						<button type="reset" id="join_reset">초기화하기</button> &nbsp;|&nbsp;
-						<a href="./login.do" id="join_index">로그인하러가기</a>						
+						<a id="join_index"><label for="tab01">로그인하러가기</label></a>						
 					</p>
 				</div>
 			</form>
@@ -316,11 +298,4 @@ $(function(){
 	</div>
 	
 	
-	</main>
-	
-	<footer>
-		<%@ include file= "./component/footer.jsp"%>	
-	</footer>
-	
-</body>
 </html>

@@ -32,11 +32,13 @@ header label.menu {
 
 .sidebar_content{
 	position:fixed;
-	top:-300px;
+	top:-500px;
 	right:25%;
 	width:50%;
-	height:300px;
+	height:500px;
+	border-radius: 5px;
 	background:#999;
+	overflow:auto;
 	transition:all .35s;
 	z-index:5;
 }
@@ -74,9 +76,23 @@ header label.menu {
 	visibility:hidden;
 	z-index:1;
 }
-input#sidebar:checked ~ header laber {background-position:-24px 0;}
+input#sidebar:checked ~ header label {background-position:-24px 0;}
 input#sidebar:checked ~ .sidebar_content {top:25%;}
 input#sidebar:checked ~ .background {opacity:1;visibility:visible;}
+
+
+input[type="radio"] {display:none;}
+/* input[type="radio"] + label {display:inline-block;padding:20px;background:#ccc;color:#999;font-size:14px;cursor:pointer;} */
+/* input[type="radio"] :checked + label {background:#aaa;color:#000;} */
+
+.conbox {position:absolute;width:100%;height:100%;background:#aaa;margin:0 auto;display:none;}
+input[id="tab01"]:checked ~ .con1 {display:block;transition:all .35s;}
+input[id="tab02"]:checked ~ .con2 {display:block;transition:all .35s;}
+input[id="tab03"]:checked ~ .con3 {display:block;transition:all .35s;}
+
+
+
+
 </style>
 
 
@@ -124,13 +140,13 @@ input#sidebar:checked ~ .background {opacity:1;visibility:visible;}
 						</ul>
 					</c:when>
 					<c:otherwise>
-						<a href="${pageContext.request.contextPath}/login.do">로그인</a>
+						<a><label for="sidebar" class="menu">로그인</label></a>
 					</c:otherwise>
 				</c:choose>
 			</li>
     	</ul>
     	
-    	<input type="checkbox" id="sidebar">
+    	<input type="checkbox" id="sidebar" hidden="hidden">
     	<header>
     		<div>
     			<label for="sidebar" class="menu"></label>
@@ -139,7 +155,28 @@ input#sidebar:checked ~ .background {opacity:1;visibility:visible;}
     	<div class="container"></div>
     	<div class="sidebar_content">
     		
-    		<input type="email">
+    		
+    		<div class="tab_content">
+    			<input type="radio" name="tabmenu" id="tab01" checked>
+    			<label for="tab01"></label>
+    			<input type="radio" name="tabmenu" id="tab02">
+    			<label for="tab02"></label>
+    			<input type="radio" name="tabmenu" id="tab03">
+    			<label for="tab03"></label>
+    			
+    			<div class="conbox con1">
+    				<c:import url="/WEB-INF/views/login.jsp" />
+    			</div>
+    			<div class="conbox con2">
+					<c:import url="/WEB-INF/views/join.jsp" />    			
+    			</div>
+    			<div class="conbox con3">내용3333333333333333
+    				<label for="tab01">버튼1</label>
+    				<label for="tab02">버튼2</label>
+    				<label for="tab03">버튼3</label>
+    			</div>
+    		</div>
+    		
     		
     		
     		
