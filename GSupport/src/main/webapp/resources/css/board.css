@@ -71,8 +71,9 @@ ul li {list-style:none; }
 	padding: 0px;
 }
 .w10 {width:10%; }
-.w50 {width:60%; }
+.w15 {width:15%; }
 .w20 {width:20%; }
+.w50 {width:50%; }
 
 .title {
     margin-top: 10px;

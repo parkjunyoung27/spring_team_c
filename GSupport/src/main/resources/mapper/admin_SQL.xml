@@ -8,5 +8,12 @@
 		AND member_grade = 3 
 	</select>
 	
+	<select id="logList" resultType="HashMap">
+		SELECT * FROM log limit #{startPage}, #{lastPage}
+	</select>
+		
+	<select	id="totalCount" parameterType="HashMap" resultType="HashMap">
+		SELECT COUNT(*) as totalCount FROM log
+	</select>
 	
 </mapper>

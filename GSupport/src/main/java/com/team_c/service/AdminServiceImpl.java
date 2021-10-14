@@ -27,5 +27,17 @@ public class AdminServiceImpl implements AdminService{
 		return adminDAO.access(map);
 	}
 
+	@Override
+	public List<Map<String, Object>> logList(Map<String, Object> map) {
+		return adminDAO.logList(map);
+	}
+
+	@Override
+	public int totalCount(Map<String, Object> map) {
+		return adminDAO.totalCount(map);
+	}
+
+
+
 	
 }

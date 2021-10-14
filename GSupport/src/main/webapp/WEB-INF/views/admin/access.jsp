@@ -8,9 +8,9 @@
 <meta charset="UTF-8">
 <title>관리자 페이지</title>
 <link href="../resources/css/index.css" rel="stylesheet"> 
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <style>
+
 #login-form {
 	margin: 0 auto;
 	height: auto;
@@ -75,13 +75,15 @@
 	height: 50px;
 }
 </style>
+<!-- pagecontext는 굳이 할 필요없음 -->
+
 <script>
 function accessCheck(){
 	
 	var data=$("#access").serialize();
 	
 	$.ajax({
-		url: "${pageContext.request.contextPath}/admin/access.do", //ajax url 보낼때 사용
+		url: "./access.do", //ajax url 보낼때 사용
 		type:"POST",
 		data: data,
 		dataType: "text",

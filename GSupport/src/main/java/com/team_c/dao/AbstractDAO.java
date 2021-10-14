@@ -1,12 +1,18 @@
 package com.team_c.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import com.team_c.util.Util;
 
 public class AbstractDAO {
 
@@ -14,12 +20,33 @@ public class AbstractDAO {
 
 	@Autowired
 	private SqlSessionTemplate sqlSession;
+	@Autowired
+	private Util util;
+	@Autowired
+	private HttpServletRequest request;
+	@Autowired
+	private HttpSession session;
 
 	protected void printQueryId(String queryId) {
+		
 		if (log.isDebugEnabled()) {
 			log.debug("\t QueryId \t: " + queryId);
 		}
+		
+		String ip = util.getUserIp(request);
+		String target = queryId;
+		String id = (String) session.getAttribute("id");
+		String data = session.getAttribute("id") + "가 " + target + "(으)로 접근";
+		
+		Map<String, Object> send = new HashMap<String, Object>();
+		send.put("ip", ip);
+		send.put("target", target);
+		send.put("id", id);
+		send.put("data", data);
+		sqlSession.insert("log.writelog",send);	
+		
 	}
+	
 
 	public List<Map<String, Object>> selectList(String queryId) {
 		printQueryId(queryId);

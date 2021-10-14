@@ -118,7 +118,7 @@
         }
 
         .sub_menu>.big_menu>.small_menu li {
-            color: #333;
+            color: #797979;
             font-size: 14px;
             font-weight: 600;
             border-bottom: 0px solid #e1e1e1;
@@ -139,6 +139,16 @@
             text-decoration: none;
             background-color: transparent;
         }
+        
+        .small_menu li{
+            color: #797979;
+            text-decoration: none;
+            background-color: transparent;
+        }
+        
+        a.adminCategory {
+ 		   color: black;
+		}
 
         ul {
             list-style: none;
@@ -155,7 +165,6 @@
         }
 
         .overlay {
-		    position: fixed;
 		    width: 100%;
 		    height: 100%;
         }

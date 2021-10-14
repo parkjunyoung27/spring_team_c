@@ -12,4 +12,11 @@ public interface AdminService {
 	
 	//관리자 login
 	Map<String, Object> access(Map<String, Object> map);
+	
+	//관리자 logList 출력
+	List<Map<String, Object>> logList(Map<String, Object> map);
+	
+	//totalCount
+	public int totalCount(Map<String, Object> map);
+	
 }
