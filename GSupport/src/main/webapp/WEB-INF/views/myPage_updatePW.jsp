@@ -98,13 +98,19 @@
 			return false;
 		} else {
 			$("#checkResult2").css("color", "green");
-			$("#checkResult2").text("");
+			$("#checkResult2").text("일치합니다.");
 			$("#pwEdit").attr("disabled", false);
 			return true;
 		}
 	}
-	function submit() {
-		alert("비밀번호가 수정되었습니다.");
+	function mypageUpdate() {
+		if (confirm("수정하시겠습니까?")) {
+			alert("수정 되었습니다.");
+			return true;
+		} else {
+			alert("취소 되었습니다.");
+			return false;
+		}
 	}
 </script>
 </head>
@@ -163,13 +169,8 @@
 
 
 
-							<button class="button_submit" id="pwEdit" type="submit"
+							<button class="button_submit" id="pwEdit" type="submit" onclick="return mypageUpdate()"
 								disabled="disabled">비밀번호 수정</button>
-							<c:if test="${param.msg eq 'ok'}">
-								<script type="text/javascript">
-									alert("비밀번호가 성공적으로 변경되었습니다.");
-								</script>
-							</c:if>
 						</form>
 					</div>
 

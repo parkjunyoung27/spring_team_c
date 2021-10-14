@@ -129,8 +129,9 @@ public class MypageController {
 		HttpSession session = request.getSession();
 		if (session.getAttribute("member_id") != null) {
 			commandMap.put("member_id", session.getAttribute("member_id"));
-			mypageService.myPageUpdatePW(commandMap.getMap());
-			return "redirect:/index";
+			mypageService.myPageDelete(commandMap.getMap());
+			session.invalidate();
+			return "redirect:/index.do";
 		} else {
 			return "redirect:/login.do";
 		}

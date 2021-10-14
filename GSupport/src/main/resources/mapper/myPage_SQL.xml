@@ -33,7 +33,7 @@
 	
 	<delete id="mypageDelete" parameterType="HashMap">
 		DELETE FROM member 
-		WHERE member_id=#{id}
+		WHERE member_id=#{member_id}
 	</delete>
 	
 	<update id="reservCancel" parameterType="HashMap">

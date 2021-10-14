@@ -95,7 +95,7 @@
 						탈퇴하신 ID는 다시 사용하실 수 없습니다. <br> 회원탈퇴 후 재가입은 탈퇴일로부터 30일 이후
 						가능합니다. <br>
 					</p>
-				<form action="./mypageDelete.do" method="post">
+				<form action="./myPage_delete.do" method="post">
 					<button onclick="return mypageDelete()" class="button_submit"
 						type="submit">회원 탈퇴하기</button>
 				</form>
