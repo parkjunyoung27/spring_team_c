@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team_c.common.CommandMap;
@@ -194,6 +195,27 @@ public class MypageController {
 		ModelAndView mv = new ModelAndView("myPage_bookmark");
 		
 		return mv;
+	}
+	
+	@RequestMapping("/reservCancel.do")
+	public String reservCancel(CommandMap map, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		
+		String id = (String)session.getAttribute("id");
+		String shop_no = request.getParameter("shop_no");
+		
+		if(id != null && shop_no != null) {
+			map.put("id", id);
+			map.put("shop_no", shop_no);
+			
+			mypageService.reservCancel(map.getMap());
+			System.out.println("삭제성공");
+			return "redirect:/myPage_reserv.do";
+		}else {
+			System.out.println("삭제실패");
+			return "redirect:/myPage_reserv.do";
+		}
+		
 	}
 	
 

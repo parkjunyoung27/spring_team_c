@@ -32,4 +32,8 @@ public class MypageDAO extends AbstractDAO {
 		delete("mypage.mypageDelete", map);
 	}
 
+	public void reservCancel(Map<String, Object> map) {
+		update("mypage.reservCancel", map);
+	}
+
 }

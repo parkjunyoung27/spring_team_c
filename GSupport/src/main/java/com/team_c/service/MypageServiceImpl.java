@@ -43,5 +43,9 @@ public class MypageServiceImpl implements MypageService {
 		mypageDAO.mypageDelete(map);
 	}
 
+	public void reservCancel(Map<String, Object> map) {
+		mypageDAO.reservCancel(map);
+	}
+
 
 }
