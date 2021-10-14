@@ -136,5 +136,13 @@ public class MypageController {
 		}
 
 	}
+	
+	@GetMapping("/myPage_bookmark.do")
+	public ModelAndView myPage_bookmark(CommandMap map, HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("myPage_bookmark");
+		
+		return mv;
+	}
+	
 
 }
