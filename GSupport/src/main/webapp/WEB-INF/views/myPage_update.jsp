@@ -20,7 +20,7 @@
 .customer-content {
 	float: center;
 	padding-bottom: 50px;
-	border-bottom: 1px solid #d8d8d8;
+	border-bottom: 0.5px solid #d8d8d8;
 }
 
 .customer-content-header {
@@ -54,8 +54,18 @@
 	width: 500px;
 	height: 50px;
 	font-size: 20px;
- 	text-align: center;
- }
+	text-align: center;
+}
+
+.input-text-readonly {
+	margin-bottom: 10px;
+	width: 500px;
+	height: 50px;
+	font-size: 20px;
+	text-align: center;
+	background-color: #C8C8C8;
+	font-weight: bold;
+}
 
 .button_submit {
 	width: 500px;
@@ -67,6 +77,17 @@
 	color: white;
 }
 </style>
+<script type="text/javascript">
+	function mypageUpdate() {
+		if (confirm("수정하시겠습니까?")) {
+			alert("수정 되었습니다.");
+			return true;
+		} else {
+			alert("취소 되었습니다.");
+			return false;
+		}
+	}
+</script>
 </head>
 <body>
 
@@ -86,49 +107,48 @@
 					</div>
 					<div class="customer-account-container">
 						<div class="customer-formbox">
-							<form method="POST" class="" action="account">
-							
+
+							<form action="./myPage_update.do" method="post">
+				
 								<div class="field_row">
-									<div class="field_title">이메일</div>
+									<div class="field_title">아이디</div>
 									<div class="field_label">
-										<input type="text" class="input-text" placeholder=""
-											readonly="readonly" value="${sessionScope.email}">
+										<input type="text" class="input-text-readonly" name="id"
+											value="${myinfo.member_id}" readonly="readonly">
 									</div>
 								</div>
 
 								<div class="field_row">
 									<div class="field_title">이름</div>
 									<div class="field_label">
-										<input type="text" class="input-text" placeholder=""
-											readonly="readonly" value="${sessionScope.name}">
+										<input type="text" class="input-text-readonly" name="name"
+											placeholder="" readonly="readonly" value="${myinfo.member_name}">
 									</div>
 
 								</div>
-								
+
 								<div class="field_row">
-									<div class="field_title">아이디</div>
-								<form action="./myinfoUpdate.do" method="post">
+									<div class="field_title">이메일</div>
 									<div class="field_label">
 										<input type="text" class="input-text" placeholder=""
-											value="${sessionScope.member_id}">
+											name="email" value="${myinfo.member_email }">
 									</div>
-									
-									</form>
 								</div>
 
 								<div class="field_row">
 									<div class="field_title">연락처</div>
 									<div class="field_label">
-										<input type="text" class="input-text" value="${sessionScope.phonenum }">
+										<input type="text" class="input-text" name="phonenum"
+											value="${myinfo.member_phonenum }">
 									</div>
 
 								</div>
 
 
+								<button id="" class="button_submit"
+									onclick="return mypageUpdate()" type="submit">회원정보 수정</button>
 
 							</form>
-
-							<button class="button_submit" type="submit">회원정보 수정</button>
 						</div>
 
 					</div>
@@ -137,11 +157,11 @@
 			</div>
 		</div>
 	</div>
-	
-	
+
+
 	<!-- footer -->
-	<%@ include file= "./component/footer.jsp"%>
-	
+	<%@ include file="./component/footer.jsp"%>
+
 
 </body>
 </html>

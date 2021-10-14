@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"	
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="myPage">	
+<mapper namespace="mypage">	
 	
 	<select id="mypageList" parameterType="HashMap" resultType="HashMap">
 		SELECT member_id, member_name, member_pw, member_phonenum, member_email
-		FROM member
+		FROM member WHERE member_id=#{member_id}
 	</select>
 	
-	<update id="mypageUpdate" parameterType="HashMap">
+	<update id="myPageUpdate" parameterType="HashMap">
 		UPDATE member
 		SET member_name=#{name}, member_id=#{id}, member_phonenum=#{phonenum}, member_email=#{email}
 		WHERE member_id=#{member_id}
@@ -17,7 +17,7 @@
 	
 	<select id="reservation" parameterType="HashMap" resultType="HashMap">
 		SELECT * 
-		FROM reservation WHERE member_name=(SELECT member_name FROM member where member_id=#{id}) ORDER BY reservation_no DESC LIMIT #{startPage}, #{lastPage}
+		FROM reservation LIMIT #{startPage}, #{lastPage}
 	</select>
 	
 	<select	id="totalCount" parameterType="HashMap" resultType="HashMap">
@@ -30,8 +30,8 @@
 		WHERE member_id=#{member_id}
 	</update>
 	
-	<update id="reservCancel" parameterType="HashMap">
-		UPDATE reservation SET reservation_status="cancel" WHERE member_name=(SELECT member_name FROM member where member_id=#{id}) AND shop_no=#{shop_no}
-	</update>
-	
+	<delete id="mypageDelete" parameterType="HashMap">
+		DELETE FROM member 
+		WHERE member_id=#{id}
+	</delete>
 </mapper>

@@ -1,6 +1,5 @@
 package com.team_c.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.team_c.common.CommandMap;
 import com.team_c.dao.MypageDAO;
 
 @Service("mypageService")
@@ -27,9 +27,8 @@ public class MypageServiceImpl implements MypageService {
 	}
 	
 	@Override
-	public ArrayList<Map<String, Object>> myPageList() {
-		// TODO Auto-generated method stub
-		return null;
+	public Map<String, Object> myPageList(Map<String, Object> map) {
+		return mypageDAO.mypageList(map);
 	}
 
 	public void myPageUpdatePW(Map<String, Object> map) {
@@ -37,11 +36,12 @@ public class MypageServiceImpl implements MypageService {
 	}
 	
 	public void myPageUpdate(Map<String, Object> map) {
-		mypageDAO.mypageUpdate(map);
+		mypageDAO.myPageUpdate(map);
+	}
+	
+	public void myPageDelete(Map<String, Object> map) {
+		mypageDAO.mypageDelete(map);
 	}
 
-	public void reservCancel(Map<String, Object> map) {
-		mypageDAO.reservCancel(map);
-	}
 
 }

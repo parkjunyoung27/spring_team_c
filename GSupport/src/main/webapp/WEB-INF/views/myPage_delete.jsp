@@ -47,6 +47,22 @@
 	color: white;
 }
 </style>
+<script type="text/javascript">
+function mypageDelete(){
+	if(confirm("탈퇴하시겠습니까?")){
+		alert("탈퇴 되었습니다.");
+		return true;
+	} else{
+		alert("취소 되었습니다.");
+		return false;
+	}
+}
+
+function move(){
+	location.href="./index.do";
+}
+
+</script>
 </head>
 <body>
 
@@ -68,13 +84,13 @@
 							탈퇴하신 ID는 다시 사용하실 수 없습니다. <br> 회원탈퇴 후 재가입은 탈퇴일로부터 30일 이후
 							가능합니다. <br>
 						</p>
-
-
 					</div>
+					<form action="./mypageDelete.do" method="post">
+						<button onclick="return mypageDelete()" class="button_submit" type="submit">회원 탈퇴하기</button>
+					</form>
 				</div>
 			</div>
 		</div>
-		<button class="button_submit" type="submit">회원 탈퇴 신청</button>
 
 
 	</div>

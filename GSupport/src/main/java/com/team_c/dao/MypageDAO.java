@@ -1,6 +1,5 @@
 package com.team_c.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -9,28 +8,28 @@ import org.springframework.stereotype.Repository;
 @Repository("MypageDAO")
 public class MypageDAO extends AbstractDAO {
 
+	public Map<String, Object> mypageList(Map<String, Object> map) {
+		return selectOne("mypage.mypageList", map);
+	}
+
+	public void myPageUpdate(Map<String, Object> map) {
+		update("mypage.myPageUpdate", map);
+	}
+
 	public List<Map<String, Object>> reservation(Map<String, Object> map) {
-		return selectList("myPage.reservation", map);
+		return selectList("mypage.reservation", map);
 	}
 
 	public int totalCount(Map<String, Object> map) {
-		return Integer.parseInt(String.valueOf(selectOne("myPage.totalCount", map).get("totalCount")));
-	}
-	
-	public ArrayList<Map<String, Object>> mypageList() {
-		return null;
+		return Integer.parseInt(String.valueOf(selectOne("mypage.totalCount", map).get("totalCount")));
 	}
 
 	public void mypageUpdatePW(Map<String, Object> map) {
-		update("myPage.myPageUpdatePW", map);
+		update("mypage.mypageUpdatePW", map);
 	}
 
-	public void mypageUpdate(Map<String, Object> map) {
-		update("myPage.myPageUpdate", map);
-	}
-
-	public void reservCancel(Map<String, Object> map) {
-		update("myPage.reservCancel", map);
+	public void mypageDelete(Map<String, Object> map) {
+		delete("mypage.mypageDelete", map);
 	}
 
 }
