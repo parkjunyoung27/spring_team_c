@@ -17,7 +17,7 @@
 	
 	<select id="reservation" parameterType="HashMap" resultType="HashMap">
 		SELECT * 
-		FROM reservation LIMIT #{startPage}, #{lastPage}
+		FROM reservation ORDER BY reservation_no DESC LIMIT #{startPage}, #{lastPage}
 	</select>
 	
 	<select	id="totalCount" parameterType="HashMap" resultType="HashMap">

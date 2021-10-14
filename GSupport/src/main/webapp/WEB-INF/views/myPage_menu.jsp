@@ -24,9 +24,8 @@
 		<div class="customer_side">
 			<h1 class="customer_side_title">예약 관리</h1>
 			<ul class="customer_side_list">
-				<li><a href="">grade1용 예약 확인하기 </a></li>
-				<li><a href="">grade2용 예약 확인하기 </a></li>
-				<li><a href="">예약 변경 / 취소 </a></li>
+				<li><a href="myPage_reserv.do">사용자 예약 확인하기 </a></li>
+				<li><a href="myPage_reserv2.do">업주 예약 확인하기 </a></li>
 			</ul>
 		</div>
 
@@ -41,7 +40,7 @@
 		<div class="customer_side">
 			<h1 class="customer_side_title">즐겨찾기</h1>
 			<ul class="customer_side_list">
-				<li><a href="">즐겨찾기 관리 </a></li>
+				<li><a href="myPage_bookmark.do">즐겨찾기 관리 </a></li>
 			</ul>
 		</div>
 	</div>
