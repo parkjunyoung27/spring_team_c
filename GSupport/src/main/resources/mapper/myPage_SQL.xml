@@ -31,7 +31,7 @@
 	</update>
 	
 	<update id="reservCancel" parameterType="HashMap">
-		UPDATE reservation SET reservation_status="cancel" WHERE member_name=(SELECT member_name FROM member where member_id=#{id})
+		UPDATE reservation SET reservation_status="cancel" WHERE member_name=(SELECT member_name FROM member where member_id=#{id}) AND shop_no=#{shop_no}
 	</update>
 	
 </mapper>

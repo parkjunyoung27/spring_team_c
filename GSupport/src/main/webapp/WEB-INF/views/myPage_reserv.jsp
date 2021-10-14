@@ -81,7 +81,14 @@
 					<div class="customer_content_reservHistory">
 						<div class="customer_content_reservHistory_header">예약 번호 :
 							${r.reservation_no }
-							<button class="button_submit" type="submit" onclick="return cancel(${r.shop_no})">예약 취소</button>
+							<c:choose>
+								<c:when test="${r.reservation_status eq 'cancel' }">
+									<button class="button_submit" type="submit" onclick="return cancel(${r.shop_no})" disabled="disabled" style="background-color: red">예약 취소</button>
+								</c:when>
+								<c:otherwise>
+									<button class="button_submit" type="submit" onclick="return cancel(${r.shop_no})">예약 취소</button>
+								</c:otherwise>
+							</c:choose>
 							<button class="button_submit" type="submit">예약 승인</button>
 							</div>
 						<div class="customer_content_reservHistory_content">
