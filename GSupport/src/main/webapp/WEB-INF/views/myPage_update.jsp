@@ -36,12 +36,12 @@
 
 .customer-account-container {
 	top: 50%;
-	left: 5%;
+	left: 25%;
 	position: relative;
 }
 
 .field_row {
-	font-size: 20px;
+	font-size: 15px;
 }
 
 .field_title {
@@ -75,6 +75,7 @@
 	font-weight: bold;
 	background-color: green;
 	color: white;
+	margin-top: 30px;
 }
 </style>
 <script type="text/javascript">
@@ -107,9 +108,7 @@
 					</div>
 					<div class="customer-account-container">
 						<div class="customer-formbox">
-
 							<form action="./myPage_update.do" method="post">
-				
 								<div class="field_row">
 									<div class="field_title">아이디</div>
 									<div class="field_label">
@@ -122,7 +121,8 @@
 									<div class="field_title">이름</div>
 									<div class="field_label">
 										<input type="text" class="input-text-readonly" name="name"
-											placeholder="" readonly="readonly" value="${myinfo.member_name}">
+											placeholder="" readonly="readonly"
+											value="${myinfo.member_name}">
 									</div>
 
 								</div>
@@ -147,7 +147,6 @@
 
 								<button id="" class="button_submit"
 									onclick="return mypageUpdate()" type="submit">회원정보 수정</button>
-
 							</form>
 						</div>
 

@@ -19,7 +19,7 @@
 .customer-content {
 	float: center;
 	padding-bottom: 50px;
-	border-bottom: 1px solid #d8d8d8;
+	border-bottom: 0.5px solid #d8d8d8;
 }
 
 .customer-content-header {
@@ -40,7 +40,7 @@
 }
 
 .field_row {
-	font-size: 20px;
+	font-size: 15px;
 }
 
 .field_title {
@@ -64,12 +64,13 @@
 	font-weight: bold;
 	background-color: green;
 	color: white;
+	margin-top: 30px;
 }
 </style>
 <script type="text/javascript">
 	$(document).ready(function() {
 	});
-	
+
 	function PW1Check() {
 		var pw1 = $("#pw11").val();
 		//alert(pw1);
@@ -87,7 +88,7 @@
 		}
 	}
 	function PW2Check() {
-		var pw1 = $("#pw1").val();
+		var pw1 = $("#pw11").val();
 		var pw2 = $("#pw2").val();
 		if (pw1 != pw2) {
 			$("#checkResult2").css("color", "red");
@@ -105,7 +106,6 @@
 	function submit() {
 		alert("비밀번호가 수정되었습니다.");
 	}
-	
 </script>
 </head>
 <body>
@@ -114,7 +114,7 @@
 	<%@ include file="./component/navbar.jsp"%>
 
 	<!-- Mypage menu -->
-	<section class="container">
+	<div class="container">
 		<%@ include file="./myPage_menu.jsp"%>
 
 		<!-- Mypage Content -->
@@ -125,14 +125,16 @@
 						<h1>비밀번호 변경</h1>
 					</div>
 					<div class="customer-account-container">
-						<form action="./myPage_updatePW.do" method="post" onsubmit="submit()">
-						<div class="customer-formbox">
+						<form action="./myPage_updatePW.do" method="post"
+							onsubmit="submit()">
+							<div class="customer-formbox">
 								<div class="field_row">
 									<div class="field_title">새로운 비밀번호 입력</div>
 									<div class="field_label">
 
-										<input type="password" placeholder="비밀번호를 입력하세요." name="pw1" id="pw11" 
-										class="input-text" required="required" onchange="return PW1Check()">
+										<input type="password" placeholder="비밀번호를 입력하세요." name="pw1"
+											id="pw11" class="input-text" required="required"
+											onchange="return PW1Check()">
 										<p id="checkResult1"></p>
 										<!-- 										<--	data-parsley-trigger="keyup"
 											data-parsley-required-message="필수 입력 항목입니다."
@@ -145,8 +147,9 @@
 								<div class="field_row">
 									<div class="field_title">새로운 비밀번호 재입력</div>
 									<div class="field_label">
-										<input type="password" placeholder="비밀번호를 입력하세요." name="pw2" id="pw2" 
-										class="input-text" required="required" onchange="return PW2Check()">
+										<input type="password" placeholder="비밀번호를 입력하세요." name="pw2"
+											id="pw2" class="input-text" required="required"
+											onchange="return PW2Check()">
 										<p id="checkResult2"></p>
 										<!-- data-parsley-trigger="keyup"
 											data-parsley-required-message="."
@@ -155,25 +158,26 @@
 									</div>
 
 								</div>
-						</div>
+							</div>
 
 
 
 
-							<button class="button_submit" id="pwEdit" type="submit" disabled="disabled">비밀번호 수정</button>
+							<button class="button_submit" id="pwEdit" type="submit"
+								disabled="disabled">비밀번호 수정</button>
 							<c:if test="${param.msg eq 'ok'}">
 								<script type="text/javascript">
-								alert("비밀번호가 성공적으로 변경되었습니다.");
-							</script>
+									alert("비밀번호가 성공적으로 변경되었습니다.");
+								</script>
 							</c:if>
 						</form>
 					</div>
 
-					
+
 				</div>
 			</div>
 		</div>
-	</section>
+	</div>
 
 	<!-- footer -->
 	<%@ include file="./component/footer.jsp"%>

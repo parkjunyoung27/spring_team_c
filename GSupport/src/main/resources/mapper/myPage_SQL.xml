@@ -27,7 +27,7 @@
 	
 	<update id="mypageUpdatePW" parameterType="HashMap">
 		UPDATE member
-		SET member_pw=#{pw1} 
+		SET member_pw=HEX(AES_ENCRYPT(#{pw1}, 'teamc'))
 		WHERE member_id=#{member_id}
 	</update>
 	
