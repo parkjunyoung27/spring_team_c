@@ -12,6 +12,11 @@
 	function linkPage(pageNo) {
 		location.href = "./myPage_reserv.do?pageNo=" + pageNo;
 	}
+	function cancel(no){
+		if(confirm("예약 취소하시겠습니까?")){
+			location.href='./reservCancel.do?shop_no='+no
+		}
+	}
 </script>
 <link href="./resources/css/index.css" rel="stylesheet">
 <link href="./resources/css/myPage.css" rel="stylesheet">
@@ -75,8 +80,8 @@
 				<c:forEach items="${reserve }" var="r">
 					<div class="customer_content_reservHistory">
 						<div class="customer_content_reservHistory_header">예약 번호 :
-							${r.reservation_no } 
-							<button class="button_submit" type="submit">예약 취소</button>
+							${r.reservation_no }
+							<button class="button_submit" type="submit" onclick="return cancel(${r.shop_no})">예약 취소</button>
 							<button class="button_submit" type="submit">예약 승인</button>
 							</div>
 						<div class="customer_content_reservHistory_content">
@@ -85,8 +90,19 @@
 								예약날짜 : ${r.reservation_reservDate } <br> 예약시간 :
 								${r.reservation_reservTime } <br> 몇 명 :
 								${r.people }명 <br>
-								요구사항 : ${r.reservation_reservRequest }
-
+								요구사항 : ${r.reservation_reservRequest } <br>
+								예약현황 : 	
+								<c:choose>
+									<c:when test="${r.reservation_status eq 'wait' }">
+										예약 확인중
+									</c:when>
+									<c:when test="${r.reservation_status eq 'success' }">
+										예약 성공
+									</c:when>
+									<c:when test="${r.reservation_status eq 'cancel' }">
+										예약 취소
+									</c:when>
+								</c:choose>
 							</div>
 						</div>
 					</div>

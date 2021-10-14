@@ -17,7 +17,7 @@
 	
 	<select id="reservation" parameterType="HashMap" resultType="HashMap">
 		SELECT * 
-		FROM reservation ORDER BY reservation_no DESC LIMIT #{startPage}, #{lastPage}
+		FROM reservation WHERE member_name=(SELECT member_name FROM member where member_id=#{id}) ORDER BY reservation_no DESC LIMIT #{startPage}, #{lastPage}
 	</select>
 	
 	<select	id="totalCount" parameterType="HashMap" resultType="HashMap">
@@ -28,6 +28,10 @@
 		UPDATE member
 		SET member_pw=#{pw1} 
 		WHERE member_id=#{member_id}
+	</update>
+	
+	<update id="reservCancel" parameterType="HashMap">
+		UPDATE reservation SET reservation_status="cancel" WHERE member_name=(SELECT member_name FROM member where member_id=#{id})
 	</update>
 	
 </mapper>

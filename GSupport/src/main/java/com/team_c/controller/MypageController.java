@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team_c.common.CommandMap;
@@ -117,9 +118,9 @@ public class MypageController {
 	}
 	
 	@GetMapping("/myPage_reserv.do")
-	public ModelAndView myPage_reserv(CommandMap map) {
+	public ModelAndView myPage_reserv(CommandMap map, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("myPage_reserv");
-		
+		HttpSession session = request.getSession();
 		// *****페이징*****
 		// 페이지 번호가 오는지 확인하기
 		int pageNo = 1;
@@ -142,10 +143,14 @@ public class MypageController {
 		// 계산하기
 		int startPage = paginationInfo.getFirstRecordIndex();
 		int lastPage = paginationInfo.getRecordCountPerPage();
-
+		
+		//id값 받아오기
+		String id = (String)session.getAttribute("id");
+		
 		// DB로 보내기 위해서 map에 담아주세요.
 		map.put("startPage", startPage);
 		map.put("lastPage", lastPage);
+		map.put("id", id);
 
 		// 예약기능 출력하기
 		List<Map<String, Object>> reservation = mypageService.reservation(map.getMap());
@@ -162,5 +167,29 @@ public class MypageController {
 		
 		return mv;
 	}
+	
+	
+	@RequestMapping("/reservCancel.do")
+	public String reservCancel(CommandMap map, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		
+		String id = (String)session.getAttribute("id");
+		String shop_no = request.getParameter("shop_no");
+		
+		if(id != null && shop_no != null) {
+			map.put("id", id);
+			map.put("shop_no", shop_no);
+			
+			mypageService.reservCancel(map.getMap());
+			System.out.println("삭제성공");
+			return "redirect:/myPage_reserv.do";
+		}else {
+			System.out.println("삭제실패");
+			return "redirect:/myPage_reserv.do";
+		}
+		
+	}
+	
+	
 
 }

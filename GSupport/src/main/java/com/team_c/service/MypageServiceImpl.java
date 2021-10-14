@@ -37,7 +37,11 @@ public class MypageServiceImpl implements MypageService {
 	}
 	
 	public void myPageUpdate(Map<String, Object> map) {
-		mypageDAO.mypageUpdate(map);;
+		mypageDAO.mypageUpdate(map);
+	}
+
+	public void reservCancel(Map<String, Object> map) {
+		mypageDAO.reservCancel(map);
 	}
 
 }
