@@ -1,83 +1,6 @@
 @charset "UTF-8";
 
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap')
-	;
-#storeSearchContainer {
-	margin-bottom: 80px;
-}
-
-div#map {
-	margin: 0 auto;
-}
-
-#storeSearchTable {
-	width: 100%;
-}
-
-#storeSearchColumn {
-	background-color: forestgreen;
-	height: 37px;
-	font-weight: 600;
-	color: white;
-	font-size: larger;
-	letter-spacing: 5px;
-}
-
-#storeSearchList {
-	height: 35px;
-	text-align: center;
-	font-size: medium;
-	font-weight: 500;
-}
-
-div#searchButton {
-	padding: 20px;
-	float: left;
-	margin-left: 5%;
-}
-
-#searchButton button {
-	text-align: center;
-}
-
-#searchButton button {
-	background: white;
-	color: black;
-	border: 1px solid black;
-	position: relative;
-	height: 50px;
-	width: 23%;
-	font-size: 0.8em;
-	padding: 0 2em;
-	cursor: pointer;
-	transition: 800ms ease all;
-	outline: none;
-	margin: 3px;
-}
-
-#searchButton button:hover {
-	background: green;
-	color: white;
-	font-weight: 700;
-}
-
-#searchButton button:before, #searchButton button:after {
-	content: '';
-	position: absolute;
-	top: 0;
-	right: 0;
-	height: 2px;
-	width: 0;
-	background: white;
-	transition: 400ms ease all;
-}
-
-#searchButton button:after {
-	right: inherit;
-	top: inherit;
-	left: 0;
-	bottom: 0;
-}
 
 .sc_button{
 	padding-top: 15px;
@@ -130,14 +53,3 @@ div#searchButton {
 	transition: 800ms ease all;
 }
 
-
-#storeListNone {
-	width: 100%;
-	height: 300px;
-	text-align: center;
-	vertical-align: middle;
-	line-height: 300px;
-	font-weight: 700;
-	letter-spacing: 1px;
-	font-size: larger;
-}

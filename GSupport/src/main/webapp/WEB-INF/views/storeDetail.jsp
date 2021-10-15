@@ -43,9 +43,10 @@ function disLike(no){
 
 <body>
 
-	<!-- navbar -->
+	<!-- Navbar -->
 	<%@ include file="./component/navbar.jsp"%>
 
+	<div class="container">
 	<script>
 	//마커가 표시될 위치입니다 
 	var markerPosition  = new kakao.maps.LatLng(${storeDetail.shop_wido}, ${storeDetail.shop_kyungdo});  
@@ -264,6 +265,7 @@ function disLike(no){
 
 			</form>
 		</div>
+	</div>
 	</div>
 	<!-- footer -->
 	<%@ include file="./component/footer.jsp"%>

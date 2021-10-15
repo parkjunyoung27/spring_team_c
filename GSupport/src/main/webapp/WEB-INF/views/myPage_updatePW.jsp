@@ -16,45 +16,7 @@
 <link href="./resources/css/base.css" rel="stylesheet">
 
 <style>
-.customer-content {
-	float: center;
-	padding-bottom: 50px;
-	border-bottom: 0.5px solid #d8d8d8;
-}
 
-.customer-content-header {
-	padding-bottom: 40px;
-	position: relative;
-	border-bottom: 5px solid black;
-	background-color: white;
-	font-size: 15px;
-	margin-bottom: 35px;
-	font-weight: bold;
-	position: relative;
-}
-
-.customer-account-container {
-	top: 50%;
-	left: 25%;
-	position: relative;
-}
-
-.field_row {
-	font-size: 15px;
-}
-
-.field_title {
-	padding-bottom: 10px;
-	margin-bottom: 10px;
-}
-
-.input-text {
-	margin-bottom: 10px;
-	width: 500px;
-	height: 50px;
-	font-size: 20px;
-	text-align: center;
-}
 
 .button_submit {
 	width: 500px;

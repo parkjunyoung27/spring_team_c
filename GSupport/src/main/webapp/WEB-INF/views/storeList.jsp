@@ -22,6 +22,84 @@ function linkPage(pageNo){
 }
 </script>
 <style>
+
+#storeSearchContainer {
+	margin-top: 10px;
+}
+
+div#map {
+	margin: 0 auto;
+}
+
+#storeSearchTable {
+	width: 100%;
+	margin-top:10px;
+}
+
+#storeSearchColumn {
+	background-color: forestgreen;
+	height: 37px;
+	font-weight: 600;
+	color: white;
+	font-size: larger;
+	letter-spacing: 5px;
+}
+
+#storeSearchList {
+	height: 35px;
+	text-align: center;
+	font-size: medium;
+	font-weight: 500;
+}
+
+div#searchButton {
+	float: left;
+	margin:20px 10px 0 20px;
+}
+
+#searchButton button {
+	text-align: center;
+}
+
+#searchButton button {
+	background: white;
+	color: black;
+	border: 1px solid black;
+	position: sticky;
+	height: auto;
+	width: 100px;
+	font-size: 0.8em;
+	padding: 3px;
+	cursor: pointer;
+	transition: 800ms ease all;
+	outline: none;
+	margin: 3px;
+}
+
+#searchButton button:hover {
+	background: green;
+	color: white;
+	font-weight: 700;
+}
+
+#searchButton button:before, #searchButton button:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 2px;
+	width: 0;
+	background: white;
+	transition: 400ms ease all;
+}
+
+#searchButton button:after {
+	right: inherit;
+	top: inherit;
+	left: 0;
+	bottom: 0;
+}
+
 #storeSearchList:hover {
 	background-color: #aaaaaa;
 	cursor: pointer;
@@ -43,6 +121,19 @@ div#paging a {
 div#paging a:hover {
 	font-weight: 700;
 }
+
+
+#storeListNone {
+	width: 100%;
+	height: 300px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 300px;
+	font-weight: 700;
+	letter-spacing: 1px;
+	font-size: larger;
+}
+
 </style>
 </head>
 <body>
@@ -52,8 +143,6 @@ div#paging a:hover {
 
 	<!-- main -->
 	<div class="container">
-		<div class="header-img"></div>
-
 		<h1>가맹점 찾기</h1>
 		<hr>
 		<div id="storeSearchContainer">

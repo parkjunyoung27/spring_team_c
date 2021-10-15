@@ -24,17 +24,28 @@
 
 .column.side a {
 	text-decoration: none;
-	color: black;
-	
+	color: #757575;
 }
 
 .customer_side {
 	margin-top: 25px;
 	margin-bottom: 25px;
+	font-size: 15px
+}
+
+.customer_side_title {
+	font-weight: bold;
+	font-size: 20px;
 }
 
 .customer_side ul {
 	list-style-type: none;
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
+.customer_side ul li {
+	margin-top: 10px;
 }
 
 /* Middle column */
@@ -44,13 +55,18 @@
 	background-color: white;
 }
 
-.column.middle a{
+.column.middle a {
 	text-decoration: none;
 	color: black;
 }
 
 .activity {
-	width: auto;
+	width: 100%;
+	display: table;
+	table-layout: fixed;
+	border-radius: 12px;
+	margin-top: 50px;
+	margin-bottom: 50px;
 }
 
 /* Clear floats after the columns */
@@ -61,38 +77,83 @@
 }
 
 .card {
+	height: auto;
+	padding: 10px;
 	border-radius: $border-radius-extreme;
-	box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);
-	background-color: #FFFFFF;
-	color: $card-black-color;
+	background-color: #fafafa;
+	box-shadow: 4px 4px 10px -5px rgb(0 0 0 / 15%);
 	margin-bottom: 20px;
 	margin-right: 0px;
 	position: relative;
-	border: 0 none;
-	width: 25%;
 	text-align: center;
-	display: inline-block;
+	border: 0 none;
+	display: table-cell;
+	border: 0 none;
+	font-size: 15px;
 }
 
 .card .card-body {
 	padding: 15px 15px 10px
 }
 
-.customer_content_reservHistory {
-	border-top: 1px solid #141414;
-	background-color: #ffffff;
-	margin-top: 20px;
-	padding: 10px;
+.customer-content {
+	float: center;
+	padding-bottom: 50px;
+	border-bottom: 0.5px solid #d8d8d8;
 }
 
-.customer_content_reservHistory_header {
-	border-bottom: 1px solid #e5e5e5;
-	margin-bottom: 20px;
+.customer-content-header {
+	padding-bottom: 20px;
+	position: relative;
+	border-bottom: 5px solid black;
+	background-color: white;
+	font-size: 15px;
+	margin-bottom: 35px;
+	font-weight: bold;
+	position: relative;
 }
 
-.customer_content_reservHistory_content {
-	border-bottom: 1px solid #e5e5e5;
-	padding: 20px;
+.customer-account-container {
+	top: 50%;
+	padding-left: 30px;
+	margin-top:70px;
+	position: relative;
+}
+
+.field_row {
+	font-size: 20px;
+	font-weight: bold;
+	color: #747476;
+	margin-bottom:20px;
+}
+
+.field_title {
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+}
+
+.input-text {
+	width: 80%;
+	margin-bottom: 10px;
+	height: 50px;
+	font-size: 20px;
+	border: none;
+	border-bottom: 1px solid #ebebeb;
+	padding: 5px 10px;
+	outline: none;
+}
+
+.input-text-readonly {
+	color: #747476;
+	width: 80%;
+	margin-bottom: 10px;
+	height: 50px;
+	font-size: 20px;
+	font-weight: bold;
+	border: none;
+	border-bottom: 1px solid #ebebeb;
+	padding: 5px 10px;
+	outline: none;
 }
 
 #boardPaging {

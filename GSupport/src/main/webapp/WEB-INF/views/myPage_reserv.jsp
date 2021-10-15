@@ -25,15 +25,61 @@
 <style>
 
 
+.reserv {
+	height: auto;
+	padding: 10px;
+	border-radius: $border-radius-extreme;
+	background-color: #fafafa;
+	box-shadow: 4px 4px 10px -5px rgb(0 0 0 / 15%);
+	margin-bottom: 20px;
+	margin-right: 0px;
+	position: relative;
+	text-align: center;
+	border: 0 none;
+	display: table-cell;
+	border: 0 none;
+	font-size: 15px;
+}
+
+.reserv .reserv-body {
+	padding: 15px 15px 10px
+}
+
+
+.customer_content_reservHistory {
+	border-top: 1px solid #141414;
+	background-color: #ffffff;
+	margin-top: 20px;
+	padding: 10px;
+}
+
+.customer_content_reservHistory_header {
+	border-bottom: 1px solid #e5e5e5;
+	margin-bottom: 10px;
+	height:40px;
+	padding:10px;
+}
+
+.customer_content_reservHistory_content {
+	border-bottom: 1px solid #e5e5e5;
+    padding: 10px 20px 10px 20px;	
+    font-size:12px;
+	
+}
+
 .button_submit {
 	float:right;
-	width: 100px;
-	height: 30px;
-	font-size: 20px;
+	font-size: 10px;
 	text-align: center;
 	font-weight: bold;
 	background-color: green;
 	color: white;
+	margin:2px;
+}
+
+.date{
+	float:right;
+	text-align:center;
 }
 
 </style>
@@ -49,30 +95,27 @@
 		<!-- Mypage Content -->
 		<div class="column middle">
 			<div class="activity">
-				<div class="card">
-					<div class="card-body">
-						<h4 class="card-title">예약</h4>
-						<p class="card-text">??개</p>
-						<a href="#" class="btn btn-primary">예약 확인</a>
+				<div class="reserv">
+					<div class="reserv-body">
+						<h4 class="reserv-title">예약 진행중</h4>
+						 <h2 class="reserv-text">??개</h2>
+					</div>
+				</div>
+				
+				<div class="reserv">
+					<div class="reserv-body">
+						<h4 class="reserv-title">예약 종료</h4>
+						<h2 class="reserv-text">??개</h2>
+					</div>
+				</div>
+				
+				<div class="reserv">
+					<div class="reserv-body">
+						<h4 class="reserv-title">예약 취소</h4>
+						<h2 class="reserv-text">??개</h2>
 					</div>
 				</div>
 
-				<div class="card">
-				<a href="" class="">
-					<div class="card-body">
-						<h4 class="card-title">쪽지</h4>
-						<p class="card-text">??개 /안 읽은거 ??개</p>
-					</div>
-				</a>
-				</div>
-
-				<div class="card">
-					<div class="card-body">
-						<h4 class="card-title">즐겨찾기</h4>
-						<p class="card-text">??건</p>
-						<a href="#" class="btn btn-primary">즐겨찾기</a>
-					</div>
-				</div>
 			</div>
 
 			<div class="customer_content">
@@ -93,12 +136,14 @@
 							</div>
 						<div class="customer_content_reservHistory_content">
 							<div class="customer_content_reservHistory_content_detail">
-								가게이름 : ${r.shop_name } <br> 예약자 : ${r.member_name } <br>
-								예약날짜 : ${r.reservation_reservDate } <br> 예약시간 :
-								${r.reservation_reservTime } <br> 몇 명 :
-								${r.people }명 <br>
-								요구사항 : ${r.reservation_reservRequest } <br>
-								예약현황 : 	
+								<div class="date">
+								<h3>${r.reservation_reservDate } </h3>
+								<p>${r.reservation_reservTime } </p>
+								</div>
+								
+								<h2>${r.shop_name } </h2>
+								${r.people }명 
+								<br> 예약 현황 : 	
 								<c:choose>
 									<c:when test="${r.reservation_status eq 'wait' }">
 										예약 확인중
@@ -110,6 +155,9 @@
 										예약 취소
 									</c:when>
 								</c:choose>
+								<h4> 요구사항 : ${r.reservation_reservRequest } </h4>
+								
+								
 							</div>
 						</div>
 					</div>

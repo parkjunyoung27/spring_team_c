@@ -17,36 +17,6 @@
 
 
 <style>
-
-/* Middle column */
-.column.middle {
-	margin-left: 10px;
-	width: 70%;
-	background-color: white;
-}
-
-.customer_content {
-	float: center;
-	padding-bottom: 50px;
-	border-bottom: 0.5px solid #d8d8d8;
-}
-
-.customer_content_header {
-	padding-bottom: 40px;
-	position: relative;
-	border-bottom: 5px solid black;
-	background-color: white;
-	font-size: 15px;
-	margin-bottom: 35px;
-	font-weight: bold;
-	position: relative;
-}
-
-.customer_content_detail{
-	text-align:center;
-	font-size:20px;
-}
-
 .button_submit {
 	width: 500px;
 	height: 50px;
@@ -55,7 +25,12 @@
 	font-weight: bold;
 	background-color: green;
 	color: white;
-	margin-top:30px;
+	margin-top: 30px;
+}
+
+.customer-content-detail {
+	line-height: 1.6;
+	text-align: center;
 }
 </style>
 <script type="text/javascript">
@@ -85,20 +60,26 @@
 
 		<!-- Mypage Content -->
 		<div class="column middle">
-			<div class="customer_content">
-				<div class="customer_content_header">
-					<h1>회원 탈퇴</h1>
-				</div>
-				<div class="customer_content_detail">
-					<p>
-						탈퇴신청시 아래 사항을 확인하시기 바랍니다. <br> 회원탈퇴 후 재가입 시에는 신규가입으로 처리되며,
-						탈퇴하신 ID는 다시 사용하실 수 없습니다. <br> 회원탈퇴 후 재가입은 탈퇴일로부터 30일 이후
-						가능합니다. <br>
-					</p>
-				<form action="./myPage_delete.do" method="post">
-					<button onclick="return mypageDelete()" class="button_submit"
-						type="submit">회원 탈퇴하기</button>
-				</form>
+			<div class="customer-content">
+				<div class="customer-content-section">
+
+					<div class="customer-content-header">
+						<h1>회원 탈퇴</h1>
+					</div>
+					<div class="customer-account-container">
+
+						<div class="customer-content-detail">
+							<p>
+								탈퇴신청시 아래 사항을 확인하시기 바랍니다. <br> 회원탈퇴 후 재가입 시에는 신규가입으로 처리되며,<br>
+								탈퇴하신 ID는 다시 사용하실 수 없습니다. <br> 회원탈퇴 후 재가입은 탈퇴일로부터 30일 이후
+								가능합니다. <br>
+							</p>
+							<form action="./myPage_delete.do" method="post">
+								<button onclick="return mypageDelete()" class="button_submit"
+									type="submit">회원 탈퇴하기</button>
+							</form>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -107,7 +88,5 @@
 
 	<!-- footer -->
 	<%@ include file="./component/footer.jsp"%>
-
-
 </body>
 </html>

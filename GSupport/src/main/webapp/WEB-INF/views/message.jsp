@@ -7,10 +7,11 @@
 <meta charset="UTF-8">
 <title>messages</title>
 <style type="text/css">
-body{
+body {
 	margin: 0;
 	padding: 0;
 }
+
 #message {
 	
 }
@@ -23,7 +24,7 @@ body{
 }
 
 #box table {
-	height:100px;
+	height: 100px;
 	border-collapse: collapse;
 }
 
@@ -33,7 +34,7 @@ td {
 
 #view {
 	float: left;
-	width : 50%;
+	width: 50%;
 	height: 500px;
 	background-color: aqua;
 	width: 50%;
@@ -69,41 +70,69 @@ function delMsg(no){
 </script>
 </head>
 <body>
-	<div id="message">
-		<div id="box">
-			<h2>메시지 리스트</h2>
-			<table>
-				<tr>
-					<td>번호</td>
-					<td>보낸사람</td>
-					<td>날짜</td>
-					<td>수신여부</td>
-				</tr><c:forEach items="${list }" var="q">
-				<tr onclick="location.href='./message.do?openmsg=${q.question_no }'"<c:if test="${q.question_read eq 0}">style="font-weight:bold"</c:if><c:if test="${q.question_read eq 1}">style="color:gray;"</c:if>>
-					<td>${q.question_no }</td>
-					<td>${q.member_name }(${q.member_id })</td>
-					<td>${q.question_date }</td>
-					<td><c:if test="${q.question_read eq 0}">안읽음</c:if><c:if test="${q.question_read eq 1}">읽음</c:if></td>
-				</tr></c:forEach>
-			</table>
-			<div id="send">
-				<form action="./message.do" method="post">
-					<input type="text" name="sendID" value="${sendmsg }" placeholder="아이디를 입력하세요.">
-					<input type="text" name="content" placeholder="내용을 입력하세요.">
-					<button>메시지 보내기</button>
-				</form>
-			</div>
-		</div>
-		<div id="view"><c:choose><c:when test="${detail ne null }">
+
+
+	<!-- Navbar -->
+	<%@ include file="./component/navbar.jsp"%>
+
+	<div class="container">
+		<!-- Mypage menu -->
+		<%@ include file="./myPage_menu.jsp"%>
+
+		<!-- Mypage Content -->
+		<div class="column middle">
+
+			<div id="message">
+				<div id="box">
+					<h2>메시지 리스트</h2>
+					<table>
+						<tr>
+							<td>번호</td>
+							<td>보낸사람</td>
+							<td>날짜</td>
+							<td>수신여부</td>
+						</tr>
+						<c:forEach items="${list }" var="q">
+							<tr
+								onclick="location.href='./message.do?openmsg=${q.question_no }'"
+								<c:if test="${q.question_read eq 0}">style="font-weight:bold"</c:if>
+								<c:if test="${q.question_read eq 1}">style="color:gray;"</c:if>>
+								<td>${q.question_no }</td>
+								<td>${q.member_name }(${q.member_id })</td>
+								<td>${q.question_date }</td>
+								<td><c:if test="${q.question_read eq 0}">안읽음</c:if>
+									<c:if test="${q.question_read eq 1}">읽음</c:if></td>
+							</tr>
+						</c:forEach>
+					</table>
+					<div id="send">
+						<form action="./message.do" method="post">
+							<input type="text" name="sendID" value="${sendmsg }"
+								placeholder="아이디를 입력하세요."> <input type="text"
+								name="content" placeholder="내용을 입력하세요.">
+							<button>메시지 보내기</button>
+						</form>
+					</div>
+				</div>
+				<div id="view">
+					<c:choose>
+						<c:when test="${detail ne null }">
 			번호 : ${detail. question_no}<br>
 			보낸 사람 : ${detail.member_name}(${detail.question_sender})
-			<span onclick="return delMsg(${detail. question_no})">[삭제]</span><br>
+			<span onclick="return delMsg(${detail. question_no})">[삭제]</span>
+							<br>
 			보낸 id : ${detail.member_id}<br>
 			보낸 날짜 : ${detail.question_date}<br>
 			보낸 내용 : ${detail.question_content}<br>
-			<button onclick="location.href='./message.do?sendmsg=${detail.question_sender}'">답장하기</button></c:when></c:choose>
-		</div>
+							<button
+								onclick="location.href='./message.do?sendmsg=${detail.question_sender}'">답장하기</button>
+						</c:when>
+					</c:choose>
+				</div>
 
+			</div>
+		</div>
 	</div>
+
 </body>
 </html>
