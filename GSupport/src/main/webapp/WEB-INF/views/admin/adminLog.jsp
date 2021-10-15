@@ -23,6 +23,7 @@ table{ /* 테이블*/
 }
 
 table th{ /*메뉴 제목*/
+	height: 39px;
 	font-size: 1em;
     border-bottom: 2px white solid;
 }
@@ -69,14 +70,22 @@ select#target {
     margin-top: 5px;
 }
 
+#adminLogNone td{
+	border: none;
+    font-size: 2em;
+    height: 500px;
+} 
+    
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}    
+
 </style> 
 <script type="text/javascript">
-
-	function linkPage(pageNo){
-			
-		location.href="./adminLog.do?pageNo=" + pageNo;
-		
-	}
+var pageNo = 1;
+var ip = document.getElementById("ip").value;
+var target = document.getElementById("target").value;
 		
 	function checkSelectAll()  {
 		  // 전체 체크박스
@@ -120,7 +129,7 @@ select#target {
 		if(sum > 0){
 			var test= confirm(sum+"개 삭제하시겠습니까?");
 			if(test == true){
-				$("#deleteform").submit();
+				form.submit();
 				alert("삭제됐습니다.");
 			}else{
 				alert("취소됐습니다.");
@@ -128,6 +137,19 @@ select#target {
 		}else{
 			return false;
 		}		
+
+	}
+	
+	function selectOption(){
+		var ip = document.getElementById("ip").value;
+		var target = document.getElementById("target").value;
+		return linkPage(pageNo, ip, target);
+	}
+	
+	function linkPage(pageNo, ip, target){
+		var ip = document.getElementById("ip").value;
+		var target = document.getElementById("target").value;
+		location.href="./adminLog.do?pageNo=" + pageNo + "&ip=" + ip + "&target=" + target;
 	}
 
 </script>
@@ -142,16 +164,18 @@ select#target {
 		
 		<div id="adminContainer">
 			
-			<h1>로그 관리</h1>
+			<h1 onclick="location.href='./adminLog.do'">로그 관리(${totalCount}건)</h1>
 			
 			<div class="adminContainerOne">
+			
 				
+			<form action="./adminLog.do" method="post" id="LogOrder" name="LogOrder">
 				<table>
 					<tr>
 						<th class="w5"> <input type="checkbox" name="checkall" onclick="selectAll(this)"> </th>
 						<th class="w7"> No </th>
 						<th class="w15"> 
-							<select onchange="select()" id="ip">
+							<select onchange="selectOption()" id="ip">
 							<option value="" selected> ip 선택 </option>
 								<c:forEach items="${ipList }" var="i">
 									<c:if test="${i eq ip }"> <!-- ip가 같으면 선택됨  -->
@@ -164,11 +188,12 @@ select#target {
 							</select>
 						</th>
 						<th class="w15">
-							<select onchange="select()" id="target">
+							<select onchange="selectOption()" id="target">
 								<option value="" selected>target 선택</option>
+								
 								<c:forEach items="${targetList }" var="t">
 									<c:if test="${target eq t }">
-										<option value="${t }" selected>${t }</option>
+										<option value="${t }"  selected>${t }</option>
 									</c:if>
 									<c:if test="${target ne t }">
 										<option value="${t }">${t }</option>
@@ -180,35 +205,45 @@ select#target {
 						<th class="w15">날짜</th>
 						<th class="w15">data</th>
 					</tr> 
-					<c:forEach items='${list }' var="l">
-						<tr>
-							<td class="w5">
-								<input type="checkbox" name="check" value="${l.get('log_no')}"  onclick='checkSelectAll()' >
-							</td> 
-							<td class="w7">${l.get("log_no") } </td>
-							<td class="w15">${l.get("log_ip") } </td>
-							<td class="w15">${l.get("log_target") } </td>
-							<td class="w15">
-								<c:choose>
-									<c:when test="${l.get('log_id') != null }">
-									${l.get("log_id") }
-									</c:when>
-									<c:otherwise>
-									null
-									</c:otherwise>
-								</c:choose>
-							</td>		
-							<td class="w15">${l.get("log_date") } </td>
-							<td class="w15">${fn:substring(l.get("log_data"), 0, 15 )}...</td>
-						</tr>				
-					</c:forEach>		
+					<c:choose>
+						<c:when test="${fn:length(list) gt 0 }">
+							<c:forEach items='${list }' var="l">
+								<tr>
+									<td class="w5">
+										<input type="checkbox" name="check" value="${l.get('log_no')}"  onclick='checkSelectAll()' >
+									</td> 
+									<td class="w7">${l.get("log_no") } </td>
+									<td class="w15">${l.get("log_ip") } </td>
+									<td class="w15">${l.get("log_target") } </td>
+									<td class="w15">
+										<c:choose>
+											<c:when test="${l.get('log_id') != null }">
+											${l.get("log_id") }
+											</c:when>
+											<c:otherwise>
+											null
+											</c:otherwise>
+										</c:choose>
+									</td>		
+									<td class="w15">${l.get("log_date") } </td>
+									<td class="w15">${fn:substring(l.get("log_data"), 0, 15 )}...</td>
+								</tr>				
+							</c:forEach>		
+						</c:when>
+						<c:otherwise>
+							<tr id="adminLogNone">
+								<td colspan="6">로그 기록이 없습니다... <td>
+							</tr>
+						</c:otherwise>
+					</c:choose>
 				</table>
+			</form>	
 			
 			</div>
 			
 			<div class="adminLogPaging">
 				<ui:pagination paginationInfo="${paginationInfo }" type="text" jsFunction="linkPage"/>
-				<button type="button" onclick="checkDelete(this.form)">삭제하기</button>		
+				<button type="button" onclick="checkDelete(document.forms['LogOrder'])">삭제하기</button>		
 			</div>	
 		
 		</div>

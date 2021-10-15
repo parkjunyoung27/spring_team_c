@@ -200,6 +200,7 @@ div#wrapper {
     padding: 10px;
     overflow: auto;
     letter-spacing: 1px;
+    cursor: pointer;
 }
 
 .w5 {width:5%; }

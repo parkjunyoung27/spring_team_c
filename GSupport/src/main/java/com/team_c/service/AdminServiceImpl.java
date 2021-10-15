@@ -1,5 +1,6 @@
 package com.team_c.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,6 +37,24 @@ public class AdminServiceImpl implements AdminService{
 	public int totalCount(Map<String, Object> map) {
 		return adminDAO.totalCount(map);
 	}
+
+	@Override
+	public List<Object> ipList() {
+		return adminDAO.ipList();
+	}
+
+	@Override
+	public List<Object> targetList() {
+		return adminDAO.targetList();
+	}
+
+	@Override
+	public void deleteLog(String number) {
+		adminDAO.deleteLog(number);
+	}
+
+
+
 
 
 

@@ -1,5 +1,6 @@
 package com.team_c.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -18,5 +19,14 @@ public interface AdminService {
 	
 	//totalCount
 	public int totalCount(Map<String, Object> map);
+	
+	//adminLog페이지 ipList 불러오기
+	public List<Object> ipList(); 
+
+	//adminLog페이지 targetList 불러오기
+	public List<Object> targetList(); 
+	
+	//adminLog 페이지 삭제
+	public void deleteLog(String number); 
 	
 }

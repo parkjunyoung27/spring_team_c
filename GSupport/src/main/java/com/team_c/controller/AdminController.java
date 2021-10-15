@@ -1,7 +1,6 @@
 package com.team_c.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,11 +13,13 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team_c.common.CommandMap;
+import com.team_c.dao.AdminDAO;
 import com.team_c.service.AdminServiceImpl;
 import com.team_c.util.Util;
 
@@ -41,30 +42,30 @@ public class AdminController {
 	}
 
 	@PostMapping("/admin/access.do")
-	public void access(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public String access(HttpServletRequest request, HttpServletResponse response,Model model) throws IOException {
 		
 		//System.out.println(request.getParameter("id"));
 		//System.out.println(request.getParameter("pw"));
 		
 		int result = 0;
+		HttpSession session = request.getSession();
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("id", request.getParameter("id"));
 		map.put("pw", request.getParameter("pw"));
 		
 		map = adminService.access(map);
-		
+
 		if(map != null) {
 			System.out.println("로그인 성공");
-			HttpSession session = request.getSession();
 			session.setAttribute("id", map.get("member_id"));
 			session.setAttribute("name", map.get("member_name"));
 			session.setAttribute("grade", map.get("member_grade"));
 			result = 1;
+			return "redirect:/admin/adminMain.do";
 		}
 		
-		PrintWriter pw = response.getWriter();
-		pw.println(result);
+		return "redirect:/admin/access.do?error=fail";
 	}
 	
 	//관리자 로그아웃 페이지
@@ -187,12 +188,30 @@ public class AdminController {
 		HttpSession session = request.getSession();
 		ModelAndView mv = new ModelAndView("/admin/access");
 		
+		System.out.println("겟임");
+		
 		// 정렬
 		String order = "";
-		if(request.getParameter("order") != "") {
+		if(request.getParameter("order") != null) {
 			order = request.getParameter("order");
 		}
 		
+		String ip ="";
+		String target ="";
+		if(request.getParameter("ip") != null) {
+			ip = request.getParameter("ip");
+		}
+		System.out.println("ip값 : " + request.getParameter("ip"));
+		
+		if(request.getParameter("target") != null) {
+			target = request.getParameter("target");
+		}		
+		System.out.println("target값 : " + request.getParameter("target"));
+		
+		map.put("ip", ip);
+		map.put("target", target);
+		
+
 		// 페이징
 		int pageNo = 1;
 		if(map.containsKey("pageNo")) {
@@ -202,6 +221,14 @@ public class AdminController {
 		int pageScale = 10;
 		
 		int totalCount = adminService.totalCount(map.getMap());
+		
+		//옵션 ipList 불러오기
+		List<Object> ipList = adminService.ipList();
+		
+		//옵션 targetList 불러오기 
+		List<Object> targetList = adminService.targetList();
+		
+		
 		
 		//전자정부 페이징 불러오기
 		PaginationInfo paginationInfo = new PaginationInfo();
@@ -233,6 +260,11 @@ public class AdminController {
 				mv.addObject("paginationInfo", paginationInfo);
 				mv.addObject("pageNo", pageNo);
 				mv.addObject("list", list);
+				mv.addObject("ipList", ipList);
+				mv.addObject("targetList", targetList);
+				mv.addObject("totalCount", totalCount);
+				mv.addObject("ip", ip);
+				mv.addObject("target", target);
 				
 			}
 		}
@@ -240,7 +272,35 @@ public class AdminController {
 		return mv;
 	}
 	
-	//관리자 로그 관리 페이지
+	@PostMapping("/admin/adminLog.do")
+	public String adminLog2(HttpServletRequest request) {
+		System.out.println("포스트");
+		
+		HttpSession session = request.getSession();
+		if(session.getAttribute("grade") != null) {
+			int grade = (Integer)session.getAttribute("grade");
+			
+			if(grade == 3) {
+				
+				int sum = 0;
+				String[] numbers = null;
+				
+				if(request.getParameter("check") == null) {
+					System.out.println("삭제할것이 없습니다.");
+				}else {
+					numbers = request.getParameterValues("check");
+					for(String string : numbers) {
+						String number = string;
+						System.out.println("삭제할 번호: " + number);
+						adminService.deleteLog(number);
+					}
+				}
+			}
+		}
+		return "redirect:./adminLog.do";
+	}
+		
+	//관리자 구글 통계 페이지
 	@GetMapping("/admin/adminAnalytics.do")
 	public ModelAndView adminAnalytics(CommandMap commandMap, HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -253,9 +313,7 @@ public class AdminController {
 				mv = new ModelAndView("/admin/adminAnalytics");
 				
 				
-				
-				
-				
+					
 			}
 		}
 		

@@ -19,8 +19,20 @@ public class AdminDAO extends AbstractDAO{
 	public int totalCount(Map<String, Object> map) {
 		return Integer.parseInt(String.valueOf(selectOne("admin.totalCount", map).get("totalCount")));
 	}
-	
-	
+
+	public List<Object> ipList() {
+		return selectOptionList("admin.ipList");
+	}
+
+	public List<Object> targetList() {
+		return selectOptionList("admin.targetList");
+	}
+
+	public void deleteLog(String number) {
+		deleteLog("admin.deleteLog", number);
+	}
+
+
 	
 	
 }

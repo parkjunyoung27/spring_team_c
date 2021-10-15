@@ -1,5 +1,6 @@
 package com.team_c.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -118,6 +119,15 @@ public class AbstractDAO {
 	//즐겨찾기 삭제
 	public void likeDelete(String queryID, Map<String, Object> map) {
 		 sqlSession.delete(queryID, map);
+	}
+	
+	public List<Object> selectOptionList(String queryID){
+		return sqlSession.selectList(queryID);
+	}
+	
+	//로그 기록 삭제하기 
+	public void deleteLog(String queryID, String number) {
+		sqlSession.update(queryID, number);
 	}
 	
 }

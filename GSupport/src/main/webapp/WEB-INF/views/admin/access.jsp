@@ -79,28 +79,7 @@
 
 <script>
 function accessCheck(){
-	
-	var data=$("#access").serialize();
-	
-	$.ajax({
-		url: "./access.do", //ajax url 보낼때 사용
-		type:"POST",
-		data: data,
-		dataType: "text",
-		success : function(data, textStatus, xhr) {
-			//alert(data); //controller에서 넘어온 return값
-			if (data == 1) { 
-				alert('로그인에 성공했습니다.'); 
-				location.href="./adminMain.do";
-			} else { 
-				alert("로그인에 실패했습니다." );
-				//window.location.reload();
-				location.href="./access.do";
-				 }}, 
-		error : function(request, status, error) {
-			alert("code:" + request.status + "\n" + "error:" + error); 
-			} 
-		});
+	document.getElementById('access').submit();
 }
 
 </script>
@@ -114,7 +93,7 @@ function accessCheck(){
 				<br> 관리자 로그인
 			</p>
 
-			<form id="access">
+			<form action="./access.do" id="access" method="post">
 				<input type="text" id="id" name="id" class="text-field"
 					oninput="handleOnInput(this)" placeholder="아이디를 입력하세요"required="required">
 				<input type="password" id="pw" name="pw" class="text-field" placeholder="암호를 입력하세요"
