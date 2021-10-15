@@ -82,7 +82,7 @@
 							</div>
 						<div class="customer_content_reservHistory_content">
 							<div class="customer_content_reservHistory_content_detail">
-								가게이름 : ${l.shop_no } <br> 예약자 :  <br>
+								가게이름 : ${l.shop_name } <br> 예약자 :  <br>
 								예약날짜 : <br> 예약시간 :
 								 <br> 몇 명 :
 								명 <br>

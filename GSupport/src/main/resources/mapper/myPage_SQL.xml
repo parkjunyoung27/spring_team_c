@@ -38,11 +38,13 @@
 	</delete>
 	
 	<update id="reservCancel" parameterType="HashMap">
-		UPDATE reservation SET reservation_status="cancel" WHERE member_name=(SELECT member_name FROM member where member_id=#{id}) AND shop_no=#{shop_no}
+		UPDATE reservation SET reservation_status="cancel" 
+		WHERE member_name=(SELECT member_name FROM member where member_id=#{id}) AND shop_no=#{shop_no}
 	</update>
 	
 	<select id="myPageBookmark" parameterType="HashMap" resultType="HashMap">
-		SELECT * FROM shop_like WHERE member_no=(SELECT member_no FROM member WHERE member_id=#{id})
+		SELECT s.*, l.member_no FROM shop s JOIN shop_like l ON s.shop_no = l.shop_no 
+		WHERE l.member_no=(SELECT member_no FROM member where member_id=#{id})
 	</select>
 	
 	<select id="myPageShopList" parameterType="HashMap" resultType="HashMap">
