@@ -76,17 +76,13 @@
 				<c:forEach items="${list }" var="l">
 				
 					<div class="customer_content_reservHistory">
-						<div class="customer_content_reservHistory_header">예약 번호 :
-							<button class="button_submit" type="submit">예약 취소</button>
-							<button class="button_submit" type="submit">예약 승인</button>
+						<div class="customer_content_reservHistory_header"><a href="./storeDetail.do?shop_no=${l.shop_no }">가게 이름 : ${l.shop_name }</a> 
+							<button class="button_submit" type="submit">즐겨찾기</button>
 							</div>
 						<div class="customer_content_reservHistory_content">
 							<div class="customer_content_reservHistory_content_detail">
-								가게이름 : ${l.shop_name } <br> 예약자 :  <br>
-								예약날짜 : <br> 예약시간 :
-								 <br> 몇 명 :
-								명 <br>
-								요구사항 : 
+								가게 주소: ${l.shop_loc } <br> 
+								전화 번호 : ${l.shop_tel } <br> 운영 시간 : ${l.shop_opentime } ~ ${l.shop_closetime }
 
 							</div>
 						</div>
@@ -94,11 +90,10 @@
 					
 				</c:forEach>
 			</div>
-			<%-- <div id="boardPaging">
+			<div id="boardPaging">
 				<ui:pagination paginationInfo="${paginationInfo }" type="text"
 					jsFunction="linkPage" />
-			</div> --%>
-
+			</div> 
 
 
 		</div>

@@ -51,7 +51,9 @@ public class MypageServiceImpl implements MypageService {
 		return mypageDAO.myPageBookmark(map);
 	}
 
-	
+	public int totalCountBookmark(Map<String, Object> map) {
+		return mypageDAO.totalCountBookmark(map);
+	}
 
 
 }

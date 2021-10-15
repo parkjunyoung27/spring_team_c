@@ -196,15 +196,44 @@ public class MypageController {
 	public ModelAndView myPage_bookmark(CommandMap map, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("myPage_bookmark");
 		HttpSession session = request.getSession();
+		
+		// *****페이징*****
+				// 페이지 번호가 오는지 확인하기
+		int pageNo = 1;
+		if (map.containsKey("pageNo")) {
+			pageNo = Integer.parseInt(String.valueOf(map.get("pageNo")));
+		}
+		int listScale = 3;// 리스트 크기
+		int pageScale = 10;
+		
 		String id = (String)session.getAttribute("id");
-
-		System.out.println("id는 : " + id);
 		map.put("id", id);
+		
+		// 토탈 카운트
+		int totalCountBookmark = mypageService.totalCountBookmark(map.getMap());
+		
+		// 전자정부 페이징 불러오기
+		PaginationInfo paginationInfo = new PaginationInfo();
+		paginationInfo.setCurrentPageNo(pageNo);
+		paginationInfo.setRecordCountPerPage(listScale);
+		paginationInfo.setPageSize(pageScale);
+		paginationInfo.setTotalRecordCount(totalCountBookmark);
+
+		// 계산하기
+		int startPage = paginationInfo.getFirstRecordIndex();
+		int lastPage = paginationInfo.getRecordCountPerPage();
+				
+		// DB로 보내기 위해서 map에 담아주세요.
+		map.put("startPage", startPage);
+		map.put("lastPage", lastPage);
+		
 		List<Map<String, Object>> list = mypageService.myPageBookmark(map.getMap());
 		
 		mv.addObject("list", list);
-		
-		
+		mv.addObject("paginationInfo", paginationInfo);
+		mv.addObject("pageNo", pageNo);
+		mv.addObject("totalCountBookmark", totalCountBookmark);
+		System.out.println("토탈카운트북마크 = "+ totalCountBookmark);
 		
 		return mv;
 	}
