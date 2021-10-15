@@ -3,6 +3,7 @@ package com.team_c.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -99,6 +100,17 @@ public class MypageController {
 		}
 
 	}
+	
+	@GetMapping("/myPage_updateOwner.do")
+	public ModelAndView myPage_updateOwner(CommandMap commandMap,HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("myPage_updateOwner");
+		HttpSession session = request.getSession();
+		commandMap.put("member_id", session.getAttribute("member_id"));
+		Map<String, Object> shop = mypageService.myPageShop(commandMap.getMap());
+		mv.addObject("shop", shop);
+		return mv;
+	}
+	
 
 	@GetMapping("/myPage_updatePW.do")
 	public String myPage_updatePW() {

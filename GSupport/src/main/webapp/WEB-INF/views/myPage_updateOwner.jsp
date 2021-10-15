@@ -10,14 +10,13 @@
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<title>My Page Update</title>
+<title>My Page Update For owners</title>
 <link href="./resources/css/index.css" rel="stylesheet">
 <link href="./resources/css/myPage.css" rel="stylesheet">
 <link href="./resources/css/base.css" rel="stylesheet">
 
 
 <style>
-
 .button_submit {
 	width: 500px;
 	height: 50px;
@@ -55,13 +54,13 @@
 			<div class="customer-content">
 				<div class="customer-content-section">
 					<div class="customer-content-header">
-						<h1>회원 정보 수정</h1>
+						<h1>가맹점 정보 수정</h1>
 					</div>
 					<div class="customer-account-container">
 						<div class="customer-formbox">
 							<form action="./myPage_update.do" method="post">
 								<div class="field_row">
-									<div class="field_title">이메일</div>
+									<div class="field_title">가게 이름</div>
 									<div class="field_label">
 										<input type="text" class="input-text-readonly" placeholder=""
 											name="email" value="${myinfo.member_email }"
@@ -70,7 +69,7 @@
 								</div>
 
 								<div class="field_row">
-									<div class="field_title">이름</div>
+									<div class="field_title">연락처</div>
 									<div class="field_label">
 										<input type="text" class="input-text-readonly" name="name"
 											placeholder="" readonly="readonly"
@@ -81,25 +80,33 @@
 
 
 								<div class="field_row">
-									<div class="field_title">아이디</div>
+									<div class="field_title">운영 시간</div>
 									<div class="field_label">
 										<input type="text" class="input-text" name="id"
 											value="${myinfo.member_id}">
 									</div>
-									
+
 								</div>
+								
 								<div class="field_row">
-									<div class="field_title">연락처</div>
+									<div class="field_title">위치</div>
 									<div class="field_label">
 										<input type="text" class="input-text" name="phonenum"
 											value="${myinfo.member_phonenum }">
 									</div>
+								</div>
 
+								<div class="field_row">
+									<div class="field_title">알립니다</div>
+									<div class="field_label">
+										<input type="text" class="input-text" name="phonenum"
+											value="${myinfo.member_phonenum }">
+									</div>
 								</div>
 
 
 								<button id="" class="button_submit"
-									onclick="return mypageUpdate()" type="submit">회원정보 수정</button>
+									onclick="return mypageUpdate()" type="submit">정보 수정</button>
 							</form>
 						</div>
 

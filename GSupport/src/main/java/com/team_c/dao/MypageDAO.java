@@ -44,6 +44,8 @@ public class MypageDAO extends AbstractDAO {
 		return Integer.parseInt(String.valueOf(selectOne("mypage.totalCountBookmark", map).get("totalCountBookmark")));
 	}
 
-	
+	public Map<String, Object> myPageShop(Map<String, Object> map) {
+		return selectOne("mypage.shopList", map);
+	}
 
 }

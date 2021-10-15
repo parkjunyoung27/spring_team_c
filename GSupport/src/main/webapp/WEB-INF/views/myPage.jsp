@@ -18,7 +18,6 @@
 <link href="./resources/css/base.css" rel="stylesheet">
 <script src="../assets/js/core/bootstrap.min.js" type="text/javascript"></script>
 <style>
-
 </style>
 <body>
 
@@ -34,26 +33,29 @@
 			<div class="activity">
 				<div class="card">
 					<div class="card-body">
-						<h4 class="card-title">예약</h4>
-						<p class="card-text">??개</p>
-						<a href="#" class="btn btn-primary">예약 확인</a>
+						<a href="" class="">
+							<h4 class="card-title">예약</h4>
+							<p class="card-text">??개</p>
+						</a>
+					</div>
+				</div>
+
+
+				<div class="card">
+					<div class="card-body">
+						<a href="" class="">
+							<h4 class="card-title">쪽지</h4>
+							<p class="card-text">??개 /안 읽은거 ??개</p>
+						</a>
 					</div>
 				</div>
 
 				<div class="card">
-				<a href="" class="">
 					<div class="card-body">
-						<h4 class="card-title">쪽지</h4>
-						<p class="card-text">??개 /안 읽은거 ??개</p>
-					</div>
-				</a>
-				</div>
-
-				<div class="card">
-					<div class="card-body">
-						<h4 class="card-title">즐겨찾기</h4>
-						<p class="card-text">??건</p>
-						<a href="#" class="btn btn-primary">즐겨찾기</a>
+						<a href="myPage_bookmark.do" class="">
+							<h4 class="card-title">즐겨찾기</h4>
+							<p class="card-text">??건</p>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -66,7 +68,7 @@
 							${r.reservation_no }</div>
 						<div class="customer_content_reservHistory_content">
 							<div class="customer_content_reservHistory_content_detail">
-								가게이름 : ${r.shop_no } <br> 예약자 : ${r.member_name } <br>
+								가게이름 : ${r.shop_name } <br> 예약자 : ${r.member_name } <br>
 								예약날짜 : ${r.reservation_reservDate } <br> 예약시간 :
 								${r.reservation_reservTime } <br> 몇 명 :
 								${r.reservation_people } <br>
@@ -99,17 +101,17 @@
 
 
 			</div>
-
-
 		</div>
+
 	</div>
 
 
 
 
+
 	<!-- footer -->
-	<%@ include file= "./component/footer.jsp"%>
-	
+	<%@ include file="./component/footer.jsp"%>
+
 
 </body>
 </html>

@@ -15,6 +15,18 @@
 		WHERE member_id=#{member_id}
 	</update>
 	
+	<select id="shopList" parameterType="HashMap" resultType="HashMap">
+		SELECT shop_name, shop_tel, shop_loc, shop_notice, shop_opentime, shop_closetime
+		FROM shop
+		WHERE member_id=#{member_id}
+	</select>
+	
+	<update id="shopUpdate" parameterType="HashMap">
+		UPDATE shop
+		SET shop_name=#{name}, shop_tel=#{tel}, shop_loc=#{loc}, shop_notice=#{notice}, shop_opentime=#{opentime}, shop_closetime=#{closetime}
+		WHERE member_id=#{member_id} AND 
+	</update>
+	
 	<select id="reservation" parameterType="HashMap" resultType="HashMap">
 		SELECT * FROM reservation 
 		WHERE member_name=(SELECT member_name FROM member where member_id=#{id}) 

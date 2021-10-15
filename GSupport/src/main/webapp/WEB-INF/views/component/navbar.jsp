@@ -4,6 +4,7 @@
 
 <style>
 
+
 input#sidebar {diplay:none;}
 
 header {
@@ -128,7 +129,7 @@ input[id="tab03"]:checked ~ .con3 {display:block;transition:all .35s;}
     <!-- Navigation -->
     <div class="navbar">
 	    <a href="./index.do">
-	    	<img src="./resources/images/logo2.png" alt="logo" class="logo"> 
+	    	<img src="./resources/images/logo.png" alt="logo" class="logo"> 
     	</a>
     	<ul id="menu">
 	       <li class="menuli"> <a href="./about.do" class="">About</a></li>

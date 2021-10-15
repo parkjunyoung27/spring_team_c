@@ -130,7 +130,7 @@
 
 		<div id="login-form">
 			<p>
-				<img src="./resources/images/logo2.png" alt="logo" class="logo"
+				<img src="./resources/images/logo.png" alt="logo" class="logo"
 					width="60%"><br> "Don't you get hungry"
 			</p>
 
