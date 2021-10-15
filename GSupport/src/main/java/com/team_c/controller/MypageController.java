@@ -150,7 +150,10 @@ public class MypageController {
 		}
 		int listScale = 3;// 리스트 크기
 		int pageScale = 10;
-
+		
+		//id값 받아오기
+		String id = (String)session.getAttribute("id");
+		map.put("id", id);
 		// 토탈 카운트
 		int totalCount = mypageService.totalCount(map.getMap());
 
@@ -165,13 +168,12 @@ public class MypageController {
 		int startPage = paginationInfo.getFirstRecordIndex();
 		int lastPage = paginationInfo.getRecordCountPerPage();
 		
-		//id값 받아오기
-		String id = (String)session.getAttribute("id");
+		
 		
 		// DB로 보내기 위해서 map에 담아주세요.
 		map.put("startPage", startPage);
 		map.put("lastPage", lastPage);
-		map.put("id", id);
+
 
 		// 예약기능 출력하기
 		List<Map<String, Object>> reservation = mypageService.reservation(map.getMap());

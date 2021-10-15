@@ -16,13 +16,14 @@
 	</update>
 	
 	<select id="reservation" parameterType="HashMap" resultType="HashMap">
-		SELECT *FROM reservation 
+		SELECT * FROM reservation 
 		WHERE member_name=(SELECT member_name FROM member where member_id=#{id}) 
 		ORDER BY reservation_no DESC LIMIT #{startPage}, #{lastPage}
 	</select>
 	
 	<select	id="totalCount" parameterType="HashMap" resultType="HashMap">
-		SELECT COUNT(*) as totalCount FROM reservation
+		SELECT COUNT(*) as totalCount FROM reservation 
+		WHERE member_name=(SELECT member_name FROM member where member_id=#{id})
 	</select>
 	
 	<update id="mypageUpdatePW" parameterType="HashMap">
