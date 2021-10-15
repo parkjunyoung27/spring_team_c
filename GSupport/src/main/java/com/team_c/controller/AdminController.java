@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team_c.common.CommandMap;
-import com.team_c.dao.AdminDAO;
 import com.team_c.service.AdminServiceImpl;
 import com.team_c.util.Util;
 
@@ -97,14 +96,49 @@ public class AdminController {
 			if(grade == 3) {
 				mv = new ModelAndView("/admin/adminMain");
 				
+				/*가맹점 관리*/
+				
+				//총 가맹점 수
+				
+				//총 예약 건수
+				
+				//예약 많은 지역
+				
+				/*이용자 관리*/
+				
+				//총 회원 수
+				
+				//평균 예약 건수
+				
+				//이번달 회원가입
+				
+				//예약 적은 지역 
+				
+				/*게시판 관리*/
+				
+				//공지사항 게시글 수
+				
+				//가맹점 게시글
+				
+				//이용자 게시글
+				
+				//가장 많이 쓴 회원
+				
+				/*로그 관리*/
+				
+				//총 로그 기록
+				
+				//오늘의 로그 기록
+				
+				//접속 많은 시간
+				
+				
+				
 			}
 			
 		}else {
 			mv = new ModelAndView("/admin/access");
-			
 		}
-		//List<Map<String, Object>> list = indexService.boardList();
-		//mv.addObject("list", list);
 		return mv;
 	}
 	

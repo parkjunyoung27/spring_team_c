@@ -25,7 +25,7 @@
 	    	G원사격 - 관리페이지
     	</a>
     	<ul id="menu">
-	       <li class="menuli"> <a href="./adminBoardNow.do">가맹점 관리</a>
+	       <li class="menuli"> <a href="./adminShopNow.do">가맹점 관리</a>
 	       		<ul class="son">
 					<li><a href="./adminShopNow.do">가맹점 현황</a></li>
 					<li><a href="./adminShopReserve.do">예약관리</a></li>
@@ -40,11 +40,11 @@
 				<ul class="son">
 					<li><a href="./adminBoard.do?boardNo=0">공지사항</a></li>
 					<li><a href="./adminBoard.do?boardNo=1">가맹점주</a></li>
-					<li><a Href="./adminBoard.do?boardNo=2">문의사항</a></li>
+					<li><a href="./adminBoard.do?boardNo=2">문의사항</a></li>
 				</ul>
 	       </li>
-	       <li class="menuli"> <a href="./adminLog">로그 관리</a></li>
-	       <li class="menuli"> <a href="./adminAnalytics">구글 통계</a></li>
+	       <li class="menuli"> <a href="./adminLog.do">로그 관리</a></li>
+	       <li class="menuli"> <a href="./adminAnalytics.do">구글 통계</a></li>
 	       
 		   <li class="menuli">
 		   	    <c:choose>
