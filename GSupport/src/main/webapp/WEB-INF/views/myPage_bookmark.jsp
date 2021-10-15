@@ -73,7 +73,8 @@
 
 			<div class="customer_content">
 				<h1>즐겨찾기 목록</h1>
-				<c:forEach items="" var="r">
+				<c:forEach items="${list }" var="l">
+				
 					<div class="customer_content_reservHistory">
 						<div class="customer_content_reservHistory_header">예약 번호 :
 							<button class="button_submit" type="submit">예약 취소</button>
@@ -81,7 +82,7 @@
 							</div>
 						<div class="customer_content_reservHistory_content">
 							<div class="customer_content_reservHistory_content_detail">
-								가게이름 :  <br> 예약자 :  <br>
+								가게이름 : ${l.shop_no } <br> 예약자 :  <br>
 								예약날짜 : <br> 예약시간 :
 								 <br> 몇 명 :
 								명 <br>
@@ -90,6 +91,7 @@
 							</div>
 						</div>
 					</div>
+					
 				</c:forEach>
 			</div>
 			<%-- <div id="boardPaging">

@@ -47,5 +47,11 @@ public class MypageServiceImpl implements MypageService {
 		mypageDAO.reservCancel(map);
 	}
 
+	public List<Map<String, Object>> myPageBookmark(Map<String, Object> map) {
+		return mypageDAO.myPageBookmark(map);
+	}
+
+	
+
 
 }

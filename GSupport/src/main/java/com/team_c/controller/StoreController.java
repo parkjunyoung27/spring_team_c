@@ -169,7 +169,6 @@ public class StoreController {
 		
 			System.out.println("즐찾 성공");
 			return "redirect:/storeDetail.do?shop_no="+shop_no;
-				
 		}else {
 			return "redirect:/storeDetail.do?shop_no="+shop_no;
 		}

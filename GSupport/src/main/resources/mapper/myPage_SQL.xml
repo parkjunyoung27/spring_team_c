@@ -40,4 +40,12 @@
 		UPDATE reservation SET reservation_status="cancel" WHERE member_name=(SELECT member_name FROM member where member_id=#{id}) AND shop_no=#{shop_no}
 	</update>
 	
+	<select id="myPageBookmark" parameterType="HashMap" resultType="HashMap">
+		SELECT * FROM shop_like WHERE member_no=(SELECT member_no FROM member WHERE member_id=#{id})
+	</select>
+	
+	<select id="myPageShopList" parameterType="HashMap" resultType="HashMap">
+		SELECT * FROM shop WHERE shop_no=#{shop_no}
+	</select>
+	
 </mapper>

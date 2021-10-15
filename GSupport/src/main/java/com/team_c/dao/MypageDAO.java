@@ -36,4 +36,10 @@ public class MypageDAO extends AbstractDAO {
 		update("mypage.reservCancel", map);
 	}
 
+	public List<Map<String, Object>> myPageBookmark(Map<String, Object> map) {
+		return selectList("mypage.myPageBookmark", map);
+	}
+
+	
+
 }

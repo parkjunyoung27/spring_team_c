@@ -193,6 +193,16 @@ public class MypageController {
 	@GetMapping("/myPage_bookmark.do")
 	public ModelAndView myPage_bookmark(CommandMap map, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("myPage_bookmark");
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+
+		System.out.println("id는 : " + id);
+		map.put("id", id);
+		List<Map<String, Object>> list = mypageService.myPageBookmark(map.getMap());
+		
+		mv.addObject("list", list);
+		
+		
 		
 		return mv;
 	}
