@@ -19,16 +19,62 @@
 }
 
 #join_form{
-    width: auto;
-    min-height: 500px;
-    margin: 0 auto;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    font-weight: 700;
+	margin: 0 auto;
+	height: 500px;
+	width: auto;
+	border: none;
+	padding: 10px;
+	border-radius: 5px;
     background-color: #EEEFF177;
     text-align: center;
+}
+
+#join_id {
+	position:fixed;
+	width: 60%;
+	left:50%;
+	height: 40px;
+	border: none;
+	border-radius: 5px;
+	font-size: 14px;
+	transform:translate(-50%);
+	bottom:70%;
+}
+
+#join_name {
+	position:fixed;
+	width: 60%;
+	left:50%;
+	height: 40px;
+	border: none;
+	border-radius: 5px;
+	font-size: 14px;
+	transform:translate(-50%);
+	bottom:60%;
+}
+
+#join_pw {
+	position:fixed;
+	width: 60%;
+	left:50%;
+	height: 40px;
+	border: none;
+	border-radius: 5px;
+	font-size: 14px;
+	transform:translate(-50%);
+	bottom:50%;
+}
+
+#join_confirmPw {
+	position:fixed;
+	width: 60%;
+	left:50%;
+	height: 40px;
+	border: none;
+	border-radius: 5px;
+	font-size: 14px;
+	transform:translate(-50%);
+	bottom:40%;
 }
 
 /*중복확인 버튼*/
@@ -53,103 +99,8 @@
 	background-color: #D6EAF8;
 }
 
-.join_p{
-	margin-top: 10px;
-    margin-bottom: 10px;
-    padding-right: 20px;
-    height: 35px;
-}
 
-.join_p_pw{
-    margin-top: 10px;
-    margin-bottom: 20px;
-    padding-right: 20px;
-    height: 90px;
-}
-	
-#same{
-    color: red;
-    font-size: 15px;
-    float: right;
-    margin-right: 30%;
-}
-	
-.jtitle{	
-	float: left;
-    height: 30px;
-    padding: 0 15px;
-    color: black;
-    display: inline-block;
-}
 
-#jactionp p input{
-    width: 70%;
-    height: 30px;
-    margin: 0 auto;
-    padding: 0 15px;
-    border: 1px solid #728FCE;
-    border-radius: 10px;
-    box-shadow: none;
-    float: right;
-}
-
-#birth_p{
-	width:400px;
-	height:35px;
-	padding:0 15px;
-}
-			
-#join_pw .jpw1, #join_pw .jpw2{
-	margin-bottom:10px;
-}
-
-#jsubb{
-	padding: 0;
-}
-
-#resultText{
-	margin: 10px;
-	font-size: 15px;
-}
-
-#join_join{
-	width: 80%;
-	height:35px;
-	cursor:pointer;
-	background-color:#728FCE;
-	border:none;
-	border-radius: 10px;
-	letter-spacing:10px;
-	font-size:18px;
-	transition:0.3s;
-	margin: 0 auto;
-	display: block;
-	color: white;
-}
-
-#jsarea{
-	text-align: center;
-}
-
-#join_reset{
-	cursor:pointer;
-	border: none;
-	transition:0.3s;
-	color:black;
-	font-size:12px;
-	background-color: #EEEFF177;
-	font-weight: 600;
-}
-
-#join_index{
-	color:black;
-	text-decoration:none;
-	font-size:12px;
-	transition:0.3s;
-}
-
-#join_reset:hover{bcolor:blue;letter-spacing:6px;}
-#join_index:hover{color:blue;letter-spacing:6px;}
 </style>
 <!-- AJAX사용 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
@@ -248,23 +199,22 @@ $(function(){
 </script>
 
 
-	<div id= "board">
 		<div id ="join_form">
 			<h2>회 원 가 입</h2><br>
 			<p id="joinErr"></p>
 			
 			<form action="${pageContext.request.contextPath }/join.do" method="post" autocomplete="off">
 				<div>
-					<input type="text" id="id" name="id" class="join_input" placeholder="아이디" required="required" onchange="checkID()" oninput="handleOnEmail(this)" onfocus="focusID()">
+					<input type="text" id="join_id" name="id" class="join_input" placeholder="아이디" required="required" onchange="checkID()" oninput="handleOnEmail(this)" onfocus="focusID()">
 				</div>
 				<div>
-					<input type="text" id="name" name="name" class="join_input" placeholder="닉네임" required="required" onchange="checkName()" oninput="handleOnInput(this)" onfocus="focusName()">
+					<input type="text" id="join_name" name="name" class="join_input" placeholder="닉네임" required="required" onchange="checkName()" oninput="handleOnInput(this)" onfocus="focusName()">
 				</div>
 				<div>
-					<input type="password" id="password" name="password" class="join_input" placeholder="비밀번호" required="required" onchange="isSame()" onfocus="focusPw()">
+					<input type="password" id="join_pw" name="password" class="join_input" placeholder="비밀번호" required="required" onchange="isSame()" onfocus="focusPw()">
 				</div>
 				<div>
-					<input type="password" id="confirmPassword" name="confirmPassword" class="join_input" placeholder="비밀번호 확인" required="required" onchange="isSame()">
+					<input type="password" id="join_confirmPw" name="confirmPassword" class="join_input" placeholder="비밀번호 확인" required="required" onchange="isSame()">
 				</div>
 			
 				<div>
@@ -276,7 +226,6 @@ $(function(){
 					<input type="submit" id="joinConfirm" name="joinConfirm" value="확인하기" onclick="joinConfirm()">
 		
 		</div>
-	</div>
 	
 	
 </html>
