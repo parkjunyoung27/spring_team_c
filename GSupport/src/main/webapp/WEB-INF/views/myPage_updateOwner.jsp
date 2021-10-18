@@ -29,7 +29,7 @@
 }
 </style>
 <script type="text/javascript">
-	function myPage_registStore() {
+	function myPage_updateStore() {
 		if (confirm("수정하시겠습니까?")) {
 			alert("수정 되었습니다.");
 			return true;
@@ -124,7 +124,7 @@
 
 
 								<button id="" class="button_submit"
-									onclick="return myPage_registStore()" type="submit">정보 수정</button>
+									onclick="return myPage_updateStore()" type="submit">정보 수정</button>
 							</form>
 						</div>
 

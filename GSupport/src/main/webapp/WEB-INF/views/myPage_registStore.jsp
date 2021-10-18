@@ -54,7 +54,7 @@
 			<div class="customer-content">
 				<div class="customer-content-section">
 					<div class="customer-content-header">
-						<h1>가맹점 정보 수정</h1>
+						<h1>가맹점 등록</h1>
 					</div>
 					<div class="customer-account-container">
 						<div class="customer-formbox">
@@ -63,7 +63,8 @@
 									<div class="field_title">가게 이름</div>
 									<div class="field_label">
 										<input type="text" class="input-text" placeholder=""
-											name="shop_name" value="${mystore.shop_name }">
+											name="shop_name"
+											value="${sessionScope.name }" readonly="readonly">
 									</div>
 								</div>
 												
@@ -72,14 +73,17 @@
 									<div class="field_label">
 										<input type="text" class="input-text" name="shop_loc"
 											placeholder="" 
-											value="${mystore.shop_loc }">
+											>
 								</div>
 
 								<div class="field_row">
 									<div class="field_title">구</div>
 									<div class="field_label">
-										<input type="text" class="input-text" name="shop_gu"
-											value="${mystore.shop_gu }">
+										<select name="shop_gu">
+								<c:forEach items="${list }" var="l">
+									<option value="${l.shop_gu }">${l.shop_gu }</option>
+								</c:forEach>
+							</select>
 									</div>
 								</div>
 
@@ -89,7 +93,7 @@
 									<div class="field_label">
 										<input type="text" class="input-text" name="shop_tel"
 											placeholder="" 
-											value="${mystore.shop_tel }">
+											>
 									</div>
 
 								</div>
@@ -99,7 +103,7 @@
 									<div class="field_title">오픈 시간</div>
 									<div class="field_label">
 										<input type="text" class="input-text" name="shop_opentime"
-											value="${mystore.shop_opentime }">
+											>
 									</div>
 			
 								</div>
@@ -107,7 +111,7 @@
 									<div class="field_title">마감 시간</div>
 									<div class="field_label">
 										<input type="text" class="input-text" name="shop_closetime"
-											value="${mystore.shop_closetime }">
+											>
 									</div>
 			
 								</div>
@@ -115,8 +119,8 @@
 								<div class="field_row">
 									<div class="field_title">알립니다</div>
 									<div class="field_label">
-										<input type="text" class="input-text" name="phonenum"
-											value="${mystore.shop_notice }">
+										<input type="text" class="input-text" name="shop_notice"
+											>
 									</div>
 								</div>
 

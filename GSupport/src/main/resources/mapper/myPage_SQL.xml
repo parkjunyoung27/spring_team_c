@@ -81,4 +81,13 @@
 		WHERE member_no=(SELECT member_no FROM member where member_id=#{member_id})
 	</update>
 	
+	<insert id="myPage_registStore" parameterType="HashMap">
+		INSERT INTO shop (shop_name, shop_tel, shop_loc, shop_gu, shop_opentime, shop_closetime, shop_notice, member_no) VALUES (#{shop_name}, #{shop_tel}, #{shop_loc}, 
+		(SELECT shop_gu FROM shop_gu WHERE shop_gu=#{shop_gu}), #{shop_opentime}, #{shop_closetime}, #{shop_notice}, (SELECT member_no FROM member WHERE member_id=#{id}))
+	</insert>
+	
+	<select id="storeGuList" parameterType="HashMap" resultType="HashMap">
+		SELECT * FROM shop_gu 
+	</select>
+	
 </mapper>

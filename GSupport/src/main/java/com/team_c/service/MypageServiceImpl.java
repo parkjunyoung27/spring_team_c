@@ -62,8 +62,16 @@ public class MypageServiceImpl implements MypageService {
 		return mypageDAO.myPage_updateOwner(map);
 	}
 
-	public void myPage_UpdateStore(Map<String, Object> map) {
-		mypageDAO.myPage_UpdateStore(map);
+	public void myPage_updateStore(Map<String, Object> map) {
+		mypageDAO.myPage_updateStore(map);
+	}
+
+	public int myPage_registStore(Map<String, Object> map) {
+		return mypageDAO.myPage_registStore(map);
+	}
+
+	public List<Map<String, Object>> storeGuList(Map<String, Object> map) {
+		return mypageDAO.storeGuList(map);
 	}
 
 

@@ -52,8 +52,17 @@ public class MypageDAO extends AbstractDAO {
 		return selectOne("mypage.myPage_updateOwner", map);
 	}
 
-	public void myPage_UpdateStore(Map<String, Object> map) {
-		update("mypage.myPage_UpdateStore", map);
+	public void myPage_updateStore(Map<String, Object> map) {
+		update("mypage.myPage_updateStore", map);
+	}
+
+	public int myPage_registStore(Map<String, Object> map) {
+		return Insert("mypage.myPage_registStore", map);
+	}
+
+	public List<Map<String, Object>> storeGuList(Map<String, Object> map) {
+		return selectList("mypage.storeGuList", map);
+		
 	}
 	
 	
