@@ -106,7 +106,7 @@ public class MypageController {
 		HttpSession session = request.getSession();
 		ModelAndView mv = new ModelAndView("myPage_registStore");
 		map.put("member_id", session.getAttribute("member_id"));
-		List<Map<String, Object>> mystore = mypageService.myPage_registStore(map.getMap());
+		Map<String, Object> mystore = mypageService.myPage_registStore(map.getMap());
 		
 		mv.addObject("mystore", mystore);
 		System.out.println(mystore+"----------------------------------------");

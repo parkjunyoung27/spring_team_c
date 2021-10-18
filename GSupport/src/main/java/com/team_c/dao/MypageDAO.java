@@ -48,13 +48,13 @@ public class MypageDAO extends AbstractDAO {
 		return selectOne("mypage.shopList", map);
 	}
 
-	public List<Map<String, Object>> myPage_registStore(Map<String, Object> map) {
-		return selectList("mypage.myPage_registStore", map);
+	public Map<String, Object> myPage_registStore(Map<String, Object> map) {
+		return selectOne("mypage.myPage_registStore", map);
 	}
 
 	public void myPage_UpdateStore(Map<String, Object> map) {
 		update("mypage.myPage_UpdateStore", map);
 	}
 	
-
+	
 }
