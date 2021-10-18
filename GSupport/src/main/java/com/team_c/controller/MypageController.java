@@ -101,12 +101,12 @@ public class MypageController {
 
 	}
 	//가맹점 등록 정보 가져오기
-	@GetMapping("/myPage_registStore.do")
-	public ModelAndView myPage_registStore(CommandMap map, HttpServletRequest request) {
+	@GetMapping("/myPage_updateOwner.do")
+	public ModelAndView myPage_updateOwner(CommandMap map, HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		ModelAndView mv = new ModelAndView("myPage_registStore");
+		ModelAndView mv = new ModelAndView("myPage_updateOwner");
 		map.put("member_id", session.getAttribute("member_id"));
-		Map<String, Object> mystore = mypageService.myPage_registStore(map.getMap());
+		Map<String, Object> mystore = mypageService.myPage_updateOwner(map.getMap());
 		
 		mv.addObject("mystore", mystore);
 		System.out.println(mystore+"----------------------------------------");
@@ -115,11 +115,11 @@ public class MypageController {
 	}
 	
 	//가맹점 등록 정보 수정하기
-	@PostMapping("/myPage_registStore.do")
-	public String myPage_registStore1(CommandMap map, HttpServletRequest request) {
+	@PostMapping("/myPage_updateOwner.do")
+	public String myPage_updateOwner1(CommandMap map, HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		if(session.getAttribute("member_no") != null) {
-			map.put("member_no", session.getAttribute("member_no"));
+		if(session.getAttribute("member_id") != null) {
+			map.put("member_id", session.getAttribute("member_id"));
 			mypageService.myPage_UpdateStore(map.getMap());
 			return "redirect:./myPage.do";
 		}
