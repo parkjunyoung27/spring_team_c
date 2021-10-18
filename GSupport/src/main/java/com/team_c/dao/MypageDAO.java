@@ -69,7 +69,7 @@ public class MypageDAO extends AbstractDAO {
 	
 
 	public int reservationTotal(Map<String, Object> map) {
-		return Integer.parseInt(String.valueOf(selectOne("mypage.reservationTotal", map)));
+		return Integer.parseInt(String.valueOf(selectOne("mypage.reservationTotal", map).get("reservationTotal")));
 	}
 
 }

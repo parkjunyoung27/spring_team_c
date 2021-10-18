@@ -98,8 +98,7 @@
 							<a href="./myPage_reserv.do?status=wait">예약 진행중</a>
 						</h4>
 						<h2 class="reserv-text">
-						${reservationTotal }
-						?????????개를 못찾겠어요 엉엉엉 살려주세요</h2>
+						${reservationTotal } 개</h2>
 					</div>
 
 				</div>
@@ -109,7 +108,7 @@
 						<h4 class="reserv-title">
 							<a href="./myPage_reserv.do?status=success">예약 종료</a>
 						</h4>
-						<h2 class="reserv-text">??개</h2>
+						<h2 class="reserv-text">${reservationTotal } 개</h2>
 					</div>
 				</div>
 
@@ -118,7 +117,7 @@
 						<h4 class="reserv-title">
 							<a href="./myPage_reserv.do?status=cancel">예약 취소</a>
 						</h4>
-						<h2 class="reserv-text">??개</h2>
+						<h2 class="reserv-text">${reservationTotal } 개</h2>
 					</div>
 				</div>
 
