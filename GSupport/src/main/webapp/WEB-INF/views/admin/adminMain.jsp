@@ -18,7 +18,7 @@ span.dashResult {
     color: gold;
     font-weight: 800;
     font-size: larger;
-    display: inline-block;
+    float: right;
 }
 .adminContainerList:hover{box-shadow: 10px 10px 10px;}
 .adminContainerList2:hover{box-shadow: 10px 10px 10px;}
