@@ -3,7 +3,6 @@ package com.team_c.controller;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -60,7 +59,6 @@ public class MypageController {
 
 		// 예약기능 출력하기
 		List<Map<String, Object>> reservation = mypageService.reservation(map.getMap());
-
 		// 담기
 		mv.addObject("reservation_list", reservation);
 		if (reservation.size() > 0) {
@@ -223,6 +221,18 @@ public class MypageController {
 	public ModelAndView myPage_reserv(CommandMap map, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("myPage_reserv");
 		HttpSession session = request.getSession();
+		
+		//String reservationStatus = mypageService.reservationCate(map);
+		//System.out.println("예약 이름은으으으ㅏㄴ어라어라ㅓㄴ아런아" + reservationStatus);
+		//mv.addObject("reserve_status", reservationStatus);
+		
+		//String reservation_status = "wait";
+		//if(map.containsKey("reservationNo")) {
+		//	reservation_status = String.valueOf(map.get("reservationNo"));
+		//} else {
+		//	map.put("reservationNo", reservation_status);
+		//} mv.addObject("reservationNo", reservation_status);
+			 
 		// *****페이징*****
 		// 페이지 번호가 오는지 확인하기
 		int pageNo = 1;
@@ -237,7 +247,8 @@ public class MypageController {
 		map.put("id", id);
 		// 토탈 카운트
 		int totalCount = mypageService.totalCount(map.getMap());
-
+		int reservationTotal = mypageService.reservationTotal(map.getMap());
+		System.out.println("=================="+ reservationTotal);
 		// 전자정부 페이징 불러오기
 		PaginationInfo paginationInfo = new PaginationInfo();
 		paginationInfo.setCurrentPageNo(pageNo);
@@ -258,6 +269,10 @@ public class MypageController {
 
 		// 예약기능 출력하기
 		List<Map<String, Object>> reservation = mypageService.reservation(map.getMap());
+		
+//		List<Map<String, Object>> reservation1 = mypageService.reservation1(map.getMap());
+//		System.out.println(" "+ reservation1 + "hiiiiiiiiijijdfisdjofjsdlkfjsd");
+
 
 		// 담기
 		mv.addObject("reservation_list", reservation);
@@ -268,6 +283,12 @@ public class MypageController {
 		mv.addObject("pageNo", pageNo);
 		mv.addObject("totalCount", totalCount);
 		mv.addObject("reserve", reservation);
+		mv.addObject("reservationTotal", reservationTotal);
+//		if(map.containsKey("total")) {
+//			List<Map<String, Object>> total = mypageService.reservationTotal(map.getMap());
+//			mv.addObject("total", total);
+//		}
+		System.out.println(" " + "토탈카운트북마크 = " + reservationTotal);
 		
 		return mv;
 	}

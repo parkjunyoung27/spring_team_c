@@ -20,7 +20,7 @@ public class MypageServiceImpl implements MypageService {
 	public List<Map<String, Object>> reservation(Map<String, Object> map) {
 		return mypageDAO.reservation(map);
 	}
-
+	
 	public int totalCount(Map<String, Object> map) {
 		return mypageDAO.totalCount(map);
 	}
@@ -77,4 +77,16 @@ public class MypageServiceImpl implements MypageService {
 
 	
 	
+	public int reservationTotal(Map<String, Object> map) {
+		return mypageDAO.reservationTotal(map);
+	}
+	
+//	public String reservationCate(CommandMap map){
+//		List<Map<String, Object>> reservationStatusList = mypageDAO.reservationCate(map.getMap());
+//		//int reservationNo = Integer.parseInt(String.valueOf(map.get("reservationNo"))); //0부터 n번째 줄까지 있는 리스트를 뽑아온다.
+//		//String reservationStatus = (String) reservationStatusList.get(reservationNo).get("reservation_status"); 
+//		return  ""; // reservationStatus;	
+//	}
+
+
 }
