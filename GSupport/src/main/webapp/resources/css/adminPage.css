@@ -200,14 +200,17 @@ div#wrapper {
     padding: 10px;
     overflow: auto;
     letter-spacing: 1px;
-    cursor: pointer;
 }
 
+.w1 {width:1%; }
+.w3 {width:3%; }
 .w5 {width:5%; }
 .w7 {width:7%; }
+.w10 {width:10%; }
 .w15 {width:15%; }
 .w20 {width:20%; }
-.w50 {width:60%; }
+.w40 {width:40%; }
+.w50 {width:50%; }
 
 
 /* 어드민 페이지 내 content 틀 */
@@ -216,10 +219,10 @@ div#wrapper {
 table{ /* 테이블*/ 
 	margin: 0 auto;
 	height: 100%;
-	width : 90%;
+	width : 100%;
 	border-collapse: collapse;
 	text-align: center;
-	overflow: scroll;
+	cursor: auto;
 }
 
 table th{ /*메뉴 제목*/
@@ -252,6 +255,31 @@ select#target {
     font-size: 0.6em;
 }
 
+select#gu {
+    width: 80%;
+    height: 25px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.6em;
+}
+select#grade {
+    width: 80%;
+    height: 25px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.6em;
+}
+select#channel {
+    width: 80%;
+    height: 25px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.6em;
+}
+
 .adminLogPaging{
 	clear: both;
     width: 100%;
@@ -261,16 +289,17 @@ select#target {
     font-size: 1.2em;
 }
 
-.adminLogPaging button{
+.adminDelBtn{
 	float: right;
     width: 8%;
     height: 30px;
     background: white;
     font-weight: 800;
     margin-top: 5px;
+    cursor:pointer
 }
 
-#adminLogNone td{
+#adminNone td{
 	border: none;
     font-size: 2em;
     height: 500px;
@@ -281,7 +310,9 @@ input[type="checkbox"] {
     height: 20px;
 }    
 
-
+tr.windowOpen {
+    cursor: pointer;
+}
 
 
 

@@ -32,11 +32,33 @@
 		</if>
 		
 		<if test="ip == '' and target != ''">
-		AND log_ip = #{ip} AND log_target=#{target}
+		AND log_target=#{target}
 		</if>
 		
 		<if test="ip != '' and target != ''">
 		AND log_ip = #{ip} AND log_target=#{target}
+		</if>
+	</select>
+	
+	<select	id="shopNowTotalCount" parameterType="HashMap" resultType="HashMap">
+		SELECT COUNT(*) as totalCount FROM shopview 
+		<if test="gu != ''">
+		WHERE shop_gu = #{gu}
+		</if>
+	</select>
+	
+	<select	id="memberTotalCount" parameterType="HashMap" resultType="HashMap">
+		SELECT COUNT(*) as totalCount FROM memberview  
+		<if test="channel != '' and gradeOption == ''">
+		WHERE member_channel = #{channel}
+		</if>
+		
+		<if test="channel == '' and gradeOption != ''">
+		WHERE member_grade =#{gradeOption}
+		</if>
+		
+		<if test="channel != '' and gradeOption != ''">
+		WHERE member_channel = #{channel} AND member_grade= #{gradeOption}
 		</if>
 	</select>
 
@@ -52,8 +74,50 @@
 		UPDATE log SET log_del=0 WHERE log_no=#{number} 
 	</update>
 	
+	<select	id="guList" resultType="Object">
+		SELECT DISTINCT shop_gu FROM shop_gu
+	</select>
+		
+	<select	id="channelList" resultType="Object">
+		SELECT DISTINCT member_channel FROM memberview
+	</select>	
+	
+	<select	id="gradeList" resultType="Object">
+		SELECT DISTINCT member_grade FROM memberview
+	</select>	
+	
 	<select id="dashList" resultType="HashMap">
 		SELECT * FROM monitoring 
+	</select>
+	
+	
+	<select id="shopList" resultType="HashMap">
+		SELECT * FROM shopview  
+		<if test="gu != ''">
+			WHERE shop_gu = #{gu} 
+		</if>
+		limit #{startPage}, #{lastPage}	
+	</select>
+	
+	<update id="deleteShop">
+		UPDATE shop SET shop_delete=1 WHERE shop_no=#{number} 
+	</update>
+	
+	<select id="memberList" resultType="HashMap">
+		SELECT * FROM memberview  
+		<if test="channel != '' and gradeOption == ''">
+		WHERE member_channel = #{channel} 
+		</if>
+			
+		<if test="channel == '' and gradeOption != ''">
+		WHERE member_grade= #{gradeOption}
+		</if>
+			
+		<if test="channel != '' and gradeOption != ''">
+		WHERE member_channel= #{channel} AND member_grade= #{gradeOption}
+		</if>
+		
+		limit #{startPage}, #{lastPage}
 	</select>
 	
 </mapper>

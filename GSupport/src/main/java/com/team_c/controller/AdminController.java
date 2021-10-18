@@ -107,21 +107,94 @@ public class AdminController {
 	
 	//관리자 가맹점 현황 페이지
 	@GetMapping("/admin/adminShopNow.do")
-	public ModelAndView adminShopNow(CommandMap commandMap, HttpServletRequest request) {
-		
+	public ModelAndView adminShopNow(CommandMap map, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		ModelAndView mv = new ModelAndView("/admin/access"); 
+		
+		String gu = ""; //기본값 구
+		if(request.getParameter("gu")!= null) {
+			gu = request.getParameter("gu");
+		}
+		
+		map.put("gu", gu);
+		
+		//지역구 리스트 불러오기
+		List<Object> guList = adminService.guList();
+		
+		// 페이징
+		int pageNo = 1;
+		if(map.containsKey("pageNo")) {
+			pageNo = Integer.parseInt(String.valueOf(map.get("pageNo")));
+		}
+		int listScale = 20;
+		int pageScale = 10;
+		
+		int totalCount = adminService.shopNowTotalCount(map.getMap());
+		
+		//전자정부 페이징 불러오기
+		PaginationInfo paginationInfo = new PaginationInfo();
+		paginationInfo.setCurrentPageNo(pageNo);
+		paginationInfo.setRecordCountPerPage(listScale);//한페이지 리스트 갯수
+		paginationInfo.setPageSize(pageScale);//페이지사이즈
+		paginationInfo.setTotalRecordCount(totalCount);
+		
+		//계산하기
+		int startPage = paginationInfo.getFirstRecordIndex();
+		int lastPage = paginationInfo.getRecordCountPerPage();
+		
+		//DB로 보내기 위해서 map에 담아주세요.
+		map.put("startPage", startPage);
+		map.put("lastPage", lastPage);
+		
 		
 		if(session.getAttribute("grade") != null) {
 			int grade = (Integer)session.getAttribute("grade");
 			
 			if(grade == 3) {
 				mv = new ModelAndView("/admin/adminShopNow");
+				
+				//가맹점 리스트 불러오기
+				List<Map<String, Object>> list = adminService.shopList(map.getMap());
+				
+				mv.addObject("paginationInfo", paginationInfo);
+				mv.addObject("pageNo", pageNo);
+				mv.addObject("list", list);
+				mv.addObject("guList", guList);
+				mv.addObject("gu", gu);
+				mv.addObject("totalCount", totalCount);
+				
 			}
 			
 		}
 		
 		return mv;
+	}
+	
+	@PostMapping("/admin/adminShopNow.do")
+	public String adminShopNow2(HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		if(session.getAttribute("grade") != null) {
+			int grade = (Integer)session.getAttribute("grade");
+			
+			if(grade == 3) {
+				
+				int sum = 0;
+				String[] numbers = null;
+				
+				if(request.getParameter("check") == null) {
+					System.out.println("삭제할것이 없습니다.");
+				}else {
+					numbers = request.getParameterValues("check");
+					for(String string : numbers) {
+						String number = string;
+						System.out.println("삭제할 번호: " + number);
+						adminService.deleteShop(number);
+					}
+				}
+			}
+		}
+		return "redirect:./adminShopNow.do";
 	}
 	
 	//관리자 가맹점 현황 페이지
@@ -144,15 +217,68 @@ public class AdminController {
 	
 	//관리자 이용자 관리 페이지
 	@GetMapping("/admin/adminMember.do")
-	public ModelAndView adminMember(CommandMap commandMap, HttpServletRequest request) {
+	public ModelAndView adminMember(CommandMap map, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		ModelAndView mv = new ModelAndView("/admin/access");
+		
+		String channel = ""; //기본값 구
+		if(request.getParameter("channel")!= null) {
+			channel = request.getParameter("channel");
+		}
+		String gradeOption = ""; //기본값 구
+		if(request.getParameter("grade")!= null) {
+			gradeOption = request.getParameter("grade");
+		}
+		
+		map.put("channel", channel);
+		map.put("gradeOption", gradeOption);
+		
+		//채널리스트 불러오기
+		List<Object> channelList = adminService.channelList();		
+		//등급 리스트 불러오기 
+		List<Object> gradeList = adminService.gradeList();
+		
+		// 페이징
+		int pageNo = 1;
+		if(map.containsKey("pageNo")) {
+			pageNo = Integer.parseInt(String.valueOf(map.get("pageNo")));
+		}
+		int listScale = 10;
+		int pageScale = 10;
+		
+		int totalCount = adminService.memberTotalCount(map.getMap());
+		
+		//전자정부 페이징 불러오기
+		PaginationInfo paginationInfo = new PaginationInfo();
+		paginationInfo.setCurrentPageNo(pageNo);
+		paginationInfo.setRecordCountPerPage(listScale);//한페이지 리스트 갯수
+		paginationInfo.setPageSize(pageScale);//페이지사이즈
+		paginationInfo.setTotalRecordCount(totalCount);
+		
+		//계산하기
+		int startPage = paginationInfo.getFirstRecordIndex();
+		int lastPage = paginationInfo.getRecordCountPerPage();
+			
+		//DB로 보내기 위해서 map에 담아주세요.
+		map.put("startPage", startPage);
+		map.put("lastPage", lastPage);
 		
 		if(session.getAttribute("grade") != null) {
 			int grade = (Integer)session.getAttribute("grade");
 			
 			if(grade ==3) {
 				mv = new ModelAndView("/admin/adminMember");
+				
+				//멤버 리스트 불러오기
+				List<Map<String, Object>> list = adminService.memberList(map.getMap());
+				
+				mv.addObject("paginationInfo", paginationInfo);
+				mv.addObject("pageNo", pageNo);
+				mv.addObject("list", list);
+				mv.addObject("channelList", channelList);
+				mv.addObject("gradeList", gradeList);
+				mv.addObject("totalCount", totalCount);
+				
 			}
 		}
 		

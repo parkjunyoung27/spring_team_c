@@ -58,6 +58,45 @@ public class AdminServiceImpl implements AdminService{
 		return adminDAO.dashList();
 	}
 
+	@Override
+	public List<Object> guList() {
+		return adminDAO.guList();
+	}
+
+	@Override
+	public List<Map<String, Object>> shopList(Map<String, Object> map) {
+		return adminDAO.shopList(map);
+	}
+
+	@Override
+	public int shopNowTotalCount(Map<String, Object> map) {
+		return adminDAO.shopNowTotalCount(map);
+	}
+
+	@Override
+	public void deleteShop(String number) {
+		adminDAO.deleteShop(number);
+	}
+
+	@Override
+	public List<Object> channelList() {
+		return adminDAO.channelList();
+	}
+
+	@Override
+	public List<Object> gradeList() {
+		return adminDAO.gradeList();
+	}
+
+	public int memberTotalCount(Map<String, Object> map) {
+		return adminDAO.memberTotalCount(map);
+	}
+
+	@Override
+	public List<Map<String, Object>> memberList(Map<String, Object> map) {
+		return adminDAO.memberList(map);
+	}
+
 
 	
 }

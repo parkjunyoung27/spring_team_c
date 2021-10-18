@@ -31,4 +31,20 @@ public interface AdminService {
 	
 	public Map<String, Object> dashList(); 
 	
+	public List<Object> guList();
+	
+	public List<Object> channelList(); 
+
+	public List<Object> gradeList(); 
+	
+	public List<Map<String, Object>> shopList(Map<String, Object> map);
+	
+	public int shopNowTotalCount(Map<String, Object> map);
+
+	public void deleteShop(String number);
+	
+	public int memberTotalCount(Map<String, Object> map);
+
+	public List<Map<String, Object>> memberList(Map<String, Object> map);
+	
 }

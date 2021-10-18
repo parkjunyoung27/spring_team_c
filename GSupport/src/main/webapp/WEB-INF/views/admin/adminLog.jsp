@@ -163,7 +163,7 @@ var target = document.getElementById("target").value;
 							</c:forEach>		
 						</c:when>
 						<c:otherwise>
-							<tr id="adminLogNone">
+							<tr id="adminNone">
 								<td colspan="6">로그 기록이 없습니다... <td>
 							</tr>
 						</c:otherwise>
@@ -175,7 +175,7 @@ var target = document.getElementById("target").value;
 			
 			<div class="adminLogPaging">
 				<ui:pagination paginationInfo="${paginationInfo }" type="text" jsFunction="linkPage"/>
-				<button type="button" onclick="checkDelete(document.forms['LogOrder'])">삭제하기</button>		
+				<button type="button" onclick="checkDelete(document.forms['LogOrder'])" class="adminDelBtn">삭제하기</button>		
 			</div>	
 		
 		</div>

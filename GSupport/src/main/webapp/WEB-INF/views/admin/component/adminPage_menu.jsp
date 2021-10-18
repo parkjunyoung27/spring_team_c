@@ -52,7 +52,6 @@
                         <li>가맹점 관리 <i class="arrow fas fa-angle-right"></i></li>
                         <ul class="small_menu">
                             <li onclick="location.href='./adminShopNow.do'">가맹점 현황</li>
-                            <li onclick="location.href='./adminShopReserve.do'">가맹점 예약관리</li>
                         </ul>
                     </ul>
                     
