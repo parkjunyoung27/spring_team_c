@@ -37,7 +37,8 @@
 			<h1 class="customer_side_title">나의 정보</h1>
 			<ul class="customer_side_list">
 				<li><a href="./myPage_update.do">회원정보 수정 </a></li>
-				<li><a href="./myPage_updateOwner.do">가맹점 정보 수정 </a></li>
+				<li><a href="./myPage_registStore.do">가맹점 등록 </a></li>
+				<li><a href="./myPage_updateOwner.do">가맹점 수정 </a></li>
 				<li><a href="./myPage_updatePW.do">비밀번호 변경 </a></li>
 				<li><a href="./myPage_delete.do">회원 탈퇴 </a></li>
 			</ul>

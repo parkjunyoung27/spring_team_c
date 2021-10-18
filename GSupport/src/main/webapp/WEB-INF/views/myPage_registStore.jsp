@@ -29,7 +29,7 @@
 }
 </style>
 <script type="text/javascript">
-	function mypageUpdate() {
+	function myPage_registStore() {
 		if (confirm("수정하시겠습니까?")) {
 			alert("수정 되었습니다.");
 			return true;
@@ -58,13 +58,13 @@
 					</div>
 					<div class="customer-account-container">
 						<div class="customer-formbox">
-							<form action="./myPage_update.do" method="post">
+							<form action="./myPage_registStore.do" method="post">
 								<div class="field_row">
 									<div class="field_title">가게 이름</div>
 									<div class="field_label">
 										<input type="text" class="input-text-readonly" placeholder=""
-											name="email" value="${myinfo.member_email }"
-											readonly="readonly">
+											name="email" value=""
+											readonly="readonly">${mystore.shop_name }
 									</div>
 								</div>
 
@@ -73,7 +73,7 @@
 									<div class="field_label">
 										<input type="text" class="input-text-readonly" name="name"
 											placeholder="" readonly="readonly"
-											value="${myinfo.member_name}">
+											value="">
 									</div>
 
 								</div>
@@ -83,7 +83,7 @@
 									<div class="field_title">운영 시간</div>
 									<div class="field_label">
 										<input type="text" class="input-text" name="id"
-											value="${myinfo.member_id}">
+											value="">
 									</div>
 
 								</div>
@@ -92,7 +92,7 @@
 									<div class="field_title">위치</div>
 									<div class="field_label">
 										<input type="text" class="input-text" name="phonenum"
-											value="${myinfo.member_phonenum }">
+											value="">
 									</div>
 								</div>
 
@@ -100,13 +100,13 @@
 									<div class="field_title">알립니다</div>
 									<div class="field_label">
 										<input type="text" class="input-text" name="phonenum"
-											value="${myinfo.member_phonenum }">
+											value="">
 									</div>
 								</div>
 
 
 								<button id="" class="button_submit"
-									onclick="return mypageUpdate()" type="submit">정보 수정</button>
+									onclick="return myPage_registStore()" type="submit">정보 수정</button>
 							</form>
 						</div>
 

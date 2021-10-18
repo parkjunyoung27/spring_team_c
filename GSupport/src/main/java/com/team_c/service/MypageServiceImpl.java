@@ -58,4 +58,15 @@ public class MypageServiceImpl implements MypageService {
 		return mypageDAO.myPageShop(map);
 	}
 
+	public List<Map<String, Object>> myPage_registStore(Map<String, Object> map) {
+		return mypageDAO.myPage_registStore(map);
+	}
+
+	public void myPage_UpdateStore(Map<String, Object> map) {
+		mypageDAO.myPage_UpdateStore(map);
+	}
+
+
+	
+	
 }

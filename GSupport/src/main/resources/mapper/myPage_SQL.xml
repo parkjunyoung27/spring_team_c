@@ -70,4 +70,15 @@
 		WHERE l.member_no=(SELECT member_no FROM member where member_id=#{id})
 	</select>
 	
+	<select id="myPage_registStore" parameterType="HashMap" resultType="HashMap">
+		SELECT * 
+		FROM shop WHERE member_no=(SELECT member_no FROM member where member_id=#{member_id})
+	</select>
+	
+<!-- 	<update id="myPageUpdate" parameterType="HashMap">
+		UPDATE shop
+		SET shop_name=#{shop_name}, shop_tel=#{shop_tel}, shop_loc=#{shop_loc}, shop_gu=#{shop_gu}, shop_opentime=#{shop_opentime}, shop_closetime=#{shop_closetime}, shop_notice=#{shop_notice} 
+		WHERE member_no=#{member_no}
+	</update> -->
+	
 </mapper>
