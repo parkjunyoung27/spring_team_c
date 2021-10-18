@@ -52,4 +52,8 @@
 		UPDATE log SET log_del=0 WHERE log_no=#{number} 
 	</update>
 	
+	<select id="dashList" resultType="HashMap">
+		SELECT * FROM monitoring 
+	</select>
+	
 </mapper>

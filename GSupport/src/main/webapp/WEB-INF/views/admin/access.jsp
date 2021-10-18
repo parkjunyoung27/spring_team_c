@@ -15,13 +15,12 @@
 	margin: 0 auto;
 	height: auto;
 	width: 500px;
-	margin-top: 100px;
 	border: none;
 	padding: 20px;
 	border-radius: 5px;
 	background-color: #EEEFF177;
 	margin-bottom: 150px;
-	margin-top:15%;
+	margin-top:11%;
 }
 
 #login-form p {
@@ -89,7 +88,7 @@ function accessCheck(){
 	<main>
 		<div id="login-form">
 			<p>
-				<img src="../resources/images/logo2.png" alt="logo" class="logo" width="70%">
+				<img src="../resources/images/logo.png" alt="logo" class="logo" width="70%">
 				<br> 관리자 로그인
 			</p>
 

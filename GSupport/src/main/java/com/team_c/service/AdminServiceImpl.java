@@ -53,9 +53,10 @@ public class AdminServiceImpl implements AdminService{
 		adminDAO.deleteLog(number);
 	}
 
-
-
-
+	@Override
+	public Map<String, Object> dashList() {
+		return adminDAO.dashList();
+	}
 
 
 	

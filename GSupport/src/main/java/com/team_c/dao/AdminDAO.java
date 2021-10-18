@@ -32,7 +32,8 @@ public class AdminDAO extends AbstractDAO{
 		deleteLog("admin.deleteLog", number);
 	}
 
-
-	
+	public Map<String, Object> dashList() {
+		return selectOne("admin.dashList");
+	}
 	
 }

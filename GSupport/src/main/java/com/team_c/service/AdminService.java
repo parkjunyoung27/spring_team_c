@@ -29,4 +29,6 @@ public interface AdminService {
 	//adminLog 페이지 삭제
 	public void deleteLog(String number); 
 	
+	public Map<String, Object> dashList(); 
+	
 }

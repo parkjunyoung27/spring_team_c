@@ -13,73 +13,6 @@
 <link href="../resources/css/adminPage.css" rel="stylesheet"> 
 <link href="../resources/css/adminPage_menu.css" rel="stylesheet">
 <style>
-table{ /* 테이블*/ 
-	margin: 0 auto;
-	height: 100%;
-	width : 90%;
-	border-collapse: collapse;
-	text-align: center;
-	overflow: scroll;
-}
-
-table th{ /*메뉴 제목*/
-	height: 39px;
-	font-size: 1em;
-    border-bottom: 2px white solid;
-}
-
-table td{ /* 제목*/ 
-	border-bottom : 1px white solid;
-	font-size: 0.7em;
-	height: 32px;
-}
-
-select#ip {
-    width: 80%;
-    height: 25px;
-    margin-bottom: 5px;
-    text-align: center;
-    font-weight: bold;
-    font-size: 0.6em;
-}
-
-select#target {
-    width: 80%;
-    height: 25px;
-    margin-bottom: 5px;
-    text-align: center;
-    font-weight: bold;
-    font-size: 0.6em;
-}
-
-.adminLogPaging{
-	clear: both;
-    width: 100%;
-    height: 40px;
-    text-align: center;
-    line-height: 40px;
-    font-size: 1.2em;
-}
-
-.adminLogPaging button{
-	float: right;
-    width: 8%;
-    height: 30px;
-    background: white;
-    font-weight: 800;
-    margin-top: 5px;
-}
-
-#adminLogNone td{
-	border: none;
-    font-size: 2em;
-    height: 500px;
-} 
-    
-input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-}    
 
 </style> 
 <script type="text/javascript">
@@ -167,8 +100,7 @@ var target = document.getElementById("target").value;
 			<h1 onclick="location.href='./adminLog.do'">로그 관리(${totalCount}건)</h1>
 			
 			<div class="adminContainerOne">
-			
-				
+						
 			<form action="./adminLog.do" method="post" id="LogOrder" name="LogOrder">
 				<table>
 					<tr>

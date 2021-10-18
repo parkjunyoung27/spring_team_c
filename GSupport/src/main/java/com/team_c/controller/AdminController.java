@@ -46,7 +46,6 @@ public class AdminController {
 		//System.out.println(request.getParameter("id"));
 		//System.out.println(request.getParameter("pw"));
 		
-		int result = 0;
 		HttpSession session = request.getSession();
 		
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -60,7 +59,6 @@ public class AdminController {
 			session.setAttribute("id", map.get("member_id"));
 			session.setAttribute("name", map.get("member_name"));
 			session.setAttribute("grade", map.get("member_grade"));
-			result = 1;
 			return "redirect:/admin/adminMain.do";
 		}
 		
@@ -95,45 +93,9 @@ public class AdminController {
 
 			if(grade == 3) {
 				mv = new ModelAndView("/admin/adminMain");
-				
-				/*가맹점 관리*/
-				
-				//총 가맹점 수
-				
-				//총 예약 건수
-				
-				//예약 많은 지역
-				
-				/*이용자 관리*/
-				
-				//총 회원 수
-				
-				//평균 예약 건수
-				
-				//이번달 회원가입
-				
-				//예약 적은 지역 
-				
-				/*게시판 관리*/
-				
-				//공지사항 게시글 수
-				
-				//가맹점 게시글
-				
-				//이용자 게시글
-				
-				//가장 많이 쓴 회원
-				
-				/*로그 관리*/
-				
-				//총 로그 기록
-				
-				//오늘의 로그 기록
-				
-				//접속 많은 시간
-				
-				
-				
+				Map<String, Object> dashList = adminService.dashList();
+				mv.addObject("list", dashList);
+				System.out.println(dashList);
 			}
 			
 		}else {
