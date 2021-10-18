@@ -70,23 +70,23 @@
 								</div>
 
 								<div class="field_row">
-									<div class="field_title">이름</div>
+									<div class="field_title">아이디</div>
 									<div class="field_label">
-										<input type="text" class="input-text-readonly" name="name"
-											placeholder="" readonly="readonly"
+										<input type="text" class="input-text-readonly" name="id"
+											value="${myinfo.member_id}" readonly="readonly">
+									</div>
+									
+
+								<div class="field_row">
+									<div class="field_title">닉네임</div>
+									<div class="field_label">
+										<input type="text" class="input-text" name="name"
+											placeholder="" 
 											value="${myinfo.member_name}">
 									</div>
 
 								</div>
 
-
-								<div class="field_row">
-									<div class="field_title">아이디</div>
-									<div class="field_label">
-										<input type="text" class="input-text" name="id"
-											value="${myinfo.member_id}">
-									</div>
-									
 								</div>
 								<div class="field_row">
 									<div class="field_title">연락처</div>

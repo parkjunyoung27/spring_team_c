@@ -20,7 +20,7 @@ public class MypageServiceImpl implements MypageService {
 	public List<Map<String, Object>> reservation(Map<String, Object> map) {
 		return mypageDAO.reservation(map);
 	}
-
+	
 	public int totalCount(Map<String, Object> map) {
 		return mypageDAO.totalCount(map);
 	}
@@ -58,15 +58,35 @@ public class MypageServiceImpl implements MypageService {
 		return mypageDAO.myPageShop(map);
 	}
 
-	public List<Map<String, Object>> myPage_registStore(Map<String, Object> map) {
+	public Map<String, Object> myPage_updateOwner(Map<String, Object> map) {
+		return mypageDAO.myPage_updateOwner(map);
+	}
+
+	public void myPage_updateStore(Map<String, Object> map) {
+		mypageDAO.myPage_updateStore(map);
+	}
+
+	public int myPage_registStore(Map<String, Object> map) {
 		return mypageDAO.myPage_registStore(map);
 	}
 
-	public void myPage_UpdateStore(Map<String, Object> map) {
-		mypageDAO.myPage_UpdateStore(map);
+	public List<Map<String, Object>> storeGuList(Map<String, Object> map) {
+		return mypageDAO.storeGuList(map);
 	}
 
 
 	
 	
+	public int reservationTotal(Map<String, Object> map) {
+		return mypageDAO.reservationTotal(map);
+	}
+	
+//	public String reservationCate(CommandMap map){
+//		List<Map<String, Object>> reservationStatusList = mypageDAO.reservationCate(map.getMap());
+//		//int reservationNo = Integer.parseInt(String.valueOf(map.get("reservationNo"))); //0부터 n번째 줄까지 있는 리스트를 뽑아온다.
+//		//String reservationStatus = (String) reservationStatusList.get(reservationNo).get("reservation_status"); 
+//		return  ""; // reservationStatus;	
+//	}
+
+
 }

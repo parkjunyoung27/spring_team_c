@@ -19,6 +19,7 @@ public class MypageDAO extends AbstractDAO {
 	public List<Map<String, Object>> reservation(Map<String, Object> map) {
 		return selectList("mypage.reservation", map);
 	}
+	
 
 	public int totalCount(Map<String, Object> map) {
 		return Integer.parseInt(String.valueOf(selectOne("mypage.totalCount", map).get("totalCount")));
@@ -48,13 +49,27 @@ public class MypageDAO extends AbstractDAO {
 		return selectOne("mypage.shopList", map);
 	}
 
-	public List<Map<String, Object>> myPage_registStore(Map<String, Object> map) {
-		return selectList("mypage.myPage_registStore", map);
+	public Map<String, Object> myPage_updateOwner(Map<String, Object> map) {
+		return selectOne("mypage.myPage_updateOwner", map);
 	}
 
-	public void myPage_UpdateStore(Map<String, Object> map) {
-		update("mypage.myPage_UpdateStore", map);
+	public void myPage_updateStore(Map<String, Object> map) {
+		update("mypage.myPage_updateStore", map);
+	}
+
+	public int myPage_registStore(Map<String, Object> map) {
+		return Insert("mypage.myPage_registStore", map);
+	}
+
+	public List<Map<String, Object>> storeGuList(Map<String, Object> map) {
+		return selectList("mypage.storeGuList", map);
+		
 	}
 	
+	
+
+	public int reservationTotal(Map<String, Object> map) {
+		return Integer.parseInt(String.valueOf(selectOne("mypage.reservationTotal", map).get("reservationTotal")));
+	}
 
 }

@@ -3,7 +3,6 @@ package com.team_c.controller;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -60,7 +59,6 @@ public class MypageController {
 
 		// 예약기능 출력하기
 		List<Map<String, Object>> reservation = mypageService.reservation(map.getMap());
-
 		// 담기
 		mv.addObject("reservation_list", reservation);
 		if (reservation.size() > 0) {
@@ -100,13 +98,62 @@ public class MypageController {
 		}
 
 	}
-	//가맹점 등록 정보 가져오기
+	
 	@GetMapping("/myPage_registStore.do")
 	public ModelAndView myPage_registStore(CommandMap map, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		ModelAndView mv = new ModelAndView("myPage_registStore");
+		String id = (String)session.getAttribute("member_id");
+		List<Map<String, Object>> list = mypageService.storeGuList(map.getMap());
+		
+		mv.addObject("list", list);
+		
+		return mv;
+	}
+	
+	@PostMapping("/myPage_registStore.do")
+	public String myPage_registStore2(CommandMap map, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		//ModelAndView mv = new ModelAndView("myPage_registStore");
+		String id = (String)session.getAttribute("member_id");
+		String shop_name = request.getParameter("shop_name");
+		String shop_loc = request.getParameter("shop_loc");
+		String shop_gu = request.getParameter("shop_gu");
+		String shop_tel = request.getParameter("shop_tel");
+		String shop_opentime = request.getParameter("shop_opentime");
+		String shop_closetime = request.getParameter("shop_closetime");
+		String shop_notice = request.getParameter("shop_notice");
+		
+		System.out.println(id + shop_name + shop_loc + shop_gu + shop_tel + shop_opentime + shop_closetime + shop_notice);
+		
+		if(id != null && shop_name != null && shop_loc != null && shop_gu != null && shop_tel != null && shop_opentime != null
+				 && shop_closetime != null && shop_notice != null) {
+			map.put("id", id);
+			map.put("shop_name", shop_name);
+			map.put("shop_loc", shop_loc);
+			map.put("shop_gu", shop_gu);
+			map.put("shop_tel", shop_tel);
+			map.put("shop_opentime", shop_opentime);
+			map.put("shop_closetime", shop_closetime);
+			map.put("shop_notice", shop_notice);
+			
+			mypageService.myPage_registStore(map.getMap());
+			System.out.println("성공");
+			return "redirect:/myPage_updateOwner.do";
+		}
+		
+		System.out.println("실패");
+		return "error";
+	}
+	
+	
+	//가맹점 등록 정보 가져오기
+	@GetMapping("/myPage_updateOwner.do")
+	public ModelAndView myPage_updateOwner(CommandMap map, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		ModelAndView mv = new ModelAndView("myPage_updateOwner");
 		map.put("member_id", session.getAttribute("member_id"));
-		List<Map<String, Object>> mystore = mypageService.myPage_registStore(map.getMap());
+		Map<String, Object> mystore = mypageService.myPage_updateOwner(map.getMap());
 		
 		mv.addObject("mystore", mystore);
 		System.out.println(mystore+"----------------------------------------");
@@ -115,14 +162,16 @@ public class MypageController {
 	}
 	
 	//가맹점 등록 정보 수정하기
-	@PostMapping("/myPage_registStore.do")
-	public String myPage_registStore1(CommandMap map, HttpServletRequest request) {
+	@PostMapping("/myPage_updateStore.do")
+	public String myPage_updateOwner1(CommandMap map, HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		if(session.getAttribute("member_no") != null) {
-			map.put("member_no", session.getAttribute("member_no"));
-			mypageService.myPage_UpdateStore(map.getMap());
+		if(session.getAttribute("member_id") != null) {
+			map.put("member_id", session.getAttribute("member_id"));
+			mypageService.myPage_updateStore(map.getMap());
+			System.out.println("성공");
 			return "redirect:./myPage.do";
 		}
+		System.out.println("실패");
 			return "redirect:./myPage.do";
 	}
 
@@ -172,6 +221,18 @@ public class MypageController {
 	public ModelAndView myPage_reserv(CommandMap map, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("myPage_reserv");
 		HttpSession session = request.getSession();
+		
+		//String reservationStatus = mypageService.reservationCate(map);
+		//System.out.println("예약 이름은으으으ㅏㄴ어라어라ㅓㄴ아런아" + reservationStatus);
+		//mv.addObject("reserve_status", reservationStatus);
+		
+		//String reservation_status = "wait";
+		//if(map.containsKey("reservationNo")) {
+		//	reservation_status = String.valueOf(map.get("reservationNo"));
+		//} else {
+		//	map.put("reservationNo", reservation_status);
+		//} mv.addObject("reservationNo", reservation_status);
+			 
 		// *****페이징*****
 		// 페이지 번호가 오는지 확인하기
 		int pageNo = 1;
@@ -186,7 +247,8 @@ public class MypageController {
 		map.put("id", id);
 		// 토탈 카운트
 		int totalCount = mypageService.totalCount(map.getMap());
-
+		int reservationTotal = mypageService.reservationTotal(map.getMap());
+		System.out.println("=================="+ reservationTotal);
 		// 전자정부 페이징 불러오기
 		PaginationInfo paginationInfo = new PaginationInfo();
 		paginationInfo.setCurrentPageNo(pageNo);
@@ -207,6 +269,10 @@ public class MypageController {
 
 		// 예약기능 출력하기
 		List<Map<String, Object>> reservation = mypageService.reservation(map.getMap());
+		
+//		List<Map<String, Object>> reservation1 = mypageService.reservation1(map.getMap());
+//		System.out.println(" "+ reservation1 + "hiiiiiiiiijijdfisdjofjsdlkfjsd");
+
 
 		// 담기
 		mv.addObject("reservation_list", reservation);
@@ -217,6 +283,12 @@ public class MypageController {
 		mv.addObject("pageNo", pageNo);
 		mv.addObject("totalCount", totalCount);
 		mv.addObject("reserve", reservation);
+		mv.addObject("reservationTotal", reservationTotal);
+//		if(map.containsKey("total")) {
+//			List<Map<String, Object>> total = mypageService.reservationTotal(map.getMap());
+//			mv.addObject("total", total);
+//		}
+		System.out.println(" " + "토탈카운트북마크 = " + reservationTotal);
 		
 		return mv;
 	}
