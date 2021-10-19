@@ -12,11 +12,11 @@
 	padding: 0;
 }
 
-body {
+/* body {
 	margin-right: 15%;
 	margin-left: 15%;
 	padding: 0;
-}
+} */
 
 
 .container {
@@ -231,4 +231,9 @@ body {
 .notice_info p {
 	margin-top: 5px;
 	color: black;
+}
+
+::-webkit-scrollbar {
+	width:10px;
+	background-color:transparent;
 }

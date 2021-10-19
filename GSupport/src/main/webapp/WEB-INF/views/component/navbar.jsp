@@ -4,21 +4,21 @@
 
 <style>
 
-
 input#sidebar {diplay:none;}
 
-header {
+.sidebar1 {
 	background-color:#f5f5f5;
 	position:relative;
 	z-index:4;
 }
-header > div {
+
+.sidebar1 > div {
 	max-width:0;
 	margin: 0 auto;
 	position:relative;
 	min-height:0;
 }
-header label.menu {
+.sidebar1 label.menu {
 	position:absolute;
 	top:50%;
 	right:10px;
@@ -28,6 +28,7 @@ header label.menu {
 	background:url('./images/GSupport.png') 0 0 no-repeat;
 	cursor:pointer;
 }
+
 
 .container1 {max-width:1200px; margin:0 auto;}
 .container1 img {max-width:100%;}
@@ -88,7 +89,7 @@ header label.menu {
 	bottom:-2px;
 }
 
-input#sidebar:checked ~ header label {background-position:-24px 0;}
+input#sidebar:checked ~ sidebar1 label {background-position:-24px 0;}
 input#sidebar:checked ~ .sidebar_content {top:25%;}
 input#sidebar:checked ~ .background {opacity:1;visibility:visible;}
 
@@ -101,7 +102,6 @@ input[type="radio"] {display:none;}
 input[id="tab01"]:checked ~ .con1 {display:block;transition:all .35s;}
 input[id="tab02"]:checked ~ .con2 {display:block;transition:all .35s;}
 input[id="tab03"]:checked ~ .con3 {display:block;transition:all .35s;}
-
 
 
 
@@ -140,6 +140,7 @@ input[id="tab03"]:checked ~ .con3 {display:block;transition:all .35s;}
 						<li><a href="./board.do?boardNo=1">가맹점주</a></li>
 						<li><a Href="./board.do?boardNo=2">문의사항</a></li>
 					</ul>
+					
 	       </li>
 		   <li class="menuli">
 		   	    <c:choose>
@@ -155,6 +156,7 @@ input[id="tab03"]:checked ~ .con3 {display:block;transition:all .35s;}
 							<li><a href="./message.do">쪽지</a></li>
 							<li><a onclick="onLogoutClick();">로그아웃</a></li>
 						</ul>
+						
 					</c:when>
 					<c:otherwise>
 						<a><label for="sidebar" class="menu">로그인</label></a>
@@ -165,11 +167,9 @@ input[id="tab03"]:checked ~ .con3 {display:block;transition:all .35s;}
     	
     	<input type="checkbox" id="sidebar" hidden="hidden">
     	
-    	<header>
-    		<div>
+    		<div class="sidebar1">
     			<label for="sidebar" class="menu"></label>
     		</div>
-    	</header>   	
     	<div class="container1">
     	</div>
     	<div class="sidebar_content">

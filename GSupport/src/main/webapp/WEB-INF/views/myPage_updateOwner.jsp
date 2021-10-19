@@ -66,14 +66,13 @@
 											name="shop_name" value="${mystore.shop_name }">
 									</div>
 								</div>
-												
+
 								<div class="field_row">
 									<div class="field_title">주소</div>
 									<div class="field_label">
 										<input type="text" class="input-text" name="shop_loc"
-											placeholder="" 
-											value="${mystore.shop_loc }">
-								</div>
+											placeholder="" value="${mystore.shop_loc }">
+									</div>
 
 								<div class="field_row">
 									<div class="field_title">구</div>
@@ -84,40 +83,42 @@
 									<option value="${l.shop_gu }" >${l.shop_gu }</option>
 								</c:forEach>
 							</select>
+									<div class="field_row">
+										<div class="field_title">구</div>
+										<div class="field_label">
+											<input type="text" class="input-text" name="shop_gu"
+												value="${mystore.shop_gu }">
+										</div>
 									</div>
-								</div>
 
 								</div>
 								<div class="field_row">
 									<div class="field_title">연락처</div>
 									<div class="field_label">
 										<input type="text" class="input-text" name="shop_tel"
-											placeholder="" 
-											value="${mystore.shop_tel }">
+											placeholder="" value="${mystore.shop_tel }">
 									</div>
 
 								</div>
 
 
 								<div class="field_row">
-									<div class="field_title">오픈 시간</div>
-									<div class="field_label">
-										<input type="text" class="input-text" name="shop_opentime"
+									<div class="field_title">
+										<div style="float: left">오픈시간</div>
+										<div style="float: right">마감 시간</div>
+									</div>
+									<div class="field_label" style="float: left">
+										<input type="text" class="input-text1" name="shop_opentime"
 											value="${mystore.shop_opentime }">
+										<div class="field_label" style="float: right">
+											<input type="text" class="input-text1" name="shop_closetime"
+												value="${mystore.shop_closetime }">
+										</div>
 									</div>
-			
 								</div>
-																<div class="field_row">
-									<div class="field_title">마감 시간</div>
-									<div class="field_label">
-										<input type="text" class="input-text" name="shop_closetime"
-											value="${mystore.shop_closetime }">
-									</div>
-			
-								</div>
-								
+
 								<div class="field_row">
-									<div class="field_title">알립니다</div>
+									<div class="field_title"><br>알립니다</div>
 									<div class="field_label">
 										<input type="text" class="input-text" name="shop_notice"
 											value="${mystore.shop_notice }">
@@ -128,7 +129,8 @@
 
 
 								<button id="" class="button_submit"
-									onclick="return myPage_updateStore()" type="submit">정보 수정</button>
+									onclick="return myPage_updateStore()" type="submit">정보
+									수정</button>
 							</form>
 						</div>
 
