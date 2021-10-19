@@ -112,7 +112,7 @@
 	bottom:22%;
 }
 
-#joinConfirm {
+#joinSubmit {
 	position:fixed;
 	width: 60%;
 	height: 40px;
@@ -288,20 +288,20 @@ function handleOnInputName(e)  {
 					<input type="text" id="join_name" name="name" class="join_input" placeholder="닉네임" required="required" onchange="checkName()" oninput="handleOnInputName(this)" onfocus="focusName()">
 				</div>
 				<div>
-					<input type="password" id="join_pw" name="password" class="join_input" placeholder="비밀번호" required="required" onchange="isSame()" onfocus="focusPw()">
+					<input type="password" id="join_pw" name="pw" class="join_input" placeholder="비밀번호" required="required" onchange="isSame()" onfocus="focusPw()">
 				</div>
 				<div>
 					<input type="password" id="join_confirmPw" name="confirmPassword" class="join_input" placeholder="비밀번호 확인" required="required" onchange="isSame()">
+					<input type="text" name="channel" value="web" hidden="hidden">
 				</div>
 			
 				<div>
-					<input type="text" id="birth_date" name="birth_date" class="join_input" placeholder="생년월일" required="required" onchange="checkBirth()" onfocus="focusBirth()">
+					<input type="date" id="birth_date" name="birthDate" class="join_input" placeholder="생년월일" required="required" onchange="checkBirth()" onfocus="focusBirth()">
 				</div>
 			
-					<input type="hidden" id="joinSubmit" name="joinSubmit" value="가입하기">
+					<input type="submit" id="joinSubmit" name="joinSubmit" value="가입하기">
 		</form>
-					<input type="submit" id="joinConfirm" name="joinConfirm" value="가입하기" onclick="joinConfirm()">
-		
+				
 		</div>
 	
 	
