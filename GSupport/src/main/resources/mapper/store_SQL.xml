@@ -12,8 +12,8 @@
 	</select>
 	
 	<insert id="storeReserv" parameterType="HashMap">
-		INSERT INTO reservation (user, shop_no, shop_name, reservation_reservDate, reservation_reservTime, reservation_phonenum, people, reservation_reservRequest, member_name) 
-		VALUES ((SELECT member_no FROM member WHERE member_id=#{id}), #{shop_no}, #{shop_name}, #{date}, #{reservTime}, #{phoneNum}, #{people}, #{reservRequest}, #{name})
+		INSERT INTO reservation (owner, user, shop_no, shop_name, reservation_reservDate, reservation_reservTime, reservation_phonenum, people, reservation_reservRequest, member_name) 
+		VALUES ((SELECT member_no FROM shop WHERE shop_name='${shop_name}'), (SELECT member_no FROM member WHERE member_id=#{id}), #{shop_no}, #{shop_name}, #{date}, #{reservTime}, #{phoneNum}, #{people}, #{reservRequest}, #{name})
 	</insert>
 	
 	<select id="storeList" parameterType="HashMap" resultType="HashMap">
