@@ -120,9 +120,9 @@
 		location.href = '${pageContext.request.contextPath}/logout.do';
 	}
 
-	function handleOnInput(e) {
+	/* function handleOnInput(e) {
 		e.value = e.value.replace(/[^a-z0-9@.-_]/ig, '')
-	}
+	} */
 	
 	
 	
@@ -138,8 +138,7 @@
 
 			<form action="${pageContext.request.contextPath}/login.do"
 				method="post">
-				<input type="email" id="id" name="id" class="text-field"
-					oninput="handleOnInput(this)" placeholder="이메일을 입력하세요"
+				<input type="email" id="id" name="id" class="text-field" oninput="handleOnInput(this)" placeholder="이메일을 입력하세요"
 					required="required" style="text-transform: lowercase"> <input type="password" id="pw"
 					name="pw" class="text-field" placeholder="암호를 입력하세요"
 					required="required">

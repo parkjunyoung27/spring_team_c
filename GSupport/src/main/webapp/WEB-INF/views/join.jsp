@@ -16,7 +16,7 @@
 
 
 
-#join_form{
+#joinForm{
 	margin: 0 auto;
 	height: 500px;
 	width: auto;
@@ -26,7 +26,7 @@
     background-color: #EEEFF177;
 }
 
-#join_form h2{
+#joinForm h2{
 	position:fixed;
 	top:8%;
 	width: 80%;
@@ -39,7 +39,7 @@
 	font-size: 30px;
 }
 
-#join_form p {
+#joinForm p {
 	position:fixed;
 	top:15%;
 	width: 80%;
@@ -52,7 +52,7 @@
 	font-size: 25px;
 }
 
-#join_id {
+#joinId {
 	position:fixed;
 	width: 60%;
 	left:50%;
@@ -64,7 +64,7 @@
 	bottom:70%;
 }
 
-#join_name {
+#joinName {
 	position:fixed;
 	width: 60%;
 	left:50%;
@@ -76,7 +76,7 @@
 	bottom:58%;
 }
 
-#join_pw {
+#joinPw {
 	position:fixed;
 	width: 60%;
 	left:50%;
@@ -129,7 +129,7 @@
 	bottom:10%;
 }
 
-.join_input {
+.joinInput {
 	border: none;
 	color: black;
 	border-bottom: 2px solid #D1D1D4;
@@ -141,9 +141,9 @@
 	transition: .4s;
 }
 
-.join_input:active,
-.join_input:focus,
-.join_input:hover {
+.joinInput:active,
+.joinInput:focus,
+.joinInput:hover {
 	background: #f5f5f5;
 	outline: none;
 	border-bottom-color: #6A679E;
@@ -192,7 +192,7 @@ function isSame(){
 }
 
 function checkID(){
-	var id = $("#join_id").val();
+	var id = $("#joinId").val();
 	var agent = navigator.userAgent.toLowerCase();
 	var joinErr = document.getElementById('joinErr');		
 	
@@ -201,7 +201,7 @@ function checkID(){
 	if(id.length < 5 || id.indexOf('.') == -1 || id.indexOf('@') == -1){
 		$("#joinErr").text("이메일을 다시 확인해주세요.");
 		$("#joinErr").css("color", "red");
-		$("#join_id").focus();
+		$("#joinId").focus();
 	} else {
 		$("#joinErr").text("");
 		$("#joinErr").css("color", "green");
@@ -276,27 +276,27 @@ function handleOnInputName(e)  {
 </script>
 
 
-		<div id ="join_form">
+		<div id ="joinForm">
 			<h2>회 원 가 입</h2><br>
 			<p id="joinErr"></p>
 			
 			<form action="${pageContext.request.contextPath }/join.do" method="post" autocomplete="off">
 				<div>
-					<input type="email" id="join_id" name="id" class="join_input" style="text-transform: lowercase" placeholder="이메일" required="required" onchange="checkID()" oninput="handleOnInput(this)" onfocus="focusID()">
+					<input type="email" id="joinId" name="id" class="joinInput" style="text-transform: lowercase" placeholder="이메일" required="required" onchange="checkID()" oninput="handleOnInput(this)" onfocus="focusID()">
 				</div>
 				<div>
-					<input type="text" id="join_name" name="name" class="join_input" placeholder="닉네임" required="required" onchange="checkName()" oninput="handleOnInputName(this)" onfocus="focusName()">
+					<input type="text" id="joinName" name="name" class="joinInput" placeholder="닉네임" required="required" onchange="checkName()" oninput="handleOnInputName(this)" onfocus="focusName()">
 				</div>
 				<div>
-					<input type="password" id="join_pw" name="pw" class="join_input" placeholder="비밀번호" required="required" onchange="isSame()" onfocus="focusPw()">
+					<input type="password" id="joinPw" name="pw" class="joinInput" placeholder="비밀번호" required="required" onchange="isSame()" onfocus="focusPw()">
 				</div>
 				<div>
-					<input type="password" id="join_confirmPw" name="confirmPassword" class="join_input" placeholder="비밀번호 확인" required="required" onchange="isSame()">
+					<input type="password" id="join_confirmPw" name="confirmPassword" class="joinInput" placeholder="비밀번호 확인" required="required" onchange="isSame()">
 					<input type="text" name="channel" value="web" hidden="hidden">
 				</div>
 			
 				<div>
-					<input type="date" id="birth_date" name="birthDate" class="join_input" placeholder="생년월일" required="required" onchange="checkBirth()" onfocus="focusBirth()">
+					<input type="date" id="birth_date" name="birthDate" class="joinInput" placeholder="생년월일" required="required" onchange="checkBirth()" onfocus="focusBirth()">
 				</div>
 			
 					<input type="submit" id="joinSubmit" name="joinSubmit" value="가입하기">
