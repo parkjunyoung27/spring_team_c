@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.util.UrlPathHelper;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.scribejava.core.model.OAuth2AccessToken;
@@ -164,7 +165,7 @@ public class LoginController {
 
 		// 기존 회원인지 확인
 		int emailCheck = loginService.emailCheck(email);
-
+		
 		if (emailCheck != 1) {
 			session.setAttribute("joinChannel", "naver");
 			session.setAttribute("memberEmail", email);
@@ -183,7 +184,7 @@ public class LoginController {
 		return "redirect:/index.do";
 	}
 
-	@RequestMapping("/googleLogin")
+	@RequestMapping("/googleLogin.do")
 	public void googleLogin(HttpSession session, HttpServletRequest req, HttpServletResponse res) throws Exception {
 
 		// 구글 로그인 URL 생성
@@ -218,15 +219,16 @@ public class LoginController {
 
 		///* oAuth 임의 비밀번호을 토큰의 일부로 사용 */
 		String memberPw = accessToken.toString().substring(0, 10);
-
+		
 		// 기존 회원인지 확인
 		int emailCheck = loginService.emailCheck(email);
+		
 
 		if (emailCheck != 1) {
 			session.setAttribute("joinChannel", "google");
 			session.setAttribute("memberEmail", email);
 			session.setAttribute("memberPw", memberPw);
-			return "redirect:/join.do";
+			return "redirect:/index.do";
 		}
 		
 		Map<String, Object> login = loginService.loginByEmail(email);

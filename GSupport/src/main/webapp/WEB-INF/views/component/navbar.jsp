@@ -162,6 +162,16 @@ input[id="tab03"]:checked ~ .con3 {
 			$(this).children(".son").stop().slideUp(500);
 		});
 	});
+	
+
+	$(document).ready(function(){
+		var joinChannel = sessionStorage.getItem("joinChannel");
+		alert(joinChannel);
+		if(joinChannel == "google"){
+			document.getElementById("tab04").click();
+		}
+	});
+
 </script>
 
 <!-- Navigation -->
@@ -219,10 +229,16 @@ input[id="tab03"]:checked ~ .con3 {
 
 
 		<div class="tab_content">
-			<input type="radio" name="tabmenu" id="tab01" checked> <label
-				for="tab01"></label> <input type="radio" name="tabmenu" id="tab02">
-			<label for="tab02"></label> <input type="radio" name="tabmenu"
-				id="tab03"> <label for="tab03"></label>
+			<input type="radio" name="tabmenu" id="tab01" checked>
+			<label for="tab01"></label>
+			<input type="radio" name="tabmenu" id="tab02">
+			<label for="tab02"></label>
+			<input type="radio" name="tabmenu" id="tab03">
+			<label for="tab03"></label>
+			<input type="radio" name="tabmenu" id="tab04">
+			<label for="tab04"></label>
+			<input type="radio" name="tabmenu" id="tab05">
+			<label for="tab05"></label>
 
 			<div class="conbox con1">
 				<c:import url="/WEB-INF/views/login.jsp" />
@@ -231,6 +247,12 @@ input[id="tab03"]:checked ~ .con3 {
 				<c:import url="/WEB-INF/views/join.jsp" />
 			</div>
 			<div class="conbox con3">
+				<c:import url="/WEB-INF/views/member.jsp" />
+			</div>
+			<div class="conbox con4">
+				<c:import url="/WEB-INF/views/oAuthJoin.jsp" />
+			</div>
+			<div class="conbox con5">
 				<c:import url="/WEB-INF/views/member.jsp" />
 			</div>
 		</div>

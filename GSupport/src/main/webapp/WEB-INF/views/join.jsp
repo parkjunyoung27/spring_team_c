@@ -42,7 +42,7 @@
 #joinForm p {
 	position:fixed;
 	top:15%;
-	width: 80%;
+	width: 90%;
 	left:50%;
 	border: none;
 	border-radius: 5px;
@@ -126,6 +126,7 @@
 	background-color: #728FCE;
 	border-radius: 5px;
 	font-size: 17px;
+	text-align:center;
 	color: white;
 	padding: 10px;
 	letter-spacing: 5px;
@@ -191,7 +192,7 @@ function isSame() {
 	if(pw1.length < 6 || pw1.length > 30){
 			$("#joinErr").text("비밀번호를 6자 이상 입력해주세요.");
 			$("#joinPw").css("background-color", "pink");
-            return false;
+			$("#joinPwDummy").val("false");
     }
 	if(pw1.length > 5){
     	if(pw1 == pw2 && pw2 == pw1) {
@@ -199,14 +200,17 @@ function isSame() {
     		$("#joinPw").css("background-color", "#3ecd3eb8");
     		$("#joinConfirmPw").css("background-color", "#3ecd3eb8");
     		$("#dummyPw").val($("#joinPw").val());
-            return true;
+    		$("#joinPwDummy").val("true");
         } else if(pw2 == "") {
         	$("#joinErr").text("비밀번호를 한번 더 입력해주세요.");
+        	$("#joinPw").css("background-color", "#3ecd3eb8");
 			$("#joinConfirmPw").css("background-color", "pink");
+			$("#joinPwDummy").val("false");
         } else {
             $("#joinErr").text("비밀번호가 일치하지 않습니다.");
 			$("#joinPw").css("background-color", "pink");
 			$("#joinConfirmPw").css("background-color", "pink");
+			$("#joinPwDummy").val("false");
         }
     } 
 }
@@ -222,6 +226,7 @@ function checkID(){
 	if(id.length < 5 || id.indexOf('.') == -1 || id.indexOf('@') == -1){
 		$("#joinErr").text("이메일을 다시 확인해주세요.");
 		$("#joinId").css("background-color", "pink");
+		$("#joinIdDummy").val("false");
 		$("#joinId").focus();
 	} else {
 		$.ajax({
@@ -234,12 +239,12 @@ function checkID(){
 				if(rData == 1){
 					$("#joinErr").text("이미 등록된 이메일 입니다.");
 					$("#joinId").css("background-color", "pink");
-			
+					$("#joinIdDummy").val("false");
 				}else{
 					$("#joinErr").text(" ");
 					$("#joinId").css("background-color", "#3ecd3eb8");
 					$("#dummyId").val($("#joinId").val());
-					return true;
+					$("#joinIdDummy").val("true");
 				}
 			},
 			error: function(xhr, status, e){
@@ -274,23 +279,23 @@ function sendEmailCode() {
 				if (data == typeCode) {
 
 					alert("인증 되었습니다.")
-					
+					document.getElementById("joinAction").submit();
 					return true;
 					
 				} else {
 					var tryCount = 0;
 					while(true){
 					    
-				    	//변수 pwd 선언
 						var typeCode = prompt("인증 번호가 일치하지 않습니다. 다시 입력해주세요.","");
 				        
-				        //pwd 변수 안의 데이터가 "123"면 반복문 중단
-						if(data==typeCode){return true;}
-				        
-				  		//pwd 변수 안의 데이터가 "123"가 아니면 암호 잘못입력 횟수 증가      
+						if(data==typeCode){
+							alert("인증 되었습니다.")
+							document.getElementById("joinAction").submit();
+							return true;
+							}
+				            
 						else{tryCount++;}
 				        
-				        //만약 암호 잘못 입력 횟수가 3회 이상이면 반복문 중단
 						if(tryCount > 3){
 							alert("3회 이상 틀렸습니다. 다시 진행해주세요.")
 							location.reload();
@@ -309,7 +314,7 @@ function sendEmailCode() {
 function checkName(){
 	var name = $("#joinName").val();
 	var joinErr = document.getElementById('joinErr');		
-	
+	var returnValue = "false";
 
 		$.ajax({
 			type:'get',
@@ -319,69 +324,21 @@ function checkName(){
 			success: function(rData, textStatus, xhr){
 				if(rData == 1){
 					$("#joinErr").text("이미 등록된 이름 입니다.");
-					
+					$("#joinNameDummy").val("false");
 				}else{
 					$("#joinErr").text(" ");
 					$("#joinName").css("background-color", "#3ecd3eb8");
 					$("#dummyName").val($("#joinName").val());
-					return true;
+					$("#joinNameDummy").val("true");
 				}
 			},
 			error: function(xhr, status, e){
 				alert("문제 발생 : " + e);
 			}
 		});
-	
+		return returnValue;
 }
 
-function join(){
-	var id = document.getElementById('id');
-	var name = document.getElementById('name');
-	var pw1 = document.getElementById('pw1');
-	var email = document.getElementById('email');
-	var phone = document.getElementById('phone');
-	var date = document.getElementById('date');	
-	
-	//id가 없거나, 5글자 이하라면
-	if(id.value == "" || id.value.length < 5){
-		alert('아이디를 5자 이상 입력해주세요.');
-		id.focus();
-		id.style.backgroundColor = '#F5B7B1';
-		return false;
-	}
-	if(name.value ==""){
-		alert("이름을 입력해주세요.");
-		name.focus();
-		name.style.backgroundColor = '#F5B7B1';
-		return false;
-	}
-	if(pw1.value == ""|| pw1.value.length < 5){
-		alert("비밀번호를 5글자 이상 입력해주세요.");
-		pw1.focus(); // 마우스 이동
-		return false;
-	}	
-	
-	if(phone.value == "" || phone.value.length < 10 ){
-		alert("핸드폰 번호를 입력하세요.");
-		email.style.backgroundColor='#F5B7B1';
-		email.focus();
-		return false;
-	}
-	
-	if(email.value == ""){
-		alert("email을 입력하세요.");
-		email.style.backgroundColor='#F5B7B1';
-		email.focus();
-		return false;
-	}
-	
-	if(date.value == ""){
-		alert("생일을 입력하세요.");
-		date2.style.backgroundColor='#F5B7B1';
-		date2.focus();
-		return false;
-	}		
-}
 
 function checkBirth() {
 	var birth = $("#birthDate").val();
@@ -395,12 +352,20 @@ function checkBirth() {
 		$("#joinErr").text("생년월일을 다시 확인해주세요.");
     }
 }
-/*ajax
-$(function(){
-	$("#join_join").prop("disabled", true); //가입하기 버튼 비활성화
-	$("#resultText").css("color","pink");
-});
-*/
+
+function join(){
+	var idTest = $("#joinIdDummy").val();
+	var nameTest = $("#joinNameDummy").val();
+	var pwTest = $("#joinPwDummy").val();
+	
+	if (idTest=="true" && nameTest=="true" && pwTest=="true"){
+		$("#joinErr").text("잠시만 기다려주세요. 인증 메일을 발송하고 있습니다.");
+		new sendEmailCode();
+	} else {
+		$("#joinErr").text("입력하신 정보를 다시 확인해주세요.");
+	}
+	
+}
 
 function handleOnInput(e) {
 	e.value = e.value.replace(/[^a-z0-9@.-_]/ig, '')
@@ -433,7 +398,7 @@ function handleOnInputName(e)  {
 				
 				
 		
-		<form action="${pageContext.request.contextPath }/join.do" method="post">
+		<form id="joinAction" name="joinAction" action="${pageContext.request.contextPath }/join.do" method="post">
 		
 					<input type="email" id="dummyId" name="id" style="display:none">
 					<input type="text" id="dummyName" name="name" style="display:none">
@@ -442,10 +407,12 @@ function handleOnInputName(e)  {
 				<div>
 					<input type="date" id="birthDate" name="birthDate" class="joinInput" placeholder="생년월일" required="required" onchange="checkBirth()">
 				</div>	
-					<input type="submit" id="joinSubmit" name="joinSubmit" value="가입하기">
+					<input type="submit" id="joinForm" value="가입하기" style="display:none">
 		</form>
-				
+					<input id="joinSubmit" name="joinSubmit" value="메일 인증하고 가입하기" onclick="join()">
 		</div>
-	
+					<input type="hidden" id="joinIdDummy" value="">
+					<input type="hidden" id="joinNameDummy" value="">
+					<input type="hidden" id="joinPwDummy" value="">
 	
 </html>
