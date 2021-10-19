@@ -80,6 +80,26 @@ public class MypageServiceImpl implements MypageService {
 	public List<Map<String, Object>> reservationTotal(Map<String, Object> map) {
 		return mypageDAO.reservationTotal(map);
 	}
+
+	public List<Map<String, Object>> ownerReservCheck(Map<String, Object> map) {
+		return mypageDAO.ownerReservCheck(map);
+	}
+
+	public int totalCount2(Map<String, Object> map) {
+		return mypageDAO.totalCount2(map);
+	}
+
+	public List<Map<String, Object>> ownerReservList(Map<String, Object> map) {
+		return mypageDAO.ownerReservList(map);
+	}
+
+	public void ownerReservCancel(Map<String, Object> map) {
+		mypageDAO.ownerReservCancel(map);
+	}
+
+	public void ownerReservSuccess(Map<String, Object> map) {
+		mypageDAO.ownerReservSuccess(map);
+	}
 	
 //	public String reservationCate(CommandMap map){
 //		List<Map<String, Object>> reservationStatusList = mypageDAO.reservationCate(map.getMap());

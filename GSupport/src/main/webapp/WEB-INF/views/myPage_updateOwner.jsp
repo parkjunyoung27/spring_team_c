@@ -78,8 +78,12 @@
 								<div class="field_row">
 									<div class="field_title">구</div>
 									<div class="field_label">
-										<input type="text" class="input-text" name="shop_gu"
-											value="${mystore.shop_gu }">
+										<select name="shop_gu">
+									<option value="${mystore.shop_gu }" selected="selected">==${mystore.shop_gu }==</option>
+								<c:forEach items="${list }" var="l">
+									<option value="${l.shop_gu }" >${l.shop_gu }</option>
+								</c:forEach>
+							</select>
 									</div>
 								</div>
 

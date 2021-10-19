@@ -71,4 +71,24 @@ public class MypageDAO extends AbstractDAO {
 
 	}
 
+	public List<Map<String, Object>> ownerReservCheck(Map<String, Object> map) {
+		return selectList("mypage.ownerReservCheck", map);
+	}
+
+	public int totalCount2(Map<String, Object> map) {
+		return Integer.parseInt(String.valueOf(selectOne("mypage.totalCount2", map).get("totalCount2")));
+	}
+
+	public List<Map<String, Object>> ownerReservList(Map<String, Object> map) {
+		return selectList("mypage.ownerReservList", map);
+	}
+
+	public void ownerReservCancel(Map<String, Object> map) {
+		update("mypage.ownerReservCancel", map);
+	}
+
+	public void ownerReservSuccess(Map<String, Object> map) {
+		update("mypage.ownerReservSuccess", map);
+	}
+
 }

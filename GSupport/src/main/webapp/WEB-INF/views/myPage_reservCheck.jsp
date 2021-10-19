@@ -7,14 +7,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>My Page Reservation</title>
+<title>My Page Reservation Check</title>
 <script type="text/javascript">
 	function linkPage(pageNo) {
-		location.href = "./myPage_reserv.do?pageNo=" + pageNo;
+		location.href = "./myPage_reservCheck.do?pageNo=" + pageNo;
 	}
-	function cancel(no){
+	function cancel(no, sno){
 		if(confirm("예약 취소하시겠습니까?")){
-			location.href='./reservCancel.do?shop_no='+no
+			location.href='./ownerReservCancel.do?reservation_no='+no+'&shop_name='+sno;
+		}
+	}
+	function success(no, sno){
+		if(confirm("예약 승인하시겠습니까?")){
+			location.href='./ownerReservSuccess.do?reservation_no='+no+'&shop_name='+sno;
 		}
 	}
 </script>
@@ -95,7 +100,7 @@
 
 					<div class="reserv-body">
 						<h3 class="reserv-title">
-							<a href="./myPage_reserv.do?status=wait">예약 진행중<br>
+							<a href="./myPage_reservCheck.do?status=wait">예약 진행중<br>
 						<c:if test="${wait eq null}">0</c:if>
 						<c:if test="${wait ne null}">${wait }</c:if> 개
 							</a>
@@ -108,7 +113,7 @@
 				<div class="reserv">
 					<div class="reserv-body">
 						<h3 class="reserv-title">
-							<a href="./myPage_reserv.do?status=success">예약 종료<br>
+							<a href="./myPage_reservCheck.do?status=success">예약 종료<br>
 						<c:if test="${success eq null}">0</c:if>
 						<c:if test="${success ne null}">${success }</c:if> 개
 							</a>
@@ -120,7 +125,7 @@
 				<div class="reserv">
 					<div class="reserv-body">
 						<h3 class="reserv-title">
-							<a href="./myPage_reserv.do?status=cancel">예약 취소<br>
+							<a href="./myPage_reservCheck.do?status=cancel">예약 취소<br>
 						<c:if test="${cancel eq null}">0</c:if>
 						<c:if test="${cancel ne null}">${cancel }</c:if> 개
 							</a>
@@ -133,23 +138,29 @@
 
 			<div class="customer_content">
 				<h1>예약 목록</h1>
-				<c:forEach items="${reserve }" var="r">
+				<c:forEach items="${list }" var="r">
 
 					<div class="customer_content_reservHistory">
 						<div class="customer_content_reservHistory_header">
 							예약 번호 : ${r.reservation_no }
 							<c:choose>
 								<c:when
-									test="${r.reservation_status eq 'cancel' || r.reservation_status eq 'success' }">
+									test="${r.reservation_status eq 'cancel'}">
 									<button class="button_submit" type="submit"
-										onclick="return cancel(${r.shop_no})" disabled="disabled"
+										onclick="return cancel(${r.reservation_no},  ${r.shop_no })" disabled="disabled"
 										style="background-color: red">예약 취소</button>
+								</c:when>
+								<c:when test="${r.reservation_status eq 'success'  }">
+									<button class="button_submit" type="submit" disabled="disabled" style="background-color: blue">예약 승인</button>
 								</c:when>
 								<c:otherwise>
 									<button class="button_submit" type="submit"
-										onclick="return cancel(${r.shop_no})">예약 취소</button>
+										onclick="return cancel(${r.reservation_no}, ${r.shop_no })">예약 취소</button>
+											<button class="button_submit" type="submit" onclick="return success(${r.reservation_no},  ${r.shop_no })">
+											예약 승인</button>
 								</c:otherwise>
 							</c:choose>
+								
 						</div>
 						<div class="customer_content_reservHistory_content">
 							<div class="customer_content_reservHistory_content_detail">
@@ -171,6 +182,7 @@
 										예약 취소
 									</c:when>
 								</c:choose>
+								<h3>예약자 : ${r.member_name }</h3>
 								<h4>요구사항 : ${r.reservation_reservRequest }</h4>
 
 

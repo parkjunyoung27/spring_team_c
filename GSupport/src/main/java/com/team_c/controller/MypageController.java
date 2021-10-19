@@ -154,8 +154,9 @@ public class MypageController {
 		ModelAndView mv = new ModelAndView("myPage_updateOwner");
 		map.put("member_id", session.getAttribute("member_id"));
 		Map<String, Object> mystore = mypageService.myPage_updateOwner(map.getMap());
-		
+		List<Map<String, Object>> list = mypageService.storeGuList(map.getMap());
 		mv.addObject("mystore", mystore);
+		mv.addObject("list", list);
 		System.out.println(mystore+"----------------------------------------");
 		System.out.println(map.getMap());
 		return mv;
@@ -369,6 +370,132 @@ public class MypageController {
 			return "redirect:/myPage_reserv.do";
 		}
 		
+	}
+	
+	@RequestMapping("/ownerReservCancel.do")
+	public String ownerReservCancel(CommandMap map, HttpServletRequest request) {
+		
+		
+		//String id = (String)session.getAttribute("id");
+		
+		String reservation_no = request.getParameter("reservation_no");
+		//String shop_name = request.getParameter("shop_name");
+		
+		System.out.println("노"+reservation_no);
+		//System.out.println("네"+shop_name);
+		
+		
+		if(reservation_no != null) {
+			map.put("reservation_no", reservation_no);
+			
+			
+			mypageService.ownerReservCancel(map.getMap());
+			System.out.println("삭제성공");
+			return "redirect:/myPage_reservCheck.do";
+		}else {
+			System.out.println("삭제실패");
+			return "redirect:/myPage_reservCheck.do";
+		}
+		
+	}
+	
+	@RequestMapping("/ownerReservSuccess.do")
+	public String ownerReservSuccess(CommandMap map, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String reservation_no = request.getParameter("reservation_no");
+		//String shop_no = request.getParameter("shop_no");
+		String shop_name = request.getParameter("shop_name");
+		
+		System.out.println("노"+reservation_no);
+		System.out.println("샵네입1" + shop_name);
+		if(reservation_no != null) {
+			map.put("reservation_no", reservation_no);
+			map.put("shop_name", shop_name);
+			
+			mypageService.ownerReservSuccess(map.getMap());
+			System.out.println("예약성공");
+			return "redirect:/myPage_reservCheck.do";
+		}else {
+			System.out.println("예약실패");
+			return "redirect:/myPage_reservCheck.do";
+		}
+		
+	}
+	
+	
+	
+	
+	@GetMapping("/myPage_reservCheck.do")
+	public ModelAndView myPage_reservCheck(CommandMap map, HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("myPage_reservCheck");
+		HttpSession session = request.getSession();
+		
+
+		// *****페이징*****
+		// 페이지 번호가 오는지 확인하기
+		int pageNo = 1;
+		if (map.containsKey("pageNo")) {
+			pageNo = Integer.parseInt(String.valueOf(map.get("pageNo")));
+		}
+		int listScale = 3;// 리스트 크기
+		int pageScale = 10;
+		
+		//id값 받아오기
+		String id = (String)session.getAttribute("id");
+		String shop_name = request.getParameter("shop_name");
+		System.out.println("샵네임2"+shop_name);
+		map.put("shop_name", shop_name);
+		map.put("id", id);
+		// 토탈 카운트
+		int totalCount2 = mypageService.totalCount2(map.getMap());
+		List<Map<String, Object>> ownerReservCheck = mypageService.ownerReservCheck(map.getMap());
+		List<Map<String, Object>> list = mypageService.ownerReservList(map.getMap());
+		//이걸 분리합니다.
+		for (int i = 0; i < ownerReservCheck.size(); i++) {
+			if(ownerReservCheck.get(i).get("reservation_status").equals("wait")) {
+				mv.addObject("wait", ownerReservCheck.get(i).get("ownerReservCheck"));
+			}else if(ownerReservCheck.get(i).get("reservation_status").equals("cancel")) {
+				mv.addObject("cancel", ownerReservCheck.get(i).get("ownerReservCheck"));
+			}else  if(ownerReservCheck.get(i).get("reservation_status").equals("success")) {
+				mv.addObject("success", ownerReservCheck.get(i).get("ownerReservCheck"));
+			}
+		}
+		mv.addObject("list",list);
+		System.out.println("=================="+ ownerReservCheck);
+		// 전자정부 페이징 불러오기
+		PaginationInfo paginationInfo = new PaginationInfo();
+		paginationInfo.setCurrentPageNo(pageNo);
+		paginationInfo.setRecordCountPerPage(listScale);
+		paginationInfo.setPageSize(pageScale);
+		paginationInfo.setTotalRecordCount(totalCount2);
+
+		// 계산하기
+		int startPage = paginationInfo.getFirstRecordIndex();
+		int lastPage = paginationInfo.getRecordCountPerPage();
+		
+		
+		
+		// DB로 보내기 위해서 map에 담아주세요.
+		map.put("startPage", startPage);
+		map.put("lastPage", lastPage);
+
+
+		// 예약기능 출력하기
+		List<Map<String, Object>> reservation = mypageService.reservation(map.getMap());
+		
+
+		mv.addObject("reservation_list", reservation);
+		if (reservation.size() > 0) {
+			System.out.println(map.getMap());
+		}
+		mv.addObject("paginationInfo", paginationInfo);
+		mv.addObject("pageNo", pageNo);
+		mv.addObject("totalCount", totalCount2);
+		mv.addObject("reserve", reservation);
+
+		System.out.println(" " + "토탈카운트북마크 = " + ownerReservCheck);
+		
+		return mv;
 	}
 	
 

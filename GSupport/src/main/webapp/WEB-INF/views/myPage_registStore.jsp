@@ -62,18 +62,14 @@
 								<div class="field_row">
 									<div class="field_title">가게 이름</div>
 									<div class="field_label">
-										<input type="text" class="input-text" placeholder=""
-											name="shop_name"
-											value="${sessionScope.name }" readonly="readonly">
+										<input type="text" class="input-text" name="shop_name" value="${sessionScope.name }" readonly="readonly">
 									</div>
 								</div>
 												
 								<div class="field_row">
 									<div class="field_title">주소</div>
 									<div class="field_label">
-										<input type="text" class="input-text" name="shop_loc"
-											placeholder="" 
-											>
+										<input type="text" class="input-text" name="shop_loc" placeholder="주소를 입력해주세요" required="required" >
 								</div>
 
 								<div class="field_row">
@@ -81,7 +77,7 @@
 									<div class="field_label">
 										<select name="shop_gu">
 								<c:forEach items="${list }" var="l">
-									<option value="${l.shop_gu }">${l.shop_gu }</option>
+									<option value="${l.shop_gu }" >${l.shop_gu }</option>
 								</c:forEach>
 							</select>
 									</div>
@@ -92,7 +88,7 @@
 									<div class="field_title">연락처</div>
 									<div class="field_label">
 										<input type="text" class="input-text" name="shop_tel"
-											placeholder="" 
+											placeholder="연락처를 입력해주세요" required="required"
 											>
 									</div>
 
@@ -102,16 +98,16 @@
 								<div class="field_row">
 									<div class="field_title">오픈 시간</div>
 									<div class="field_label">
-										<input type="text" class="input-text" name="shop_opentime"
-											>
+										<input type="text" class="input-text" name="shop_opentime" required="required"
+											placeholder="오픈 시간을 입력해주세요 ex)09:00">
 									</div>
 			
 								</div>
 																<div class="field_row">
 									<div class="field_title">마감 시간</div>
 									<div class="field_label">
-										<input type="text" class="input-text" name="shop_closetime"
-											>
+										<input type="text" class="input-text" name="shop_closetime" required="required"
+											placeholder="마감 시간을 입력해주세요 ex)21:00">
 									</div>
 			
 								</div>
@@ -119,8 +115,8 @@
 								<div class="field_row">
 									<div class="field_title">알립니다</div>
 									<div class="field_label">
-										<input type="text" class="input-text" name="shop_notice"
-											>
+										<input type="text" class="input-text" name="shop_notice" 
+											placeholder="공지사항이 있다면 입력해주세요">
 									</div>
 								</div>
 
