@@ -14,4 +14,10 @@
 		WHERE member_email=#{id}  
 	</select>
 	
+	<select id="nameCheck" resultType="integer">
+		SELECT count(*) 
+		FROM memberview
+		WHERE member_name=#{name}  
+	</select>
+	
 </mapper>

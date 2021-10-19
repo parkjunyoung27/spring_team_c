@@ -22,7 +22,7 @@
 	border: none;
 	padding: 10px;
 	border-radius: 5px;
-	background-color: white;
+	background-color: #EEEFF177;
 }
 
 #login-form p {
@@ -47,6 +47,7 @@
 	border-radius: 5px;
 	font-size: 14px;
 	transform:translate(-50%);
+	padding-left: 24px;
 	bottom:50%;
 }
 
@@ -59,6 +60,7 @@
 	border-radius: 5px;
 	font-size: 14px;
 	transform:translate(-50%);
+	padding-left: 24px;
 	bottom:40%;
 }
 

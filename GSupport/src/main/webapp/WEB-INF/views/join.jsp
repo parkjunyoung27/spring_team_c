@@ -52,6 +52,10 @@
 	font-size: 20px;
 }
 
+#joinErr {
+	color:red;
+}
+
 #joinId {
 	position:fixed;
 	width: 60%;
@@ -146,7 +150,7 @@
 .joinInput:hover {
 	background: #f5f5f5;
 	outline: none;
-	border-color: green;
+	background-color: green;
 }
 
 /*중복확인 버튼*/
@@ -186,22 +190,23 @@ function isSame() {
     
 	if(pw1.length < 6 || pw1.length > 30){
 			$("#joinErr").text("비밀번호를 6자 이상 입력해주세요.");
-			$("#joinPw").css("border-color", "red");
+			$("#joinPw").css("background-color", "pink");
             return false;
     }
 	if(pw1.length > 5){
     	if(pw1 == pw2 && pw2 == pw1) {
     		$("#joinErr").text(" ");
-			$("#joinPw").css("border-color", "#6A679E");
-			$("#joinConfirmPw").css("border-color", "#6A679E");
+    		$("#joinPw").css("background-color", "#3ecd3eb8");
+    		$("#joinConfirmPw").css("background-color", "#3ecd3eb8");
+    		$("#dummyPw").val($("#joinPw").val());
             return true;
         } else if(pw2 == "") {
         	$("#joinErr").text("비밀번호를 한번 더 입력해주세요.");
-			$("#joinConfirmPw").css("border-color", "red");
+			$("#joinConfirmPw").css("background-color", "pink");
         } else {
             $("#joinErr").text("비밀번호가 일치하지 않습니다.");
-			$("#joinPw").css("border-color", "red");
-			$("#joinConfirmPw").css("border-color", "red");
+			$("#joinPw").css("background-color", "pink");
+			$("#joinConfirmPw").css("background-color", "pink");
         }
     } 
 }
@@ -216,7 +221,7 @@ function checkID(){
 	
 	if(id.length < 5 || id.indexOf('.') == -1 || id.indexOf('@') == -1){
 		$("#joinErr").text("이메일을 다시 확인해주세요.");
-		$("#joinErr").css("color", "red");
+		$("#joinId").css("background-color", "pink");
 		$("#joinId").focus();
 	} else {
 		$.ajax({
@@ -225,11 +230,15 @@ function checkID(){
 			data: 'email='+email,
 			url: '${pageContext.request.contextPath}/emailCount.do',
 			success: function(rData, textStatus, xhr){
+				
 				if(rData == 1){
 					$("#joinErr").text("이미 등록된 이메일 입니다.");
-					$("#joinErr").css("color", "red");
+					$("#joinId").css("background-color", "pink");
+			
 				}else{
 					$("#joinErr").text(" ");
+					$("#joinId").css("background-color", "#3ecd3eb8");
+					$("#dummyId").val($("#joinId").val());
 					return true;
 				}
 			},
@@ -242,28 +251,79 @@ function checkID(){
 	
 }
 
+function sendEmailCode() {
+
+	var email = $("#joinId").val();
+
+	$.ajax({
+		type : 'get',
+		dataType : 'text',
+		data : 'email=' + email,
+		url : '${pageContext.request.contextPath}/mailCheck.do',
+
+		success : function(data) {
+
+			alert("인증 번호가 발송되었습니다." + data),
+			sessionStorage.setItem("sentCode", data);
+			
+			var typeCode = prompt("이메일로 발송된 인증번호를 입력해주세요.","");
+			
+			console.log(typeCode);
+			
+			if (typeCode != null) {
+				if (data == typeCode) {
+
+					alert("인증 되었습니다.")
+					
+					return true;
+					
+				} else {
+					var tryCount = 0;
+					while(true){
+					    
+				    	//변수 pwd 선언
+						var typeCode = prompt("인증 번호가 일치하지 않습니다. 다시 입력해주세요.","");
+				        
+				        //pwd 변수 안의 데이터가 "123"면 반복문 중단
+						if(data==typeCode){return true;}
+				        
+				  		//pwd 변수 안의 데이터가 "123"가 아니면 암호 잘못입력 횟수 증가      
+						else{tryCount++;}
+				        
+				        //만약 암호 잘못 입력 횟수가 3회 이상이면 반복문 중단
+						if(tryCount > 3){
+							alert("3회 이상 틀렸습니다. 다시 진행해주세요.")
+							location.reload();
+							break;}
+					}
+				}
+			}
+			
+		}
+
+	});
+
+}
+
+
 function checkName(){
-	var ame = $("#joinName").val();
+	var name = $("#joinName").val();
 	var joinErr = document.getElementById('joinErr');		
 	
 
-	
-	if(id.length < 5 || id.indexOf('.') == -1 || id.indexOf('@') == -1){
-		$("#joinErr").text("이메일을 다시 확인해주세요.");
-		$("#joinErr").css("color", "red");
-		$("#joinId").focus();
-	} else {
 		$.ajax({
 			type:'get',
 			dataType:'text',
-			data: 'email='+email,
-			url: '${pageContext.request.contextPath}/emailCount.do',
+			data: 'name='+name,
+			url: '${pageContext.request.contextPath}/nameCount.do',
 			success: function(rData, textStatus, xhr){
 				if(rData == 1){
-					$("#joinErr").text("이미 등록된 이메일 입니다.");
-					$("#joinErr").css("color", "red");
+					$("#joinErr").text("이미 등록된 이름 입니다.");
+					
 				}else{
 					$("#joinErr").text(" ");
+					$("#joinName").css("background-color", "#3ecd3eb8");
+					$("#dummyName").val($("#joinName").val());
 					return true;
 				}
 			},
@@ -271,8 +331,6 @@ function checkName(){
 				alert("문제 발생 : " + e);
 			}
 		});
-		
-	}
 	
 }
 
@@ -324,10 +382,23 @@ function join(){
 		return false;
 	}		
 }
+
+function checkBirth() {
+	var birth = $("#birthDate").val();
+    
+	if(birth.include('-') == 2 && birth.length() == 10){
+    	$("#birth_date").css("border-bottom-color", "#6A679E");
+    	$("#joinErr").text(" ");
+    	return true;
+    } else {
+    	$("#birth_date").css("border-bottom-color", "red");
+		$("#joinErr").text("생년월일을 다시 확인해주세요.");
+    }
+}
 /*ajax
 $(function(){
 	$("#join_join").prop("disabled", true); //가입하기 버튼 비활성화
-	$("#resultText").css("color","red");
+	$("#resultText").css("color","pink");
 });
 */
 
@@ -346,25 +417,31 @@ function handleOnInputName(e)  {
 			<h2>회 원 가 입</h2><br>
 			<p id="joinErr"></p>
 			
-			<form action="${pageContext.request.contextPath }/join.do" method="post" autocomplete="off">
-				<div>
-					<input type="email" id="joinId" name="id" class="joinInput" style="text-transform: lowercase" placeholder="이메일" required="required" onchange="checkID()" oninput="handleOnInput(this)" onfocus="focusID()">
-				</div>
-				<div>
-					<input type="text" id="joinName" name="name" class="joinInput" placeholder="닉네임" required="required" onchange="checkName()" oninput="handleOnInputName(this)" onfocus="focusName()">
-				</div>
-				<div>
-					<input type="password" id="joinPw" name="pw" class="joinInput" placeholder="비밀번호" required="required" onchange="isSame()" onfocus="focusPw()">
-				</div>
-				<div>
-					<input type="password" id="joinConfirmPw" name="confirmPw" class="joinInput" placeholder="비밀번호 확인" required="required" onchange="isSame()">
-					<input type="text" name="channel" value="web" hidden="hidden">
-				</div>
 			
 				<div>
-					<input type="date" id="birthDate" name="birthDate" class="joinInput" placeholder="생년월일" required="required" onchange="checkBirth()" onfocus="focusBirth()">
+					<input type="password" id="joinId" class="joinInput" style="text-transform: lowercase" placeholder="이메일" required="required" onchange="checkID()" oninput="handleOnInput(this)" onfocus="this.type='text'">
 				</div>
-			
+				<div>
+					<input type="text" id="joinName" class="joinInput" placeholder="닉네임" required="required" onchange="checkName()" oninput="handleOnInputName(this)">
+				</div>
+				<div>
+					<input type="password" id="joinPw" class="joinInput" placeholder="비밀번호" required="required" onchange="isSame()" >
+				</div>
+				<div>
+					<input type="password" id="joinConfirmPw" class="joinInput" placeholder="비밀번호 확인" required="required" onchange="isSame()">
+				</div>
+				
+				
+		
+		<form action="${pageContext.request.contextPath }/join.do" method="post">
+		
+					<input type="email" id="dummyId" name="id" style="display:none">
+					<input type="text" id="dummyName" name="name" style="display:none">
+					<input type="password" id="dummyPw" name="pw" style="display:none">
+					<input type="text" name="channel" value="web" style="display:none">
+				<div>
+					<input type="date" id="birthDate" name="birthDate" class="joinInput" placeholder="생년월일" required="required" onchange="checkBirth()">
+				</div>	
 					<input type="submit" id="joinSubmit" name="joinSubmit" value="가입하기">
 		</form>
 				

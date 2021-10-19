@@ -76,6 +76,13 @@ public class JoinController {
 		int emailCount = joinService.emailCheck(email);
 		return emailCount;
 	}
+	
+	@GetMapping("/nameCount.do")
+	@ResponseBody
+	public int nameCount(String name) {
+		int nameCount = joinService.nameCheck(name);
+		return nameCount;
+	}
 
 	@GetMapping("/emailCheck.do")
 	public String mailCheck() {

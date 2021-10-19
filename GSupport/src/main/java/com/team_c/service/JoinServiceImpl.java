@@ -22,4 +22,8 @@ public class JoinServiceImpl implements JoinService {
 		return joinDAO.emailCheck(email);
 	}
 
+	public int nameCheck(String name) {
+		return joinDAO.nameCheck(name);
+	}
+
 }

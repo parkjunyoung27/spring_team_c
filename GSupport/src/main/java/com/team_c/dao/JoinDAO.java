@@ -14,4 +14,8 @@ public class JoinDAO extends AbstractDAO{
 	public int emailCheck(String email) {
 		return (int) selectOne("join.emailCheck", email);
 	}
+	
+	public int nameCheck(String name) {
+		return (int) selectOne("join.nameCheck", name);
+	}
 }

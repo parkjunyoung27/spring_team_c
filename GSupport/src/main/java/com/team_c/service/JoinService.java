@@ -7,4 +7,6 @@ public interface JoinService {
 	public Map<String, Object> join(Map<String, Object> map);
 
 	int emailCheck(String email);
+	
+	int nameCheck(String name);
 }
