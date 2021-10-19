@@ -4,7 +4,7 @@
 <mapper namespace="login">
 	
 	<select id="login" parameterType="HashMap" resultType="HashMap">
-		SELECT member_no, member_name, member_id, member_channel, member_email
+		SELECT member_no, member_name, member_id, member_channel, member_email, member_grade
 		FROM memberview 
 		WHERE member_id=#{id} AND member_pw=HEX(AES_ENCRYPT(#{pw}, 'teamc'))  
 	</select>
