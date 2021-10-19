@@ -16,6 +16,10 @@ public class JoinServiceImpl implements JoinService {
 	public Map<String, Object> join(Map<String, Object> map) {
 		return joinDAO.join(map);
 	}
-
+	
+	@Override
+	public int emailCheck(String email) {
+		return joinDAO.emailCheck(email);
+	}
 
 }

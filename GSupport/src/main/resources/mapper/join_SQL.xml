@@ -8,4 +8,10 @@
 		VALUES(#{id}, HEX(AES_ENCRYPT(#{pw}, 'teamc')), #{name}, #{id}, #{birthDate}, #{channel})
 	</insert>
 	
+	<select id="emailCheck" resultType="integer">
+		SELECT count(*) 
+		FROM memberview
+		WHERE member_email=#{id}  
+	</select>
+	
 </mapper>

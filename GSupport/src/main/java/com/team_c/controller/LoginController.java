@@ -66,6 +66,7 @@ public class LoginController {
 		session.setAttribute("member_id", login.get("member_id"));
 		session.setAttribute("authUser", login.get("member_channel"));
 		session.setAttribute("grade", login.get("member_grade"));
+		session.setAttribute("shop_no", login.get("shop_no"));
 		return "redirect:/index.do";
 	}
 
@@ -123,6 +124,7 @@ public class LoginController {
 		session.setAttribute("member_id", login.get("member_id"));
 		session.setAttribute("authUser", login.get("member_channel"));
 		session.setAttribute("grade", login.get("member_grade"));
+		session.setAttribute("shop_no", login.get("shop_no"));
 		return "redirect:/index.do";
 	}
 
@@ -177,6 +179,7 @@ public class LoginController {
 		session.setAttribute("member_id", login.get("member_id"));
 		session.setAttribute("authUser", login.get("member_channel"));
 		session.setAttribute("grade", login.get("member_grade"));
+		session.setAttribute("shop_no", login.get("shop_no"));
 		return "redirect:/index.do";
 	}
 
@@ -233,6 +236,7 @@ public class LoginController {
 		session.setAttribute("member_id", login.get("member_id"));
 		session.setAttribute("authUser", login.get("member_channel"));
 		session.setAttribute("grade", login.get("member_grade"));
+		session.setAttribute("shop_no", login.get("shop_no"));
 		return "redirect:/index.do";
 	}
 

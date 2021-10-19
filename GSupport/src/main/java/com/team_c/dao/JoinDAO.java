@@ -10,4 +10,8 @@ public class JoinDAO extends AbstractDAO{
 	public Map<String, Object> join(Map<String, Object> map) {
 		return selectOne("join.join", map);
 	}
+
+	public int emailCheck(String email) {
+		return (int) selectOne("join.emailCheck", email);
+	}
 }

@@ -69,6 +69,13 @@ public class JoinController {
 //		HttpSession session = request.getSession();
 		return "redirect:/index.do";
 	}
+	
+	@GetMapping("/emailCount.do")
+	@ResponseBody
+	public int emailCount(String email) {
+		int emailCount = joinService.emailCheck(email);
+		return emailCount;
+	}
 
 	@GetMapping("/emailCheck.do")
 	public String mailCheck() {
