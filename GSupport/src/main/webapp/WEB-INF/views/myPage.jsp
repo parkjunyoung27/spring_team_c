@@ -33,9 +33,9 @@
 			<div class="activity">
 				<div class="card">
 					<div class="card-body">
-						<a href="" class="">
-							<h4 class="card-title">예약</h4>
-							<p class="card-text">??개</p>
+						<a href="./myPage_reserv.do" class="">
+							<h4 class="card-title">예약<br>
+							???개</h4>
 						</a>
 					</div>
 				</div>

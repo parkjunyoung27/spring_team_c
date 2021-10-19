@@ -65,11 +65,10 @@ public class MypageDAO extends AbstractDAO {
 		return selectList("mypage.storeGuList", map);
 		
 	}
-	
-	
 
-	public int reservationTotal(Map<String, Object> map) {
-		return Integer.parseInt(String.valueOf(selectOne("mypage.reservationTotal", map).get("reservationTotal")));
+	public List<Map<String, Object>> reservationTotal(Map<String, Object> map) {
+		return selectList("mypage.reservationTotal", map);
+
 	}
 
 }

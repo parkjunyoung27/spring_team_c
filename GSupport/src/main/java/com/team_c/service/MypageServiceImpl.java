@@ -77,7 +77,7 @@ public class MypageServiceImpl implements MypageService {
 
 	
 	
-	public int reservationTotal(Map<String, Object> map) {
+	public List<Map<String, Object>> reservationTotal(Map<String, Object> map) {
 		return mypageDAO.reservationTotal(map);
 	}
 	

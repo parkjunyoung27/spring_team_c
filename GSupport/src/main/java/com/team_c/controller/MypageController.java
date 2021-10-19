@@ -247,7 +247,17 @@ public class MypageController {
 		map.put("id", id);
 		// 토탈 카운트
 		int totalCount = mypageService.totalCount(map.getMap());
-		int reservationTotal = mypageService.reservationTotal(map.getMap());
+		List<Map<String, Object>> reservationTotal = mypageService.reservationTotal(map.getMap());
+		//이걸 분리합니다.
+		for (int i = 0; i < reservationTotal.size(); i++) {
+			if(reservationTotal.get(i).get("reservation_status").equals("wait")) {
+				mv.addObject("wait", reservationTotal.get(i).get("reservationTotal"));
+			}else if(reservationTotal.get(i).get("reservation_status").equals("cancel")) {
+				mv.addObject("cancel", reservationTotal.get(i).get("reservationTotal"));
+			}else  if(reservationTotal.get(i).get("reservation_status").equals("success")) {
+				mv.addObject("success", reservationTotal.get(i).get("reservationTotal"));
+			}
+		}
 		System.out.println("=================="+ reservationTotal);
 		// 전자정부 페이징 불러오기
 		PaginationInfo paginationInfo = new PaginationInfo();
@@ -283,7 +293,7 @@ public class MypageController {
 		mv.addObject("pageNo", pageNo);
 		mv.addObject("totalCount", totalCount);
 		mv.addObject("reserve", reservation);
-		mv.addObject("reservationTotal", reservationTotal);
+		//mv.addObject("reservationTotal", reservationTotal);이걸 분리하겠습니다.
 //		if(map.containsKey("total")) {
 //			List<Map<String, Object>> total = mypageService.reservationTotal(map.getMap());
 //			mv.addObject("total", total);

@@ -57,13 +57,11 @@
 		</if>
 	</select>
 
-	<select id="reservationTotal" parameterType="HashMap"
-		resultType="HashMap">
-		SELECT count(*) as reservationTotal 
-		from reservation 
-		WHERE member_name=(SELECT member_name FROM member where member_id=#{id}) 
-		AND reservation_status = #{status}
-		<!-- GROUP by r.reservation_status -->
+	<select id="reservationTotal" parameterType="HashMap" resultType="HashMap">
+		SELECT reservation_status, count(*) as reservationTotal 
+		from reservation
+		WHERE member_name=(SELECT member_name FROM member where member_id=#{id})
+		GROUP by reservation_status
 	</select>
 
 	<update id="mypageUpdatePW" parameterType="HashMap">

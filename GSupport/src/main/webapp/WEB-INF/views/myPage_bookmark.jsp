@@ -43,33 +43,6 @@
 		<%@ include file="./myPage_menu.jsp"%>
 
 		<!-- Mypage Content -->
-		<div class="column middle">
-			<div class="activity">
-				<div class="card">
-					<div class="card-body">
-						<h4 class="card-title">예약</h4>
-						<p class="card-text">??개</p>
-						<a href="#" class="btn btn-primary">예약 확인</a>
-					</div>
-				</div>
-
-				<div class="card">
-				<a href="" class="">
-					<div class="card-body">
-						<h4 class="card-title">쪽지</h4>
-						<p class="card-text">??개 /안 읽은거 ??개</p>
-					</div>
-				</a>
-				</div>
-
-				<div class="card">
-					<div class="card-body">
-						<h4 class="card-title">즐겨찾기</h4>
-						<p class="card-text">??건</p>
-						<a href="#" class="btn btn-primary">즐겨찾기</a>
-					</div>
-				</div>
-			</div>
 
 			<div class="customer_content">
 				<h1>즐겨찾기 목록</h1>

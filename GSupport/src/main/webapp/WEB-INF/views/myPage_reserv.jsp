@@ -94,30 +94,38 @@
 				<div class="reserv">
 
 					<div class="reserv-body">
-						<h4 class="reserv-title">
-							<a href="./myPage_reserv.do?status=wait">예약 진행중</a>
-						</h4>
-						<h2 class="reserv-text">
-						${reservationTotal } 개</h2>
+						<h3 class="reserv-title">
+							<a href="./myPage_reserv.do?status=wait">예약 진행중<br>
+						<c:if test="${wait eq null}">0</c:if>
+						<c:if test="${wait ne null}">${wait }</c:if> 개
+							</a>
+						</h3>
+
 					</div>
 
 				</div>
 
 				<div class="reserv">
 					<div class="reserv-body">
-						<h4 class="reserv-title">
-							<a href="./myPage_reserv.do?status=success">예약 종료</a>
-						</h4>
-						<h2 class="reserv-text">${reservationTotal } 개</h2>
+						<h3 class="reserv-title">
+							<a href="./myPage_reserv.do?status=success">예약 종료<br>
+						<c:if test="${success eq null}">0</c:if>
+						<c:if test="${success ne null}">${success }</c:if> 개
+							</a>
+						</h3>
+						
 					</div>
 				</div>
 
 				<div class="reserv">
 					<div class="reserv-body">
-						<h4 class="reserv-title">
-							<a href="./myPage_reserv.do?status=cancel">예약 취소</a>
-						</h4>
-						<h2 class="reserv-text">${reservationTotal } 개</h2>
+						<h3 class="reserv-title">
+							<a href="./myPage_reserv.do?status=cancel">예약 취소<br>
+						<c:if test="${cancel eq null}">0</c:if>
+						<c:if test="${cancel ne null}">${cancel }</c:if> 개
+							</a>
+						</h3>
+
 					</div>
 				</div>
 
