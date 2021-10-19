@@ -158,6 +158,10 @@
 		(SELECT shop_gu FROM shop_gu WHERE shop_gu=#{shop_gu}), #{shop_opentime}, #{shop_closetime}, #{shop_notice}, (SELECT member_no FROM member WHERE member_id=#{id}))
 	</insert>
 	
+	<update id="registStoreInsert" parameterType="HashMap">
+		UPDATE member SET shop_no=(SELECT shop_no FROM shop WHERE shop_name=#{shop_name}) WHERE member_id=#{id}
+	</update>
+	
 	<select id="storeGuList" parameterType="HashMap" resultType="HashMap">
 		SELECT * FROM shop_gu 
 	</select>

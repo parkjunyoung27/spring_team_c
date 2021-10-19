@@ -100,6 +100,10 @@ public class MypageServiceImpl implements MypageService {
 	public void ownerReservSuccess(Map<String, Object> map) {
 		mypageDAO.ownerReservSuccess(map);
 	}
+
+	public void registStoreInsert(Map<String, Object> map) {
+		mypageDAO.registStoreInsert(map);
+	}
 	
 //	public String reservationCate(CommandMap map){
 //		List<Map<String, Object>> reservationStatusList = mypageDAO.reservationCate(map.getMap());

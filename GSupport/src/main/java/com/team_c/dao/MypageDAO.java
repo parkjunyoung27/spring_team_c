@@ -91,4 +91,8 @@ public class MypageDAO extends AbstractDAO {
 		update("mypage.ownerReservSuccess", map);
 	}
 
+	public void registStoreInsert(Map<String, Object> map) {
+		update("mypage.registStoreInsert", map);
+	}
+
 }

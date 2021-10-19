@@ -138,6 +138,7 @@ public class MypageController {
 			map.put("shop_notice", shop_notice);
 			
 			mypageService.myPage_registStore(map.getMap());
+			mypageService.registStoreInsert(map.getMap());
 			System.out.println("성공");
 			return "redirect:/myPage_updateOwner.do";
 		}
