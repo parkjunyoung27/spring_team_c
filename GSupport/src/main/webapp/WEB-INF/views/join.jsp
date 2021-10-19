@@ -14,9 +14,7 @@
 </head>
 <style>
 
-#join_form h2{
-	text-align: center;
-}
+
 
 #join_form{
 	margin: 0 auto;
@@ -26,7 +24,32 @@
 	padding: 10px;
 	border-radius: 5px;
     background-color: #EEEFF177;
-    text-align: center;
+}
+
+#join_form h2{
+	position:fixed;
+	top:8%;
+	width: 80%;
+	left:50%;
+	border: none;
+	border-radius: 5px;
+	transform:translate(-50%);
+	text-align: center;
+	margin-bottom: 0px;
+	font-size: 30px;
+}
+
+#join_form p {
+	position:fixed;
+	top:15%;
+	width: 80%;
+	left:50%;
+	border: none;
+	border-radius: 5px;
+	transform:translate(-50%);
+	text-align: center;
+	margin-bottom: 0px;
+	font-size: 25px;
 }
 
 #join_id {
@@ -50,7 +73,7 @@
 	border-radius: 5px;
 	font-size: 14px;
 	transform:translate(-50%);
-	bottom:60%;
+	bottom:58%;
 }
 
 #join_pw {
@@ -62,7 +85,7 @@
 	border-radius: 5px;
 	font-size: 14px;
 	transform:translate(-50%);
-	bottom:50%;
+	bottom:46%;
 }
 
 #join_confirmPw {
@@ -74,7 +97,56 @@
 	border-radius: 5px;
 	font-size: 14px;
 	transform:translate(-50%);
-	bottom:40%;
+	bottom:34%;
+}
+
+#birth_date {
+	position:fixed;
+	width: 60%;
+	left:50%;
+	height: 40px;
+	border: none;
+	border-radius: 5px;
+	font-size: 14px;
+	transform:translate(-50%);
+	bottom:22%;
+}
+
+#joinConfirm {
+	position:fixed;
+	width: 60%;
+	height: 40px;
+	left:50%;
+	transform:translate(-50%);
+	border: none;
+	background-color: #728FCE;
+	border-radius: 5px;
+	font-size: 17px;
+	color: white;
+	padding: 10px;
+	letter-spacing: 5px;
+	font-weight: 600;
+	bottom:10%;
+}
+
+.join_input {
+	border: none;
+	color: black;
+	border-bottom: 2px solid #D1D1D4;
+	background: #f5f5f5;
+	padding: 15px;
+	padding-left: 24px;
+	font-weight: 700;
+	width: 75%;
+	transition: .4s;
+}
+
+.join_input:active,
+.join_input:focus,
+.join_input:hover {
+	background: #f5f5f5;
+	outline: none;
+	border-bottom-color: #6A679E;
 }
 
 /*중복확인 버튼*/
@@ -120,21 +192,21 @@ function isSame(){
 }
 
 function checkID(){
-	var id = $("#id").val();
-	var email = $("#email").val();
+	var id = $("#join_id").val();
 	var agent = navigator.userAgent.toLowerCase();
+	var joinErr = document.getElementById('joinErr');		
 	
-	$("#email").val($("#id").val());
-	
-	if(id == "" || id.length < 4){
-		$("#joinErr").text("이메일을 다시 확인해주세요.");
-		$("#id").focus();
-	}
+
 	
 	if(id.length < 5 || id.indexOf('.') == -1 || id.indexOf('@') == -1){
 		$("#joinErr").text("이메일을 다시 확인해주세요.");
-		$("#id").focus();
+		$("#joinErr").css("color", "red");
+		$("#join_id").focus();
+	} else {
+		$("#joinErr").text("");
+		$("#joinErr").css("color", "green");
 	}
+	
 	
 }
 
@@ -193,8 +265,13 @@ $(function(){
 });
 */
 
+function handleOnInput(e) {
+	e.value = e.value.replace(/[^a-z0-9@.-_]/ig, '')
+}
 
-
+function handleOnInputName(e)  {
+	  e.value = e.value.replace(/[^ㄱ-힣a-zA-Z0-9]/ig, '')
+	}
 
 </script>
 
@@ -205,10 +282,10 @@ $(function(){
 			
 			<form action="${pageContext.request.contextPath }/join.do" method="post" autocomplete="off">
 				<div>
-					<input type="text" id="join_id" name="id" class="join_input" placeholder="아이디" required="required" onchange="checkID()" oninput="handleOnEmail(this)" onfocus="focusID()">
+					<input type="email" id="join_id" name="id" class="join_input" style="text-transform: lowercase" placeholder="이메일" required="required" onchange="checkID()" oninput="handleOnInput(this)" onfocus="focusID()">
 				</div>
 				<div>
-					<input type="text" id="join_name" name="name" class="join_input" placeholder="닉네임" required="required" onchange="checkName()" oninput="handleOnInput(this)" onfocus="focusName()">
+					<input type="text" id="join_name" name="name" class="join_input" placeholder="닉네임" required="required" onchange="checkName()" oninput="handleOnInputName(this)" onfocus="focusName()">
 				</div>
 				<div>
 					<input type="password" id="join_pw" name="password" class="join_input" placeholder="비밀번호" required="required" onchange="isSame()" onfocus="focusPw()">
@@ -218,12 +295,12 @@ $(function(){
 				</div>
 			
 				<div>
-					<input type="date" id="birth_date" name="birth_date" class="join_input" placeholder="생일" required="required" onchange="checkBirth()" onfocus="focusBirth()">
+					<input type="text" id="birth_date" name="birth_date" class="join_input" placeholder="생년월일" required="required" onchange="checkBirth()" onfocus="focusBirth()">
 				</div>
 			
 					<input type="hidden" id="joinSubmit" name="joinSubmit" value="가입하기">
 		</form>
-					<input type="submit" id="joinConfirm" name="joinConfirm" value="확인하기" onclick="joinConfirm()">
+					<input type="submit" id="joinConfirm" name="joinConfirm" value="가입하기" onclick="joinConfirm()">
 		
 		</div>
 	

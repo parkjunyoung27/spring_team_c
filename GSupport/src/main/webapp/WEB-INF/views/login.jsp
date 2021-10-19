@@ -124,6 +124,8 @@
 		e.value = e.value.replace(/[^a-z0-9@.-_]/ig, '')
 	}
 	
+	
+	
 </script>
 
 </head>
@@ -136,9 +138,9 @@
 
 			<form action="${pageContext.request.contextPath}/login.do"
 				method="post">
-				<input type="text" id="id" name="id" class="text-field"
-					oninput="handleOnInput(this)" placeholder="아이디를 입력하세요"
-					required="required"> <input type="password" id="pw"
+				<input type="email" id="id" name="id" class="text-field"
+					oninput="handleOnInput(this)" placeholder="이메일을 입력하세요"
+					required="required" style="text-transform: lowercase"> <input type="password" id="pw"
 					name="pw" class="text-field" placeholder="암호를 입력하세요"
 					required="required">
 				<button type="submit" value="로그인" class="submit-btn">LOGIN</button>
