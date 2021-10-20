@@ -166,7 +166,7 @@ input[id="tab03"]:checked ~ .con3 {
 
 	$(document).ready(function(){
 		var joinChannel = sessionStorage.getItem("joinChannel");
-		alert(joinChannel);
+		console.log(joinChannel);
 		if(joinChannel == "google"){
 			document.getElementById("tab04").click();
 		}
