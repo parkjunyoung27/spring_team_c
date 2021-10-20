@@ -12,8 +12,9 @@
 
 <script>
 function writeCheck(){
-	var result = confirm("글을 저장하시겠습니까?");	
-	return result;
+	if(!confirm("글을 저장하시겠습니까?")) {
+		return false;
+	}
 }	
 </script>
 <style>
@@ -41,19 +42,42 @@ function writeCheck(){
 			<div id="content_title"> 
 				<h2> 글쓰기 </h2>
 			</div>
-			<div id="wrtie_area">
-				<form action="./write.do" method="post" enctype="multipart/form-data">
+			<div id="write_area">
+				<form action="./write.do" method="post" enctype="multipart/form-data" onsubmit="return writeCheck();">
+					<!-- 보드 카테고리 -->
 					<select id="write_select" name="board_cate">
-						<c:if test="${sessionScope.grade gt 6 }">
-						<option value="1">자주하는질문</option>
-						<option value="2">공지사항</option>
+					<c:if test="${param.categoryNo eq 2 }">
+						<c:if test="${sessionScope.grade eq 3 }">
+							<option value="0" >공지사항</option>
 						</c:if>
-						<option selected="selected" value="3" name="board_cate">사용자</option>
+						<c:if test="${sessionScope.grade ge 2 }">
+							<option value="1" >점주게시판</option>
+						</c:if>
+							<option selected="selected" value="2" >문의사항</option>
+					</c:if>
+					<c:if test="${param.categoryNo eq 1 }">
+						<c:if test="${sessionScope.grade eq 3 }">
+							<option value="0" >공지사항</option>
+						</c:if>
+						<c:if test="${sessionScope.grade ge 2 }">
+							<option selected="selected" value="1" >점주게시판</option>
+						</c:if>
+							<option value="2" >문의사항</option>
+					</c:if>
+					<c:if test="${param.categoryNo eq 0 }">
+						<c:if test="${sessionScope.grade eq 3 }">
+							<option selected="selected" value="0" >공지사항</option>
+						</c:if>
+						<c:if test="${sessionScope.grade ge 2 }">
+							<option value="1">점주게시판</option>
+						</c:if>
+							<option value="2">문의사항</option>
+					</c:if>
 					</select>
 					<input type="text" id="board_title" name="board_title" placeholder="제목을 입력해주세요(40자 이내)">
 					<!-- summernote -->
 					<%@ include file="./component/summernote.jsp"%>	
-					<input type="file" name="file">
+					<input type="file" name="file" accept=".gif, .png, .jpg, .jpeg">
 					<button type="submit" id="write_submit_btn">글쓰기</button>
 				
 				</form>

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,10 +12,10 @@
 function linkPage(pageNo){
 	<c:if test="${searchName != null}">
 		var search = "&searchName=${searchName}&search=${search}";
-		location.href="./board.do?pageNo=" + pageNo + "&boardNo=" + ${boardNo} + search;
+		location.href="./board.do?pageNo=" + pageNo + "&categoryNo=" + ${categoryNo} + search;
 	</c:if>
 	<c:if test="${searchName == null}">
-		location.href="./board.do?pageNo=" + pageNo + "&boardNo=" + ${boardNo};
+		location.href="./board.do?pageNo=" + pageNo + "&categoryNo=" + ${categoryNo};
 	</c:if>
 	
 }
@@ -52,6 +53,7 @@ function linkPage(pageNo){
 	#boardLineClick:hover{font-weight:700;}
 	
 </style>
+
 </head>
 <body>
 
@@ -65,11 +67,8 @@ function linkPage(pageNo){
 		<c:import url="./sub_board_menu.jsp" />
 		<!-- 게시판 내용 -->
 		<div id="content">
-
 			<div id="content_title_border">
 				<div id="content_title">
-					<h2>${board_name}</h2><!-- 게시판 이름 연결 -->
-					<!-- <h2> ${category } </h2> -->
 				</div>
 			</div>
 			<ul class="board">
@@ -78,23 +77,39 @@ function linkPage(pageNo){
 				<li class="fl tc w10 title t_line">글쓴이</li>
 				<li class="fl tc w20 title">작성일</li>
 			</ul>
-			<ul id="boardLine" onclick="location.href='./detail?board_no=${board_no}'">
+			<ul id="boardLine" ">
 				<c:forEach items="${list }" var="l">
 					<li class="fl tc w10 list t_line lt_line">${l.board_no }</li>
-					<li class="fl tc w50 list t_line lt_line" id="boardLineClick">${l.board_title}[${l.board_count }]</li>
+					<li class="fl tc w50 list t_line lt_line" id="boardLineClick" onclick="location.href='./detail.do?board_no=${l.board_no}'">${l.board_title}[${l.board_count }]</li>
 					<li class="fl tc w10 list t_line lt_line">
 						<c:choose>
 							<c:when test="${member_grade eq 3 }">관리자</c:when>
 							<c:otherwise>${l.member_id}</c:otherwise>
 						</c:choose>
 					</li>
-					<li class="fl tc w20 list lt_line">${l.board_date}</li>
+					<jsp:useBean id="today" class="java.util.Date" />
+					<fmt:formatDate var="now" value="${today}" pattern="yyyyMMdd" />
+					<fmt:formatDate var="write_date" value="${l.board_date}" pattern="yyyyMMdd" />
+					<li class="fl tc w20 list lt_line">
+						<c:choose>
+							<c:when test="${write_date eq now}"><fmt:formatDate value="${l.board_date}" pattern="HH:mm:ss"/></c:when>
+							<c:otherwise><fmt:formatDate value="${l.board_date}" pattern="yyyy.MM.dd"/></c:otherwise>					
+						</c:choose>
+					</li>
 				</c:forEach>
 			</ul>
+			
+			<!-- 글쓰기 -->
+			<c:if test="${sessionScope.sm_name ne null }">
+				<a href="./write.do?board_no=${board_no }">글쓰기</a>
+			</c:if>
+			
+			<!-- 페이징 -->
 			<div id="boardPaging">
 				<ui:pagination paginationInfo="${paginationInfo }" type="text" jsFunction="linkPage"/>
 			</div>
-		
+			
+		<!-- 검색 -->
 		<form action="./board.do" >
 			<select name="searchName">
 				<option value="title" <c:if test="${searchName eq 'title' }">selected="selected"</c:if>>

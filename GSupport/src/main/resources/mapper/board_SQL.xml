@@ -3,7 +3,7 @@
 <mapper	namespace="board">
 	<select	id="boardList" resultType="HashMap">
 		SELECT * FROM board_view
-		WHERE board_category = #{boardNo}
+		WHERE board_category = #{categoryNo}
 		<if test="searchName == 'title' and search != null">
 			AND board_title LIKE CONCAT('%', #{search}, '%')
 		</if> 
@@ -32,6 +32,19 @@
 	<select id="boardCate" resultType="HashMap">
 		SELECT * FROM board_cate
 	</select>
+	
+	<insert id="write" parameterType="HashMap">
+		INSERT INTO board (board_title, board_content, board_category, member_no<if test="board_file != null" >, board_file, board_orifile</if>) 
+		VALUES (#{board_title}, #{board_content}, #{board_cate}, (SELECT member_no from member WHERE member_name = #{member_name})<if test="board_file != null" >, #{board_file}, #{board_orifile}</if>
+		 )	
+	</insert>
+	
+	<select id="detail" resultType="HashMap">
+		SELECT * FROM board_view WHERE board_no=#{board_no }
+	</select>
+	
+	
+	
 	
 	
 </mapper>

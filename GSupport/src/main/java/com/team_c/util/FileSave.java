@@ -29,4 +29,16 @@ public class FileSave {
 		return fileName;//데이터베이스에 저장할 이름
 	}
 	
+	//multipart에서 제공하는 업로드로 저장하기
+	public String save2(String realPath, MultipartFile files) throws IllegalStateException, IOException {
+		File file = new File(realPath);
+		if(!file.exists()) {
+			file.mkdirs();
+		}
+		String fileName = UUID.randomUUID().toString();
+		fileName = fileName + "_" + files.getOriginalFilename();
+		file = new File(file, fileName);
+		files.transferTo(file);
+		return fileName;
+	}	
 }

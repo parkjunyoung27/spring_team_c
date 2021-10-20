@@ -25,6 +25,7 @@ function board_delete(no){
 		location.href="./delete?board_no="+no;
 	}
 }
+//alert("${detail.board_file}");
 </script>
 
 </head>
@@ -40,12 +41,12 @@ function board_delete(no){
 		<c:import url="./sub_board_menu.jsp" />
 		
 		<div id="content_title"> 
-			<h2> 공지사항 </h2>
+			<h2> ${board_name } </h2>
 		</div>		
 		<div id="bdetail_area">
 			<div id = "dtitle_area">
 				<div id="dtitle">
-					NO.1&ensp;첫번째 공지사항입니다.
+					${detail.board_title }
 				</div>
 		
 				<div id="dmember">
@@ -59,7 +60,13 @@ function board_delete(no){
 			</div>
 			
 			<div id="dcontent">
-				감기조심하세요
+				${detail.board_content }
+			</div>
+			
+			<div id="dcontent">
+				<c:if test="${detail.board_file ne null }">
+				</c:if>
+				<img alt="왜"  src="./resources/upfile/upload/${detail.board_file }">
 			</div>
 			
 			<div id="detail_btn">

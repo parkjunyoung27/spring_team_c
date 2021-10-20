@@ -10,7 +10,7 @@ function bwrite(){
 			location.href="./login.do";
 		}
 	}else{
-			location.href="./write.do"
+			location.href="./write.do?categoryNo=${categoryNo}";
 	}
 }
 
@@ -18,13 +18,10 @@ function bwrite(){
 
 
 <div id="sub_board_menu">
-	<a href="/board"> ${board_name } </a>
+	<a href="/GSupport/board.do?categoryNo=${categoryNo}"> ${board_name} </a>
 	<nav>
 		<ul id="sub_list">
-			<c:forEach items="${boardCategoryList}" var="bcl">
-			<li id="menu_margin"><a href="./board?bcno=${bcl.bcno }">${bcl.category_name }</a></li>
-			</c:forEach>
-			<li id="bwrite"><a onclick="location.href='write.do?board_cate=1'">글쓰기</a><li>			
+			<li id="bwrite"><a onclick="javascript:bwrite();" >글쓰기</a></li>			
 		</ul>		
 	</nav>
 </div>

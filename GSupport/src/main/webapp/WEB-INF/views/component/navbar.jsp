@@ -184,11 +184,11 @@ input[id="tab03"]:checked ~ .con3 {
 		<li class="menuli"><a
 			href="./storeList.do?guName=강남구&shop_wido=37.4979395100853&shop_kyungdo=127.02755368008152"
 			class="">가맹점 찾기</a></li>
-		<li class="menuli"><a href="./board.do?boardNo=0" class="">게시판</a>
+		<li class="menuli"><a href="./board.do?categoryNo=0" class="">게시판</a>
 			<ul class="son">
-				<li><a href="./board.do?boardNo=0">공지사항</a></li>
-				<li><a href="./board.do?boardNo=1">가맹점주</a></li>
-				<li><a Href="./board.do?boardNo=2">문의사항</a></li>
+				<li><a href="./board.do?categoryNo=0">공지사항</a></li>
+				<li><a href="./board.do?categoryNo=1">가맹점주</a></li>
+				<li><a Href="./board.do?categoryNo=2">문의사항</a></li>
 			</ul></li>
 		<li class="menuli"><c:choose>
 				<c:when test="${sessionScope.name ne null}">

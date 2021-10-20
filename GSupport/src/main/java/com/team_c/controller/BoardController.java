@@ -1,17 +1,18 @@
 package com.team_c.controller;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -43,21 +44,20 @@ public class BoardController {
 		//*****카테고리*****
 		//게시판 이름 불러오기
 		String boardName = boardService.boardCate(map);
-		System.out.println("보드네임 : " + boardName);
 		mv.addObject("board_name", boardName);
 		
 		//board_cate보내기
 		int board_cate = 0;
-		if(map.containsKey("boardNo")) {//키값이 있느냐 없느냐 물어보는부분 있으면 true반환 없으면 false 반환
-			board_cate = Integer.parseInt(String.valueOf(map.get("boardNo")));//유틸 만들어 놓기.
+		if(map.containsKey("categoryNo")) {//키값이 있느냐 없느냐 물어보는부분 있으면 true반환 없으면 false 반환
+			board_cate = util.toInt(map.get("categoryNo"));//유틸 만들어 놓기.
 		}else {
-			map.put("boardNo", board_cate);
+			map.put("categoryNo", board_cate);
 		}
-		mv.addObject("boardNo", board_cate);
+		mv.addObject("categoryNo", board_cate);
 
 		//*****검색기능*****
 		//출력해보기
-		System.out.println(map.getMap());//search값이 오는지 확인
+		System.out.println("search 값 : " + map.getMap());//search값이 오는지 확인
 		
 		//검색값을 jsp로 넘기기
 		if(map.containsKey("searchName")) {
@@ -93,11 +93,11 @@ public class BoardController {
 		map.put("lastPage", lastPage);
 				
 		//질의
-		List<Map<String, Object>> list = boardService.boardList(map.getMap());
+		List<Map<String, Object>> boardList = boardService.boardList(map.getMap());
 		
 		//담기
-		mv.addObject("list", list);
-		if(list.size() > 0 ) {
+		mv.addObject("list", boardList);
+		if(boardList.size() > 0 ) {
 			System.out.println(map.getMap());
 		}
 		mv.addObject("paginationInfo", paginationInfo);
@@ -110,40 +110,50 @@ public class BoardController {
 		System.out.println("현재 맵목록 : "+ map.getMap());
 		return mv;
 	}
-
-	@GetMapping(value="/write")
-	public String write() {
-		//세션검사 필요
-		return "write";
-	}
-	@PostMapping(value="/write")
-	public String write(CommandMap map, MultipartFile file, HttpServletRequest request) throws IOException {
+	
+	//글쓰기
+	//서버 -> 클라이언트
+	@GetMapping("/write")
+	public String write(CommandMap map, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		//세션 확인
+		if (session.getAttribute("member_id") != null) {
+			return "write";
+		} else {
+			return "redirect:/board.do?categoryNo=" + request.getParameter("categoryNo");
+		}
 		
-		System.out.println("request : " + request.getParameter("title"));
-		System.out.println("request : " + request.getParameter("content"));
-		//System.out.println("request : " + request.getParameter("file"));
-		System.out.println("mpf : " + file.getOriginalFilename());
+	}
+	//클라이언트 -> 서버
+	@PostMapping("/write")
+	public String write2(CommandMap map, MultipartFile file, HttpServletRequest request, HttpSession session) throws Exception {
 		
 		//map에 넣어서 출력
-		map.put("title", request.getParameter("title"));
-		map.put("content", request.getParameter("content"));
+		map.put("board_title", request.getParameter("board_title"));
+		map.put("board_content", request.getParameter("content"));
+		map.put("board_orifile", file.getOriginalFilename());
+		map.put("member_name", session.getAttribute("name"));
 		
 		//파일 저장하기
 		//경로지정
-		String realPath = servletContext.getRealPath("resource/");
+		String realPath = servletContext.getRealPath("resources/upfile/");
 		realPath = realPath + "upload";
-		System.out.println("경로" + realPath);
-		String realFileName = fileSave.save(realPath, file);
+		System.out.println("경로 = " + realPath);
+		String realFileName = fileSave.save2(realPath, file);
 		
-		map.put("realFileName", realFileName);
-		//일단 출력만 먼저합니다.
-		System.out.println("map : " + map.getMap());
-		return "redirect:./board.do?boardNo=1";
+		map.put("board_file", realFileName);
+		
+		boardService.write(map.getMap());
+		return "redirect:/board.do?categoryNo=" + map.getMap().get("board_cate");
 	}
 	
 	@GetMapping("/detail")
-	public String detail() {
-		return "detail";
+	public ModelAndView detail(CommandMap map, HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("detail");
+		Map<String, Object> detail = boardService.detail(map.getMap());
+		mv.addObject("detail", detail);
+
+		return mv;
 	}
 	
 	@GetMapping("/update")
