@@ -140,7 +140,7 @@
 
 			<form action="${pageContext.request.contextPath}/login.do"
 				method="post">
-				<input type="email" id="id" name="id" class="text-field" oninput="handleOnInput(this)" placeholder="이메일을 입력하세요"
+				<input type="text" id="id" name="id" class="text-field" oninput="handleOnInput(this)" placeholder="이메일을 입력하세요"
 					required="required" style="text-transform: lowercase"> <input type="password" id="pw"
 					name="pw" class="text-field" placeholder="암호를 입력하세요"
 					required="required">
