@@ -58,7 +58,7 @@ var gu = document.getElementById("gu").value;
 	}
 	
 	
-	function checkDelete(form){
+	function checkAllow(form){
 		
 		var sum = 0;
 		var count = form.check.length; //form.name값.길이
@@ -72,7 +72,7 @@ var gu = document.getElementById("gu").value;
 			var test= confirm(sum+"개 삭제하시겠습니까?");
 			if(test == true){
 				form.submit();
-				alert("삭제됐습니다.");
+				alert("삭제되었습니다.");
 			}else{
 				alert("취소됐습니다.");
 			}
@@ -187,7 +187,7 @@ var gu = document.getElementById("gu").value;
 			
 			<div class="adminLogPaging">
 				<ui:pagination paginationInfo="${paginationInfo }" type="text" jsFunction="linkPage"/>
-				<button type="button" onclick="checkDelete(document.forms['shopNowOrder'])" class="adminDelBtn">삭제하기</button>		
+				<button type="button" onclick="checkAllow(document.forms['shopNowOrder'])" class="adminDelBtn">삭제하기</button>		
 			</div>	
 		
 		

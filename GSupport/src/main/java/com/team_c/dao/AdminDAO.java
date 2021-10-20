@@ -68,5 +68,26 @@ public class AdminDAO extends AbstractDAO{
 	public List<Map<String, Object>> memberList(Map<String, Object> map) {
 		return selectList("admin.memberList", map);
 	}
+
+	public int shopAllowTotalCount(Map<String, Object> map) {
+		return Integer.parseInt(String.valueOf(selectOne("admin.shopAllowTotalCount", map).get("totalCount")));
+	}
+
+	public List<Map<String, Object>> shopRegisterViewList(Map<String, Object> map) {
+		return selectList("admin.shopRegisterViewList", map);
+	}
+
+	public void registerShop(String number) {
+		registerShop("admin.registerShop", number);
+
+	}
+
+	public int adminBoardTotalCount(Map<String, Object> map) {
+		return Integer.parseInt(String.valueOf(selectOne("admin.adminBoardTotalCount", map).get("totalCount")));
+	}
+
+	public List<Map<String, Object>> adminBoardList(Map<String, Object> map) {
+		return selectList("admin.adminBoardList", map);
+	}
 	
 }

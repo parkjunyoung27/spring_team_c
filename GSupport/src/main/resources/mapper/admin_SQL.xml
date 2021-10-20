@@ -47,6 +47,21 @@
 		</if>
 	</select>
 	
+	<select	id="shopAllowTotalCount" parameterType="HashMap" resultType="HashMap">
+		SELECT COUNT(*) as totalCount FROM shopRegisterView  
+		<if test="gu != ''">
+		WHERE shop_gu = #{gu}
+		</if>
+	</select>
+	
+	<select	id="adminBoardTotalCount" parameterType="HashMap" resultType="HashMap">
+		SELECT COUNT(*) as totalCount FROM board_view 
+		WHERE board_category = #{board_cate}
+		<if test="gradeOption != '' "> 
+		AND member_grade = #{gradeOption}
+		</if>
+	</select>
+	
 	<select	id="memberTotalCount" parameterType="HashMap" resultType="HashMap">
 		SELECT COUNT(*) as totalCount FROM memberview  
 		<if test="channel != '' and gradeOption == ''">
@@ -99,6 +114,14 @@
 		limit #{startPage}, #{lastPage}	
 	</select>
 	
+	<select id="shopRegisterViewList" resultType="HashMap">
+		SELECT * FROM shopRegisterView   
+		<if test="gu != ''">
+			WHERE shop_gu = #{gu} 
+		</if>
+		limit #{startPage}, #{lastPage}	
+	</select>
+	
 	<update id="deleteShop">
 		UPDATE shop SET shop_delete=1 WHERE shop_no=#{number} 
 	</update>
@@ -119,5 +142,18 @@
 		
 		limit #{startPage}, #{lastPage}
 	</select>
+	
+	<update id="registerShop">
+		UPDATE shop SET shop_register=1 WHERE shop_no=#{number} 
+	</update>
+	
+	<select id="adminBoardList" resultType="HashMap">
+		SELECT * FROM board_view WHERE board_category = #{board_cate}
+		<if test="gradeOption != ''">
+		AND member_grade = #{gradeOption} 
+		</if>
+		limit #{startPage}, #{lastPage}
+	</select>
+	
 	
 </mapper>

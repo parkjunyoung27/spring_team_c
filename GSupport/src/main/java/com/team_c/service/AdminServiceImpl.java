@@ -97,6 +97,34 @@ public class AdminServiceImpl implements AdminService{
 		return adminDAO.memberList(map);
 	}
 
+	@Override
+	public int shopAllowTotalCount(Map<String, Object> map) {
+		return adminDAO.shopAllowTotalCount(map);
+	}
+
+	@Override
+	public List<Map<String, Object>> shopRegisterViewList(Map<String, Object> map) {
+		return adminDAO.shopRegisterViewList(map);
+	}
+
+	@Override
+	public void registerShop(String number) {
+		adminDAO.registerShop(number);
+	}
+
+	@Override
+	public int adminBoardTotalCount(Map<String, Object> map) {
+		return adminDAO.adminBoardTotalCount(map);
+	}
+
+	public List<Map<String, Object>> adminBoardList(Map<String, Object> map) {
+		return adminDAO.adminBoardList(map);
+	}
+
+
+
+
+	
 
 	
 }

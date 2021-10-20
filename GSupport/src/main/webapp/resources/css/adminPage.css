@@ -204,6 +204,7 @@ div#wrapper {
 
 .w1 {width:1%; }
 .w3 {width:3%; }
+.w3 {width:4%; }
 .w5 {width:5%; }
 .w7 {width:7%; }
 .w10 {width:10%; }
@@ -272,6 +273,15 @@ select#grade {
     font-size: 0.6em;
 }
 select#channel {
+    width: 80%;
+    height: 25px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.6em;
+}
+
+select#gradeOption {
     width: 80%;
     height: 25px;
     margin-bottom: 5px;

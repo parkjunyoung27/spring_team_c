@@ -47,4 +47,14 @@ public interface AdminService {
 
 	public List<Map<String, Object>> memberList(Map<String, Object> map);
 	
+	public int shopAllowTotalCount(Map<String, Object> map);
+	
+	public List<Map<String, Object>> shopRegisterViewList(Map<String, Object> map);
+	
+	public void registerShop(String number);
+	
+	public int adminBoardTotalCount(Map<String, Object> map);
+	
+	public List<Map<String, Object>> adminBoardList(Map<String, Object> map);
+	
 }

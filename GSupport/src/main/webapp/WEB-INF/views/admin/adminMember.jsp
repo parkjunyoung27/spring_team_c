@@ -118,10 +118,10 @@ var grade = document.getElementById("grade").value;
 								<option value="" selected>등급 선택</option>
 								
 								<c:forEach items="${gradeList }" var="t">
-									<c:if test="${grade eq t }">
+									<c:if test="${gradeOption eq t }">
 										<option value="${t }"  selected>${t }</option>
 									</c:if>
-									<c:if test="${grade ne t }">
+									<c:if test="${gradeOption ne t }">
 										<option value="${t }">${t }</option>
 									</c:if>
 								</c:forEach>

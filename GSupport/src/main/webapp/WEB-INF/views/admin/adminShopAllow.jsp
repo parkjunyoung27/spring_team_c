@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -8,27 +7,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Admin | 게시판 관리</title>
+<title>Admin | 가맹점 예약관리</title>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <link href="../resources/css/adminPage.css" rel="stylesheet"> 
 <link href="../resources/css/adminPage_menu.css" rel="stylesheet">
 <style>
 table{
-	 width:200%;
+	width:200%;
 }
-
-a{
-	color: white;
-    margin-left: 10px;
-}
-
-a:hover{color: gold;}
-
 </style> 
 <script type="text/javascript">
 var pageNo = 1;
-var gradeOption = document.getElementById("gradeOption").value;
+var gu = document.getElementById("gu").value;
 		
 	function checkSelectAll()  {
 		  // 전체 체크박스
@@ -70,10 +61,10 @@ var gradeOption = document.getElementById("gradeOption").value;
 		}
 		
 		if(sum > 0){
-			var test= confirm(sum+"개 삭제하시겠습니까?");
+			var test= confirm(sum+"개 승인하시겠습니까?");
 			if(test == true){
 				form.submit();
-				alert("삭제됐습니다.");
+				alert("승인되었습니다.");
 			}else{
 				alert("취소됐습니다.");
 			}
@@ -84,19 +75,18 @@ var gradeOption = document.getElementById("gradeOption").value;
 	}
 	
 	function selectOption(){
-		var gradeOption = document.getElementById("gradeOption").value;
-		return linkPage(pageNo, gradeOption);
+		var gu = document.getElementById("gu").value;
+		return linkPage(pageNo, gu);
 	}
 	
-	function linkPage(pageNo, gradeOption){
-		var gradeOption = document.getElementById("gradeOption").value;
-		location.href="./adminBoard.do?board_cate="+${board_cate}+"&pageNo=" + pageNo + "&gradeOption=" + gradeOption;
+	function linkPage(pageNo, ip, target){
+		var gu = document.getElementById("gu").value;
+		location.href="./adminShopAllow.do?pageNo=" + pageNo + "&gu=" + gu;
 	}
 
 </script>
 
 <body>
-
 	<header>
 		<%@ include file="./component/navbarm.jsp"%>	
 	</header>
@@ -106,68 +96,78 @@ var gradeOption = document.getElementById("gradeOption").value;
 		
 		<div id="adminContainer">
 			
-			<h1>
-				<a href="./adminBoard.do?board_cate=0" <c:if test="${board_cate eq 0}">style="color:gold;"</c:if> >공지사항</a> | 
-				<a href="./adminBoard.do?board_cate=1" <c:if test="${board_cate eq 1}">style="color:gold;"</c:if>> 가맹점 게시판</a> | 
-				<a href="./adminBoard.do?board_cate=2" <c:if test="${board_cate eq 2}">style="color:gold;"</c:if>> 이용자 게시판</a> 				
-			</h1>
+			<h1>가맹점 승인대기</h1>
 			
 			<div class="adminContainerOne">
 			
-			<form action="./adminBoard.do" method="post" id="BoardOrder" name="BoardOrder">
+						<form action="./adminShopAllow.do" method="post" id="shopNowOrder" name="LogOrder">
 				<table>
 					<tr>
 						<th class="w1"> <input type="checkbox" name="checkall" onclick="selectAll(this)"> </th>
 						<th class="w1"> No </th>
-						<th class="w5">제목</th>
-						<th class="w10">내용</th>
-						<th class="w5">아이디</th>
-						<th class="w5">닉네임</th>
-						<th class="w1"> 
-							<select onchange="selectOption()" id="gradeOption">
-							<option value="" selected> 등급 선택 </option>
-								<c:forEach items="${gradeList }" var="i">
-									<c:if test="${i eq gradeOption }"> <!-- ip가 같으면 선택됨  -->
+						<th class="w7"> 상호명 </th>
+						<th class="w3"> 
+							<select onchange="selectOption()" id="gu">
+							<option value="" selected> 지역구 선택 </option>
+								<c:forEach items="${guList }" var="i">
+									<c:if test="${i eq gu }"> <!-- gu가 같으면 선택됨  -->
 										<option value="${i }" selected>${i }</option>
 									</c:if>
-									<c:if test="${i ne gradeOption }">
+									<c:if test="${i ne gu }">
 										<option value="${i }">${i }</option>
 									</c:if>
 								</c:forEach>
 							</select>
 						</th>
-						<th class="w7">이메일</th>
-						<th class="w3">조회수</th>
-						<th class="w3">좋아요수</th>
-						<th class="w3">삭제여부</th>
-						<th class="w3">등록날짜</th>
-						<th class="w5">파일이름</th>
+						<th class="w10"> 위치 </th>
+						<th class="w5"> 전화번호 </th>
+						<th class="w3"> 좋아요 </th>
+						<th class="w3"> 즐겨찾기 </th>
+						<th class="w3"> 오픈시간 </th>
+						<th class="w3"> 마감시간 </th>
+						<th class="w10"> 내용 </th>
 					</tr> 
 					<c:choose>
 						<c:when test="${fn:length(list) gt 0 }">
 							<c:forEach items='${list }' var="l">
-								<tr>
+								<tr class="windowOpen">
 									<td class="w1">
-										<input type="checkbox" name="check" value="${l.get('board_no')}"  onclick='checkSelectAll()' >
+										<input type="checkbox" name="check" value="${l.get('shop_no')}"  onclick='checkSelectAll()' >
 									</td> 
-									<td class="w1">${l.get("board_no") } </td>
-									<td class="w5">${l.get("board_title") } </td>
-									<td class="w10">${fn:substring(l.get("board_content"), 0, 15 )}...</td>
-									<td class="w5">${l.get("member_id") } </td>
-									<td class="w5">${l.get("member_name") } </td>	
-									<td class="w3">${l.get("member_grade") } </td>
-									<td class="w7">${l.get("member_email") } </td>
-									<td class="w3">${l.get("board_count") } </td>
-									<td class="w4">${l.get("board_like") } </td>
-									<td class="w4">${l.get("board_delete") } </td>
-									<td class="w5">${fn:substring(l.get("board_date"), 0, fn:length("l.get('board_date')") )}</td>													
-									<td class="w10">${l.get("board_orifile") } </td>
+									<td class="w1">${l.get("shop_no") } </td>
+									<td class="w7">${l.get("shop_name") } </td>
+									<td class="w3">${l.get("shop_gu") } </td>
+									<td class="w10">${l.get("shop_loc") }</td>	
+									<td class="w5">${l.get("shop_tel") }</td>	
+									<td class="w3">
+									<c:choose>
+										<c:when test="${l.get('shop_like') ne null}">
+										${l.get("shop_like") }
+										</c:when>
+										<c:otherwise>
+										0
+										</c:otherwise>
+									</c:choose>
+									</td>	
+									<td class="w3">${l.get("shop_bookmark") }</td>	
+									<td class="w3">${l.get("shop_opentime") }</td>	
+									<td class="w3">${l.get("shop_closetime") }</td>	
+									<td class="w10">
+									<c:choose>
+										<c:when test="${l.get('shop_notice') ne null}">
+										${fn:substring(l.get("shop_notice"), 0, 15 )}
+										</c:when>
+										<c:otherwise>
+										NULL
+										</c:otherwise>
+									</c:choose>
+									</td>
 								</tr>				
 							</c:forEach>		
 						</c:when>
 						<c:otherwise>
 							<tr id="adminNone">
-								<td colspan="13">게시판 기록이 없습니다... <td>
+								<td colspan="11">승인대기 가맹점이 없습니다... <td>
 							</tr>
 						</c:otherwise>
 					</c:choose>
@@ -178,8 +178,9 @@ var gradeOption = document.getElementById("gradeOption").value;
 		
 			<div class="adminLogPaging">
 				<ui:pagination paginationInfo="${paginationInfo }" type="text" jsFunction="linkPage"/>
-				<button type="button" onclick="checkDelete(document.forms['BoardOrder'])" class="adminDelBtn">삭제하기</button>		
+				<button type="button" onclick="checkDelete(document.forms['shopNowOrder'])" class="adminDelBtn">등록하기</button>		
 			</div>	
+		
 		
 		</div>
 	

@@ -52,6 +52,7 @@
                         <li>가맹점 관리 <i class="arrow fas fa-angle-right"></i></li>
                         <ul class="small_menu">
                             <li onclick="location.href='./adminShopNow.do'">가맹점 현황</li>
+                            <li onclick="location.href='./adminShopAllow.do'">가맹점 승인대기</li>
                         </ul>
                     </ul>
                     

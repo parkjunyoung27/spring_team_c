@@ -135,4 +135,9 @@ public class AbstractDAO {
 		sqlSession.update(queryID, number);
 	}
 	
+	//로그 기록 삭제하기 
+	public void registerShop(String queryID, String number) {
+		sqlSession.update(queryID, number);
+	}
+	
 }
