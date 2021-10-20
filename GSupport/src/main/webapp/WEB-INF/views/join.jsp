@@ -344,12 +344,10 @@ function checkBirth() {
 	var birth = $("#birthDate").val();
     
 	if(birth.include('-') == 2 && birth.length() == 10){
-    	$("#birth_date").css("border-bottom-color", "#6A679E");
     	$("#joinErr").text(" ");
     	return true;
     } else {
-    	$("#birth_date").css("border-bottom-color", "red");
-		$("#joinErr").text("생년월일을 다시 확인해주세요.");
+    	$("#joinErr").text("생년월일을 다시 확인해주세요.");
     }
 }
 
@@ -403,7 +401,7 @@ function handleOnInputName(e)  {
 					<input type="email" id="dummyId" name="id" style="display:none">
 					<input type="text" id="dummyName" name="name" style="display:none">
 					<input type="password" id="dummyPw" name="pw" style="display:none">
-					<input type="text" name="channel" value="web" style="display:none">
+					<input type="text" id="dummyChannel" name="channel" value="web" style="display:none">
 				<div>
 					<input type="date" id="birthDate" name="birthDate" class="joinInput" placeholder="생년월일" required="required" onchange="checkBirth()">
 				</div>	

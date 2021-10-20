@@ -114,7 +114,7 @@ public class LoginController {
 			session.setAttribute("joinChannel", "kakao");
 			session.setAttribute("memberEmail", email);
 			session.setAttribute("memberPw", memberPw);
-			return "redirect:/join.do";
+			return "redirect:/index.do";
 		}
 
 		Map<String, Object> login = loginService.loginByEmail(email);
@@ -170,7 +170,7 @@ public class LoginController {
 			session.setAttribute("joinChannel", "naver");
 			session.setAttribute("memberEmail", email);
 			session.setAttribute("memberPw", memberPw);
-			return "redirect:/join.do";
+			return "redirect:/index.do";
 		}
 		Map<String, Object> login = loginService.loginByEmail(email);
 
@@ -223,11 +223,13 @@ public class LoginController {
 		// 기존 회원인지 확인
 		int emailCheck = loginService.emailCheck(email);
 		
+		System.out.println("#############################" + emailCheck);
 
 		if (emailCheck != 1) {
 			session.setAttribute("joinChannel", "google");
 			session.setAttribute("memberEmail", email);
 			session.setAttribute("memberPw", memberPw);
+			
 			return "redirect:/index.do";
 		}
 		

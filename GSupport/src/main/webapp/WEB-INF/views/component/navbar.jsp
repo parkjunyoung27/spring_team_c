@@ -143,6 +143,16 @@ input[id="tab03"]:checked ~ .con3 {
 	display: block;
 	transition: all .35s;
 }
+
+input[id="tab04"]:checked ~ .con4 {
+	display: block;
+	transition: all .35s;
+}
+
+input[id="tab05"]:checked ~ .con5 {
+	display: block;
+	transition: all .35s;
+}
 </style>
 
 
@@ -165,13 +175,13 @@ input[id="tab03"]:checked ~ .con3 {
 	
 
 	$(document).ready(function(){
-		var joinChannel = sessionStorage.getItem("joinChannel");
-		console.log(joinChannel);
-		if(joinChannel == "google"){
+		var channel = '<%=(String)session.getAttribute("joinChannel")%>';
+		console.log(channel);
+		if(channel == "google" || channel == "naver" || channel == "kakao"){
+			document.getElementById("sidebar").click();
 			document.getElementById("tab04").click();
 		}
 	});
-
 </script>
 
 <!-- Navigation -->
@@ -221,7 +231,6 @@ input[id="tab03"]:checked ~ .con3 {
 
     	<input type="checkbox" id="sidebar" hidden="hidden">
 
-    	<input type="checkbox" id="sidebar">
     	<header>
     		<div>
     			<label for="sidebar" class="menu"></label>
@@ -250,15 +259,15 @@ input[id="tab03"]:checked ~ .con3 {
 			<div class="conbox con2">
 				<c:import url="/WEB-INF/views/join.jsp" />
 			</div>
-			<div class="conbox con3">
-				<c:import url="/WEB-INF/views/member.jsp" />
-			</div>
+			<%-- <div class="conbox con3">
+				<c:import url="" />
+			</div> --%>
 			<div class="conbox con4">
 				<c:import url="/WEB-INF/views/oAuthJoin.jsp" />
 			</div>
-			<div class="conbox con5">
-				<c:import url="/WEB-INF/views/member.jsp" />
-			</div>
+			<%-- <div class="conbox con5">
+				<c:import url="" />
+			</div> --%>
 		</div>
 
 

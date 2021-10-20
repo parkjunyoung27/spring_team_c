@@ -36,7 +36,6 @@ public class JoinController {
 //		System.out.println(session.getAttribute("joinChannel") != null);
 
 		if (session.getAttribute("joinChannel") != null) {
-			
 			return "redirect:/oAuthJoin.do";
 		}
 
@@ -50,32 +49,22 @@ public class JoinController {
 //		System.out.print("OriginalURL ==>" + originalURL  );
 //		String before = request.getHeader("referer");
 //		System.out.println("*****************" + before);
-		return "redirect:/index.do";
+		return "oAuthJoin";
 	}
 
 	@PostMapping("/join.do")
 	public String join(CommandMap commandMap, HttpServletRequest request) {
 
 		System.out.println(commandMap.getMap());
-
+		HttpSession session = request.getSession();
+		
 		Map<String, Object> join = joinService.join(commandMap.getMap());
 		System.out.println(join);
 
-//		HttpSession session = request.getSession();
+		session.invalidate();
 		return "redirect:/index.do";
 	}
 
-	@PostMapping("/oAuthJoin.do")
-	public String oAuthJoin(CommandMap commandMap, HttpServletRequest request) {
-
-		System.out.println(commandMap.getMap());
-
-		Map<String, Object> join = joinService.join(commandMap.getMap());
-		System.out.println(join);
-
-//		HttpSession session = request.getSession();
-		return "redirect:/index.do";
-	}
 	
 	@GetMapping("/emailCount.do")
 	@ResponseBody
