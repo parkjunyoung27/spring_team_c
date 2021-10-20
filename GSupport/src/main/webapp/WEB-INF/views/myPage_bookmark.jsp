@@ -19,16 +19,37 @@
 <script src="../assets/js/core/bootstrap.min.js" type="text/javascript"></script>
 <style>
 
+.customer_content_reservHistory {
+	border-top: 1px solid #141414;
+	background-color: #ffffff;
+	margin-top: 20px;
+	padding: 10px;
+}
+
+.customer_content_reservHistory_header {
+	border-bottom: 1px solid #e5e5e5;
+	margin-bottom: 10px;
+	height:40px;
+	padding:5px;
+}
+
+.customer_content_reservHistory_content {
+	border-bottom: 1px solid #e5e5e5;
+    padding: 10px 20px 10px 20px;	
+    font-size:12px;
+	
+}
 
 .button_submit {
 	float:right;
-	width: 100px;
-	height: 30px;
-	font-size: 20px;
+	width: auto;
+	height: 20px;
+	font-size: 10px;
 	text-align: center;
 	font-weight: bold;
-	background-color: green;
-	color: white;
+	background-color: white;
+	color: green;
+	border:none;
 	
 }
 
@@ -43,33 +64,56 @@
 		<%@ include file="./myPage_menu.jsp"%>
 
 		<!-- Mypage Content -->
+		<div class="column middle">
+			<div class="activity">
+				<div class="card">
+					<div class="card-body">
+						<h4 class="card-title">예약</h4>
+						<p class="card-text">??개</p>
+						<a href="#" class="btn btn-primary">예약 확인</a>
+					</div>
+				</div>
+
+				<div class="card">
+				<a href="" class="">
+					<div class="card-body">
+						<h4 class="card-title">쪽지</h4>
+						<p class="card-text">??개 /안 읽은거 ??개</p>
+					</div>
+				</a>
+				</div>
+
+				<div class="card">
+					<div class="card-body">
+						<h4 class="card-title">즐겨찾기</h4>
+						<p class="card-text">??건</p>
+						<a href="#" class="btn btn-primary">즐겨찾기</a>
+					</div>
+				</div>
+			</div>
 
 			<div class="customer_content">
 				<h1>즐겨찾기 목록</h1>
-				<c:forEach items="" var="r">
+				<c:forEach items="${list }" var="l">
 					<div class="customer_content_reservHistory">
-						<div class="customer_content_reservHistory_header">예약 번호 :
-							<button class="button_submit" type="submit">예약 취소</button>
-							<button class="button_submit" type="submit">예약 승인</button>
+						<div class="customer_content_reservHistory_header"><a href="./storeDetail.do?shop_no=${l.shop_no }">${l.shop_name }</a> 
+							<button class="button_submit" type="submit"><img src="resources/images/star_after.png" style="height:20px;"></button>
 							</div>
 						<div class="customer_content_reservHistory_content">
 							<div class="customer_content_reservHistory_content_detail">
-								가게이름 :  <br> 예약자 :  <br>
-								예약날짜 : <br> 예약시간 :
-								 <br> 몇 명 :
-								명 <br>
-								요구사항 : 
+								${l.shop_loc } <br> 
+								${l.shop_tel } <br> ${l.shop_opentime } ~ ${l.shop_closetime }
 
 							</div>
 						</div>
 					</div>
+					
 				</c:forEach>
 			</div>
-			<%-- <div id="boardPaging">
+			<div id="boardPaging">
 				<ui:pagination paginationInfo="${paginationInfo }" type="text"
 					jsFunction="linkPage" />
-			</div> --%>
-
+			</div> 
 
 
 		</div>
