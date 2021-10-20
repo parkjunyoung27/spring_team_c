@@ -11,17 +11,18 @@
 <title>Index</title>
 <link href="./resources/css/index.css" rel="stylesheet">
 <link href="./resources/css/base.css" rel="stylesheet">
-<link
+<!-- <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-	crossorigin="anonymous">
+	crossorigin="anonymous"> 
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 	crossorigin="anonymous"></script>
-<style>
-.carousel-item {
+ -->
+ <style>
+/* .carousel-item {
 	height: 500px;
 	min-height: 350px;
 	background: no-repeat center center scroll;
@@ -30,8 +31,8 @@
 	-o-background-size: cover;
 	background-size: cover;
 }
-
-header {
+ */
+.header1 {
 	margin-top: 80px;
 }
 </style>
@@ -43,7 +44,7 @@ header {
 	<%@ include file="./component/navbar.jsp"%>
 
 	<!-- main -->
-	<header>
+<!-- 	<div class="header1">
 		<div id="carouselExampleCaptions" class="carousel slide"
 			data-bs-ride="carousel">
 			<div class="carousel-indicators">
@@ -57,10 +58,10 @@ header {
 			</div>
 			<div class="carousel-inner">
 				<div class="carousel-item active" style="background-color: black;">
-					<!-- 					style="background-image: url(http://localhost:8080/GSupport/resources/images/header.png);">
- -->
+										style="background-image: url(http://localhost:8080/GSupport/resources/images/header.png);">
+
 					<div class="carousel-caption">
-						<!-- <h5>First slide label</h5> <p>Some representative placeholder content for the first slide.</p> -->
+						<h5>First slide label</h5> <p>Some representative placeholder content for the first slide.</p>
 					</div>
 				</div>
 				<div class="carousel-item" style="background-color: green">
@@ -80,12 +81,12 @@ header {
 				<span class="carousel-control-next-icon" aria-hidden="true"></span>
 				<span class="visually-hidden">Next</span>
 			</button>
-		</div>
-	</header>
+		</div> 
+</div>
+ -->		
 	<div class="container">
 		<!-- 		<div class="header-img"></div> -->
 	</div>
-
 	<!-- footer -->
 	<%@ include file="./component/footer.jsp"%>≠
 

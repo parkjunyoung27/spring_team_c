@@ -7,20 +7,20 @@ input#sidebar {
 	diplay: none;
 }
 
-.sidebar1 {
+header {
 	background-color: #f5f5f5;
 	position: relative;
 	z-index: 4;
 }
 
-.sidebar1>div {
+header > div {
 	max-width: 0;
 	margin: 0 auto;
 	position: relative;
 	min-height: 0;
 }
 
-.sidebar1 label.menu {
+header label.menu {
 	position: absolute;
 	top: 50%;
 	right: 10px;
@@ -102,7 +102,7 @@ input#sidebar {
 	bottom: -2px;
 }
 
-input#sidebar:checked ~ sidebar1 label {
+input#sidebar:checked ~ header label {
 	background-position: -24px 0;
 }
 
@@ -219,13 +219,17 @@ input[id="tab03"]:checked ~ .con3 {
 			</c:choose></li>
 	</ul>
 
-	<input type="checkbox" id="sidebar" hidden="hidden">
+    	<input type="checkbox" id="sidebar" hidden="hidden">
 
-	<div class="sidebar1">
-		<label for="sidebar" class="menu"></label>
-	</div>
-	<div class="container1"></div>
-	<div class="sidebar_content">
+    	<input type="checkbox" id="sidebar">
+    	<header>
+    		<div>
+    			<label for="sidebar" class="menu"></label>
+    		</div>
+    	</header>   	
+    	<div class="container1">
+    	</div>
+    	<div class="sidebar_content">
 
 
 		<div class="tab_content">
