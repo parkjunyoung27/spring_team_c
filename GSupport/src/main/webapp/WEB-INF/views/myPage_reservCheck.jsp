@@ -10,16 +10,16 @@
 <title>My Page Reservation Check</title>
 <script type="text/javascript">
 	function linkPage(pageNo) {
-		location.href = "./myPage_reservCheck.do?pageNo=" + pageNo;
+		location.href = "./myPage_reservCheck.do?pageNo=" + pageNo+"&shop_no="+${sessionScope.shop_no};
 	}
 	function cancel(no, sno){
 		if(confirm("예약 취소하시겠습니까?")){
-			location.href='./ownerReservCancel.do?reservation_no='+no+'&shop_name='+sno;
+			location.href='./ownerReservCancel.do?reservation_no='+no+'&shop_no='+sno;
 		}
 	}
 	function success(no, sno){
 		if(confirm("예약 승인하시겠습니까?")){
-			location.href='./ownerReservSuccess.do?reservation_no='+no+'&shop_name='+sno;
+			location.href='./ownerReservSuccess.do?reservation_no='+no+'&shop_no='+sno;
 		}
 	}
 </script>
@@ -100,7 +100,7 @@
 
 					<div class="reserv-body">
 						<h3 class="reserv-title">
-							<a href="./myPage_reservCheck.do?status=wait">예약 진행중<br>
+							<a href="./myPage_reservCheck.do?status=wait">예약 대기 중<br>
 						<c:if test="${wait eq null}">0</c:if>
 						<c:if test="${wait ne null}">${wait }</c:if> 개
 							</a>
@@ -113,7 +113,7 @@
 				<div class="reserv">
 					<div class="reserv-body">
 						<h3 class="reserv-title">
-							<a href="./myPage_reservCheck.do?status=success">예약 종료<br>
+							<a href="./myPage_reservCheck.do?status=success">예약 승인<br>
 						<c:if test="${success eq null}">0</c:if>
 						<c:if test="${success ne null}">${success }</c:if> 개
 							</a>
@@ -138,7 +138,7 @@
 
 			<div class="customer_content">
 				<h1>예약 목록</h1>
-				<c:forEach items="${list }" var="r">
+				<c:forEach items="${reservation2 }" var="r">
 
 					<div class="customer_content_reservHistory">
 						<div class="customer_content_reservHistory_header">
@@ -155,8 +155,9 @@
 								</c:when>
 								<c:otherwise>
 									<button class="button_submit" type="submit"
-										onclick="return cancel(${r.reservation_no}, ${r.shop_no })">예약 취소</button>
-											<button class="button_submit" type="submit" onclick="return success(${r.reservation_no},  ${r.shop_no })">
+										onclick="return cancel(${r.reservation_no}, ${sessionScope.shop_no })">예약 취소</button>
+											<button class="button_submit" type="submit" 
+											onclick="return success(${r.reservation_no},  ${sessionScope.shop_no })">
 											예약 승인</button>
 								</c:otherwise>
 							</c:choose>
@@ -173,7 +174,7 @@
 								${r.people }명 <br> 예약 현황 :
 								<c:choose>
 									<c:when test="${r.reservation_status eq 'wait' }">
-										예약 확인중
+										예약 대기 중
 									</c:when>
 									<c:when test="${r.reservation_status eq 'success' }">
 										예약 성공

@@ -48,7 +48,7 @@
 	</select>
 	
 	<select id="ownerReservList" parameterType="HashMap" resultType="HashMap">
-		SELECT * FROM reservation WHERE owner=(SELECT member_no FROM shop WHERE shop_name=#{shop_name})
+		SELECT * FROM reservation WHERE owner=(SELECT member_no FROM shop WHERE shop_no=#{shop_no})
 	</select>
 
 	<select id="totalCount" parameterType="HashMap"
@@ -65,7 +65,7 @@
 		resultType="HashMap">
 		SELECT COUNT(*) as totalCount2 FROM reservation
 		WHERE
-		owner=(SELECT member_no FROM shop WHERE shop_name=#{shop_name})
+		owner=(SELECT member_no FROM shop WHERE shop_no=#{shop_no})
 		<if test="status != null">
 			AND reservation_status = #{status}
 		</if>
@@ -80,9 +80,18 @@
 	
 	<select id="ownerReservCheck" parameterType="HashMap" resultType="HashMap">
 		SELECT reservation_status, count(*) as ownerReservCheck
-		FROM reservation WHERE owner=(SELECT member_no FROM shop WHERE shop_name=#{shop_name})
+		FROM reservation WHERE owner=(SELECT member_no FROM shop WHERE shop_no=#{shop_no})
 		GROUP BY reservation_status
 	</select>
+
+	<select id="reservation2" parameterType="HashMap" resultType="HashMap">
+		SELECT * FROM reservation
+		WHERE owner=(SELECT member_no FROM shop WHERE shop_no=#{shop_no})
+		<if test="status != null">
+			AND reservation_status = #{status}
+		</if>
+		ORDER BY reservation_no DESC LIMIT #{startPage}, #{lastPage}
+	</select>	
 
 	<update id="mypageUpdatePW" parameterType="HashMap">
 		UPDATE member

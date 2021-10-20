@@ -95,7 +95,7 @@
 
 					<div class="reserv-body">
 						<h3 class="reserv-title">
-							<a href="./myPage_reserv.do?status=wait">예약 진행중<br>
+							<a href="./myPage_reserv.do?status=wait">예약 대기 중<br>
 						<c:if test="${wait eq null}">0</c:if>
 						<c:if test="${wait ne null}">${wait }</c:if> 개
 							</a>
@@ -108,7 +108,7 @@
 				<div class="reserv">
 					<div class="reserv-body">
 						<h3 class="reserv-title">
-							<a href="./myPage_reserv.do?status=success">예약 종료<br>
+							<a href="./myPage_reserv.do?status=success">예약 승인<br>
 						<c:if test="${success eq null}">0</c:if>
 						<c:if test="${success ne null}">${success }</c:if> 개
 							</a>
@@ -162,7 +162,7 @@
 								${r.people }명 <br> 예약 현황 :
 								<c:choose>
 									<c:when test="${r.reservation_status eq 'wait' }">
-										예약 확인중
+										예약 대기 중
 									</c:when>
 									<c:when test="${r.reservation_status eq 'success' }">
 										예약 성공

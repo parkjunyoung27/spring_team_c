@@ -404,18 +404,16 @@ public class MypageController {
 	public String ownerReservSuccess(CommandMap map, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String reservation_no = request.getParameter("reservation_no");
-		//String shop_no = request.getParameter("shop_no");
-		String shop_name = request.getParameter("shop_name");
+		int shop_no = (int)session.getAttribute("shop_no");
 		
 		System.out.println("노"+reservation_no);
-		System.out.println("샵네입1" + shop_name);
+		System.out.println("샵넘버============================" + shop_no);
 		if(reservation_no != null) {
 			map.put("reservation_no", reservation_no);
-			map.put("shop_name", shop_name);
-			
+			map.put("shop_no", shop_no);
 			mypageService.ownerReservSuccess(map.getMap());
 			System.out.println("예약성공");
-			return "redirect:/myPage_reservCheck.do";
+			return "redirect:/myPage_reservCheck.do?shop_no="+shop_no;
 		}else {
 			System.out.println("예약실패");
 			return "redirect:/myPage_reservCheck.do";
@@ -443,10 +441,13 @@ public class MypageController {
 		
 		//id값 받아오기
 		String id = (String)session.getAttribute("id");
+		int shop_no = (int)session.getAttribute("shop_no");
 		String shop_name = request.getParameter("shop_name");
 		System.out.println("샵네임2"+shop_name);
+		System.out.println("샵넘버==================="+shop_no);
 		map.put("shop_name", shop_name);
 		map.put("id", id);
+		map.put("shop_no", shop_no);
 		// 토탈 카운트
 		int totalCount2 = mypageService.totalCount2(map.getMap());
 		List<Map<String, Object>> ownerReservCheck = mypageService.ownerReservCheck(map.getMap());
@@ -482,17 +483,17 @@ public class MypageController {
 
 
 		// 예약기능 출력하기
-		List<Map<String, Object>> reservation = mypageService.reservation(map.getMap());
+		List<Map<String, Object>> reservation2 = mypageService.reservation2(map.getMap());
 		
 
-		mv.addObject("reservation_list", reservation);
-		if (reservation.size() > 0) {
+		mv.addObject("reservation_list", reservation2);
+		if (reservation2.size() > 0) {
 			System.out.println(map.getMap());
 		}
 		mv.addObject("paginationInfo", paginationInfo);
 		mv.addObject("pageNo", pageNo);
 		mv.addObject("totalCount", totalCount2);
-		mv.addObject("reserve", reservation);
+		mv.addObject("reservation2", reservation2);
 
 		System.out.println(" " + "토탈카운트북마크 = " + ownerReservCheck);
 		

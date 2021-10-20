@@ -18,7 +18,7 @@
 			<li><a href="myPage_reserv.do">사용자 예약 확인하기 </a></li>
 		</c:if>
 		<c:if test="${sessionScope.grade ne 1 }">
-			<li><a href="myPage_reservCheck.do?shop_name=${sessionScope.name}">업주 예약 확인하기 </a></li>
+			<li><a href="myPage_reservCheck.do?shop_no=${sessionScope.shop_no}">업주 예약 확인하기 </a></li>
 		</c:if>
 		</ul>
 	</div>

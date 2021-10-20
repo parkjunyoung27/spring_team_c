@@ -95,4 +95,7 @@ public class MypageDAO extends AbstractDAO {
 		update("mypage.registStoreInsert", map);
 	}
 
+	public List<Map<String, Object>> reservation2(Map<String, Object> map) {
+		return selectList("mypage.reservation2", map);
+	}
 }

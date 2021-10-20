@@ -111,6 +111,8 @@ public class MypageServiceImpl implements MypageService {
 //		//String reservationStatus = (String) reservationStatusList.get(reservationNo).get("reservation_status"); 
 //		return  ""; // reservationStatus;	
 //	}
-
+	public List<Map<String, Object>> reservation2(Map<String, Object> map) {
+		return mypageDAO.reservation2(map);
+	}
 
 }
