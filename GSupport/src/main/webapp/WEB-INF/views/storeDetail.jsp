@@ -11,6 +11,8 @@
 <link href="./resources/css/storeDetail.css" rel="stylesheet">
 
 <style type="text/css">
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;700&display=swap');
+
 #storeNameTitle span img:hover {
 	background-image: url("./resources/images/star_after.png")
 }

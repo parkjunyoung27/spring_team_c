@@ -72,16 +72,16 @@ function linkPage(pageNo){
 				</div>
 			</div>
 			<ul class="board">
-				<li class="fl tc w10 title t_line">번호</li>
+				<li class="fl tc w15 title t_line">번호</li>
 				<li class="fl tc w50 title t_line">제목</li>
-				<li class="fl tc w10 title t_line">글쓴이</li>
+				<li class="fl tc w15 title t_line">글쓴이</li>
 				<li class="fl tc w20 title">작성일</li>
 			</ul>
-			<ul id="boardLine" ">
+			<ul id="boardLine">
 				<c:forEach items="${list }" var="l">
-					<li class="fl tc w10 list t_line lt_line">${l.board_no }</li>
+					<li class="fl tc w15 list t_line lt_line">${l.board_no }</li>
 					<li class="fl tc w50 list t_line lt_line" id="boardLineClick" onclick="location.href='./detail.do?categoryNo=${l.board_category }&board_no=${l.board_no}'">${l.board_title}[${l.board_count }]</li>
-					<li class="fl tc w10 list t_line lt_line">
+					<li class="fl tc w15 list t_line lt_line">
 						<c:choose>
 							<c:when test="${member_grade eq 3 }">관리자</c:when>
 							<c:otherwise>${l.member_name}</c:otherwise>
@@ -110,8 +110,9 @@ function linkPage(pageNo){
 			</div>
 			
 		<!-- 검색 -->
+		<div class="searchBox">
 		<form action="./board.do" >
-			<select name="searchName">
+			<select name="searchName" class="Cate_search">
 				<option value="title" <c:if test="${searchName eq 'title' }">selected="selected"</c:if>>
 				제목</option>
 				<option value="content" <c:if test="${searchName eq 'content' }">selected="selected"</c:if>>
@@ -119,9 +120,12 @@ function linkPage(pageNo){
 				<option value="writer"<c:if test="${searchName eq 'writer' }">selected="selected"</c:if>>
 				글쓴이</option>
 			</select>
-			<input type="text" name="search" value="${search}">
-			<button type="submit">검색</button>
+			<input type="text" name="search" value="${search}" class="Cate_searchbox" placeholder="내용을 입력해주세요.">
+							<button type="submit" style="border: none; background: none;">
+								<img src="http://localhost:8080/GSupport/resources/images/search.png" style="height: 45px; margin-left:5px; vertical-align: middle;">
+							</button>
 		</form>
+		</div>
 		
 		
 		</div>

@@ -61,7 +61,7 @@
 			</div>
 
 			<div class="customer_content">
-				<h1>예약 리스트</h1>
+				<h2>예약 리스트</h2>
 				<c:forEach items="${reserve }" var="r">
 					<div class="customer_content_reservHistory">
 						<div class="customer_content_reservHistory_header">예약 번호 :

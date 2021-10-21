@@ -323,7 +323,7 @@ public class MypageController {
 		if (map.containsKey("pageNo")) {
 			pageNo = Integer.parseInt(String.valueOf(map.get("pageNo")));
 		}
-		int listScale = 3;// 리스트 크기
+		int listScale = 4;// 리스트 크기
 		int pageScale = 10;
 		
 		String id = (String)session.getAttribute("id");

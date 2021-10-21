@@ -22,6 +22,22 @@ function linkPage(pageNo){
 }
 </script>
 <style>
+
+/* Left column */
+.column.side {
+	width: 20%;
+	border-style: solid 1px;
+	height: auto;
+	float: left;
+	border-radius: 20px;
+}
+
+.column.middle {
+	width: 75%;
+	float: right;
+	background-color: white;
+}
+
 .container_header {
 	border-bottom: 1px solid #e5e5e5;
 	border-top: 1px solid #e5e5e5;
@@ -64,10 +80,12 @@ div#searchButton {
 
 #searchButton button {
 	text-align: center;
-	background: white;
-	color: black;
-	border: 1px solid black;
-	border-radius: 4px; position : sticky;
+	background: #ffffff;
+	box-shadow: 1px 1px 1px 1px #b7b7b7;
+	color: #666666;
+	border: none;
+	border-radius: 4px;
+	position: sticky;
 	height: auto;
 	width: 100px;
 	font-size: 0.8em;
@@ -131,26 +149,36 @@ div#paging a:hover {
 	height: 300px;
 	text-align: center;
 	vertical-align: middle;
-	line-height: 300px;
+	/* 	line-height: 300px;*/
 	font-weight: 700;
 	letter-spacing: 1px;
 	font-size: larger;
 }
+.searchBox{
+text-align: center;
+margin-top:10px;
+}
 
 .Cate_search {
-	height: 30px;
-	border-radius: 20px;
+	width: 80px;
+	height: 40px;
+	border-radius: 5px;
 	text-align: center;
+	font-size:15px;
+	vertical-align: middle;
+	
 }
 
 .Cate_searchbox {
-	margin:5px;
-	width: 200px;
-	height: 30px;
+	width:250px;
+	height:40px;
 	background-color: white;
-	border-radius: 20px;
+	border-radius:5px;
 	text-align: center;
+	font-size:15px;
+	vertical-align: middle;
 }
+
 </style>
 </head>
 <body>
@@ -160,22 +188,31 @@ div#paging a:hover {
 
 	<!-- main -->
 	<div class="container">
-		<div class="container_header">
-			<h1>가맹점 찾기</h1>
-		</div>
-		<div id="storeSearchContainer">
-			<h2 style="color: green; font-weight: bold; padding: 10px 0 0 20px;">
-				${param.guName }</h2>
+		<div class="column side">
+			<div class="account_profile">
+				<div class="title">
 
-			<div id="searchButton">
-				<c:forEach items="${list2 }" var="l2">
-					<button type="submit"
-						onclick="location.href='./storeList.do?guName=${l2.shop_gu}&shop_wido=${l2.gu_wido }&shop_kyungdo=${l2.gu_kyungdo }'">${l2.shop_gu }</button>
-				</c:forEach>
+					<div class="container_header">
+						<h1>가맹점 찾기</h1>
+					</div>
+
+
+					<div id="storeSearchContainer">
+						<h2
+							style="color: green; font-weight: bold; padding: 10px 0 0 20px;">
+							${param.guName }</h2>
+
+						<div id="searchButton">
+							<c:forEach items="${list2 }" var="l2">
+								<button type="submit"
+									onclick="location.href='./storeList.do?guName=${l2.shop_gu}&shop_wido=${l2.gu_wido }&shop_kyungdo=${l2.gu_kyungdo }'">${l2.shop_gu }</button>
+							</c:forEach>
+						</div>
+					</div>
+				</div>
 			</div>
-
-			<hr>
-
+		</div>
+		<div class="column middle">
 
 			<!-- 카카오맵api -->
 			<div id="map" style="width: 95%; height: 400px;"></div>
@@ -293,7 +330,6 @@ div#paging a:hover {
 		</c:forEach>
 		
 		</script>
-			<hr>
 			<c:choose>
 				<c:when test="${fn:length(list) > 0}">
 					<table id="storeSearchTable">
@@ -349,13 +385,10 @@ div#paging a:hover {
 							<%-- <input type="hidden" name="guName" value="${guName}"> --%>
 							<input type="hidden" name="shop_wido"
 								value="${list[0].shop_wido }"> <input type="hidden"
-								name="shop_kyungdo" value="${list[0].shop_kyungdo }"> <input
-								type="text" name="search" value="${search }"
-								class="Cate_searchbox" placeholder="찾으시는 가게를 입력해주세요.">
-							<button type="submit" style="border:none; background:none;">
-								<img
-									src="http://localhost:8080/GSupport/resources/images/search1.png"
-									style="height: 30px;">
+								name="shop_kyungdo" value="${list[0].shop_kyungdo }"> 
+								<input type="text" name="search" value="${search }" class="Cate_searchbox" placeholder="찾으시는 가게를 입력해주세요.">
+							<button type="submit" style="border: none; background: none;">
+								<img src="http://localhost:8080/GSupport/resources/images/search.png" style="height: 45px; margin-left:5px; vertical-align: middle;">
 							</button>
 						</form>
 					</div>
@@ -365,7 +398,6 @@ div#paging a:hover {
 					<div id="storeListNone">해당 지역에 가맹점이 존재하지 않습니다.</div>
 				</c:otherwise>
 			</c:choose>
-
 		</div>
 	</div>
 

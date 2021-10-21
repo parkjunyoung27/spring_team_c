@@ -16,7 +16,7 @@
 
 /* Left column */
 .column.side {
-	width: 25%;
+	width: 20%;
 	border-style: solid 1px;
 	height: auto;
 	border-radius: 20px;
@@ -54,6 +54,7 @@ a:hover, a:active {
   text-decoration: none;
   color: #ff2e00;
 }
+
 a > .disabled {
   color: #141414;
 }
@@ -61,7 +62,7 @@ a > .disabled {
 
 .column.middle {
 	margin-left: 10px;
-	width: 70%;
+	width: 75%;
 	background-color: white;
 }
 
