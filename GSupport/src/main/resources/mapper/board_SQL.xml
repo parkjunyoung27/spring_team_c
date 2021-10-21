@@ -4,6 +4,7 @@
 	<select	id="boardList" resultType="HashMap">
 		SELECT * FROM board_view
 		WHERE board_category = #{categoryNo}
+			AND NOT board_delete='1'
 		<if test="searchName == 'title' and search != null">
 			AND board_title LIKE CONCAT('%', #{search}, '%')
 		</if> 
@@ -18,6 +19,8 @@
 	
 	<select	id="totalCount" parameterType="HashMap" resultType="HashMap">
 		SELECT COUNT(*) as totalCount FROM board_view
+		WHERE board_category = #{categoryNo}
+			AND NOT board_delete='1'
 		<if test="searchName == 'title' and search != null">
 			AND board_title LIKE CONCAT('%', #{search}, '%')
 		</if> 
@@ -45,9 +48,14 @@
 
 	<select id="update" resultType="HashMap">
 		UPDATE board SET board_title=#{board_title }, board_content=#{board_content }, board_category=#{board_cate }
-		WHERE board_no=#{board_no } and member_no=(SELECT member_no FROM member WHERE member_id=#{member_id})
+		WHERE board_no=#{board_no } AND member_no=(SELECT member_no FROM member WHERE member_id=#{member_id})
 	</select>
-		
+
+	<update id="delete" parameterType="HashMap">
+		UPDATE board SET board_delete=1 
+		WHERE board_no=#{board_no } AND member_no=(SELECT member_no FROM member WHERE member_id=#{member_id})
+	</update>
+	
 	
 	
 	

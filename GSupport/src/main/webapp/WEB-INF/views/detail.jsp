@@ -20,10 +20,10 @@
 </style>
 
 <script type="text/javascript">
-function board_delete(no){
+function board_delete(no1, no2){
 	var result = confirm("정말 삭제하시겠습니까?");
 	if(result == true){
-		location.href="./delete?board_no="+no;
+		location.href="./delete.do?categoryNo="+no1+"&board_no="+no2;
 	}
 }
 //alert("${detail.board_file}");
@@ -75,9 +75,9 @@ function board_delete(no){
 			</div>
 
 			<div id="detail_btn">
-				<c:if test="${sessionScope.id eq detail.member_id}">
+				<c:if test="${sessionScope.id eq detail.member_id || sessionScope.grade eq '3' }">
 					<button onclick="location.href='./update.do?categoryNo=${param.categoryNo }&board_no=${detail.board_no }'">수정하기</button>
-					<button onclick="return board_delete(${detail.board_no })">삭제하기</button>
+					<button onclick="return board_delete( ${param.categoryNo }, ${detail.board_no })">삭제하기</button>
 				</c:if>
 			</div>
 

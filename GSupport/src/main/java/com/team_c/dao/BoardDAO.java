@@ -31,7 +31,7 @@ public class BoardDAO extends AbstractDAO {
 	}
 
 	public int write(Map<String, Object> map) {
-		return insert("board.write", map);
+		return write("board.write", map);
 	}
 
 	public Map<String, Object> detail(Map<String, Object> map) {
@@ -40,6 +40,10 @@ public class BoardDAO extends AbstractDAO {
 
 	public Map<String, Object> update(Map<String, Object> map) {
 		return (Map<String, Object>) selectOne("board.update", map) ;
+	}
+
+	public int delete(Map<String, Object> map) {
+		return write("board.delete", map);
 	}
 
 

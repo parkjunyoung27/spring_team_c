@@ -55,10 +55,7 @@ public class BoardController {
 		}
 		mv.addObject("categoryNo", board_cate);
 
-		//*****검색기능*****
-		//출력해보기
-		System.out.println("search 값 : " + map.getMap());//search값이 오는지 확인
-		
+		//*****검색기능*****		
 		//검색값을 jsp로 넘기기
 		if(map.containsKey("searchName")) {
 			mv.addObject("searchName", map.get("searchName"));
@@ -103,11 +100,7 @@ public class BoardController {
 		mv.addObject("paginationInfo", paginationInfo);
 		mv.addObject("pageNo", pageNo);
 		mv.addObject("totalCount", totalCount);
-				
-		//*****
-		
-		
-		System.out.println("현재 맵목록 : "+ map.getMap());
+						
 		return mv;
 	}
 	
@@ -130,7 +123,7 @@ public class BoardController {
 		
 		//map에 넣어서 출력
 		map.put("board_title", request.getParameter("board_title"));
-		map.put("board_content", request.getParameter("content"));
+		map.put("board_content", request.getParameter("board_content"));
 		map.put("board_orifile", file.getOriginalFilename());
 		map.put("member_name", session.getAttribute("name"));
 		
@@ -164,7 +157,7 @@ public class BoardController {
 	@GetMapping("/update")
 	public ModelAndView update(CommandMap map, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("update");
-		System.out.println("맵 확인 : " + map.getMap());
+		
 		//글번호 가져오기
 		Map<String, Object> update = boardService.detail(map.getMap());
 		mv.addObject("update", update );
@@ -174,14 +167,33 @@ public class BoardController {
 	@PostMapping("/update")
 	public String update2(CommandMap map, HttpServletRequest request) {
 		HttpSession session = request.getSession();
+		
+		//세션인증
 		if (session.getAttribute("member_id") != null) {
 			map.put("member_id", session.getAttribute("member_id"));
 			boardService.update(map.getMap());
-			System.out.println("맵값2 : " + map.getMap());
 						
 			return "redirect:/detail.do?categoryNo=" + map.getMap().get("board_cate") + "&board_no=" + map.getMap().get("board_no");
 		} else {
 			return "redirect:/board.do?categoryNo=" + map.getMap().get("board_cate");
 		}
 	}
+	@GetMapping("/delete")
+	public String delete(@RequestParam("board_no") int board_no, HttpServletRequest request, CommandMap map) {
+		HttpSession session = request.getSession();
+		
+		System.out.println("맵 값 : " + map.getMap());
+
+		map.put("member_id", session.getAttribute("member_id"));
+		if (session.getAttribute("member_id") != null) {
+			int result = boardService.delete(map.getMap());
+			System.out.println("삭제 결과 : " + result );
+			System.out.println("커맨드 맵값 : " + map.getMap() );
+
+	//	} else {
+	//		return "redirect:/";
+		}
+		return "redirect:/board.do?categoryNo=" + map.getMap().get("categoryNo");
+	}
+
 }

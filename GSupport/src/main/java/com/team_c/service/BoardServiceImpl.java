@@ -51,5 +51,9 @@ public class BoardServiceImpl implements BoardService {
 	public Map<String, Object> update(Map<String, Object> map) {
 		return boardDAO.update(map);
 	}
+
+	public int delete(Map<String, Object> map) {
+		return boardDAO.delete(map);
+	}
 	
 }
