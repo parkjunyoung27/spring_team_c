@@ -9,8 +9,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Admin | 게시판 관리</title>
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
 <link href="../resources/css/adminPage.css" rel="stylesheet"> 
 <link href="../resources/css/adminPage_menu.css" rel="stylesheet">
 <style>
@@ -23,7 +23,9 @@ a{
     margin-left: 10px;
 }
 
-a:hover{color: gold;}
+a:hover{color: gold; text-decoration:none;}
+
+.windowOpen:hover{color: gold;}
 
 </style> 
 <script type="text/javascript">
@@ -92,7 +94,7 @@ var gradeOption = document.getElementById("gradeOption").value;
 		var gradeOption = document.getElementById("gradeOption").value;
 		location.href="./adminBoard.do?board_cate="+${board_cate}+"&pageNo=" + pageNo + "&gradeOption=" + gradeOption;
 	}
-
+	
 </script>
 
 <body>
@@ -146,13 +148,13 @@ var gradeOption = document.getElementById("gradeOption").value;
 					<c:choose>
 						<c:when test="${fn:length(list) gt 0 }">
 							<c:forEach items='${list }' var="l">
-								<tr>
+								<tr class="windowOpen" onclick="return windowOpen(${l.get('board_no') })">
 									<td class="w1">
 										<input type="checkbox" name="check" value="${l.get('board_no')}"  onclick='checkSelectAll()' >
 									</td> 
-									<td class="w1">${l.get("board_no") } </td>
+									<td class="w1" id="boardNo">${l.get("board_no") } </td>
 									<td class="w5">${l.get("board_title") } </td>
-									<td class="w10">${fn:substring(l.get("board_content"), 0, 15 )}...</td>
+									<td class="w10">${fn:substring(l.get("board_content"), 0, 15 )}</td>
 									<td class="w5">${l.get("member_id") } </td>
 									<td class="w5">${l.get("member_name") } </td>	
 									<td class="w3">${l.get("member_grade") } </td>
@@ -162,6 +164,7 @@ var gradeOption = document.getElementById("gradeOption").value;
 									<td class="w4">${l.get("board_delete") } </td>
 									<td class="w5">${fn:substring(l.get("board_date"), 0, fn:length("l.get('board_date')") )}</td>													
 									<td class="w10">${l.get("board_orifile") } </td>
+									<td class="categoryNum" style="display: none;">${l.get("board_category")} </td>
 								</tr>				
 							</c:forEach>		
 						</c:when>
@@ -184,7 +187,24 @@ var gradeOption = document.getElementById("gradeOption").value;
 		</div>
 	
 	</main>
-
+	
+	<div class="modal fade">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	    </div>
+	  </div>
+	</div>
 	
 </body>
 </html>
+
+<script type="text/javascript">
+
+function windowOpen(num){
+	var win = window.open("/GSupport/detail.do?board_no="+num, '게시판 상세보기', 'width=1000, height=800,'+ 
+			'scrollbars=yes, resizable=no, top=0, left=250' );
+}
+
+
+</script>
+

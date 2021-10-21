@@ -359,7 +359,7 @@ public class AdminController {
 		}
 		return mv;
 	}
-	
+
 	//관리자 게시판 관리 페이지
 	@GetMapping("/admin/adminBoard.do")
 	public ModelAndView adminBoard(CommandMap map, HttpServletRequest request) {
@@ -412,6 +412,73 @@ public class AdminController {
 			
 			if(grade == 3) {
 				mv = new ModelAndView("/admin/adminBoard");
+				
+				//멤버 리스트 불러오기
+				List<Map<String, Object>> list = adminService.adminBoardList(map.getMap());
+				
+				mv.addObject("paginationInfo", paginationInfo);
+				mv.addObject("pageNo", pageNo);
+				mv.addObject("list", list);
+				mv.addObject("gradeList", gradeList);
+				mv.addObject("totalCount", totalCount);
+				mv.addObject("gradeOption", gradeOption);		
+				mv.addObject("board_cate", board_cate);		
+			}
+		}
+		return mv;
+	}
+	//관리자 게시판 관리 페이지
+	@GetMapping("/admin/adminBoard2.do")
+	public ModelAndView adminBoard2(CommandMap map, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		ModelAndView mv = new ModelAndView("/admin/access");
+		
+		String board_cate = "0"; 
+		if(request.getParameter("board_cate") != null) {
+			board_cate = request.getParameter("board_cate"); 
+		}
+		System.out.println(board_cate);
+		map.put("board_cate", board_cate);
+		
+		String gradeOption = ""; //기본값 구
+		if(request.getParameter("gradeOption")!= "" & request.getParameter("gradeOption") != null) {
+			gradeOption = request.getParameter("gradeOption");
+		}
+		System.out.println("등급 : "+ gradeOption);
+		map.put("gradeOption", gradeOption);
+		
+		List<Object> gradeList = adminService.gradeList();
+		
+		// 페이징
+		int pageNo = 1;
+		if(map.containsKey("pageNo")) {
+			pageNo = Integer.parseInt(String.valueOf(map.get("pageNo")));
+		}
+		int listScale = 20;
+		int pageScale = 10;
+		
+		int totalCount = adminService.adminBoardTotalCount(map.getMap());
+		
+		//전자정부 페이징 불러오기
+		PaginationInfo paginationInfo = new PaginationInfo();
+		paginationInfo.setCurrentPageNo(pageNo);
+		paginationInfo.setRecordCountPerPage(listScale);//한페이지 리스트 갯수
+		paginationInfo.setPageSize(pageScale);//페이지사이즈
+		paginationInfo.setTotalRecordCount(totalCount);
+		
+		//계산하기
+		int startPage = paginationInfo.getFirstRecordIndex();
+		int lastPage = paginationInfo.getRecordCountPerPage();
+		
+		//DB로 보내기 위해서 map에 담아주세요.
+		map.put("startPage", startPage);
+		map.put("lastPage", lastPage);
+		
+		if(session.getAttribute("grade") != null) {
+			int grade = (Integer)session.getAttribute("grade");
+			
+			if(grade == 3) {
+				mv = new ModelAndView("/admin/adminBoard2");
 				
 				//멤버 리스트 불러오기
 				List<Map<String, Object>> list = adminService.adminBoardList(map.getMap());

@@ -227,9 +227,10 @@ table{ /* 테이블*/
 }
 
 table th{ /*메뉴 제목*/
-	height: 39px;
-	font-size: 1em;
+height: 39px;
+    font-size: 1em;
     border-bottom: 2px white solid;
+    text-align: center;
 }
 
 table td{ /* 제목*/ 
@@ -245,6 +246,7 @@ select#ip {
     text-align: center;
     font-weight: bold;
     font-size: 0.6em;
+    color:black;
 }
 
 select#target {
@@ -254,6 +256,7 @@ select#target {
     text-align: center;
     font-weight: bold;
     font-size: 0.6em;
+    color:black;
 }
 
 select#gu {
@@ -263,6 +266,7 @@ select#gu {
     text-align: center;
     font-weight: bold;
     font-size: 0.6em;
+    color:black;
 }
 select#grade {
     width: 80%;
@@ -271,6 +275,7 @@ select#grade {
     text-align: center;
     font-weight: bold;
     font-size: 0.6em;
+	color:black;
 }
 select#channel {
     width: 80%;
@@ -279,6 +284,7 @@ select#channel {
     text-align: center;
     font-weight: bold;
     font-size: 0.6em;
+    color:black;
 }
 
 select#gradeOption {
@@ -288,6 +294,7 @@ select#gradeOption {
     text-align: center;
     font-weight: bold;
     font-size: 0.6em;
+    color:black;
 }
 
 .adminLogPaging{
@@ -306,7 +313,9 @@ select#gradeOption {
     background: white;
     font-weight: 800;
     margin-top: 5px;
-    cursor:pointer
+    cursor: pointer;
+    color: black;
+    line-height: normal;
 }
 
 #adminNone td{
