@@ -18,12 +18,12 @@
 		question_recipient=(SELECT member_no FROM member WHERE member_id=#{member_id})
 	</select>
 	
-	<select id="detail" parameterType="HashMap" resultType="HashMap">
+	<select id="senderDetailList" parameterType="HashMap" resultType="HashMap">
 		SELECT question_no, question_sender, member_name, member_id, 
-				question_recipient, question_date, question_content, question_read   
+				question_recipient, question_date, question_content, question_read  
 		FROM questionview 
-		WHERE question_sender=#{openmsg} AND 
-		question_recipient=(SELECT member_no FROM member WHERE member_id=#{member_id})
+		WHERE question_sender=(SELECT member_no FROM member WHERE member_id=#{member_id}) AND 
+		question_recipient=#{openmsg}
 	</select>
 	
 	<update id="readMessage" parameterType="HashMap">

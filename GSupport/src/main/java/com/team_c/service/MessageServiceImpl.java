@@ -52,4 +52,8 @@ public class MessageServiceImpl implements MessageService {
 		return messageDAO.messageDetailList(map);
 	}
 
+	public List<Map<String, Object>> messageSenderDetailList(Map<String, Object> map) {
+		return messageDAO.messageSenderDetailList(map);
+	}
+
 }

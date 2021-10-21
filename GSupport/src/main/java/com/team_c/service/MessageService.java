@@ -7,6 +7,8 @@ public interface MessageService {
 
 	//메시지 목록
 	public List<Map<String, Object>> messageList(Map<String, Object> map);
+	public List<Map<String, Object>> messageDetailList(Map<String, Object> map);
+	public List<Map<String, Object>> messageSenderDetailList(Map<String, Object> map);
 	
 	//쪽지 읽음 처리하기
 	public void readMessage(Map<String, Object> map);

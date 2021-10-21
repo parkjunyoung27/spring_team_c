@@ -215,6 +215,10 @@ main header h3 {
 	border-radius: 5px;
 }
 
+#chat .you {
+	text-align: left;
+}
+
 #chat .me {
 	text-align: right;
 }
@@ -432,8 +436,22 @@ td {
 									</div>
 									<div class="triangle"></div>
 										<c:forEach items="${detailList }" var="dl">
-											<div class="message">
+											<div id="receivedMessage" class="message">
 												${dl.question_content }
+											</div><br>
+										</c:forEach>
+										
+								</li>
+								<li class="me">
+									<div class="entete">
+										<span class="status green"></span>
+										<%-- <h2>${q.member_id}</h2>
+										<h3>${q.question_date}</h3> --%>
+									</div>
+									<div class="triangle"></div>
+										<c:forEach items="${senderDetailList }" var="sdl">
+											<div id="sentMessage" class="message">
+												${sdl.question_content }
 											</div><br>
 										</c:forEach>
 								</li>

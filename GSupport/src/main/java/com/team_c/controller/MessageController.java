@@ -42,6 +42,10 @@ public class MessageController {
 						messageService.messageDetailList(map.getMap());//member_id, openmsg
 				mv.addObject("detailList", detailList);
 				
+				List<Map<String, Object>> senderDetailList = 
+						messageService.messageSenderDetailList(map.getMap());//member_id, openmsg
+				mv.addObject("senderDetailList", senderDetailList);
+				
 				System.out.println("################### detailList" );
 			}
 			//쪽지 리스트 불러오기
