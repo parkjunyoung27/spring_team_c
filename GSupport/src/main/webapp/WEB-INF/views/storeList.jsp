@@ -22,6 +22,11 @@ function linkPage(pageNo){
 }
 </script>
 <style>
+.container_header {
+	border-bottom: 1px solid #e5e5e5;
+	border-top: 1px solid #e5e5e5;
+	padding: 10px;
+}
 
 #storeSearchContainer {
 	margin-top: 10px;
@@ -33,7 +38,7 @@ div#map {
 
 #storeSearchTable {
 	width: 100%;
-	margin-top:10px;
+	margin-top: 20px;
 }
 
 #storeSearchColumn {
@@ -54,18 +59,15 @@ div#map {
 
 div#searchButton {
 	float: left;
-	margin:20px 10px 0 20px;
+	margin: 25px 10px 25px 20px;
 }
 
 #searchButton button {
 	text-align: center;
-}
-
-#searchButton button {
 	background: white;
 	color: black;
 	border: 1px solid black;
-	position: sticky;
+	border-radius: 4px; position : sticky;
 	height: auto;
 	width: 100px;
 	font-size: 0.8em;
@@ -74,6 +76,7 @@ div#searchButton {
 	transition: 800ms ease all;
 	outline: none;
 	margin: 3px;
+	position: sticky;
 }
 
 #searchButton button:hover {
@@ -111,6 +114,7 @@ div#paging {
 	text-decoration: none;
 	font-size: large;
 	letter-spacing: 1px;
+	padding: 10px;
 }
 
 div#paging a {
@@ -121,7 +125,6 @@ div#paging a {
 div#paging a:hover {
 	font-weight: 700;
 }
-
 
 #storeListNone {
 	width: 100%;
@@ -134,6 +137,20 @@ div#paging a:hover {
 	font-size: larger;
 }
 
+.Cate_search {
+	height: 30px;
+	border-radius: 20px;
+	text-align: center;
+}
+
+.Cate_searchbox {
+	margin:5px;
+	width: 200px;
+	height: 30px;
+	background-color: white;
+	border-radius: 20px;
+	text-align: center;
+}
 </style>
 </head>
 <body>
@@ -143,10 +160,12 @@ div#paging a:hover {
 
 	<!-- main -->
 	<div class="container">
-		<h1>가맹점 찾기</h1>
-		<hr>
+		<div class="container_header">
+			<h1>가맹점 찾기</h1>
+		</div>
 		<div id="storeSearchContainer">
-			<h2>${param.guName }가맹점</h2>
+			<h2 style="color: green; font-weight: bold; padding: 10px 0 0 20px;">
+				${param.guName }</h2>
 
 			<div id="searchButton">
 				<c:forEach items="${list2 }" var="l2">
@@ -156,6 +175,7 @@ div#paging a:hover {
 			</div>
 
 			<hr>
+
 
 			<!-- 카카오맵api -->
 			<div id="map" style="width: 95%; height: 400px;"></div>
@@ -195,6 +215,7 @@ div#paging a:hover {
 		
 		// 마커를 지도에 표시합니다.
 		marker.setMap(map);
+
 		
 		var positions = [
 		    {
@@ -270,6 +291,7 @@ div#paging a:hover {
 		*/
 		</c:if>
 		</c:forEach>
+		
 		</script>
 			<hr>
 			<c:choose>
@@ -317,7 +339,7 @@ div#paging a:hover {
 					<!-- 검색 -->
 					<div style="text-align: center;">
 						<form action="./storeList.do">
-							<select name="guName">
+							<select name="guName" class="Cate_search">
 								<c:forEach items="${list2 }" var="l2">
 									<option value="${l2.shop_gu }"
 										<c:if test ="${guName
@@ -328,8 +350,13 @@ div#paging a:hover {
 							<input type="hidden" name="shop_wido"
 								value="${list[0].shop_wido }"> <input type="hidden"
 								name="shop_kyungdo" value="${list[0].shop_kyungdo }"> <input
-								type="text" name="search" value="${search }">
-							<button type="submit">검색</button>
+								type="text" name="search" value="${search }"
+								class="Cate_searchbox" placeholder="찾으시는 가게를 입력해주세요.">
+							<button type="submit" style="border:none; background:none;">
+								<img
+									src="http://localhost:8080/GSupport/resources/images/search1.png"
+									style="height: 30px;">
+							</button>
 						</form>
 					</div>
 

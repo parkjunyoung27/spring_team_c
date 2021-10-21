@@ -10,30 +10,77 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Index</title>
 <link href="./resources/css/index.css" rel="stylesheet">
-<link href="./resources/css/base.css" rel="stylesheet">
-<!-- <link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-	crossorigin="anonymous"> 
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-	crossorigin="anonymous"></script>
- -->
- <style>
-/* .carousel-item {
-	height: 500px;
-	min-height: 350px;
-	background: no-repeat center center scroll;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-}
- */
-.header1 {
+
+<style>
+
+.section {
+	width:100%;
 	margin-top: 80px;
+	margin-bottom: 100px;
+    overflow: hidden;
+}
+
+.section input[id*="slide"] {
+	display: none;
+}
+
+.section .slidewrap {
+	max-width: 100%;
+	margin: 0 auto;
+	overflow: hidden;
+	position:relative;
+}
+
+.section .slidelist {
+	white-space: nowrap;
+	font-size: 0;
+}
+
+.section .slidelist > li {
+	display: inline-block;
+	vertical-align: middle;
+	width: 100%;
+	transition: all .5s;
+}
+
+.section .slidelist > li > a {
+	display: block;
+	position: relative;
+}
+
+.section .slidelist > li > a img {
+	width: 100%;
+}
+
+.section .slidelist label {
+	position: absolute;
+	z-index: 10;
+	top: 50%;
+	transform: translateY(-50%);
+	padding: 50px;
+	cursor: pointer;
+}
+
+.section .slidelist .left {
+	left: 30px;
+	background: url("http://localhost:8080/GSupport/resources/images/left.png") center center/100% no-repeat;
+}
+
+.section .slidelist .right {
+	right: 30px;
+	background: url("http://localhost:8080/GSupport/resources/images/right.png") center center/100% no-repeat;
+}
+
+.section [id="slide01"]:checked ~ .slidewrap .slidelist > li {
+transform:translateX(0%);
+}
+
+.section [id="slide02"]:checked ~ .slidewrap .slidelist > li {
+transform:translateX(-100%);
+}
+
+.section [id="slide03"]:checked ~ .slidewrap .slidelist > li {
+transform:translateX(-200%);
 }
 </style>
 </head>
@@ -42,51 +89,43 @@
 
 	<!-- navbar -->
 	<%@ include file="./component/navbar.jsp"%>
+		<div class="section">
+			<input type="radio" name="slide" id="slide01" checked> 
+			<input type="radio" name="slide" id="slide02"> 
+			<input type="radio" name="slide" id="slide03">
 
-	<!-- main -->
-<!-- 	<div class="header1">
-		<div id="carouselExampleCaptions" class="carousel slide"
-			data-bs-ride="carousel">
-			<div class="carousel-indicators">
-				<button type="button" data-bs-target="#carouselExampleCaptions"
-					data-bs-slide-to="0" class="active" aria-current="true"
-					aria-label="Slide 1"></button>
-				<button type="button" data-bs-target="#carouselExampleCaptions"
-					data-bs-slide-to="1" aria-label="Slide 2"></button>
-				<button type="button" data-bs-target="#carouselExampleCaptions"
-					data-bs-slide-to="2" aria-label="Slide 3"></button>
-			</div>
-			<div class="carousel-inner">
-				<div class="carousel-item active" style="background-color: black;">
-										style="background-image: url(http://localhost:8080/GSupport/resources/images/header.png);">
+			<div class="slidewrap">
+				<ul class="slidelist">
+					<li>
+						<a href="./about.do"> 
+							<label for="slide03" class="left"></label> 
+							<img src="http://localhost:8080/GSupport/resources/images/header1.png">
+							<label for="slide02" class="right"></label>
+						</a>
+					</li>
+					<li>
+						<a href="./storeList.do"> 
+							<label for="slide01" class="left"></label> 
+							<img src="http://localhost:8080/GSupport/resources/images/header2_2.png">
+							<label for="slide03" class="right"></label>
+						</a>
+					</li>
+					<li>
+						<a> 
+							<label for="slide02" class="left"></label> 
+							<img src="http://localhost:8080/GSupport/resources/images/header3.png">
+							<label for="slide01" class="right"></label>
+						</a>
+					</li>
 
-					<div class="carousel-caption">
-						<h5>First slide label</h5> <p>Some representative placeholder content for the first slide.</p>
-					</div>
-				</div>
-				<div class="carousel-item" style="background-color: green">
-					<div class="carousel-caption"></div>
-				</div>
-				<div class="carousel-item" style="background-color: pink">
-					<div class="carousel-caption"></div>
-				</div>
+				</ul>
 			</div>
-			<button class="carousel-control-prev" type="button"
-				data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="visually-hidden">Previous</span>
-			</button>
-			<button class="carousel-control-next" type="button"
-				data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="visually-hidden">Next</span>
-			</button>
-		</div> 
-</div>
- -->		
-	<div class="container">
-		<!-- 		<div class="header-img"></div> -->
-	</div>
+		</div>
+
+	<!-- 		<div class="header-img"></div> -->
+
+
+
 	<!-- footer -->
 	<%@ include file="./component/footer.jsp"%>≠
 

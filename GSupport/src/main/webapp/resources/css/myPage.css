@@ -49,6 +49,16 @@
 }
 
 /* Middle column */
+/* 
+a:hover, a:active {
+  text-decoration: none;
+  color: #ff2e00;
+}
+a > .disabled {
+  color: #141414;
+}
+ */
+
 .column.middle {
 	margin-left: 10px;
 	width: 70%;
@@ -166,6 +176,7 @@
 	padding: 5px 10px;
 	outline: none;
 }
+
 
 #boardPaging {
 	text-align: center;
