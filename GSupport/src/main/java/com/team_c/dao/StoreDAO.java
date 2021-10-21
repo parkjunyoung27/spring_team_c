@@ -19,7 +19,7 @@ public class StoreDAO extends AbstractDAO{
 	}
 
 	public int storeReserv(Map<String, Object> map) {
-		return Insert("store.storeReserv", map);
+		return insert("store.storeReserv", map);
 	}
 
 	public List<Map<String, Object>> storeList(Map<String, Object> map) {

@@ -397,7 +397,7 @@ td {
 					<ul>
 						<c:forEach items="${list }" var="q">
 							<li
-								onclick="location.href='./message.do?openmsg=${q.question_no }'"
+								onclick="location.href='./message.do?openmsg=${q.question_sender }'"
 								<c:if test="${q.question_read eq 0}">style="font-weight:bold"</c:if>
 								<c:if test="${q.question_read eq 1}">style="color:gray;"</c:if>>
 								<div>
@@ -410,7 +410,8 @@ td {
 				<main>
 					<c:choose>
 						<c:when test="${detail ne null }">
-							<header>
+								
+								<header>
 								<img
 									src="http://localhost:8080/GSupport/resources/images/logo2.png"
 									alt="">
@@ -431,10 +432,15 @@ td {
 										<h3>${detail.question_date}</h3>
 									</div>
 									<div class="triangle"></div>
-									<div class="message">${detail.question_content}</div>
+									<div class="message">
+										<c:forEach items="${detailList }" var="dl">
+											${dl.question_content }
+											${dl.question_count }
+										</c:forEach>
+									</div>
 								</li>
 							</ul>
-
+							
 						</c:when>
 					</c:choose>
 				</main>

@@ -58,7 +58,7 @@ public class MypageDAO extends AbstractDAO {
 	}
 
 	public int myPage_registStore(Map<String, Object> map) {
-		return Insert("mypage.myPage_registStore", map);
+		return insert("mypage.myPage_registStore", map);
 	}
 
 	public List<Map<String, Object>> storeGuList(Map<String, Object> map) {

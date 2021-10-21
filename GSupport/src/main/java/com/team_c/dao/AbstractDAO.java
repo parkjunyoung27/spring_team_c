@@ -78,7 +78,7 @@ public class AbstractDAO {
 		return sqlSession.selectOne(queryID, email);
 	}
 
-	public int Insert(String queryID, Map<String, Object> map) {
+	public int insert(String queryID, Map<String, Object> map) {
 		printQueryId(queryID);
 		return sqlSession.insert(queryID, map);
 	}

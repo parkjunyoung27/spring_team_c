@@ -48,4 +48,8 @@ public class MessageServiceImpl implements MessageService {
 		messageDAO.delMsg(map);
 	}
 
+	public List<Map<String, Object>> messageDetailList(Map<String, Object> map) {
+		return messageDAO.messageDetailList(map);
+	}
+
 }

@@ -32,5 +32,9 @@ public class MessageDAO extends AbstractDAO {
 		delMsg("question.delMsg", map);
 	}
 
+	public List<Map<String, Object>> messageDetailList(Map<String, Object> map) {
+		return selectList("question.detailList", map);
+	}
+
 	
 }

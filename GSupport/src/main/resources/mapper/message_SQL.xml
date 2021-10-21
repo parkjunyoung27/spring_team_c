@@ -4,16 +4,25 @@
 <mapper namespace="question">
 	
 	<select id="messageList" parameterType="HashMap" resultType="HashMap">
-		SELECT question_no, question_sender, question_recipient, member_name, member_id, question_date, question_read 
+		SELECT question_no, question_sender, question_recipient, member_name, member_id, question_date, question_read, question_content
 		FROM questionview 
 		WHERE question_recipient=(SELECT member_no FROM member WHERE member_id=#{member_id})
+		GROUP BY question_sender
+	</select>
+	
+	<select id="detailList" parameterType="HashMap" resultType="HashMap">
+		SELECT question_no, question_sender, member_name, member_id, 
+				question_recipient, question_date, question_content, question_read, COUNT (*) as question_count  
+		FROM questionview 
+		WHERE question_sender=#{openmsg} AND 
+		question_recipient=(SELECT member_no FROM member WHERE member_id=#{member_id})
 	</select>
 	
 	<select id="detail" parameterType="HashMap" resultType="HashMap">
 		SELECT question_no, question_sender, member_name, member_id, 
 				question_recipient, question_date, question_content, question_read   
 		FROM questionview 
-		WHERE question_no=#{openmsg} AND 
+		WHERE question_sender=#{openmsg} AND 
 		question_recipient=(SELECT member_no FROM member WHERE member_id=#{member_id})
 	</select>
 	

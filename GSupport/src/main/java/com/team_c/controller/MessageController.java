@@ -38,11 +38,20 @@ public class MessageController {
 				Map<String, Object> detail = 
 						messageService.messageDetail(map.getMap());//member_id, openmsg
 				mv.addObject("detail", detail);
+				
+				System.out.println("################### detail" );
+				
+				List<Map<String, Object>> detailList = 
+						messageService.messageDetailList(map.getMap());//member_id, openmsg
+				mv.addObject("detailList", detailList);
+				
+				System.out.println("################### detailList" );
 			}
 			//쪽지 리스트 불러오기
 			List<Map<String, Object>> list = messageService.messageList(map.getMap());
 			mv.addObject("list", list);
 			
+			System.out.println("################### list" );
 			//답장하기를 눌렀을 때 해당 값을 다시 mv에 붙이기
 			if(map.containsKey("sendmsg")) {
 				//해당 번호로 아이디를 물어봐주세요.
@@ -56,6 +65,8 @@ public class MessageController {
 		}
 		return mv;
 	}
+	
+	
 	
 	@PostMapping("/message.do")
 	public String sendMessage(CommandMap commandMap, HttpServletRequest request) {
