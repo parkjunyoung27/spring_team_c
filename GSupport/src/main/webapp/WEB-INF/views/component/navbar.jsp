@@ -217,6 +217,9 @@ input[id="tab05"]:checked ~ .con5 {
 						</c:if></a>
 
 					<ul class="son">
+					<c:if test="${grade eq 3 }">
+						<li><a href="./admin/adminMain.do">관리자페이지</a></li>
+					</c:if>
 						<li><a href="./myPage.do">내 정보</a></li>
 						<li><a href="./message.do">쪽지</a></li>
 						<li><a onclick="onLogoutClick();">로그아웃</a></li>
