@@ -27,6 +27,38 @@
 	color: white;
 	margin-top: 30px;
 }
+
+.time_left {
+	float: left;
+	width: 50%;
+	border: none;
+	float: left;
+}
+
+.time_right {
+	float: right;
+	padding-right: 150px;
+	width: 50%;
+	border: none;
+}
+
+.time_input {
+	padding: 5px 10px;
+	border: none;
+	height: 50px;
+	font-size: 20px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #ebebeb;
+}
+
+.guBox {
+	border-radius: 5px;
+	text-align: center;
+	width: 50%;
+	font-size: 20px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #ebebeb;
+}
 </style>
 <script type="text/javascript">
 	function myPage_updateStore() {
@@ -73,24 +105,17 @@
 										<input type="text" class="input-text" name="shop_loc"
 											placeholder="" value="${mystore.shop_loc }">
 									</div>
-
+								</div>
 								<div class="field_row">
-									<div class="field_title">구</div>
+									<div class="field_title">현재 해당 구</div>
 									<div class="field_label">
-										<select name="shop_gu">
-									<option value="${mystore.shop_gu }" selected="selected">==${mystore.shop_gu }==</option>
-								<c:forEach items="${list }" var="l">
-									<option value="${l.shop_gu }" >${l.shop_gu }</option>
-								</c:forEach>
-							</select>
-									<div class="field_row">
-										<div class="field_title">구</div>
-										<div class="field_label">
-											<input type="text" class="input-text" name="shop_gu"
-												value="${mystore.shop_gu }">
-										</div>
+										<select name="shop_gu" class="guBox">
+											<option value="${mystore.shop_gu }" selected="selected">설정하세요.</option>
+											<c:forEach items="${list }" var="l">
+												<option value="${l.shop_gu }">${l.shop_gu }</option>
+											</c:forEach>
+										</select>
 									</div>
-
 								</div>
 								<div class="field_row">
 									<div class="field_title">연락처</div>
@@ -104,21 +129,27 @@
 
 								<div class="field_row">
 									<div class="field_title">
-										<div style="float: left">오픈시간</div>
-										<div style="float: right">마감 시간</div>
+										<div class="time_left">오픈 시간</div>
+										<div class="time_right">마감 시간</div>
 									</div>
-									<div class="field_label" style="float: left">
-										<input type="text" class="input-text1" name="shop_opentime"
-											value="${mystore.shop_opentime }">
-										<div class="field_label" style="float: right">
-											<input type="text" class="input-text1" name="shop_closetime"
+									<div class="field_label">
+										<div class="time_left">
+											<input type="text" name="shop_opentime" class="time_input"
+												value="${mystore.shop_opentime }">
+										</div>
+										<div class="time_right">
+											<input type="text" name="shop_closetime" class="time_input"
 												value="${mystore.shop_closetime }">
 										</div>
 									</div>
 								</div>
 
+
+
 								<div class="field_row">
-									<div class="field_title"><br>알립니다</div>
+									<div class="field_title">
+										<br>알립니다
+									</div>
 									<div class="field_label">
 										<input type="text" class="input-text" name="shop_notice"
 											value="${mystore.shop_notice }">
