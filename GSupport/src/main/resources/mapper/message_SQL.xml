@@ -12,7 +12,7 @@
 	
 	<select id="detailList" parameterType="HashMap" resultType="HashMap">
 		SELECT question_no, question_sender, member_name, member_id, 
-				question_recipient, question_date, question_content, question_read, COUNT (*) as question_count  
+				question_recipient, question_date, question_content, question_read  
 		FROM questionview 
 		WHERE question_sender=#{openmsg} AND 
 		question_recipient=(SELECT member_no FROM member WHERE member_id=#{member_id})
