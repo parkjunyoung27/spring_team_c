@@ -42,7 +42,12 @@
 	<select id="detail" resultType="HashMap">
 		SELECT * FROM board_view WHERE board_no=#{board_no }
 	</select>
-	
+
+	<select id="update" resultType="HashMap">
+		UPDATE board SET board_title=#{board_title }, board_content=#{board_content }, board_category=#{board_cate }
+		WHERE board_no=#{board_no } and member_no=(SELECT member_no FROM member WHERE member_id=#{member_id})
+	</select>
+		
 	
 	
 	

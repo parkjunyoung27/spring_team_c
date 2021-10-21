@@ -75,9 +75,13 @@ function writeCheck(){
 					</c:if>
 					</select>
 					<input type="text" id="board_title" name="board_title" placeholder="제목을 입력해주세요(40자 이내)">
+					
 					<!-- summernote -->
 					<%@ include file="./component/summernote.jsp"%>	
+					
+					<!-- file -->
 					<input type="file" name="file" accept=".gif, .png, .jpg, .jpeg">
+					
 					<button type="submit" id="write_submit_btn">글쓰기</button>
 				
 				</form>

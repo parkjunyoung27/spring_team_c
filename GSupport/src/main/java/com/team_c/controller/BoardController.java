@@ -156,17 +156,32 @@ public class BoardController {
 		return mv;
 	}
 	
+	@GetMapping("/summernote")
+   public String chat() {
+      return "./component/summernote";
+   }
+	
 	@GetMapping("/update")
-	public ModelAndView update(HttpServletRequest request) {
+	public ModelAndView update(CommandMap map, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("update");
-		//글 번호 가져오기
-		//int bno = Integer.parseInt(request.getParameter("bno"));
-		
-		//TestDTO dto = testService.detail(bno);
-		//mv.addObject("dto", dto);
-		
+		System.out.println("맵 확인 : " + map.getMap());
+		//글번호 가져오기
+		Map<String, Object> update = boardService.detail(map.getMap());
+		mv.addObject("update", update );
 		return mv;
 	}
 	
-	
+	@PostMapping("/update")
+	public String update2(CommandMap map, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("member_id") != null) {
+			map.put("member_id", session.getAttribute("member_id"));
+			boardService.update(map.getMap());
+			System.out.println("맵값2 : " + map.getMap());
+						
+			return "redirect:/detail.do?categoryNo=" + map.getMap().get("board_cate") + "&board_no=" + map.getMap().get("board_no");
+		} else {
+			return "redirect:/board.do?categoryNo=" + map.getMap().get("board_cate");
+		}
+	}
 }

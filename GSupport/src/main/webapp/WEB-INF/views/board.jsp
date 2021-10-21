@@ -80,11 +80,11 @@ function linkPage(pageNo){
 			<ul id="boardLine" ">
 				<c:forEach items="${list }" var="l">
 					<li class="fl tc w10 list t_line lt_line">${l.board_no }</li>
-					<li class="fl tc w50 list t_line lt_line" id="boardLineClick" onclick="location.href='./detail.do?board_no=${l.board_no}'">${l.board_title}[${l.board_count }]</li>
+					<li class="fl tc w50 list t_line lt_line" id="boardLineClick" onclick="location.href='./detail.do?categoryNo=${l.board_category }&board_no=${l.board_no}'">${l.board_title}[${l.board_count }]</li>
 					<li class="fl tc w10 list t_line lt_line">
 						<c:choose>
 							<c:when test="${member_grade eq 3 }">관리자</c:when>
-							<c:otherwise>${l.member_id}</c:otherwise>
+							<c:otherwise>${l.member_name}</c:otherwise>
 						</c:choose>
 					</li>
 					<jsp:useBean id="today" class="java.util.Date" />
@@ -92,7 +92,7 @@ function linkPage(pageNo){
 					<fmt:formatDate var="write_date" value="${l.board_date}" pattern="yyyyMMdd" />
 					<li class="fl tc w20 list lt_line">
 						<c:choose>
-							<c:when test="${write_date eq now}"><fmt:formatDate value="${l.board_date}" pattern="HH:mm:ss"/></c:when>
+							<c:when test="${write_date eq now}"><fmt:formatDate value="${l.board_date}" pattern="HH:mm"/></c:when>
 							<c:otherwise><fmt:formatDate value="${l.board_date}" pattern="yyyy.MM.dd"/></c:otherwise>					
 						</c:choose>
 					</li>
@@ -101,7 +101,7 @@ function linkPage(pageNo){
 			
 			<!-- 글쓰기 -->
 			<c:if test="${sessionScope.sm_name ne null }">
-				<a href="./write.do?board_no=${board_no }">글쓰기</a>
+				<a href="./write.do?categoryNo=${categoryNo }">글쓰기</a>
 			</c:if>
 			
 			<!-- 페이징 -->

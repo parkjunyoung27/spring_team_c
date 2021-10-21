@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!-- include libraries(jQuery, bootstrap) -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
@@ -40,7 +41,7 @@ body {
 <script>
 $(document).ready(function() {
 	  $('#summernote').summernote({
- 	    	placeholder: 'content',
+ 	    	placeholder: '내용을 입력해 주세요.',
 	        minHeight: 370,
 	        maxHeight: null,
 	        focus: true, 
@@ -49,4 +50,8 @@ $(document).ready(function() {
 	});
 </script>
 
-<textarea id="summernote" name="content"></textarea>
+<textarea id="summernote" name="board_content">
+<c:if test="${update.board_content ne ''}">
+${update.board_content }
+</c:if>
+</textarea>
