@@ -123,8 +123,10 @@ public class MypageController {
 		String shop_opentime = request.getParameter("shop_opentime");
 		String shop_closetime = request.getParameter("shop_closetime");
 		String shop_notice = request.getParameter("shop_notice");
+		int member_grade = (int)session.getAttribute("grade");
 		
 		System.out.println(id + shop_name + shop_loc + shop_gu + shop_tel + shop_opentime + shop_closetime + shop_notice);
+		System.out.println(member_grade + "==================================================");
 		
 		if(id != null && shop_name != null && shop_loc != null && shop_gu != null && shop_tel != null && shop_opentime != null
 				 && shop_closetime != null && shop_notice != null) {
@@ -136,9 +138,12 @@ public class MypageController {
 			map.put("shop_opentime", shop_opentime);
 			map.put("shop_closetime", shop_closetime);
 			map.put("shop_notice", shop_notice);
+			map.put("member_grade", member_grade);
 			
 			mypageService.myPage_registStore(map.getMap());
 			mypageService.registStoreInsert(map.getMap());
+			session.setAttribute("grade", 2);
+			
 			System.out.println("성공");
 			return "redirect:/myPage_updateOwner.do";
 		}
@@ -171,7 +176,8 @@ public class MypageController {
 			map.put("member_id", session.getAttribute("member_id"));
 			mypageService.myPage_updateStore(map.getMap());
 			System.out.println("성공");
-			return "redirect:./myPage.do";
+			System.out.println("==================================="+map.getMap());
+			return "redirect:./myPage_updateOwner.do";
 		}
 		System.out.println("실패");
 			return "redirect:./myPage.do";

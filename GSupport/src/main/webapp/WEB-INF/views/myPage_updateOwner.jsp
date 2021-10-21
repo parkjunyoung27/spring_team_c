@@ -160,7 +160,7 @@
 
 
 								<button id="" class="button_submit"
-									onclick="return myPage_updateStore()" type="submit">정보
+									onclick="return myPage_updateStore()" type="submit">가맹점
 									수정</button>
 							</form>
 						</div>

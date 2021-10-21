@@ -168,7 +168,7 @@
 	</insert>
 	
 	<update id="registStoreInsert" parameterType="HashMap">
-		UPDATE member SET shop_no=(SELECT shop_no FROM shop WHERE shop_name=#{shop_name}) WHERE member_id=#{id}
+		UPDATE member SET shop_no=(SELECT shop_no FROM shop WHERE shop_name=#{shop_name}), member_grade=2 WHERE member_id=#{id}
 	</update>
 	
 	<select id="storeGuList" parameterType="HashMap" resultType="HashMap">
