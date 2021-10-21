@@ -35,9 +35,6 @@ public class MessageController {
 				//읽음 처리를 먼저 해주세요.
 				messageService.readMessage(map.getMap());//member_id, openmsg
 				//사용자가 메시지를 읽기를 원함
-				Map<String, Object> detail = 
-						messageService.messageDetail(map.getMap());//member_id, openmsg
-				mv.addObject("detail", detail);
 				
 				System.out.println("################### detail" );
 				

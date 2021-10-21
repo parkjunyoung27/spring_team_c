@@ -409,8 +409,7 @@ td {
 				</aside>
 				<main>
 					<c:choose>
-						<c:when test="${detail ne null }">
-								
+						<c:when test="${detailList ne null }">
 								<header>
 								<img
 									src="http://localhost:8080/GSupport/resources/images/logo2.png"
@@ -418,26 +417,25 @@ td {
 								<div>
 									<h2>
 										<br>보낸 사람 <br>
-										${detail.member_name}(${detail.question_sender})
+										${q.member_name}(${q.question_sender})
 									</h2>
 								</div>
-								<span onclick="return delMsg(${detail. question_no})"><img
-									src="http://localhost:8080/GSupport/resources/images/trash.png"></span>
+								<%-- <span onclick="return delMsg(${dl. question_no})"><img
+									src="http://localhost:8080/GSupport/resources/images/trash.png"></span> --%>
 							</header>
 							<ul id="chat">
 								<li class="you">
 									<div class="entete">
 										<span class="status green"></span>
-										<h2>${detail.member_id}</h2>
-										<h3>${detail.question_date}</h3>
+										<%-- <h2>${q.member_id}</h2>
+										<h3>${q.question_date}</h3> --%>
 									</div>
 									<div class="triangle"></div>
-									<div class="message">
 										<c:forEach items="${detailList }" var="dl">
-											${dl.question_content }
-											${dl.question_count }
+											<div class="message">
+												${dl.question_content }
+											</div><br>
 										</c:forEach>
-									</div>
 								</li>
 							</ul>
 							
