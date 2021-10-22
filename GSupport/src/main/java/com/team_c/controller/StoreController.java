@@ -88,7 +88,7 @@ public class StoreController {
 
 
 			
-			return "redirect:/storeList.do";
+			return "redirect:/myPage_reserv.do";
 			
 		}else {
 			return "redirect:/storeDetail.do?shop_no="+shop_no;

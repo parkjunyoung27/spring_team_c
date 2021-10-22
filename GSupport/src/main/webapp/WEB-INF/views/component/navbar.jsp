@@ -220,14 +220,7 @@ input[id="tab05"]:checked ~ .con5 {
 					<c:if test="${grade eq 3 }">
 						<li><a href="./admin/adminMain.do">관리자홈</a></li>
 					</c:if>
-					<c:choose>
-					<c:when test="${grade eq 3 || grade eq 1 }">
 						<li><a href="./myPage_reserv.do">내 정보</a></li>
-					</c:when>
-					<c:when test="${grade eq 2 }">
-						<li><a href="./myPage_reservCheck.do">내 정보</a></li>
-					</c:when>
-					</c:choose>
 						<li><a href="./message.do">쪽지</a></li>
 						<li><a onclick="onLogoutClick();">로그아웃</a></li>
 					</ul>

@@ -247,7 +247,7 @@ main header h3 {
 
 #chat .me .triangle {
 	border-color: transparent transparent #6fbced transparent;
-	margin-left: 375px;
+	margin-left: 350px;
 }
 
 .main send {
@@ -362,23 +362,7 @@ td {
  */
 </style>
 <script type="text/javascript">
-	function delMsg(no) {
-		if (confirm("삭제하시겠습니까?")) {
-			alert("쪽지를 삭제합니다.");
-			var form = document.createElement("form");
-			form.setAttribute("action", "./delMsg.do");
-			form.setAttribute("method", "post");
-			var data = document.createElement("input");
-			data.setAttribute("type", "hidden");
-			data.setAttribute("name", "no");
-			data.setAttribute("value", no);
-			form.appendChild(data);
-			document.body.appendChild(form);
-			form.submit();
-			return false;
-		}
-	}
-
+	
 	$(".person").on('click', function() {
 		$(this).toggleClass('focus').siblings().removeClass('focus');
 	})
@@ -407,15 +391,7 @@ td {
 								alt="" style="height: 80px; float: left; padding: 10px;">
 							<div
 								style="font-size: 20px; transform: translateY(30px); float: left; width: 600px;">
-								<c:choose>
-									<c:when test="${detailList ne null }">
-							보낸 사람 : ${q.question_sender}
-											<span onclick="return delMsg(${detail. question_no})"><img
-											src="http://localhost:8080/GSupport/resources/images/trash.png"
-											style="height: 40px; float: right; transform: translateY(-40px);"></span>
-
-									</c:when>
-								</c:choose>
+											
 							</div>
 						</div>
 					</div>
@@ -424,56 +400,54 @@ td {
 						<ul>
 							<c:forEach items="${list }" var="q">
 								<li
-									onclick="location.href='./message.do?openmsg=${q.question_sender }'"
+									onclick="location.href='./message.do?openmsg=${q.question_sender }&sendId=${q.member_id} '"
 									<c:if test="${q.question_read eq 0}">style="font-weight:bold" NEW</c:if>
 									<c:if test="${q.question_read eq 1}">style="color:gray;"</c:if>>
 									<div>
-										<h2>${q.member_name }(${q.member_id })</h2>
+										<h2 id="getSender" onclick="selectSender('${q.member_id }')">${q.member_name }(${q.member_id })</h2>
 									</div>
 							</c:forEach>
 
 						</ul>
 					</aside>
 					<main>
+					<ul id="chat">
+					<c:forEach items="${detailList }" var="dl">
 						<c:choose>
-							<c:when test="${detailList ne null }">
-								<ul id="chat">
+							<c:when test="${sessionScope.member_no eq dl.question_recipient }">
 									<li class="you">
 										<div class="entete">
 											<span class="status green"></span>
-											<h2>${q.member_id}</h2>
-											<h3>${q.question_date}</h3>
+											<h2>${sessionScope.member_id}</h2>
+											<h3>${dl.question_date}</h3>
 										</div>
 										<div class="triangle"></div> 
-										<c:forEach items="${detailList }" var="dl">
 											<div id="receivedMessage" class="message">
 												${dl.question_content }</div>
 											<br>
-										</c:forEach>
 
 									</li>
+							</c:when>
+							<c:otherwise>
 									<li class="me">
 										<div class="entete">
 											<span class="status green"></span>
-											<%-- <h2>${q.member_id}</h2>
-										<h3>${q.question_date}</h3> --%>
+										<h3>${dl.question_date}</h3>
 										</div>
-										<div class="triangle"></div> <c:forEach
-											items="${senderDetailList }" var="sdl">
+										<div class="triangle"></div> 
 											<div id="sentMessage" class="message">
-												${sdl.question_content }</div>
+												${dl.question_content }</div>
 											<br>
-										</c:forEach>
 									</li>
-								</ul>
-
-							</c:when>
+							</c:otherwise>
 						</c:choose>
+					</c:forEach>
+					</ul>
 					</main>
 					<div id="send">
 						<form action="./message.do" method="post">
-							<input type="text" name="sendID" value="${sendmsg }"
-								placeholder="아이디를 입력하세요." class="send_id"> <br> <input
+							<input type="text" id="sendID" name="sendID" class="send_id" value="${sendId}">
+							 <br> <input
 								type="text" name="content" placeholder="내용을 입력하세요."
 								class="send_text">
 							<button
