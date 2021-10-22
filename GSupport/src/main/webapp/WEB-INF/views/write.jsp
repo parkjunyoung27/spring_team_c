@@ -34,9 +34,6 @@ function writeCheck(){
 
 	<!-- board -->
 	<div id="boardContainer">
-
-		<!--서브메뉴바 -->
-		<c:import url="./sub_board_menu.jsp" />
 		
 		<div id="write_form">
 			<div id="content_title"> 

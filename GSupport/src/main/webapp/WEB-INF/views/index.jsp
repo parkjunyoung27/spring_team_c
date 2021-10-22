@@ -12,12 +12,11 @@
 <link href="./resources/css/index.css" rel="stylesheet">
 
 <style>
-
 .section {
-	width:100%;
+	width: 100%;
 	margin-top: 80px;
 	margin-bottom: 100px;
-    overflow: hidden;
+	overflow: hidden;
 }
 
 .section input[id*="slide"] {
@@ -28,7 +27,7 @@
 	max-width: 100%;
 	margin: 0 auto;
 	overflow: hidden;
-	position:relative;
+	position: relative;
 }
 
 .section .slidelist {
@@ -36,19 +35,19 @@
 	font-size: 0;
 }
 
-.section .slidelist > li {
+.section .slidelist>li {
 	display: inline-block;
 	vertical-align: middle;
 	width: 100%;
 	transition: all .5s;
 }
 
-.section .slidelist > li > a {
+.section .slidelist>li>a {
 	display: block;
 	position: relative;
 }
 
-.section .slidelist > li > a img {
+.section .slidelist>li>a img {
 	width: 100%;
 }
 
@@ -63,24 +62,28 @@
 
 .section .slidelist .left {
 	left: 30px;
-	background: url("http://localhost:8080/GSupport/resources/images/left.png") center center/100% no-repeat;
+	background:
+		url("http://localhost:8080/GSupport/resources/images/left.png") center
+		center/30% no-repeat;
 }
 
 .section .slidelist .right {
 	right: 30px;
-	background: url("http://localhost:8080/GSupport/resources/images/right.png") center center/100% no-repeat;
+	background:
+		url("http://localhost:8080/GSupport/resources/images/right.png")
+		center center/30% no-repeat;
 }
 
-.section [id="slide01"]:checked ~ .slidewrap .slidelist > li {
-transform:translateX(0%);
+.section [id="slide01"]:checked ~ .slidewrap .slidelist>li {
+	transform: translateX(0%);
 }
 
-.section [id="slide02"]:checked ~ .slidewrap .slidelist > li {
-transform:translateX(-100%);
+.section [id="slide02"]:checked ~ .slidewrap .slidelist>li {
+	transform: translateX(-100%);
 }
 
-.section [id="slide03"]:checked ~ .slidewrap .slidelist > li {
-transform:translateX(-200%);
+.section [id="slide03"]:checked ~ .slidewrap .slidelist>li {
+	transform: translateX(-200%);
 }
 </style>
 </head>
@@ -89,38 +92,35 @@ transform:translateX(-200%);
 
 	<!-- navbar -->
 	<%@ include file="./component/navbar.jsp"%>
-		<div class="section">
-			<input type="radio" name="slide" id="slide01" checked> 
-			<input type="radio" name="slide" id="slide02"> 
-			<input type="radio" name="slide" id="slide03">
+	<div class="section">
+		<input type="radio" name="slide" id="slide01" checked> <input
+			type="radio" name="slide" id="slide02"> <input type="radio"
+			name="slide" id="slide03">
 
-			<div class="slidewrap">
-				<ul class="slidelist">
-					<li>
-						<a href="./about.do"> 
-							<label for="slide03" class="left"></label> 
-							<img src="http://localhost:8080/GSupport/resources/images/header1.png">
-							<label for="slide02" class="right"></label>
-						</a>
-					</li>
-					<li>
-						<a href="./storeList.do"> 
-							<label for="slide01" class="left"></label> 
-							<img src="http://localhost:8080/GSupport/resources/images/header2_2.png">
-							<label for="slide03" class="right"></label>
-						</a>
-					</li>
-					<li>
-						<a> 
-							<label for="slide02" class="left"></label> 
-							<img src="http://localhost:8080/GSupport/resources/images/header3.png">
-							<label for="slide01" class="right"></label>
-						</a>
-					</li>
+		<div class="slidewrap">
+			<ul class="slidelist">
+				<li><label for="slide03" class="left"></label> <a
+					href="./storeList.do?guName=%EA%B0%95%EB%82%A8%EA%B5%AC&shop_wido=37.4979395100853&shop_kyungdo=127.02755368008152">
 
-				</ul>
-			</div>
+						<img
+						src="http://localhost:8080/GSupport/resources/images/header2_2.png">
+
+						<label for="slide02" class="right"></label>
+				</a></li>
+				<li><a href="./about.do"> <label for="slide01" class="left"></label>
+						<img
+						src="http://localhost:8080/GSupport/resources/images/header1.png">
+
+						<label for="slide03" class="right"></label>
+				</a></li>
+				<li><a> <label for="slide02" class="left"></label> <img
+						src="http://localhost:8080/GSupport/resources/images/header3_2.png">
+						<label for="slide01" class="right"></label>
+				</a></li>
+
+			</ul>
 		</div>
+	</div>
 
 	<!-- 		<div class="header-img"></div> -->
 

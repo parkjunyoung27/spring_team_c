@@ -6,7 +6,7 @@
 <div class="column side">
 	<div class="account_profile">
 		<div class="title">
-			<h1>마이페이지<br></h1>
+			<h2>마이페이지<br></h2>
 			<span class="name"><br><strong>${sessionScope.name}</strong> 님
 				안녕하세요</span>
 		</div>
@@ -28,7 +28,6 @@
 		<h1 class="customer_side_title">활동</h1>
 		<ul class="customer_side_list">
 			<li><a href="message.do">쪽지함 </a></li>
-			<li><a href="">쪽지 보내기 </a></li>
 		</ul>
 	</div>
 
@@ -43,10 +42,10 @@
 			<ul class="customer_side_list">
 				<li><a href="./myPage_update.do">회원정보 수정 </a></li>
 				<c:choose>
-				<c:when test="${sessionScope.grade ne 2}">
+				<c:when test="${grade eq 3 || grade eq 1 }">
 					<li><a href="./myPage_registStore.do">가맹점 등록 </a></li>
 				</c:when>
-				<c:when test="${sessionScope.grade ne 1}">
+				<c:when test="${grade eq 2 || grade eq 3 }">
 					<li><a href="./myPage_updateOwner.do">가맹점 수정 </a></li>
 				</c:when>
 				</c:choose>	
