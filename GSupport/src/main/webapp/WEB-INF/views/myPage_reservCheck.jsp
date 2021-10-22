@@ -59,26 +59,30 @@
 	border-bottom: 1px solid #e5e5e5;
 	margin-bottom: 10px;
 	height: 40px;
-	padding: 10px;
+	padding-left: 10px;
+	padding-right:10px;
+	font-size:20px;
 }
 
 .customer_content_reservHistory_content {
+	line-height: 30px;
 	border-bottom: 1px solid #e5e5e5;
 	padding: 10px 20px 10px 20px;
-	font-size: 12px;
+	font-size: 15px;
 }
 
 .button_submit {
 	float: right;
-	font-size: 10px;
+	font-size: 14px;
 	text-align: center;
 	font-weight: bold;
 	background-color: green;
 	color: white;
-	margin: 2px;
+	margin-right:20px;
 }
 
 .date {
+	font-size:17px;
 	float: right;
 	text-align: center;
 }
@@ -143,7 +147,7 @@
 					<div class="customer_content_reservHistory">
 						<div class="customer_content_reservHistory_header">
 							예약 번호 : ${r.reservation_no }
-							<c:choose>
+<%-- 							<c:choose>
 								<c:when
 									test="${r.reservation_status eq 'cancel'}">
 									<button class="button_submit" type="submit"
@@ -160,6 +164,23 @@
 											onclick="return success(${r.reservation_no},  ${sessionScope.shop_no })">
 											예약 승인</button>
 								</c:otherwise>
+							</c:choose> --%>
+							
+							<c:choose>
+								<c:when test="${r.reservation_status eq 'wait'}">
+																	<button class="button_submit" type="submit"
+										onclick="return cancel(${r.reservation_no}, ${sessionScope.shop_no })">예약 취소</button>
+											<button class="button_submit" type="submit" 
+											onclick="return success(${r.reservation_no},  ${sessionScope.shop_no })">
+											예약 승인</button>
+								</c:when>
+								<c:when test="${r.reservation_status eq 'cancel'}">
+								
+								</c:when>
+								<c:when test="${r.reservation_status eq 'success'  }">
+									
+								</c:when>
+								
 							</c:choose>
 								
 						</div>
@@ -174,13 +195,13 @@
 								${r.people }명 <br> 예약 현황 :
 								<c:choose>
 									<c:when test="${r.reservation_status eq 'wait' }">
-										예약 대기 중
+										<span style="color:green; font-weight:bold;">예약 대기 중</span>
 									</c:when>
 									<c:when test="${r.reservation_status eq 'success' }">
-										예약 성공
+										<span style="color:blue; font-weight:bold;"> 예약 성공</span>
 									</c:when>
 									<c:when test="${r.reservation_status eq 'cancel' }">
-										예약 취소
+										<span style="color:red; font-weight:bold;">예약 취소</span>
 									</c:when>
 								</c:choose>
 								<h3>예약자 : ${r.member_name }</h3>

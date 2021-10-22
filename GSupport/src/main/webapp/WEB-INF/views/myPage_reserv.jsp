@@ -148,19 +148,44 @@
 						</div>
 						<div class="customer_content_reservHistory_content">
 							<div class="customer_content_reservHistory_content_detail">
-							<c:choose>
+							<%-- <c:choose>
 								<c:when
-									test="${r.reservation_status eq 'cancel' || r.reservation_status eq 'success' }">
+									test="${r.reservation_status eq 'cancel' }">
 									<button class="button_submit" type="submit"
 										onclick="return cancel(${r.shop_no})" disabled="disabled"
-										style="background-color: red">예약 취소</button>
+										style="background-color: black;">예약 취소</button>
 								</c:when>
+								
+								<c:when
+									test="${r.reservation_status eq 'success' }">
+									
+								</c:when>
+								
 								<c:otherwise>
 									<button class="button_submit" type="submit"
 										onclick="return cancel(${r.shop_no})">예약 취소</button>
 								</c:otherwise>
+							</c:choose> --%>
+							
+							<c:choose>
+								<c:when
+									test="${r.reservation_status eq 'wait' }">
+									<button class="button_submit" type="submit"
+										onclick="return cancel(${r.shop_no})" >예약 취소</button>
+								</c:when>
+								
+								<c:when
+									test="${r.reservation_status eq 'success' }">
+									
+								</c:when>
+								
+								<c:when test="${r.reservation_status eq 'cancel' }">
+								
+								</c:when>
+								
 							</c:choose>
-
+							
+							
 								<h2>${r.shop_name }</h2>
 								${r.people }명 <br> 예약 현황 :
 								<c:choose>

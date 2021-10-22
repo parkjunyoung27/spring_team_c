@@ -27,6 +27,36 @@
 	color: white;
 	margin-top: 30px;
 }
+.time_left {
+	float: left;
+	width: 50%;
+	border: none;
+	float: left;
+}
+
+.time_right {
+	float: right;
+	padding-right: 150px;
+	width: 50%;
+	border: none;
+}
+
+.time_input {
+	padding: 5px 10px;
+	border: none;
+	height: 50px;
+	font-size: 20px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #ebebeb;
+}
+.guBox {
+	border-radius: 5px;
+	text-align: center;
+	width: 50%;
+	font-size: 20px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #ebebeb;
+}
 </style>
 <script type="text/javascript">
 	function myPage_registStore() {
@@ -57,6 +87,11 @@
 						<h1>가맹점 등록</h1>
 					</div>
 					<div class="customer-account-container">
+ 							<p>
+								가맹점 등록시 아래 사항을 확인하시기 바랍니다. <br> 가맹점 등록은 업주 본인만 가능합니다.<br>
+								등록하시기 전에 회원정보 수정을 통해 본인의 닉네임을 가맹점 이름과 동일하게 수정해주세요. <br> 
+								가맹점 등록 신청시 관리자 검토 후 등록되며 가맹점 찾기/예약 서비스를 이용할 수 있습니다. <br><br><br><br><br>
+							</p> 
 						<div class="customer-formbox">
 							<form action="./myPage_registStore.do" method="post">
 								<div class="field_row">
@@ -75,11 +110,14 @@
 								<div class="field_row">
 									<div class="field_title">구</div>
 									<div class="field_label">
-										<select name="shop_gu">
+							<select name="shop_gu" class="guBox">
+								<option selected="selected" disabled="disabled">설정하세요.</option>
 								<c:forEach items="${list }" var="l">
 									<option value="${l.shop_gu }" >${l.shop_gu }</option>
 								</c:forEach>
 							</select>
+							
+							
 									</div>
 								</div>
 
@@ -91,40 +129,37 @@
 											placeholder="연락처를 입력해주세요" required="required"
 											>
 									</div>
-
 								</div>
-
 
 								<div class="field_row">
-									<div class="field_title">오픈 시간</div>
-									<div class="field_label">
-										<input type="text" class="input-text" name="shop_opentime" required="required"
-											placeholder="오픈 시간을 입력해주세요 ex)09:00">
+									<div class="field_title">
+										<div class="time_left">오픈 시간</div>
+										<div class="time_right">마감 시간</div>
 									</div>
-			
-								</div>
-																<div class="field_row">
-									<div class="field_title">마감 시간</div>
 									<div class="field_label">
-										<input type="text" class="input-text" name="shop_closetime" required="required"
-											placeholder="마감 시간을 입력해주세요 ex)21:00">
+										<div class="time_left">
+											<input type="text" name="shop_opentime" class="time_input" placeholder="ex)09:00">
+										</div>
+										<div class="time_right">
+											<input type="text" name="shop_closetime" class="time_input" placeholder="ex)18:00">
+										</div>
 									</div>
-			
 								</div>
-								
+
 								<div class="field_row">
-									<div class="field_title">알립니다</div>
+									<div class="field_title">
+										<br>알립니다
+									</div>
 									<div class="field_label">
-										<input type="text" class="input-text" name="shop_notice" 
+										<input type="text" class="input-text" name="shop_notice"
 											placeholder="공지사항이 있다면 입력해주세요">
 									</div>
 								</div>
 
 
 
-
 								<button id="" class="button_submit"
-									onclick="return myPage_registStore()" type="submit">정보 수정</button>
+									onclick="return myPage_registStore()" type="submit" >가맹점 등록 신청</button>
 							</form>
 						</div>
 

@@ -218,7 +218,7 @@ public class MypageController {
 			commandMap.put("member_id", session.getAttribute("member_id"));
 			mypageService.myPageDelete(commandMap.getMap());
 			session.invalidate();
-			return "redirect:/index.do";
+			return "redirect:/login.do";
 		} else {
 			return "redirect:/login.do";
 		}
