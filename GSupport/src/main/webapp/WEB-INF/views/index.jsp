@@ -15,7 +15,6 @@
 .section {
 	width: 100%;
 	margin-top: 80px;
-	margin-bottom: 100px;
 	overflow: hidden;
 }
 
@@ -52,7 +51,7 @@
 }
 
 .section .slidelist label {
-	position: absolute;
+	position: fixed;
 	z-index: 10;
 	top: 50%;
 	transform: translateY(-50%);
@@ -99,11 +98,9 @@
 
 		<div class="slidewrap">
 			<ul class="slidelist">
-				<li><label for="slide03" class="left"></label> <a
-					href="./storeList.do?guName=%EA%B0%95%EB%82%A8%EA%B5%AC&shop_wido=37.4979395100853&shop_kyungdo=127.02755368008152">
-
-						<img
-						src="http://localhost:8080/GSupport/resources/images/header2_2.png">
+				<li><label for="slide03" class="left"></label> 
+				<a href="./storeList.do?guName=%EA%B0%95%EB%82%A8%EA%B5%AC&shop_wido=37.4979395100853&shop_kyungdo=127.02755368008152">
+<img src="http://localhost:8080/GSupport/resources/images/header2.png">
 
 						<label for="slide02" class="right"></label>
 				</a></li>
@@ -114,7 +111,7 @@
 						<label for="slide03" class="right"></label>
 				</a></li>
 				<li><a> <label for="slide02" class="left"></label> <img
-						src="http://localhost:8080/GSupport/resources/images/header3_2.png">
+						src="http://localhost:8080/GSupport/resources/images/header3.png">
 						<label for="slide01" class="right"></label>
 				</a></li>
 
