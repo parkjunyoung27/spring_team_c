@@ -87,9 +87,8 @@ transform:translateX(-200%);
 <body>
 
 
-	<!-- Navbar -->
+	<!-- navbar -->
 	<%@ include file="./component/navbar.jsp"%>
-
 		<div class="section">
 			<input type="radio" name="slide" id="slide01" checked> 
 			<input type="radio" name="slide" id="slide02"> 
@@ -105,7 +104,7 @@ transform:translateX(-200%);
 						</a>
 					</li>
 					<li>
-						<a href="./storeList.do?guName=%EA%B0%95%EB%82%A8%EA%B5%AC&shop_wido=37.4979395100853&shop_kyungdo=127.02755368008152"> 
+						<a href="./storeList.do"> 
 							<label for="slide01" class="left"></label> 
 							<img src="http://localhost:8080/GSupport/resources/images/header2_2.png">
 							<label for="slide03" class="right"></label>
