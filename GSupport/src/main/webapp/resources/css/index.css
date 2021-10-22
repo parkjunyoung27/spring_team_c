@@ -48,4 +48,8 @@
 	text-decoration: none;
 	color:black;
 	font-size: 15px;
+#searchButton button:hover:before, #searchButton button:hover:after {
+	width: 100%;
+	transition: 800ms ease all;
 }
+

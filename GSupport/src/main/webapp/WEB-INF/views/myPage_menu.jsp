@@ -6,7 +6,7 @@
 <div class="column side">
 	<div class="account_profile">
 		<div class="title">
-			<h2>마이페이지<br></h2>
+			<h1>마이페이지<br></h1>
 			<span class="name"><br><strong>${sessionScope.name}</strong> 님
 				안녕하세요</span>
 		</div>
@@ -28,6 +28,7 @@
 		<h1 class="customer_side_title">활동</h1>
 		<ul class="customer_side_list">
 			<li><a href="message.do">쪽지함 </a></li>
+			<li><a href="">쪽지 보내기 </a></li>
 		</ul>
 	</div>
 

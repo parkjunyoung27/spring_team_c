@@ -54,30 +54,26 @@
 	border-bottom: 1px solid #e5e5e5;
 	margin-bottom: 10px;
 	height: 40px;
-	padding-left: 10px;
-	padding-right:10px;
-	font-size:20px;
+	padding: 10px;
 }
 
 .customer_content_reservHistory_content {
-    line-height: 30px;
 	border-bottom: 1px solid #e5e5e5;
 	padding: 10px 20px 10px 20px;
-	font-size: 15px;
+	font-size: 12px;
 }
 
 .button_submit {
 	float: right;
-	font-size: 14px;
+	font-size: 10px;
 	text-align: center;
 	font-weight: bold;
 	background-color: green;
 	color: white;
-	margin-right:20px;
+	margin: 2px;
 }
 
 .date {
-	font-size:17px;
 	float: right;
 	text-align: center;
 }
@@ -142,12 +138,6 @@
 					<div class="customer_content_reservHistory">
 						<div class="customer_content_reservHistory_header">
 							예약 번호 : ${r.reservation_no }
-								<div class="date">
-									<h3>${r.reservation_reservDate } ${r.reservation_reservTime } </h3>
-								</div>
-						</div>
-						<div class="customer_content_reservHistory_content">
-							<div class="customer_content_reservHistory_content_detail">
 							<c:choose>
 								<c:when
 									test="${r.reservation_status eq 'cancel' || r.reservation_status eq 'success' }">
@@ -160,18 +150,25 @@
 										onclick="return cancel(${r.shop_no})">예약 취소</button>
 								</c:otherwise>
 							</c:choose>
+						</div>
+						<div class="customer_content_reservHistory_content">
+							<div class="customer_content_reservHistory_content_detail">
+								<div class="date">
+									<h3>${r.reservation_reservDate }</h3>
+									<p>${r.reservation_reservTime }</p>
+								</div>
 
 								<h2>${r.shop_name }</h2>
 								${r.people }명 <br> 예약 현황 :
 								<c:choose>
 									<c:when test="${r.reservation_status eq 'wait' }">
-									<span style="color:green; font-weight:bold;">예약 대기 중</span>
+										예약 대기 중
 									</c:when>
 									<c:when test="${r.reservation_status eq 'success' }">
-									<span style="color:blue; font-weight:bold;"> 예약 성공</span>
+										예약 성공
 									</c:when>
 									<c:when test="${r.reservation_status eq 'cancel' }">
-										<span style="color:red; font-weight:bold;">예약 취소</span>
+										예약 취소
 									</c:when>
 								</c:choose>
 								<h4>요구사항 : ${r.reservation_reservRequest }</h4>

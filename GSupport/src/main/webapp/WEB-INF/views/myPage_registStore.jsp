@@ -30,8 +30,8 @@
 </style>
 <script type="text/javascript">
 	function myPage_registStore() {
-		if (confirm("수정하시겠습니까?")) {
-			alert("수정 되었습니다.");
+		if (confirm("등록하시겠습니까?")) {
+			alert("등록신청 되었습니다. 관리자 승인 후 등록됩니다.");
 			return true;
 		} else {
 			alert("취소 되었습니다.");
@@ -124,7 +124,7 @@
 
 
 								<button id="" class="button_submit"
-									onclick="return myPage_registStore()" type="submit">정보 수정</button>
+									onclick="return myPage_registStore()" type="submit">가맹점 등록</button>
 							</form>
 						</div>
 
