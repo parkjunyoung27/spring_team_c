@@ -49,11 +49,13 @@
 	<select id="update" resultType="HashMap">
 		UPDATE board SET board_title=#{board_title }, board_content=#{board_content }, board_category=#{board_cate }
 		WHERE board_no=#{board_no } AND member_no=(SELECT member_no FROM member WHERE member_id=#{member_id})
+			OR (board_no=#{board_no } AND ${member_grade}=3)
 	</select>
 
 	<update id="delete" parameterType="HashMap">
 		UPDATE board SET board_delete=1 
-		WHERE board_no=#{board_no } AND member_no=(SELECT member_no FROM member WHERE member_id=#{member_id})
+		WHERE (board_no=#{board_no } AND member_no=(SELECT member_no FROM member WHERE member_id=#{member_id}))
+			OR (board_no=#{board_no } AND ${member_grade}=3)
 	</update>
 	
 	

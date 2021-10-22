@@ -48,8 +48,8 @@ public class BoardController {
 		
 		//board_cate보내기
 		int board_cate = 0;
-		if(map.containsKey("categoryNo")) {//키값이 있느냐 없느냐 물어보는부분 있으면 true반환 없으면 false 반환
-			board_cate = util.toInt(map.get("categoryNo"));//유틸 만들어 놓기.
+		if(map.containsKey("categoryNo")) {
+			board_cate = util.toInt(map.get("categoryNo"));
 		}else {
 			map.put("categoryNo", board_cate);
 		}
@@ -185,15 +185,17 @@ public class BoardController {
 		System.out.println("맵 값 : " + map.getMap());
 
 		map.put("member_id", session.getAttribute("member_id"));
+		map.put("member_grade", session.getAttribute("grade"));
 		if (session.getAttribute("member_id") != null) {
 			int result = boardService.delete(map.getMap());
 			System.out.println("삭제 결과 : " + result );
 			System.out.println("커맨드 맵값 : " + map.getMap() );
 
-	//	} else {
-	//		return "redirect:/";
+
+			return "redirect:/board.do?categoryNo=" + map.getMap().get("categoryNo");
+		}else {
+			return "redirect:/login.do";
 		}
-		return "redirect:/board.do?categoryNo=" + map.getMap().get("categoryNo");
 	}
 
 }

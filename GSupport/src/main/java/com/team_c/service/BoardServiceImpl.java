@@ -35,7 +35,7 @@ public class BoardServiceImpl implements BoardService {
 	
 	public String boardCate(CommandMap map) {
 		List<Map<String, Object>> boardNameList = boardDAO.boardCate(map.getMap());
-		int categoryNo = util.toInt(map.get("categoryNo"));
+		int categoryNo = util.toInt(map.getMap().get("categoryNo"));
 		String boardName = (String) boardNameList.get(categoryNo).get("board_name");
 		return boardName;
 	}

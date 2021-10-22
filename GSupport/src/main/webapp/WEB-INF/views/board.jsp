@@ -121,6 +121,7 @@ function linkPage(pageNo){
 				글쓴이</option>
 			</select>
 			<input type="text" name="search" value="${search}" class="Cate_searchbox" placeholder="내용을 입력해주세요.">
+			<input type="hidden" name="categoryNo" value="${categoryNo }">
 							<button type="submit" style="border: none; background: none;">
 								<img src="http://localhost:8080/GSupport/resources/images/search.png" style="height: 45px; margin-left:5px; vertical-align: middle;">
 							</button>
