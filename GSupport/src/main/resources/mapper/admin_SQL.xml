@@ -126,6 +126,10 @@
 		UPDATE shop SET shop_delete=1 WHERE shop_no=#{number} 
 	</update>
 	
+	<update id="deleteAdminBoard">
+		UPDATE board SET board_delete=1 WHERE board_no=#{number} 
+	</update>
+	
 	<select id="memberList" resultType="HashMap">
 		SELECT * FROM memberview  
 		<if test="channel != '' and gradeOption == ''">

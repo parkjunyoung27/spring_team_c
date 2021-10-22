@@ -121,6 +121,13 @@ public class AdminServiceImpl implements AdminService{
 		return adminDAO.adminBoardList(map);
 	}
 
+	@Override
+	public void deleteAdminBoard(String number) {
+		adminDAO.deleteAdminBoard(number);
+	}
+
+
+
 
 
 

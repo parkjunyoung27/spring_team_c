@@ -25,6 +25,10 @@ a{
 
 a:hover{color: gold; text-decoration:none;}
 
+.windowOpen{
+	cursor: pointer;
+}
+
 .windowOpen:hover{color: gold;}
 
 </style> 
@@ -148,12 +152,12 @@ var gradeOption = document.getElementById("gradeOption").value;
 					<c:choose>
 						<c:when test="${fn:length(list) gt 0 }">
 							<c:forEach items='${list }' var="l">
-								<tr class="windowOpen" onclick="return windowOpen(${l.get('board_no') })">
+								<tr>
 									<td class="w1">
 										<input type="checkbox" name="check" value="${l.get('board_no')}"  onclick='checkSelectAll()' >
 									</td> 
 									<td class="w1" id="boardNo">${l.get("board_no") } </td>
-									<td class="w5">${l.get("board_title") } </td>
+									<td class="w7 windowOpen"  onclick="return windowOpen(${l.get('board_no') })">${l.get("board_title") } </td>
 									<td class="w10">${fn:substring(l.get("board_content"), 0, 15 )}</td>
 									<td class="w5">${l.get("member_id") } </td>
 									<td class="w5">${l.get("member_name") } </td>	

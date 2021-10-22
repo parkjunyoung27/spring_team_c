@@ -16,32 +16,39 @@ body {
 	font-family: Arial;
 }
 
-#container {
+.head {
+	height: 100px;
+	padding: 10px 20px 10px 20px;
+	background-color: white;
+}
+
+#message_container {
 	width: 750px;
 	height: 700px;
-	background: #eff3f7;
+	background: white;
 	margin: 0 auto;
 	font-size: 0;
-	border-radius: 5px;
+	outline: 1px solid grey;
+	border-radius: 10px;
 	overflow: hidden;
 }
 
 aside {
-	width: 260px;
+	width: 40%;
 	height: auto;
-	background-color: #7c7d7f;
+	background-color: #2e4f90;
 	display: inline-block;
 	font-size: 15px;
 	vertical-align: top;
 }
 
 main {
-	width: 490px;
+	width: 60%;
 	height: 400px;
 	display: inline-block;
 	font-size: 15px;
 	vertical-align: top;
-	background-color: #eff3f7;
+	background-color: white;
 }
 
 aside header {
@@ -69,26 +76,25 @@ aside input::placeholder {
 }
 
 aside ul {
-	padding-left: 20px;
+	padding: 20px;
 	margin: 0;
 	list-style-type: none;
 	height: 400px;
 	overflow-y: scroll;
 	border-bottom: 2px solid #fff;
-	
-}
-::-webkit-scrollbar {
-	width:10px;
-	background-color:transparent;
 }
 
+::-webkit-scrollbar {
+	width: 10px;
+	background-color: transparent;
+}
 
 aside li {
 	padding: 10px 0;
 }
 
 aside li:hover {
-	background-color: #5e616a;
+	background-color: #ffffff3d;
 }
 
 h2, h3 {
@@ -215,10 +221,6 @@ main header h3 {
 	border-radius: 5px;
 }
 
-#chat .you {
-	text-align: left;
-}
-
 #chat .me {
 	text-align: right;
 }
@@ -286,14 +288,15 @@ main header h3 {
 }
 
 .send_text {
-	padding: 20px;
+	white-space: normal;
+	padding: 10px;
 	color: black;
-	line-height: 25px;
+	line-height: 15px;
 	display: inline-block;
-	text-align: center;
+	text-align: left;
 	border-radius: 5px;
-	height:100px;
-	width:500px;
+	height: 100px;
+	width: 500px;
 }
 
 .send_id {
@@ -308,9 +311,11 @@ main header h3 {
 }
 
 #send {
+	white-space: normal;
 	width: auto;
 	height: auto;
 	padding: 20px;
+	background: white;
 }
 /* body {
 	margin: 0;
@@ -393,80 +398,93 @@ td {
 		<div class="column middle">
 
 			<div id="container">
+				<div id="message_container">
 
-				<aside>
-					<header>
-						<input type="text" placeholder="search">
-					</header>
-					<ul>
-						<c:forEach items="${list }" var="q">
-							<li
-								onclick="location.href='./message.do?openmsg=${q.question_sender }'"
-								<c:if test="${q.question_read eq 0}">style="font-weight:bold"</c:if>
-								<c:if test="${q.question_read eq 1}">style="color:gray;"</c:if>>
-								<div>
-									<h2>${q.member_name }(${q.member_id })</h2>
-								</div>
-						</c:forEach>
+					<div class="head">
+						<div>
+							<img
+								src="http://localhost:8080/GSupport/resources/images/logo2.png"
+								alt="" style="height: 80px; float: left; padding: 10px;">
+							<div
+								style="font-size: 20px; transform: translateY(30px); float: left; width: 600px;">
+								<c:choose>
+									<c:when test="${detailList ne null }">
+							보낸 사람 : ${q.question_sender}
+											<span onclick="return delMsg(${detail. question_no})"><img
+											src="http://localhost:8080/GSupport/resources/images/trash.png"
+											style="height: 40px; float: right; transform: translateY(-40px);"></span>
 
-					</ul>
-				</aside>
-				<main>
-					<c:choose>
-						<c:when test="${detailList ne null }">
-								<header>
-								<img
-									src="http://localhost:8080/GSupport/resources/images/logo2.png"
-									alt="">
-								<div>
-									<h2>
-										<br>보낸 사람 <br>
-										${q.member_name}(${q.question_sender})
-									</h2>
-								</div>
-								<%-- <span onclick="return delMsg(${dl. question_no})"><img
-									src="http://localhost:8080/GSupport/resources/images/trash.png"></span> --%>
-							</header>
-							<ul id="chat">
-								<li class="you">
-									<div class="entete">
-										<span class="status green"></span>
-										<%-- <h2>${q.member_id}</h2>
-										<h3>${q.question_date}</h3> --%>
+									</c:when>
+								</c:choose>
+							</div>
+						</div>
+					</div>
+
+					<aside>
+						<ul>
+							<c:forEach items="${list }" var="q">
+								<li
+									onclick="location.href='./message.do?openmsg=${q.question_sender }'"
+									<c:if test="${q.question_read eq 0}">style="font-weight:bold" NEW</c:if>
+									<c:if test="${q.question_read eq 1}">style="color:gray;"</c:if>>
+									<div>
+										<h2>${q.member_name }(${q.member_id })</h2>
 									</div>
-									<div class="triangle"></div>
+							</c:forEach>
+
+						</ul>
+					</aside>
+					<main>
+						<c:choose>
+							<c:when test="${detailList ne null }">
+								<ul id="chat">
+									<li class="you">
+										<div class="entete">
+											<span class="status green"></span>
+											<h2>${q.member_id}</h2>
+											<h3>${q.question_date}</h3>
+										</div>
+										<div class="triangle"></div> 
 										<c:forEach items="${detailList }" var="dl">
 											<div id="receivedMessage" class="message">
-												${dl.question_content }
-											</div><br>
+												${dl.question_content }</div>
+											<br>
 										</c:forEach>
-										
-								</li>
-								<li class="me">
-									<div class="entete">
-										<span class="status green"></span>
-										<%-- <h2>${q.member_id}</h2>
+
+									</li>
+									<li class="me">
+										<div class="entete">
+											<span class="status green"></span>
+											<%-- <h2>${q.member_id}</h2>
 										<h3>${q.question_date}</h3> --%>
-									</div>
-									<div class="triangle"></div>
-										<c:forEach items="${senderDetailList }" var="sdl">
+										</div>
+										<div class="triangle"></div> <c:forEach
+											items="${senderDetailList }" var="sdl">
 											<div id="sentMessage" class="message">
-												${sdl.question_content }
-											</div><br>
+												${sdl.question_content }</div>
+											<br>
 										</c:forEach>
-								</li>
-							</ul>
-							
-						</c:when>
-					</c:choose>
-				</main>
-				<div id="send">
-					<form action="./message.do" method="post">
-						<input type="text" name="sendID" value="${sendmsg }" placeholder="아이디를 입력하세요." class="send_id"> <br> 
-						<input type="text" name="content" placeholder="내용을 입력하세요." class="send_text">
-						<button style="background-color:transparent;border:none;float:right;width:200px; padding:0px;"><img src="http://localhost:8080/GSupport/resources/images/send.png" alt="" style="width:150px;"></button>
-						
-					</form>
+									</li>
+								</ul>
+
+							</c:when>
+						</c:choose>
+					</main>
+					<div id="send">
+						<form action="./message.do" method="post">
+							<input type="text" name="sendID" value="${sendmsg }"
+								placeholder="아이디를 입력하세요." class="send_id"> <br> <input
+								type="text" name="content" placeholder="내용을 입력하세요."
+								class="send_text">
+							<button
+								style="background-color: transparent; border: none; float: right; width: 200px; padding: 0px;">
+								<img
+									src="http://localhost:8080/GSupport/resources/images/send.png"
+									alt="" style="width: 150px;">
+							</button>
+
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>

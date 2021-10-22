@@ -79,7 +79,6 @@ public class AdminDAO extends AbstractDAO{
 
 	public void registerShop(String number) {
 		registerShop("admin.registerShop", number);
-
 	}
 
 	public int adminBoardTotalCount(Map<String, Object> map) {
@@ -88,6 +87,10 @@ public class AdminDAO extends AbstractDAO{
 
 	public List<Map<String, Object>> adminBoardList(Map<String, Object> map) {
 		return selectList("admin.adminBoardList", map);
+	}
+
+	public void deleteAdminBoard(String number) {
+		 deleteLog("admin.deleteAdminBoard", number);
 	}
 	
 }

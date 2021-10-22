@@ -218,7 +218,7 @@ input[id="tab05"]:checked ~ .con5 {
 
 					<ul class="son">
 					<c:if test="${grade eq 3 }">
-						<li><a href="./admin/adminMain.do">관리자페이지</a></li>
+						<li><a href="./admin/adminMain.do">관리자홈</a></li>
 					</c:if>
 					<c:choose>
 					<c:when test="${grade eq 3 || grade eq 1 }">

@@ -57,4 +57,5 @@ public interface AdminService {
 	
 	public List<Map<String, Object>> adminBoardList(Map<String, Object> map);
 	
+	public void deleteAdminBoard(String number);
 }
