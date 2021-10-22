@@ -22,6 +22,8 @@ body {
 	background-image: url("./resources/images/star_after.png")
 }
 
+.four { width: 32.26%; max-width: 32.26%;}
+
 .col {
   display: block;
   float:left;
@@ -29,14 +31,14 @@ body {
 }
 
 
-.timelabel{
+#timelabel{
 	position: relative;
 	color: #fff;
 	background-color: #aaa;
 	font-size: 20px;
 	text-align: center;
 	height: 50px;
- 	width: 100%;
+ 	width: 23.9%;
 	line-height: 50px;
 	display: block;
 	cursor: pointer;
@@ -47,15 +49,10 @@ body {
 	margin-bottom: 5px;
 }
 
-<% for(int i=9; i<=22; i++){ %>
-					
-#time<%=i %>:checked + label{
-border: 3px solid #333;
-background-color: #2fcc71;
-}						
-<% }%>	
-
-
+#reservForm .radio_check #reservTime:checked + label{
+	border: 3px solid #333;
+	background-color: #2fcc71;
+}
 
 </style>
 
@@ -215,8 +212,8 @@ function disLike(no){
 					<% for(int i=9; i<=22; i++){ %>
 					
 						<div class="radio_check">
-							<input type="radio" id="time<%=i %>" name="reservTime" required="required" value="<%=i%>:00" style="display:none"> 
-							<label class="timelabel" class="col" for="time<%=i%>"><%=i%>:00</label>
+							<input type="radio" id="reservTime" name="reservTime" required="required" value="<%=i%>:00"> 
+							<label  class="four col timelabel" for="reservTime"><%=i%>:00</label>
 						</div>
 						
 					<% }%>	

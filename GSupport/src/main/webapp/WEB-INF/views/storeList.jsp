@@ -22,6 +22,11 @@ function linkPage(pageNo){
 }
 </script>
 <style>
+body{
+	width:90%;
+	margin: 0 auto;
+}
+
 
 /* Left column */
 .column.side {
@@ -86,7 +91,7 @@ div#searchButton {
 	border-radius: 4px;
 	position: sticky;
 	height: 40px;
-	width: 47%;
+	width: 45%;
 	font-size: 0.8em;
 	padding: 3px;
 	cursor: pointer;
@@ -132,6 +137,7 @@ div#paging {
 	font-size: large;
 	letter-spacing: 1px;
 	padding: 10px;
+	margin-bottom: 15px;
 }
 
 div#paging a {

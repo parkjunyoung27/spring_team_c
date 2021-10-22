@@ -115,18 +115,15 @@ div#reserve_btn_area {
 #possible_time{
  	width: 100%;
     margin-bottom: 30px;
-    text-align: left;
-}
-
-.radio_check {
-    width: 24%;
     display: inline-block;
-    letter-spacing: 1px;
     text-align: center;
 }
 
-input#reservTime {
-    display: inline-block;
+.radio_check {
+	display: inline-block;
+    width: 24%;
+    float: left;
+    margin: 2px;
 }
 
 input.time_btn {
