@@ -13,6 +13,11 @@
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;700&display=swap');
 
+body {
+    width: 80%;
+    margin: 0 auto;
+}
+
 #storeNameTitle span img:hover {
 	background-image: url("./resources/images/star_after.png")
 }
@@ -141,7 +146,7 @@ function disLike(no){
 		<div id="storeReserv">
 			<form action="./storeReserv.do" method="post" id="reservForm">
 				<div id="map"
-					style="width: 80%; height: 210px; border: 1px solid black; margin-right: 18%;"></div>
+					style="width: 100%; height: 210px; border: 1px solid black; margin-right: 18%;"></div>
 
 				<script type="text/javascript"
 					src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3d03474ad9928948587986771d90bb4e"></script>

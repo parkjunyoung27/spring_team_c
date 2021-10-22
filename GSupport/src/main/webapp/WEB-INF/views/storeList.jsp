@@ -74,8 +74,7 @@ div#map {
 }
 
 div#searchButton {
-	float: left;
-	margin: 25px 10px 25px 20px;
+	margin-top: 30px;
 }
 
 #searchButton button {
@@ -86,8 +85,8 @@ div#searchButton {
 	border: none;
 	border-radius: 4px;
 	position: sticky;
-	height: auto;
-	width: 100px;
+	height: 40px;
+	width: 47%;
 	font-size: 0.8em;
 	padding: 3px;
 	cursor: pointer;
@@ -198,14 +197,13 @@ margin-top:10px;
 
 
 					<div id="storeSearchContainer">
-						<h2
-							style="color: green; font-weight: bold; padding: 10px 0 0 20px;">
+						<h2 style="color: green; font-weight: bold; padding: 10px 0 0 20px;">
 							${param.guName }</h2>
 
 						<div id="searchButton">
 							<c:forEach items="${list2 }" var="l2">
-								<button type="submit"
-									onclick="location.href='./storeList.do?guName=${l2.shop_gu}&shop_wido=${l2.gu_wido }&shop_kyungdo=${l2.gu_kyungdo }'">${l2.shop_gu }</button>
+								<button type="submit" onclick="location.href='./storeList.do?guName=${l2.shop_gu}&shop_wido=${l2.gu_wido }&shop_kyungdo=${l2.gu_kyungdo }'"
+								<c:if test="${param.guName eq l2.shop_gu }">style="	background: green; color: white; font-weight: 700;"</c:if>>${l2.shop_gu }</button>
 							</c:forEach>
 						</div>
 					</div>
@@ -378,8 +376,8 @@ margin-top:10px;
 							<select name="guName" class="Cate_search">
 								<c:forEach items="${list2 }" var="l2">
 									<option value="${l2.shop_gu }"
-										<c:if test ="${guName
-							 eq l2.shop_gu}">selected="selected"</c:if>>${l2.shop_gu }</option>
+										<c:if test ="${guName eq l2.shop_gu}">selected="selected"</c:if>>${l2.shop_gu }
+									</option>
 								</c:forEach>
 							</select>
 							<%-- <input type="hidden" name="guName" value="${guName}"> --%>
