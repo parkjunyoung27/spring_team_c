@@ -171,6 +171,7 @@ public class BoardController {
 		//세션인증
 		if (session.getAttribute("member_id") != null) {
 			map.put("member_id", session.getAttribute("member_id"));
+			map.put("member_grade", session.getAttribute("grade"));
 			boardService.update(map.getMap());
 						
 			return "redirect:/detail.do?categoryNo=" + map.getMap().get("board_cate") + "&board_no=" + map.getMap().get("board_no");

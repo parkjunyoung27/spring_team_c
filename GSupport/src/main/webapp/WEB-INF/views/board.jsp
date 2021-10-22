@@ -69,6 +69,7 @@ function linkPage(pageNo){
 		<div id="content">
 			<div id="content_title_border">
 				<div id="content_title">
+					${board_name}
 				</div>
 			</div>
 			<ul class="board">
@@ -100,7 +101,7 @@ function linkPage(pageNo){
 			</ul>
 			
 			<!-- 글쓰기 -->
-			<c:if test="${sessionScope.sm_name ne null }">
+			<c:if test="${sessionScope.id ne null }">
 				<a href="./write.do?categoryNo=${categoryNo }">글쓰기</a>
 			</c:if>
 			
@@ -127,8 +128,6 @@ function linkPage(pageNo){
 							</button>
 		</form>
 		</div>
-		
-		
 		</div>
 	</div>
 	
