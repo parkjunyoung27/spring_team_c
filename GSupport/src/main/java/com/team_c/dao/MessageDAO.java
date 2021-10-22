@@ -33,7 +33,7 @@ public class MessageDAO extends AbstractDAO {
 	}
 
 	public List<Map<String, Object>> messageDetailList(Map<String, Object> map) {
-		return selectList("question.detailList", map);
+		return selectList("question.messageDetailList", map);
 	}
 
 	public List<Map<String, Object>> messageSenderDetailList(Map<String, Object> map) {

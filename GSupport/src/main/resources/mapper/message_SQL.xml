@@ -10,6 +10,15 @@
 		GROUP BY question_sender
 	</select>
 	
+	<select id="messageDetailList" parameterType="HashMap" resultType="HashMap">
+	SELECT *
+	FROM question
+	WHERE
+	((question_sender = #{openmsg})	OR (question_sender = (SELECT member_no FROM member WHERE member_name =	#{member_id} )))
+	AND ((question_recipient = (SELECT member_no FROM member WHERE member_name = #{member_id} ))
+	OR (question_recipient = #{openmsg}));
+	</select>
+	
 	<select id="detailList" parameterType="HashMap" resultType="HashMap">
 		SELECT question_no, question_sender, member_name, member_id, 
 				question_recipient, question_date, question_content, question_read  

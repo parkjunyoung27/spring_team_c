@@ -28,6 +28,11 @@ public class MessageController {
 		HttpSession session = request.getSession();
 		//Map<String, Object> map = new HashMap<String, Object>();
 		
+		String sendId= "";
+		if(request.getParameter("sendId")!= null) {
+			sendId = request.getParameter("sendId");
+		}
+		
 		if(session.getAttribute("member_id") != null) {
 			//데이터베이스 질의문
 			map.put("member_id", session.getAttribute("member_id"));
@@ -38,13 +43,11 @@ public class MessageController {
 				
 				System.out.println("################### detail" );
 				
-				List<Map<String, Object>> detailList = 
+				List<Map<String, Object>> messageDetailList = 
 						messageService.messageDetailList(map.getMap());//member_id, openmsg
-				mv.addObject("detailList", detailList);
+				mv.addObject("detailList", messageDetailList);
+				mv.addObject("sendId", sendId);
 				
-				List<Map<String, Object>> senderDetailList = 
-						messageService.messageSenderDetailList(map.getMap());//member_id, openmsg
-				mv.addObject("senderDetailList", senderDetailList);
 				
 				System.out.println("################### detailList" );
 			}
