@@ -42,10 +42,10 @@
 			<ul class="customer_side_list">
 				<li><a href="./myPage_update.do">회원정보 수정 </a></li>
 				<c:choose>
-				<c:when test="${grade eq 3 || grade eq 1 }">
+				<c:when test="${sessionScope.grade ne 2}">
 					<li><a href="./myPage_registStore.do">가맹점 등록 </a></li>
 				</c:when>
-				<c:when test="${grade eq 2 || grade eq 3 }">
+				<c:when test="${sessionScope.grade ne 1}">
 					<li><a href="./myPage_updateOwner.do">가맹점 수정 </a></li>
 				</c:when>
 				</c:choose>	
