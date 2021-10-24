@@ -51,7 +51,7 @@ public class LoginController {
 
 	@GetMapping("/login.do")
 	public String login() {
-		return "login";
+		return "redirect:/index.do?login=timeout";
 	}
 
 	@PostMapping("/login.do")
@@ -60,6 +60,11 @@ public class LoginController {
 		Map<String, Object> login = loginService.login(commandMap.getMap());
 		System.out.println("나온 값 : " + login);
 
+		if (login == null) {
+			return "redirect:/index.do?login=fail";
+		}
+		
+		
 		HttpSession session = request.getSession();
 		session.setAttribute("name", login.get("member_name"));
 		session.setAttribute("id", login.get("member_id"));

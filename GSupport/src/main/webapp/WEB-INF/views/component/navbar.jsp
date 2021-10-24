@@ -176,12 +176,36 @@ input[id="tab05"]:checked ~ .con5 {
 
 	$(document).ready(function(){
 		var channel = '<%=(String)session.getAttribute("joinChannel")%>';
+		var loginValue = getParameterByName('login');
+
+		
+		console.log(loginValue);
 		console.log(channel);
 		if(channel == "google" || channel == "naver" || channel == "kakao"){
 			document.getElementById("sidebar").click();
 			document.getElementById("tab04").click();
 		}
+		if(loginValue == "fail") {
+			alert("로그인 정보가 일치하지 않습니다. 다시 시도해주세요.");
+			document.getElementById("sidebar").click();
+			document.getElementById("tab01").click();
+		}
+		if(loginValue == "timeout") {
+			alert("로그아웃 되었습니다. 다시 시도해주세요.");
+			document.getElementById("sidebar").click();
+			document.getElementById("tab01").click();
+		}
 	});
+	
+	function getParameterByName(name) { 
+		name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]"); 
+		var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"), 
+		results = regex.exec(location.search); 
+		return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+		
+	}
+
+	
 </script>
 
 <!-- Navigation -->

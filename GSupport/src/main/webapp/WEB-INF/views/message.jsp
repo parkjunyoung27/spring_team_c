@@ -366,6 +366,15 @@ td {
 	$(".person").on('click', function() {
 		$(this).toggleClass('focus').siblings().removeClass('focus');
 	})
+	
+	$("#getSender").on('click', function() {
+		alert("D");
+		document.getElementById('#chat').scrollTop = document
+				.getElementById('#chat').scrollHeight;
+	})
+	
+
+
 </script>
 </head>
 <body>
@@ -399,12 +408,12 @@ td {
 					<aside>
 						<ul>
 							<c:forEach items="${list }" var="q">
-								<li
+								<li 
 									onclick="location.href='./message.do?openmsg=${q.question_sender }&sendId=${q.member_id} '"
 									<c:if test="${q.question_read eq 0}">style="font-weight:bold" NEW</c:if>
 									<c:if test="${q.question_read eq 1}">style="color:gray;"</c:if>>
 									<div>
-										<h2 id="getSender" onclick="selectSender('${q.member_id }')">${q.member_name }(${q.member_id })</h2>
+										<h2 id="getSender" onclick="selectSender('${q.member_id }')">${q.member_name }</h2>
 									</div>
 							</c:forEach>
 
@@ -412,13 +421,12 @@ td {
 					</aside>
 					<main>
 					<ul id="chat">
-					<c:forEach items="${detailList }" var="dl">
+					<c:forEach items="${messageDetailList }" var="dl">
 						<c:choose>
-							<c:when test="${sessionScope.member_no eq dl.question_recipient }">
+							<c:when test="${sessionScope.member_id eq dl.question_recipient_id }">
 									<li class="you">
 										<div class="entete">
 											<span class="status green"></span>
-											<h2>${sessionScope.member_id}</h2>
 											<h3>${dl.question_date}</h3>
 										</div>
 										<div class="triangle"></div> 

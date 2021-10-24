@@ -26,7 +26,7 @@
 
 #oAuthJoinForm h2{
 	position:fixed;
-	top:8%;
+	top:15%;
 	width: 80%;
 	left:50%;
 	border: none;
@@ -39,7 +39,7 @@
 
 #oAuthJoinForm p {
 	position:fixed;
-	top:15%;
+	top:25%;
 	width: 90%;
 	left:50%;
 	border: none;
@@ -75,7 +75,7 @@
 	border-radius: 5px;
 	font-size: 14px;
 	transform:translate(-50%);
-	bottom:22%;
+	bottom:40%;
 }
 
 #oAuthJoinSubmit {
@@ -93,7 +93,8 @@
 	padding: 10px;
 	letter-spacing: 5px;
 	font-weight: 600;
-	bottom:10%;
+	cursor:pointer;
+	bottom:15%;
 }
 </style>
 <!-- AJAX사용 -->
@@ -152,7 +153,7 @@
 	}
 </script>
 	<div id ="oAuthJoinForm">
-			<h2>회 원 가 입</h2><br>
+			<h2>SNS 간 단 회 원 가 입</h2><br>
 			<p id="oAuthJoinErr"></p>
 		<form action="join.do" method="post">
 			<input type="hidden" id="oAuthId" placeholder="id" value="${sessionScope.memberEmail }">
@@ -162,7 +163,7 @@
 			<input type="hidden" id="oAuthChannel" value="${sessionScope.joinChannel }">
 			<input type="submit" id="oAuthJoinForm" value="가입하기" style="display:none">
 		</form>
-			<input id="oAuthJoinSubmit" name="oAuthJoinSubmit" value="가입하기" onclick="oAuthJoin()">
+			<input id="oAuthJoinSubmit" name="oAuthJoinSubmit" value="가입하기" readonly="readonly" onclick="oAuthJoin()">
 	</div>
 			<input type="hidden" id="oAuthJoinNameDummy" value="">
 </html>

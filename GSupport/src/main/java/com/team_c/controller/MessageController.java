@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team_c.common.CommandMap;
@@ -21,7 +22,7 @@ public class MessageController {
 	private MessageServiceImpl messageService;
 	
 	//@RequestMapping(value = "/message.do")
-	@GetMapping("/message.do")
+	@GetMapping("/message.do")	
 	public ModelAndView message(CommandMap map,  HttpServletRequest request) {
 		System.out.println("map::::::::" + map.getMap() );
 		ModelAndView mv = new ModelAndView("message");
@@ -45,11 +46,11 @@ public class MessageController {
 				
 				List<Map<String, Object>> messageDetailList = 
 						messageService.messageDetailList(map.getMap());//member_id, openmsg
-				mv.addObject("detailList", messageDetailList);
+				mv.addObject("messageDetailList", messageDetailList);
 				mv.addObject("sendId", sendId);
 				
 				
-				System.out.println("################### detailList" );
+				System.out.println("################### messageDetailList" );
 			}
 			//쪽지 리스트 불러오기
 			List<Map<String, Object>> list = messageService.messageList(map.getMap());

@@ -408,7 +408,7 @@ function handleOnInputName(e)  {
 					<input type="submit" id="joinForm" value="가입하기" style="display:none">
 		</form>
 					<input id="joinSubmit" name="joinSubmit" value="메일 인증하고 가입하기" onclick="join()">
-		</div>
+		</div>callList
 					<input type="hidden" id="joinIdDummy" value="">
 					<input type="hidden" id="joinNameDummy" value="">
 					<input type="hidden" id="joinPwDummy" value="">
