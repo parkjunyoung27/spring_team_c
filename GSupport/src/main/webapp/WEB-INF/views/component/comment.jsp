@@ -21,10 +21,9 @@ $(function(){
 
 </script>
 
-<!-- 댓글 부분 -->
+<!-- 댓글 부분 -->∂
 <div id="comment"> 
-	<p id="commentCount" style="font-weight:700;">0개의 댓글</p>
-	<hr>
+	<p id="commentCount" style="font-weight:700; margin:20px;">0개의 댓글</p>
 	<ul>
 		<!-- 댓글 리스트 -->
 		<li id="commentContainer">	
@@ -43,7 +42,7 @@ $(function(){
 				<!-- 댓글내용 수정 -->
 				<div class="modifyWrite">
 					<form action="./commentModify" method="post">
-						<textarea name="ccontent" style="width:100%;height:100px;overflow:auto;resize: none;">댓글내용 수정내용 입력</textarea>
+						<textarea name="ccontent" id="commentWriteText" placeholder="수정 내용 입력하세요. "></textarea>
 						<input type="hidden" name="bno" value="${l.bno }"><input type="hidden" name="cno" value="${l.cno }">
 						<div id="modifyWriteBtn">
 							<button>수정취소</button>
@@ -55,7 +54,6 @@ $(function(){
 			</div>	
 		</li>	
 	</ul>
-	<hr>
 		<!-- 댓글쓰기 -->
 		<div id="commentWrite">
 			<form action="./commentWrite" method="post">

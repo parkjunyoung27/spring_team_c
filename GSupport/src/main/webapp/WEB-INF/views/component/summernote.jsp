@@ -35,6 +35,7 @@ body {
 .note-editor.note-frame {
     border: 1px solid #a9a9a9;
     width: 99.4%;
+    margin-bottom:20px;
 }
 </style>
 

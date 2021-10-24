@@ -41,16 +41,20 @@ function linkPage(pageNo){
 	
 	#boardPaging a:hover{
 		font-weight:700;
+		color:green;
 	}
 
 	#boardLine{
 		width: 100%;
 	    padding: 0px;
 	    cursor: pointer;
-	    min-height: 730px;
+	    min-height: 700px;
 	}
 	
-	#boardLineClick:hover{font-weight:700;}
+	#boardLineClick:hover{
+	font-weight:700;
+	color:green;
+	}
 	
 </style>
 
@@ -61,16 +65,12 @@ function linkPage(pageNo){
 	<%@ include file="./component/navbar.jsp"%>
 
 	<!-- board -->
-	<div id="boardContainer">
-
+	<div class="container">
 		<!--서브메뉴바 -->
 		<c:import url="./sub_board_menu.jsp" />
 		<!-- 게시판 내용 -->
 		<div id="content">
 			<div id="content_title_border">
-				<div id="content_title">
-					${board_name}
-				</div>
 			</div>
 			<ul class="board">
 				<li class="fl tc w15 title t_line">번호</li>
@@ -100,11 +100,11 @@ function linkPage(pageNo){
 				</c:forEach>
 			</ul>
 			
-			<!-- 글쓰기 -->
+<%-- 			<!-- 글쓰기 -->
 			<c:if test="${sessionScope.id ne null }">
 				<a href="./write.do?categoryNo=${categoryNo }">글쓰기</a>
 			</c:if>
-			
+ --%>			
 			<!-- 페이징 -->
 			<div id="boardPaging">
 				<ui:pagination paginationInfo="${paginationInfo }" type="text" jsFunction="linkPage"/>

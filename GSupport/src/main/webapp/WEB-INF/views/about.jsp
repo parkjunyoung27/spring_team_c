@@ -29,11 +29,11 @@
 	height: 100vh;
 	background-blend-mode: muliply;
 	scroll-snap-align: start;
-	
 }
 
 .container2 .section1:nth-child(1) {
-	background: red;
+	background:
+		url("http://localhost:8080/GSupport/resources/images/about.png");
 	background-size: cover;
 	background-attachment: fixed;
 }
@@ -81,14 +81,10 @@
 </head>
 <body>
 	<!-- navbar -->
-<%@ include file="./component/navbar.jsp"%>
+	<%@ include file="./component/navbar.jsp"%>
 	<div class="container2">
 		<div class="section1">
 			<div class="content1">
-				<h2>asdf</h2>
-				<p>heldjkfljsldkjfleijf ljel jflksdj heldjkfljsldkjfleijf ljel
-					jflksdj heldjkfljsldkjfleijf ljel jflksdj heldjkfljsldkjfleijf ljel
-					jflksdj heldjkfljsldkjfleijf ljel jflksdj</p>
 			</div>
 		</div>
 		<div class="section1">

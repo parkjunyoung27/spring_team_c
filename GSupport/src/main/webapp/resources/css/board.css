@@ -6,13 +6,9 @@
 }
 
 /*board, write*/
-#boardContainer {
-	width: 100%;
-	min-height: 700px;
-	margin-top: 100px;
-	padding: 40px 40px 160px;
-	margin-bottom: 100px;
-	overflow: hidden;
+
+#boardLine{
+	font-size:13px;
 }
 
 #sub_board_menu {
@@ -23,29 +19,28 @@
 #sub_board_menu a {
 	text-decoration: none;
 	color: black;
-	font-size: 200%;
+	font-size: 20px;
 	font-weight: bold;
 }
 
 #sub_board_menu nav {
 	box-sizing: border-box;
+	margin-top:20px;
 }
 
 #sub_board_menu nav a {
 	text-decoration: none;
 	color: black;
-	font-size: 120%;
+	font-size: 15px;
 	font-weight: normal;
 	text-align: left;
 }
 
 #sub_list {
-	margin-top: 30px;
 	padding: 0px;
 }
 
 #sub_list li {
-	margin-top: 30px;
 }
 
 #bwrite a {
@@ -53,8 +48,8 @@
 }
 
 #bwrite a:hover {
-	font-size: 150%;
 	font-weight: bold;
+	color:green;
 }
 
 #content {
@@ -109,12 +104,12 @@ ul li {
 	border-top: 2px solid black;
 	border-bottom: 2px solid black;
 	letter-spacing: 7px;
-	font-size: larger;
+	font-size: medium;
 }
 
 .list {
 	margin-top: 20px;
-	height: 45px;
+	height: 40px;
 	background: white;
 	border-bottom: 1px solid #ebebeb;
 	letter-spacing: 1px;
@@ -162,54 +157,45 @@ ul li {
 
 #bdetail_area {
 	overflow: hidden;
-	border-top: 1px solid black;
-	margin-top: 25px;
 }
 
 #dtitle {
-	float: left;
-	width: 50%;
+	font-size:larger;
+	padding-bottom:20px;
 }
 
 #dmember {
-	float: left;
-	width: 25%;
+	font-size:15px;
 }
 
 #ddate {
-	float: left;
-	width: 25%;
+	color:grey;
+	font-size:small;
 }
 
 #dtitle_area {
-	display: flex;
-	height: 50px;
+	display: block;
 	font-size: 17px;
-	border-bottom: 1px solid black;
-	background-color: #6FCC9870;
-	line-height: 50px;
 	padding-left: 5px;
 }
 
 #dcontent {
 	padding: 5px;
 	padding-top: 25px;
-	border-bottom: 1px solid black;
 	min-height: 300px;
 }
 
 #detail_btn {
 	text-align: end;
+	float:right;
 }
 
 #detail_btn button {
-	height: 30px;
-	background-color: whitesmoke;
-	font-weight: 700;
-	border: 1px solid black;
-	margin-top: 5px;
 	cursor: pointer;
 	width: 15%;
+	width:60px;
+	border:none;
+	background:none;
 }
 
 /* comment */
@@ -230,6 +216,9 @@ ul li {
 
 li#commentContainer {
 	width: 100%;
+	padding:30px 10px 30px 10px;
+	border-top: 1px solid #c8c8c8;
+	border-bottom: 1px solid #c8c8c8;
 }
 
 div#commentbox {
@@ -250,7 +239,7 @@ div#commentbox {
 	text-decoration: none;
 	color: black;
 	cursor: pointer;
-	font-size: smaller;
+	font-size: smaller;	
 }
 
 div#commentContent {
@@ -268,9 +257,12 @@ div#commentWrite {
 
 #commentWriteText {
 	width: 100%;
-	margin: 0px;
-	padding: 5px;
+	margin-top: 20px;
+	padding: 20px;
 	height: 100px;
+	box-shadow:-0.5px 0.5px 3px 1px #b7b7b7;
+	border:none;
+	border-radius:10px;
 }
 
 #commentWriteBtn {
@@ -279,10 +271,10 @@ div#commentWrite {
 	margin-top: 15px;
 	width: 20%;
 	border-radius: 5px;
-	border: none;
+	box-shadow: -0.5px 0.5px 3px 1px #b7b7b7;
+	border:none;
 	cursor: pointer;
-	height: 30px;
-	background-color: green;
+	background-color: #65ad4a;
 	color: white;
 	letter-spacing: 5px;
 	font-size: larger;
@@ -294,6 +286,7 @@ div#commentWrite {
 
 .commentModify a:hover {
 	font-weight: 700;
+	color:green;
 }
 
 .modifyWrite textarea {
@@ -306,12 +299,30 @@ div#commentWrite {
 #modifyWriteBtn {
 	width: 100%;
 	margin-top: 10px;
-	text-align: right;
-	background-color: white;
+	text-align: right;	
+	letter-spacing: 7px;	
+}
+
+#modifyWriteBtn button{
+	background:white;
+	border:none;
+	font-size: smaller;
+	
+}
+
+#modifyWriteBtn button:hover{
+	background:white;
+	border:none;
+	color:green;
+	font-weight:bold;
+	cursor:point;
 }
 
 #content_title {
 	margin-bottom: 20px;
+	border-bottom: 1px solid #c8c8c8;
+	color:black;
+	display:block;
 }
 
 

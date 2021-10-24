@@ -16,6 +16,7 @@
 
 /* Left column */
 .column.side {
+	float:left;
 	width: 20%;
 	border-style: solid 1px;
 	height: auto;
@@ -62,7 +63,8 @@ a > .disabled {
 
 .column.middle {
 	margin-left: 10px;
-	width: 75%;
+	float:right;
+	width: 78%;
 	background-color: white;
 }
 

@@ -14,8 +14,9 @@
 
 <style type="text/css">
 #detail_btn button:hover {
-	background-color: #6FCC9870;
+	background-color: white;
 	font-weight: 700;
+	color:green;
 }
 </style>
 
@@ -36,32 +37,45 @@ function board_delete(no1, no2){
 	<%@ include file="./component/navbar.jsp"%>
 
 	<!-- board -->
-	<div id="boardContainer">
+	<div class="container">
 
 		<!--서브메뉴바 -->
 		<c:import url="./sub_board_menu.jsp" />
 
-		<div id="content_title">
-			<h2>${board_name }</h2>
-		</div>
 		<div id="bdetail_area">
+			<div id="content_title">
+				<div id="dtitle">${detail.board_title}<br>
+				</div>
+
+			</div>
 			<div id="dtitle_area">
-				<div id="dtitle">${detail.board_title}</div>
 
-				<div id="dmember">${detail.member_name}</div>
+				<div id="dmember">${detail.member_name}
+					<div id="detail_btn">
+						<c:if
+							test="${sessionScope.id eq detail.member_id || sessionScope.grade eq '3' }">
+							<button
+								onclick="location.href='./update.do?categoryNo=${param.categoryNo }&board_no=${detail.board_no }'">수정하기</button>
+							<button
+								onclick="return board_delete( ${param.categoryNo }, ${detail.board_no })">삭제하기</button>
+						</c:if>
+					</div>
 
-				<div id="ddate">
-					<jsp:useBean id="today" class="java.util.Date" />
-					<fmt:formatDate var="now" value="${today}" pattern="yyyyMMdd" />
-					<fmt:formatDate var="write_date" value="${detail.board_date}" pattern="yyyyMMdd" />
-					<c:choose>
-						<c:when test="${write_date eq now}">
-							<fmt:formatDate value="${detail.board_date}" pattern="HH:mm" />
-						</c:when>
-						<c:otherwise>
-							<fmt:formatDate value="${detail.board_date}" pattern="yyyy.MM.dd" />
-						</c:otherwise>
-					</c:choose>
+					<div id="ddate">
+						<jsp:useBean id="today" class="java.util.Date" />
+						<fmt:formatDate var="now" value="${today}" pattern="yyyyMMdd" />
+						<fmt:formatDate var="write_date" value="${detail.board_date}"
+							pattern="yyyyMMdd" />
+						<c:choose>
+							<c:when test="${write_date eq now}">
+								<fmt:formatDate value="${detail.board_date}" pattern="HH:mm" />
+							</c:when>
+							<c:otherwise>
+								<fmt:formatDate value="${detail.board_date}"
+									pattern="yyyy.MM.dd" />
+							</c:otherwise>
+						</c:choose>
+					</div>
 				</div>
 
 			</div>
@@ -71,15 +85,10 @@ function board_delete(no1, no2){
 			<div id="dcontent">
 				<c:if test="${detail.board_file ne null }">
 				</c:if>
-				<img alt="Can't_load_this_image" src="./resources/upfile/upload/${detail.board_file }">
+				<img alt="Can't_load_this_image"
+					src="./resources/upfile/upload/${detail.board_file }">
 			</div>
 
-			<div id="detail_btn">
-				<c:if test="${sessionScope.id eq detail.member_id || sessionScope.grade eq '3' }">
-					<button onclick="location.href='./update.do?categoryNo=${param.categoryNo }&board_no=${detail.board_no }'">수정하기</button>
-					<button onclick="return board_delete( ${param.categoryNo }, ${detail.board_no })">삭제하기</button>
-				</c:if>
-			</div>
 
 			<!-- 댓글달기 -->
 			<%@ include file="./component/comment.jsp"%>

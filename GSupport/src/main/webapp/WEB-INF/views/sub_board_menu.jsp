@@ -18,7 +18,8 @@ function bwrite(){
 
 
 <div id="sub_board_menu">
-	<a href="/GSupport/board.do?categoryNo=${categoryNo}"> ${board_name} </a>
+	<c:if test="${board_name eq board_name }"><a href="/GSupport/board.do?categoryNo=${categoryNo}"> ${board_name} </a></c:if>
+	<c:if test="${detail.board_name eq detail.board_name }"><a href="/GSupport/board.do?categoryNo=${param.categoryNo }"> ${detail.board_name} </a></c:if>
 	<nav>
 		<ul id="sub_list">
 			<li id="bwrite"><a onclick="javascript:bwrite();" >글쓰기</a></li>			

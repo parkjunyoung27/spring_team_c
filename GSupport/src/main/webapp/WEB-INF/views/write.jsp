@@ -16,12 +16,23 @@ function writeCheck(){
 		return false;
 	}
 }	
+
 </script>
 <style>
+#boardContainer{
+margin-top:100px;
+}
+
+#write_area{
+margin-bottom:50px;
+}
 
 #write_submit_btn:hover{
-	background-color:cadetblue;
+	background-color:green;
 	color:white;
+	border:none;
+	transition: 800ms ease all;
+	
 }
 
 </style>
