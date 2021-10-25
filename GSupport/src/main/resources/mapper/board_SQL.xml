@@ -58,8 +58,34 @@
 			OR (board_no=#{board_no } AND ${member_grade}=3)
 	</update>
 	
+	<select	id="commentList" resultType="HashMap">
+		SELECT * FROM board_comment_view
+		WHERE board_no=#{board_no}
+			AND NOT comment_delete='1'
+	</select>
 	
+	<select	id="commentTotalCount" parameterType="HashMap" resultType="HashMap">
+		SELECT COUNT(*) as commentTotalCount FROM board_comment_view
+		WHERE board_no=#{board_no}
+			AND NOT comment_delete='1'
+	</select>
 	
+	<insert id="commentWrite" parameterType="HashMap">
+		INSERT INTO board_comment (board_no, comment_content, member_no) 
+		VALUES (#{board_no}, #{comment_content}, #{member_no})	
+	</insert>
+	
+	<update id="commentDelete" parameterType="HashMap">
+		UPDATE board_comment SET comment_delete=1 
+		WHERE (board_cno=#{board_cno } AND member_no=#{member_no})
+			OR (board_cno=#{board_cno } AND ${member_grade}=3)
+	</update>
+	
+	<select id="commentUpdate" resultType="HashMap">
+		UPDATE board_comment SET comment_content=#{ccontent}
+		WHERE (board_cno=#{board_cno } AND member_no=#{member_no})
+			OR (board_cno=#{board_cno } AND ${member_grade}=3)
+	</select>
 	
 	
 </mapper>

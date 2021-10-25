@@ -73,7 +73,7 @@ public class BoardController {
 				
 		//토탈 카운트
 		int totalCount = boardService.totalCount(map.getMap());
-				
+						
 		//전자정부 페이징 불러오기
 		PaginationInfo paginationInfo = new PaginationInfo();
 		paginationInfo.setCurrentPageNo(pageNo);
@@ -91,6 +91,7 @@ public class BoardController {
 				
 		//질의
 		List<Map<String, Object>> boardList = boardService.boardList(map.getMap());
+		int commentTotalCount = boardService.commentTotalCount(map.getMap());
 		
 		//담기
 		mv.addObject("list", boardList);
@@ -100,6 +101,7 @@ public class BoardController {
 		mv.addObject("paginationInfo", paginationInfo);
 		mv.addObject("pageNo", pageNo);
 		mv.addObject("totalCount", totalCount);
+		mv.addObject("commentTotalCount", commentTotalCount);
 						
 		return mv;
 	}
@@ -144,15 +146,23 @@ public class BoardController {
 	public ModelAndView detail(CommandMap map, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("detail");
 		Map<String, Object> detail = boardService.detail(map.getMap());
+		
+		//질의
+		List<Map<String, Object>> commentList = boardService.commentList(map.getMap());
+		int commentTotalCount = boardService.commentTotalCount(map.getMap());
+		
+		//담기
 		mv.addObject("detail", detail);
+		mv.addObject("commentList", commentList);
+		mv.addObject("commentTotalCount", commentTotalCount);
 
 		return mv;
 	}
 	
 	@GetMapping("/summernote")
-   public String chat() {
+	public String chat() {
       return "./component/summernote";
-   }
+	}
 	
 	@GetMapping("/update")
 	public ModelAndView update(CommandMap map, HttpServletRequest request) {
@@ -179,6 +189,7 @@ public class BoardController {
 			return "redirect:/board.do?categoryNo=" + map.getMap().get("board_cate");
 		}
 	}
+	
 	@GetMapping("/delete")
 	public String delete(@RequestParam("board_no") int board_no, HttpServletRequest request, CommandMap map) {
 		HttpSession session = request.getSession();
@@ -198,5 +209,53 @@ public class BoardController {
 			return "redirect:/login.do";
 		}
 	}
+	
+	@PostMapping("/commentWrite")
+	public String commentWrite(CommandMap map, HttpServletRequest request, HttpSession session) {
+
+		//map에 넣기
+		map.put("member_no", session.getAttribute("member_no"));
+		System.out.println("코멘트 라이트 맵 값 : " + map.getMap());
+		
+		//질의
+		boardService.commentWrite(map.getMap());
+
+		return "redirect:/detail.do?categoryNo=" + map.get("categoryNo") + "&board_no=" + map.get("board_no");
+	}
+
+	@PostMapping("/comment_update")
+	public String comment_update(CommandMap map, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		
+		//세션인증
+		if (session.getAttribute("member_no") != null) {
+			map.put("member_no", session.getAttribute("member_no"));
+			map.put("member_grade", session.getAttribute("grade"));
+			System.out.println("맵값 확인중 : " + map.getMap());
+			boardService.comment_update(map.getMap());
+						
+			return "redirect:/detail.do?categoryNo=" + map.getMap().get("board_cate") + "&board_no=" + map.getMap().get("board_no");
+		} else {
+			return "redirect:/board.do?categoryNo=" + map.getMap().get("board_cate");
+		}
+	}
+	
+	@GetMapping("/comment_delete")
+	public String comment_delete(@RequestParam("board_cno") int board_cno, HttpServletRequest request, CommandMap map) {
+		HttpSession session = request.getSession();
+		map.put("member_no", session.getAttribute("member_no"));
+		map.put("member_grade", session.getAttribute("grade"));
+		if (session.getAttribute("member_id") != null) {
+			System.out.println("맵 값 : " + map.getMap());
+			int result = boardService.comment_delete(map.getMap());
+			System.out.println("삭제 결과 : " + result );
+
+			return "redirect:/detail.do?categoryNo="+map.get("categoryNo")+"&&board_no="+map.get("board_no");
+		}else {
+			return "redirect:/login.do";
+		}
+	}
+	
+
 
 }

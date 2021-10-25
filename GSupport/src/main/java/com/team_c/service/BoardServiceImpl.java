@@ -55,5 +55,25 @@ public class BoardServiceImpl implements BoardService {
 	public int delete(Map<String, Object> map) {
 		return boardDAO.delete(map);
 	}
+
+	public List<Map<String, Object>> commentList(Map<String, Object> map) {
+		return boardDAO.commentList(map);
+	}
+
+	public int commentTotalCount(Map<String, Object> map) {
+		return boardDAO.commentTotalCount(map);
+	}	
+	
+	public int commentWrite(Map<String, Object> map) {
+		return boardDAO.commentWrite(map);
+	}
+
+	public int comment_delete(Map<String, Object> map) {
+		return boardDAO.comment_delete(map);
+	}
+
+	public Map<String, Object> comment_update(Map<String, Object> map) {
+		return boardDAO.comment_update(map);
+	}
 	
 }

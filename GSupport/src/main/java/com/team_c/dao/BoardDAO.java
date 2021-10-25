@@ -46,6 +46,26 @@ public class BoardDAO extends AbstractDAO {
 		return write("board.delete", map);
 	}
 
+	public List<Map<String, Object>> commentList(Map<String, Object> map) {
+		return selectList("board.commentList", map);
+	}
+	
+	public int commentTotalCount(Map<String, Object> map) {
+		return util.toInt((selectOne("board.commentTotalCount", map).get("commentTotalCount")));
+	}
+	
+	public int commentWrite(Map<String, Object> map) {
+		return write("board.commentWrite", map);
+	}
+
+	public int comment_delete(Map<String, Object> map) {
+		return write("board.commentDelete", map);
+	}
+
+	public Map<String, Object> comment_update(Map<String, Object> map) {
+		return (Map<String, Object>) selectOne("board.commentUpdate", map);
+	}
+
 
 
 

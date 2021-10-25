@@ -52,10 +52,11 @@ function board_delete(no1, no2){
 
 				<div id="dmember">${detail.member_name}
 					<div id="detail_btn">
-						<c:if
-							test="${sessionScope.id eq detail.member_id || sessionScope.grade eq '3' }">
+						<c:if test="${sessionScope.id eq detail.member_id }">
 							<button
 								onclick="location.href='./update.do?categoryNo=${param.categoryNo }&board_no=${detail.board_no }'">수정하기</button>
+						</c:if>
+						<c:if test="${sessionScope.id eq detail.member_id || sessionScope.grade eq '3' }">
 							<button
 								onclick="return board_delete( ${param.categoryNo }, ${detail.board_no })">삭제하기</button>
 						</c:if>
