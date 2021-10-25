@@ -121,7 +121,8 @@ div#searchButton {
 }
 
 #storeSearchList:hover {
-	background-color: #aaaaaa;
+	background-color: #228b224d;
+	color:white;
 	cursor: pointer;
 }
 

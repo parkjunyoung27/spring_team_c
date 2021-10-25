@@ -46,7 +46,7 @@
 	padding: 5px 10px;
 	border: none;
 	height: 50px;
-	font-size: 20px;
+	font-size: 13px;
 	margin-bottom: 10px;
 	border-bottom: 1px solid #ebebeb;
 }
@@ -55,7 +55,6 @@
 	border-radius: 5px;
 	text-align: center;
 	width: 50%;
-	font-size: 20px;
 	margin-bottom: 10px;
 	border-bottom: 1px solid #ebebeb;
 }
@@ -86,7 +85,7 @@
 			<div class="customer-content">
 				<div class="customer-content-section">
 					<div class="customer-content-header">
-						<h1>가맹점 정보 수정</h1>
+						<h2>가맹점 정보 수정</h2>
 					</div>
 					<div class="customer-account-container">
 						<div class="customer-formbox">

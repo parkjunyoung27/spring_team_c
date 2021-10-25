@@ -17,16 +17,6 @@
 
 
 <style>
-.button_submit {
-	width: 500px;
-	height: 50px;
-	font-size: 20px;
-	text-align: center;
-	font-weight: bold;
-	background-color: green;
-	color: white;
-	margin-top: 30px;
-}
 
 .customer-content-detail {
 	line-height: 1.6;

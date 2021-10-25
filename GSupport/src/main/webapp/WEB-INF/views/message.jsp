@@ -23,30 +23,29 @@ body {
 }
 
 #message_container {
-	width: 750px;
-	height: 700px;
+	height: auto;
 	background: white;
 	margin: 0 auto;
 	font-size: 0;
-	outline: 1px solid grey;
+    box-shadow: -0.5px 0.5px 3px 1px #b7b7b7;
 	border-radius: 10px;
 	overflow: hidden;
 }
 
 aside {
-	width: 40%;
+	width: 30%;
 	height: auto;
-	background-color: #2e4f90;
+	background-color: #6fbcec;
 	display: inline-block;
 	font-size: 15px;
 	vertical-align: top;
 }
 
 main {
-	width: 60%;
+	width: 70%;
 	height: 400px;
 	display: inline-block;
-	font-size: 15px;
+	font-size: 13px;
 	vertical-align: top;
 	background-color: white;
 }
@@ -81,7 +80,6 @@ aside ul {
 	list-style-type: none;
 	height: 400px;
 	overflow-y: scroll;
-	border-bottom: 2px solid #fff;
 }
 
 ::-webkit-scrollbar {
@@ -214,7 +212,7 @@ main header h3 {
 #chat .message {
 	padding: 20px;
 	color: #fff;
-	line-height: 25px;
+	line-height: 10px;
 	max-width: 90%;
 	display: inline-block;
 	text-align: left;
@@ -231,6 +229,8 @@ main header h3 {
 
 #chat .me .message {
 	background-color: #6fbced;
+	min-width: 50px;
+	
 }
 
 #chat .triangle {
@@ -247,7 +247,7 @@ main header h3 {
 
 #chat .me .triangle {
 	border-color: transparent transparent #6fbced transparent;
-	margin-left: 350px;
+    margin-left: 90%;
 }
 
 .main send {
@@ -294,9 +294,11 @@ main header h3 {
 	line-height: 15px;
 	display: inline-block;
 	text-align: left;
+	border:none;
+	box-shadow: -0.5px 0.5px 3px 1px #b7b7b7;
 	border-radius: 5px;
 	height: 100px;
-	width: 500px;
+	width: 80%;
 }
 
 .send_id {
@@ -307,6 +309,8 @@ main header h3 {
 	line-height: 10px;
 	width: auto;
 	display: inline-block;
+	border:none;
+	box-shadow: -0.5px 0.5px 3px 1px #b7b7b7;	
 	border-radius: 5px;
 }
 
@@ -393,18 +397,6 @@ td {
 			<div id="container">
 				<div id="message_container">
 
-					<div class="head">
-						<div>
-							<img
-								src="http://localhost:8080/GSupport/resources/images/logo2.png"
-								alt="" style="height: 80px; float: left; padding: 10px;">
-							<div
-								style="font-size: 20px; transform: translateY(30px); float: left; width: 600px;">
-											
-							</div>
-						</div>
-					</div>
-
 					<aside>
 						<ul>
 							<c:forEach items="${list }" var="q">
@@ -459,10 +451,8 @@ td {
 								type="text" name="content" placeholder="내용을 입력하세요."
 								class="send_text">
 							<button
-								style="background-color: transparent; border: none; float: right; width: 200px; padding: 0px;">
-								<img
-									src="http://localhost:8080/GSupport/resources/images/send.png"
-									alt="" style="width: 150px;">
+								style="background-color: transparent; border: none; float: right; width: 20%; padding: 0px; cursor:point;">
+								<img src="http://localhost:8080/GSupport/resources/images/logo2.png" alt="" style="float: right;  width:70px; margin-right:10px;">
 							</button>
 
 						</form>
@@ -471,6 +461,13 @@ td {
 			</div>
 		</div>
 	</div>
+	
+
+
+	<!-- footer -->
+	<%@ include file="./component/footer.jsp"%>
+
+	
 
 </body>
 </html>

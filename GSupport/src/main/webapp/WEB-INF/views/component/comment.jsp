@@ -36,7 +36,6 @@ function comment_delete(no1, no2, no3){
 <!-- 댓글 부분 -->
 <div id="comment"> 
 	<p id="commentCount" style="font-weight:700; margin:20px;">0개의 댓글</p>
-	<hr>
 	<c:forEach items="${commentList }" var="cl" >
 	<ul>
 		<!-- 댓글 리스트 -->

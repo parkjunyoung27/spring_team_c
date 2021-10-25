@@ -17,16 +17,6 @@
 
 
 <style>
-.button_submit {
-	width: 500px;
-	height: 50px;
-	font-size: 20px;
-	text-align: center;
-	font-weight: bold;
-	background-color: green;
-	color: white;
-	margin-top: 30px;
-}
 .time_left {
 	float: left;
 	width: 50%;
@@ -45,7 +35,7 @@
 	padding: 5px 10px;
 	border: none;
 	height: 50px;
-	font-size: 20px;
+	font-size: 15px;
 	margin-bottom: 10px;
 	border-bottom: 1px solid #ebebeb;
 }
@@ -53,7 +43,7 @@
 	border-radius: 5px;
 	text-align: center;
 	width: 50%;
-	font-size: 20px;
+	font-size: 15px;
 	margin-bottom: 10px;
 	border-bottom: 1px solid #ebebeb;
 }

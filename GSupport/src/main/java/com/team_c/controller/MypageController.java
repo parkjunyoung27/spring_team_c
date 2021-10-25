@@ -506,5 +506,58 @@ public class MypageController {
 		return mv;
 	}
 	
+	@GetMapping("/myPage_board.do")
+	public ModelAndView myPage_board(CommandMap map, HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("myPage_board");
+		HttpSession session = request.getSession();
+		map.put("member_id", session.getAttribute("member_id"));
+
+		List<Map<String, Object>> board = mypageService.mypageBoard(map.getMap());
+		System.out.println(board + " 1!!!!!!!!!!!!!!!!!!!!1");
+//
+//		// *****페이징*****
+//		// 페이지 번호가 오는지 확인하기
+//		int pageNo = 1;
+//		if (map.containsKey("pageNo")) {
+//			pageNo = Integer.parseInt(String.valueOf(map.get("pageNo")));
+//		}
+//		int listScale = 4;// 리스트 크기
+//		int pageScale = 10;
+//
+//		// 토탈 카운트
+//		int totalCount = mypageService.totalCount(map.getMap());
+//
+//		// 전자정부 페이징 불러오기
+//		PaginationInfo paginationInfo = new PaginationInfo();
+//		paginationInfo.setCurrentPageNo(pageNo);
+//		paginationInfo.setRecordCountPerPage(listScale);
+//		paginationInfo.setPageSize(pageScale);
+//		paginationInfo.setTotalRecordCount(totalCount);
+//
+//		// 계산하기
+//		int startPage = paginationInfo.getFirstRecordIndex();
+//		int lastPage = paginationInfo.getRecordCountPerPage();
+//
+//		// DB로 보내기 위해서 map에 담아주세요.
+//		map.put("startPage", startPage);
+//		map.put("lastPage", lastPage);
+//		if(mypageBoard.size() > 0) {
+//			System.out.println(map.getMap());
+//		}
+//		mv.addObject("paginationInfo", paginationInfo);
+//		mv.addObject("pageNo", pageNo);
+//		mv.addObject("totalCount", totalCount);
+		
+		mv.addObject("board", board);
+		System.out.println(board + " 1!!!!!!!!!!!!!!!!!!!!1");
+		return mv;
+
+	
+	
+	
+
+	}
+
+	
 
 }

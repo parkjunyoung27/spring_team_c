@@ -98,4 +98,8 @@ public class MypageDAO extends AbstractDAO {
 	public List<Map<String, Object>> reservation2(Map<String, Object> map) {
 		return selectList("mypage.reservation2", map);
 	}
+
+	public List<Map<String, Object>> mypageBoard(Map<String, Object> map) {
+		return selectList("mypage.mypageBoard", map);
+	}
 }

@@ -12,31 +12,32 @@
 		</div>
 	</div>
 	<div class="customer_side">
-		<h1 class="customer_side_title">예약 관리</h1>
+		<h3 class="customer_side_title">예약 관리</h3>
 		<ul class="customer_side_list">
-		<li><a href="myPage_reserv.do">사용자 예약 확인하기 </a></li>
-		<c:if test="${sessionScope.grade ne 1 && sessionScope.shop_no ne null}">
-			<li><a href="myPage_reservCheck.do?shop_no=${sessionScope.shop_no}">업주 예약 확인하기 </a></li>
+		<li><a href="myPage_reserv.do">사용자 예약 </a></li>
+		<c:if test="${sessionScope.grade ne 1 }">
+			<li><a href="myPage_reservCheck.do?shop_no=${sessionScope.shop_no}">가맹점 예약 </a></li>
 		</c:if>
 		</ul>
 	</div>
 
 
 	<div class="customer_side">
-		<h1 class="customer_side_title">활동</h1>
+		<h3 class="customer_side_title">활동</h3>
 		<ul class="customer_side_list">
 			<li><a href="message.do">쪽지함 </a></li>
+			<li><a href="./myPage_board.do">작성한 게시글 </a></li>
 		</ul>
 	</div>
 
 	<div class="customer_side">
-		<h1 class="customer_side_title">즐겨찾기</h1>
+		<h3 class="customer_side_title">즐겨찾기</h3>
 		<ul class="customer_side_list">
-			<li><a href="myPage_bookmark.do">즐겨찾기 관리 </a></li>
+			<li><a href="myPage_bookmark.do">즐겨찾기 목록</a></li>
 		</ul>
 
 		<div class="customer_side">
-			<h1 class="customer_side_title">나의 정보</h1>
+			<h3 class="customer_side_title">나의 정보</h3>
 			<ul class="customer_side_list">
 				<li><a href="./myPage_update.do">회원정보 수정 </a></li>
 				<c:choose>

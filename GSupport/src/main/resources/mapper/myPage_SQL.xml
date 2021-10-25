@@ -175,4 +175,11 @@
 		SELECT * FROM shop_gu 
 	</select>
 	
+	<select id="mypageBoard" parameterType="HashMap" resultType="HashMap">
+		SELECT *
+		FROM board_view
+		WHERE member_id=#{member_id}
+
+	</select>
+	
 </mapper>

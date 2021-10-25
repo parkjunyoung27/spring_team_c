@@ -115,4 +115,8 @@ public class MypageServiceImpl implements MypageService {
 		return mypageDAO.reservation2(map);
 	}
 
+	public List<Map<String, Object>> mypageBoard(Map<String, Object> map) {
+		return mypageDAO.mypageBoard(map);
+	}
+
 }

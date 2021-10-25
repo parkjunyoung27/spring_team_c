@@ -58,34 +58,26 @@
 .customer_content_reservHistory_header {
 	border-bottom: 1px solid #e5e5e5;
 	margin-bottom: 10px;
-	height: 40px;
+	height: 30px;
 	padding-left: 10px;
 	padding-right:10px;
-	font-size:20px;
+	font-size:13px;
 }
 
 .customer_content_reservHistory_content {
-	line-height: 30px;
+    line-height: 30px;
 	border-bottom: 1px solid #e5e5e5;
 	padding: 10px 20px 10px 20px;
-	font-size: 15px;
+	font-size: 13px;
 }
 
-.button_submit {
-	float: right;
-	font-size: 14px;
-	text-align: center;
-	font-weight: bold;
-	background-color: green;
-	color: white;
-	margin-right:20px;
-}
 
 .date {
-	font-size:17px;
+	font-size:13px;
 	float: right;
 	text-align: center;
 }
+
 </style>
 <body>
 
@@ -103,12 +95,12 @@
 				<div class="reserv">
 
 					<div class="reserv-body">
-						<h3 class="reserv-title">
+						<div class="reserv-title">
 							<a href="./myPage_reservCheck.do?status=wait">예약 대기 중<br>
-						<c:if test="${wait eq null}">0</c:if>
-						<c:if test="${wait ne null}">${wait }</c:if> 개
+					<strong>	<c:if test="${wait eq null}">0</c:if></strong>
+						<strong><c:if test="${wait ne null}">${wait }</c:if></strong> 개
 							</a>
-						</h3>
+						</div>
 
 					</div>
 
@@ -116,24 +108,24 @@
 
 				<div class="reserv">
 					<div class="reserv-body">
-						<h3 class="reserv-title">
+						<div class="reserv-title">
 							<a href="./myPage_reservCheck.do?status=success">예약 승인<br>
-						<c:if test="${success eq null}">0</c:if>
-						<c:if test="${success ne null}">${success }</c:if> 개
+						<strong><c:if test="${success eq null}">0</c:if></strong>
+						<strong><c:if test="${success ne null}">${success }</c:if></strong> 개
 							</a>
-						</h3>
+						</div>
 						
 					</div>
 				</div>
 
 				<div class="reserv">
 					<div class="reserv-body">
-						<h3 class="reserv-title">
+						<div class="reserv-title">
 							<a href="./myPage_reservCheck.do?status=cancel">예약 취소<br>
-						<c:if test="${cancel eq null}">0</c:if>
-						<c:if test="${cancel ne null}">${cancel }</c:if> 개
+						<strong><c:if test="${cancel eq null}">0</c:if></strong>
+						<strong><c:if test="${cancel ne null}">${cancel }</c:if></strong> 개
 							</a>
-						</h3>
+						</div>
 
 					</div>
 				</div>
@@ -141,7 +133,7 @@
 			</div>
 
 			<div class="customer_content">
-				<h1>예약 목록</h1>
+				<h2>예약 목록</h2>
 				<c:forEach items="${reservation2 }" var="r">
 
 					<div class="customer_content_reservHistory">
@@ -191,7 +183,7 @@
 									<p>${r.reservation_reservTime }</p>
 								</div>
 
-								<h2>${r.shop_name }</h2>
+								<h3>${r.shop_name }</h3>
 								${r.people }명 <br> 예약 현황 :
 								<c:choose>
 									<c:when test="${r.reservation_status eq 'wait' }">
@@ -204,7 +196,7 @@
 										<span style="color:red; font-weight:bold;">예약 취소</span>
 									</c:when>
 								</c:choose>
-								<h3>예약자 : ${r.member_name }</h3>
+								<h4>예약자 아이디 : ${r.member_name }</h4>
 								<h4>요구사항 : ${r.reservation_reservRequest }</h4>
 
 

@@ -20,6 +20,7 @@
 <style>
 .customer_content_reserv {
 	min-height: 350px;
+	font-size:13px;
 }
 
 .customer_content_reservHistory {
@@ -42,11 +43,10 @@
 	border: 1px solid #e5e5e5;
 	border-top: none;
 	padding: 10px 20px 10px 20px;
-	font-size: 15px;
 	text-align: center;
 }
 
-.button_submit {
+.button_submit1 {
 	float: right;
 	width: auto;
 	height: 20px;
@@ -72,14 +72,14 @@
 			<div class="customer_content">
 				<div class="customer-content-section">
 					<div class="customer-content-header">
-						<h1>즐겨찾기 목록</h1>
+						<h2>즐겨찾기 목록</h2>
 					</div>
 					<div class="customer_content_reserv">
 						<c:forEach items="${list }" var="l">
 							<div class="customer_content_reservHistory">
 								<div class="customer_content_reservHistory_header">
 									<a href="./storeDetail.do?shop_no=${l.shop_no }">${l.shop_name }</a>
-									<button class="button_submit" type="submit">
+									<button class="button_submit1" type="submit">
 										<img src="resources/images/star_after.png"
 											style="height: 20px;">
 									</button>

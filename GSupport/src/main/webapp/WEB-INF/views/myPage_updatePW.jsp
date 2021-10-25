@@ -90,7 +90,7 @@
 			<div class="customer-content">
 				<div class="customer-content-section">
 					<div class="customer-content-header">
-						<h1>비밀번호 변경</h1>
+						<h2>비밀번호 변경</h2>
 					</div>
 					<div class="customer-account-container">
 						<form action="./myPage_updatePW.do" method="post"

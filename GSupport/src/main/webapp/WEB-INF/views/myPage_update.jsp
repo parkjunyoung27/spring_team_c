@@ -55,7 +55,7 @@
 			<div class="customer-content">
 				<div class="customer-content-section">
 					<div class="customer-content-header">
-						<h1>회원 정보 수정</h1>
+						<h2>회원 정보 수정</h2>
 					</div>
 					<div class="customer-account-container">
 						<div class="customer-formbox">

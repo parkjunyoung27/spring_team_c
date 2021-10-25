@@ -6,6 +6,12 @@
 }
 
 /*board, write*/
+#content_title_border a{
+	text-decoration: none;
+	color: black;
+	font-size: 20px;
+	font-weight: bold;
+}
 
 #boardLine{
 	font-size:13px;
@@ -13,14 +19,13 @@
 
 #sub_board_menu {
 	float: left;
-	width: 20%;
+	width:20%;
 }
 
 #sub_board_menu a {
 	text-decoration: none;
-	color: black;
-	font-size: 20px;
-	font-weight: bold;
+	color: grey;
+	font-size: 15px;
 }
 
 #sub_board_menu nav {
@@ -216,9 +221,8 @@ ul li {
 
 li#commentContainer {
 	width: 100%;
-	padding:30px 10px 30px 10px;
+	padding:15px 10px 15px 10px;
 	border-top: 1px solid #c8c8c8;
-	border-bottom: 1px solid #c8c8c8;
 }
 
 div#commentbox {
