@@ -403,7 +403,7 @@ function handleOnInputName(e)  {
 					<input type="password" id="dummyPw" name="pw" style="display:none">
 					<input type="text" id="dummyChannel" name="channel" value="web" style="display:none">
 				<div>
-					<input type="date" id="birthDate" name="birthDate" class="joinInput" placeholder="생년월일" required="required" onchange="checkBirth()">
+					<input type="date" id="birthDate" name="birthDate" class="joinInput" placeholder="생년월일" required="required" onchange="checkBirth()" autocomplete="off">
 				</div>	
 					<input type="submit" id="joinForm" value="가입하기" style="display:none">
 		</form>

@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.util.UrlPathHelper;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.scribejava.core.model.OAuth2AccessToken;
@@ -93,6 +92,16 @@ public class LoginController {
 		HttpSession session = request.getSession();
 		session.setAttribute("joinChannel", channel.get("member_channel"));
 		
+	}
+	
+	@PostMapping("/setNewPw.do")
+	public String setNewPw(CommandMap map, HttpServletResponse response, HttpServletRequest request) throws Exception {
+		
+		System.out.println("map::::::::" + map.getMap() );
+		Map<String, Object> setNewPw = loginService.setNewPw(map.getMap());
+		System.out.println(setNewPw);
+	
+		return "redirect:/index.do?login=updated";
 	}
 	
 	

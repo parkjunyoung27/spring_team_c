@@ -28,8 +28,10 @@
 	</select>
 	
 	<update id="setNewPw" parameterType="HashMap">
-		UPDATE member SET member_pw=HEX(AES_ENCRYPT(#{pw}, 'teamc') 
+		UPDATE member
+		SET member_pw=HEX(AES_ENCRYPT(#{pw}, 'teamc'))
 		WHERE member_email=#{email}
 	</update>
+	
 	
 </mapper>

@@ -71,6 +71,11 @@ public class AbstractDAO {
 		printQueryId(queryID);
 		return sqlSession.selectOne(queryID, email);
 	}
+	
+	public Map<String, Object> selectOneByEmailForPw(String queryID, Map<String, Object> map) {
+		printQueryId(queryID);
+		return sqlSession.selectOne(queryID, map);
+	}
 
 	public int selectOne(String queryID, String email) {
 		printQueryId(queryID);

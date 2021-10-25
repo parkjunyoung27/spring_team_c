@@ -195,6 +195,11 @@ input[id="tab05"]:checked ~ .con5 {
 			document.getElementById("sidebar").click();
 			document.getElementById("tab01").click();
 		}
+		if(loginValue == "updated") {
+			alert("비밀번호가 변경되었습니다. 다시 로그인 해주세요.");
+			document.getElementById("sidebar").click();
+			document.getElementById("tab01").click();
+		}
 	});
 	
 	function getParameterByName(name) { 

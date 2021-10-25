@@ -25,13 +25,59 @@
 </style>
 <script type="text/javascript">
 	function mypageDelete() {
-		if (confirm("탈퇴하시겠습니까?")) {
-			alert("탈퇴 되었습니다.");
-			return true;
-		} else {
-			alert("취소 되었습니다.");
-			return false;
-		}
+		
+		var email = '<%=(String) session.getAttribute("member_id")%>';
+
+			alert("회원 탈퇴를 위해서 이메일 인증이 필요합니다.")
+			
+			$.ajax({
+				type : 'get',
+				dataType : 'text',
+				data : 'email=' + email,
+				url : '${pageContext.request.contextPath}/mailCheck.do',
+
+				success : function(data) {
+
+					sessionStorage.setItem("sentCode", data);
+
+					var typeCode = prompt("이메일로 발송된 인증번호를 입력해주세요."+ data, "");
+
+					console.log(typeCode);
+
+					if (typeCode != null) {
+						if (data == typeCode) {
+							document.getElementById("myPage_delete_form").submit();
+							alert("인증완료. 탈퇴 되었습니다.")
+							return true;
+
+						} else {
+							var tryCount = 0;
+							while (true) {
+
+								var typeCode = prompt(
+										"인증 번호가 일치하지 않습니다. 다시 입력해주세요.", "");
+
+								if (data == typeCode) {
+									document.getElementById("myPage_delete_form").submit();
+									alert("인증완료. 탈퇴 되었습니다.");
+									return true;
+
+								}
+								else {
+									tryCount++;
+								}
+								if (tryCount > 3) {
+									alert("3회 이상 틀렸습니다. 다시 진행해주세요.")
+									location.reload();
+									break;
+								}
+							}
+						}
+					}
+				}
+			});
+
+		
 	}
 
 	function move() {
@@ -64,10 +110,9 @@
 								탈퇴하신 ID는 다시 사용하실 수 없습니다. <br> 회원탈퇴 후 재가입은 탈퇴일로부터 30일 이후
 								가능합니다. <br>
 							</p>
-							<form action="./myPage_delete.do" method="post">
-								<button onclick="return mypageDelete()" class="button_submit"
-									type="submit">회원 탈퇴하기</button>
+							<form id="myPage_delete_form"action="./myPage_delete.do" method="post">
 							</form>
+								<button onclick="mypageDelete()" class="button_submit">회원 탈퇴하기</button>
 						</div>
 					</div>
 				</div>

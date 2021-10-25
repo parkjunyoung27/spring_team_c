@@ -38,20 +38,20 @@
 	font-size: 23px;
 }
 
-#id {
+#setPwErr {
 	position:fixed;
-	width: 60%;
+	top:40%;
+	width: 90%;
 	left:50%;
-	height: 40px;
 	border: none;
 	border-radius: 5px;
-	font-size: 14px;
 	transform:translate(-50%);
-	padding-left: 24px;
-	bottom:50%;
+	text-align: center;
+	margin-bottom: 0px;
+	font-size: 15px;
 }
 
-#pw {
+#setNPemail {
 	position:fixed;
 	width: 60%;
 	left:50%;
@@ -64,22 +64,71 @@
 	bottom:40%;
 }
 
-.submit-btn {
+#setNewPw {
 	position:fixed;
 	width: 60%;
-	height: 50px;
+	left:50%;
+	height: 40px;
+	border: none;
+	border-radius: 5px;
+	font-size: 14px;
+	transform:translate(-50%);
+	padding-left: 24px;
+	display: none;
+	bottom:45%;
+}
+
+#setNewConfirmPw {
+	position:fixed;
+	width: 60%;
+	left:50%;
+	height: 40px;
+	border: none;
+	border-radius: 5px;
+	font-size: 14px;
+	transform:translate(-50%);
+	padding-left: 24px;
+	display: none;
+	bottom:35%;
+}
+
+#sendCodeSubmit {
+	position:fixed;
+	width: 60%;
+	height: 40px;
 	left:50%;
 	transform:translate(-50%);
 	border: none;
 	background-color: #728FCE;
 	border-radius: 5px;
 	font-size: 17px;
+	text-align:center;
 	color: white;
-	margin-bottom: 30px;
 	padding: 10px;
 	letter-spacing: 5px;
 	font-weight: 600;
-	bottom:18%;
+	cursor: pointer;
+	bottom:20%;
+}
+
+#setNewPwSubmit {
+	position:fixed;
+	width: 60%;
+	height: 40px;
+	left:50%;
+	transform:translate(-50%);
+	border: none;
+	background-color: #728FCE;
+	border-radius: 5px;
+	font-size: 17px;
+	text-align:center;
+	color: white;
+	padding: 10px;
+	letter-spacing: 5px;
+	font-weight: 600;
+	cursor: pointer;
+	display:none;
+	bottom:20%;
 }
 
 .links {
@@ -138,6 +187,7 @@
 			success: function(rData, textStatus, xhr){
 				
 				if(rData == 1){
+					$("#setPwErr").text("잠시만 기다려주세요. 인증 메일을 발송하고 있습니다.");
 					new sendEmailCode();
 				}else{
 					alert("가입되지 않은 이메일 입니다.")
@@ -153,7 +203,7 @@
 	function sendEmailCode() {
 
 		var email = $("#setNPemail").val();
-
+		
 		$.ajax({
 			type : 'get',
 			dataType : 'text',
@@ -162,10 +212,9 @@
 
 			success : function(data) {
 
-				alert("인증 번호가 발송되었습니다." + data),
 				sessionStorage.setItem("sentCode", data);
-				
-				var typeCode = prompt("이메일로 발송된 인증번호를 입력해주세요.","");
+				$("#setPwErr").text("");
+				var typeCode = prompt("이메일로 발송된 인증번호를 입력해주세요." + data,"");
 				
 				console.log(typeCode);
 				
@@ -173,7 +222,12 @@
 					if (data == typeCode) {
 
 						alert("인증 되었습니다.")
-						document.getElementById("joinAction").submit();
+						$("#setNewPw").css("display", "inline");
+						$("#setNewConfirmPw").css("display", "inline");
+						$("#setNewPwSubmit").css("display", "inline");
+						$("#setNPemail").css("display", "none");
+						$("#sendCodeSubmit").css("display", "none");
+						$("#setNewPwEmailDummy").val($("#setNPemail").val());
 						return true;
 						
 					} else {
@@ -184,7 +238,13 @@
 					        
 							if(data==typeCode){
 								alert("인증 되었습니다.")
-								document.getElementById("joinAction").submit();
+								$("#setNewPw").css("display", "inline");
+								$("#setNewConfirmPw").css("display", "inline");
+								$("#setNewPwSubmit").css("display", "inline");
+								$("#setNPemail").css("display", "none");
+								$("#sendCodeSubmit").css("display", "none");
+								$("#setNewPwEmailDummy").val($("#setNPemail").val());
+								
 								return true;
 								}
 					            
@@ -201,6 +261,37 @@
 		});
 	}
 	
+	
+	function isSame() {
+		var pw1 = $("#setNewPw").val();
+		var pw2 = $("#setNewConfirmPw").val();
+	    
+		if(pw1.length < 6 || pw1.length > 30){
+				$("#setPwErr").text("비밀번호를 6자 이상 입력해주세요.");
+				$("#setNewPw").css("background-color", "pink");
+				$("#setNewPwDummy").val("false");
+	    }
+		if(pw1.length > 5){
+	    	if(pw1 == pw2 && pw2 == pw1) {
+	    		$("#setPwErr").text(" ");
+	    		$("#setNewPw").css("background-color", "#3ecd3eb8");
+	    		$("#setNewConfirmPw").css("background-color", "#3ecd3eb8");
+	    		$("#setNewPwSubmit").prop("type", "submit");
+	        } else if(pw2 == "") {
+	        	$("#setPwErr").text("비밀번호를 한번 더 입력해주세요.");
+	        	$("#setNewPw").css("background-color", "#3ecd3eb8");
+				$("#setNewConfirmPw").css("background-color", "pink");
+				$("#setNewPwDummy").val("false");
+	        } else {
+	            $("#setPwErr").text("비밀번호가 일치하지 않습니다.");
+				$("#setNewPw").css("background-color", "pink");
+				$("#setNewConfirmPw").css("background-color", "pink");
+				$("#setNewPwDummy").val("false");
+	        }
+	    } 
+	}
+	
+
 </script>
 
 </head>
@@ -210,20 +301,30 @@
 				<img src="./resources/images/logo.png" alt="logo" class="logo"
 					width="60%"><br>&emsp;"Don't you get hungry"
 			</p>
+			<div id="setPwErr"></div>
 
-			<form action="${pageContext.request.contextPath}/findMember.do"
-				method="post">
+			
 				<input type="text" id="setNPemail" name="email" class="text-field" oninput="handleOnInput(this)" placeholder="이메일을 입력하세요"
 					required="required" style="text-transform: lowercase">
-				<input type="text" readonly="readonly" value="이메일 인증하기" onclick="memberValidate()">
+				<input id="sendCodeSubmit" type="text" readonly="readonly" value="이메일 인증하기" onclick="memberValidate()">
+			
+			<form action="${pageContext.request.contextPath}/setNewPw.do"
+				method="post">
+				<div>
+					<input type="password" id="setNewPw" name="pw" class="setNewInput" placeholder="비밀번호" required="required" onchange="isSame()" >
+				</div>
+				<div>
+					<input type="password" id="setNewConfirmPw" class="setNewInput" placeholder="비밀번호 확인" required="required" onchange="isSame()">
+				</div>
+				<input type="hidden" id="setNewPwEmailDummy" name="email">
+				<input id="setNewPwSubmit" name="setNewPwSubmit" value="비밀번호 변경하기">
 			</form>
-				<button type="submit" value="로그인" class="submit-btn">LOGIN</button>
+		</div>
 
 				
 				<div class="links">
 					<a><label for="tab01">로그인</label></a> &emsp;|&emsp;<a><label for="tab02">회원가입</label></a>
 				</div>
 
-		</div>
-
+			<input type="hidden" id="setNewPwDummy" value="">
 </html>

@@ -20,4 +20,7 @@ public class LoginDAO extends AbstractDAO{
 		return (int) selectOne("login.emailCheck", email);
 	}
 	
+	public Map<String, Object> setNewPw(Map<String, Object> map) {
+		return selectOneByEmailForPw("login.setNewPw", map);
+	}
 }

@@ -26,5 +26,9 @@ public class LoginServiceImpl implements LoginService {
 	public Map<String, Object> loginByEmail(String email) {
 		return loginDAO.loginByEmail(email);
 	}
+
+	public Map<String, Object> setNewPw(Map<String, Object> map) {
+		return loginDAO.setNewPw(map);
+	}
 	
 }
