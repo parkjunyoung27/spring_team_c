@@ -3,6 +3,7 @@ package com.team_c.controller;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -83,7 +84,7 @@ public class LoginController {
 		return "member";
 	}
 	
-	@GetMapping("/findMember.do")
+	@PostMapping("/findMember.do")
 	public void findMember(HttpServletResponse response, HttpServletRequest request, @RequestParam String email) throws Exception {
 		
 		
@@ -109,7 +110,9 @@ public class LoginController {
 		String email = userInfo.get("email").toString();
 
 		/* oAuth 임의 비밀번호을 토큰의 일부로 사용 */
-		String memberPw = access_Token.toString().substring(0, 10);
+		Random random = new Random();
+		int randomValue = random.nextInt(10);
+		String memberPw = access_Token.toString().substring(0, randomValue);
 
 		// 기존 회원인지 확인
 		int emailCheck = loginService.emailCheck(email);
@@ -168,7 +171,9 @@ public class LoginController {
 		String email = responseObj.getAsJsonObject().get("email").getAsString();
 
 		/* oAuth 임의 비밀번호을 토큰의 일부로 사용 */
-		String memberPw = oauthToken.toString().substring(0, 10);
+		Random random = new Random();
+		int randomValue = random.nextInt(10);
+		String memberPw = oauthToken.toString().substring(0, randomValue);
 
 		// 기존 회원인지 확인
 		int emailCheck = loginService.emailCheck(email);
@@ -226,7 +231,9 @@ public class LoginController {
 		String email = userInfo.get("email").asText();
 
 		///* oAuth 임의 비밀번호을 토큰의 일부로 사용 */
-		String memberPw = accessToken.toString().substring(0, 10);
+		Random random = new Random();
+		int randomValue = random.nextInt(10);
+		String memberPw = accessToken.toString().substring(0, randomValue);
 		
 		// 기존 회원인지 확인
 		int emailCheck = loginService.emailCheck(email);

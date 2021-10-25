@@ -411,9 +411,9 @@ td {
 								<li 
 									onclick="location.href='./message.do?openmsg=${q.question_sender }&sendId=${q.member_id} '"
 									<c:if test="${q.question_read eq 0}">style="font-weight:bold" NEW</c:if>
-									<c:if test="${q.question_read eq 1}">style="color:gray;"</c:if>>
+									>
 									<div>
-										<h2 id="getSender" onclick="selectSender('${q.member_id }')">${q.member_name }</h2>
+										<h2 id="getSender" onclick="selectSender('${q.member_id }')"><c:if test="${q.question_read eq 1}">style="color:gray;"</c:if>${q.member_name }</h2>
 									</div>
 							</c:forEach>
 

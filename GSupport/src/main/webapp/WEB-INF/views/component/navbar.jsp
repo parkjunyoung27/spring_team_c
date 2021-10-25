@@ -286,9 +286,9 @@ input[id="tab05"]:checked ~ .con5 {
 			<div class="conbox con2">
 				<c:import url="/WEB-INF/views/join.jsp" />
 			</div>
-			<%-- <div class="conbox con3">
-				<c:import url="" />
-			</div> --%>
+			<div class="conbox con3">
+				<c:import url="/WEB-INF/views/setNewPw.jsp" />
+			</div>
 			<div class="conbox con4">
 				<c:import url="/WEB-INF/views/oAuthJoin.jsp" />
 			</div>

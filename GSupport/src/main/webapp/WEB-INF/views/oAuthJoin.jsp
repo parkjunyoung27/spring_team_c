@@ -165,5 +165,8 @@
 		</form>
 			<input id="oAuthJoinSubmit" name="oAuthJoinSubmit" value="가입하기" readonly="readonly" onclick="oAuthJoin()">
 	</div>
+	<div class="links">
+			<a><label for="tab01">로그인</label></a> &emsp;|&emsp;<a><label for="tab03">PW 찾기</label></a>
+	</div>
 			<input type="hidden" id="oAuthJoinNameDummy" value="">
 </html>
