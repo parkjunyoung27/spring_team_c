@@ -15,7 +15,7 @@
 		<h1 class="customer_side_title">예약 관리</h1>
 		<ul class="customer_side_list">
 		<li><a href="myPage_reserv.do">사용자 예약 확인하기 </a></li>
-		<c:if test="${sessionScope.grade ne 1 }">
+		<c:if test="${sessionScope.grade ne 1 && sessionScope.shop_no ne null}">
 			<li><a href="myPage_reservCheck.do?shop_no=${sessionScope.shop_no}">업주 예약 확인하기 </a></li>
 		</c:if>
 		</ul>
