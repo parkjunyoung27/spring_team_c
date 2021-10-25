@@ -16,6 +16,13 @@
 table{
 	width:200%;
 }
+
+.widoInput{
+	text-align: center;
+}
+.kyungdoInput{
+	text-align: center;
+}
 </style> 
 <script type="text/javascript">
 var pageNo = 1;
