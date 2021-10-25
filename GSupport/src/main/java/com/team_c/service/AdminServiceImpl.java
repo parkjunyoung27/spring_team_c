@@ -108,8 +108,8 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public void registerShop(String number) {
-		adminDAO.registerShop(number);
+	public void registerShop(Map<String, Object> map) {
+		adminDAO.registerShop(map);
 	}
 
 	@Override

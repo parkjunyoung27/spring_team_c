@@ -77,8 +77,8 @@ public class AdminDAO extends AbstractDAO{
 		return selectList("admin.shopRegisterViewList", map);
 	}
 
-	public void registerShop(String number) {
-		registerShop("admin.registerShop", number);
+	public void registerShop(Map<String, Object> map) {
+		registerShop("admin.registerShop", map);
 	}
 
 	public int adminBoardTotalCount(Map<String, Object> map) {

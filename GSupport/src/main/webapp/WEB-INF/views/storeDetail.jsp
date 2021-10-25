@@ -230,7 +230,7 @@ function disLike(no){
 					<input type="hidden" id="shop_no" name="shop_no" value="${storeDetail.shop_no }">
 					<input type="hidden" id="shop_name" name="shop_name" value="${storeDetail.shop_name }">
 					<div id="reserve_btn_area"><button class="reserv_btn1" type="submit" onclick="return ask()">예약하기</button></div>				
-						<button class="reserv_btn" onclick="location.href='./storeList.do'" style="margin-right:20%">돌아가기</button>
+						<button class="reserv_btn" onclick="location.href='./storeList.do'" style="margin-right:10%">돌아가기</button>
 						<button class="reserv_btn"  type="reset" id="join_reset" style="margin-right:3%">초기화하기</button>
 				</div>
 				</c:when>

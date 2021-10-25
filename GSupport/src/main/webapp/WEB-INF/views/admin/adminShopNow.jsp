@@ -22,7 +22,7 @@ table{
 
 }
 
-.windowOpen:hover{color: gold;}
+.windowOpen:hover{color: gold; cursor: pointer;}
 
 </style> 
 <script type="text/javascript">
@@ -135,6 +135,8 @@ var gu = document.getElementById("gu").value;
 						<th class="w3"> 오픈시간 </th>
 						<th class="w3"> 마감시간 </th>
 						<th class="w10"> 내용 </th>
+						<th class="w5"> 위도 </th>
+						<th class="w5"> 경도 </th>
 					</tr> 
 					<c:choose>
 						<c:when test="${fn:length(list) gt 0 }">
@@ -171,6 +173,8 @@ var gu = document.getElementById("gu").value;
 										</c:otherwise>
 									</c:choose>
 									</td>
+									<td class="w5">${l.get("shop_wido") }</td>	
+									<td class="w5">${l.get("shop_kyungdo") }</td>	
 								</tr>				
 							</c:forEach>		
 						</c:when>

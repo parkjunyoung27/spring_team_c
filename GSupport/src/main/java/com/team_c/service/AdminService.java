@@ -51,7 +51,7 @@ public interface AdminService {
 	
 	public List<Map<String, Object>> shopRegisterViewList(Map<String, Object> map);
 	
-	public void registerShop(String number);
+	public void registerShop(Map<String, Object> map); 
 	
 	public int adminBoardTotalCount(Map<String, Object> map);
 	

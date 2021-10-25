@@ -148,7 +148,7 @@
 	</select>
 	
 	<update id="registerShop">
-		UPDATE shop SET shop_register=1 WHERE shop_no=#{number} 
+		UPDATE shop SET shop_register=1, shop_wido=#{wido}, shop_kyungdo=#{kyungdo} WHERE shop_no=#{number} 
 	</update>
 	
 	<select id="adminBoardList" resultType="HashMap">

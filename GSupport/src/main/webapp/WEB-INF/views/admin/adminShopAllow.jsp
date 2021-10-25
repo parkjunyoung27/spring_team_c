@@ -50,13 +50,17 @@ var gu = document.getElementById("gu").value;
 	}
 	
 	
-	function checkDelete(form){
-		
+	function checkRegister(form){
+					
 		var sum = 0;
 		var count = form.check.length; //form.name값.길이
 		for(var i =0; i<count; i++){
 			if(form.check[i].checked == true){ //checkbox 체크되어있는지 확인
 				sum += 1;
+				if(document.querySelectorAll('.widoInput')[i].value == "" || document.querySelectorAll('.kyungdoInput')[i].value == "" ){
+					alert("위도, 경도 모두 입력하세요.");
+					return false;
+				}
 			}
 		}
 		
@@ -82,8 +86,10 @@ var gu = document.getElementById("gu").value;
 	function linkPage(pageNo, ip, target){
 		var gu = document.getElementById("gu").value;
 		location.href="./adminShopAllow.do?pageNo=" + pageNo + "&gu=" + gu;
-	}
-
+	}			
+	
+	
+	
 </script>
 
 <body>
@@ -100,12 +106,14 @@ var gu = document.getElementById("gu").value;
 			
 			<div class="adminContainerOne">
 			
-						<form action="./adminShopAllow.do" method="post" id="shopNowOrder" name="LogOrder">
+			<form action="./adminShopAllow.do" method="post" id="shopNowOrder" name="LogOrder">
 				<table>
 					<tr>
 						<th class="w1"> <input type="checkbox" name="checkall" onclick="selectAll(this)"> </th>
 						<th class="w1"> No </th>
 						<th class="w7"> 상호명 </th>
+						<th class="w5"> 위도 </th>
+						<th class="w5"> 경도 </th>
 						<th class="w3"> 
 							<select onchange="selectOption()" id="gu">
 							<option value="" selected> 지역구 선택 </option>
@@ -121,8 +129,6 @@ var gu = document.getElementById("gu").value;
 						</th>
 						<th class="w10"> 위치 </th>
 						<th class="w5"> 전화번호 </th>
-						<th class="w3"> 좋아요 </th>
-						<th class="w3"> 즐겨찾기 </th>
 						<th class="w3"> 오픈시간 </th>
 						<th class="w3"> 마감시간 </th>
 						<th class="w10"> 내용 </th>
@@ -136,20 +142,17 @@ var gu = document.getElementById("gu").value;
 									</td> 
 									<td class="w1">${l.get("shop_no") } </td>
 									<td class="w7">${l.get("shop_name") } </td>
+									<td class="widoWrite w5" style="cursor:pointer;">
+										<input class="widoInput" placeholder="위도를 입력해주세요." name="wido" value="${l.get('shop_wido') }">
+									</td>	
+									<td class="kyungdoWrite w5" style="cursor:pointer;">
+										<input class="kyungdoInput" placeholder="경도를 입력해주세요." name="kyungdo" value="${l.get('shop_kyungdo') }">
+									</td>											
+									
+									
 									<td class="w3">${l.get("shop_gu") } </td>
 									<td class="w10">${l.get("shop_loc") }</td>	
 									<td class="w5">${l.get("shop_tel") }</td>	
-									<td class="w3">
-									<c:choose>
-										<c:when test="${l.get('shop_like') ne null}">
-										${l.get("shop_like") }
-										</c:when>
-										<c:otherwise>
-										0
-										</c:otherwise>
-									</c:choose>
-									</td>	
-									<td class="w3">${l.get("shop_bookmark") }</td>	
 									<td class="w3">${l.get("shop_opentime") }</td>	
 									<td class="w3">${l.get("shop_closetime") }</td>	
 									<td class="w10">
@@ -178,7 +181,7 @@ var gu = document.getElementById("gu").value;
 		
 			<div class="adminLogPaging">
 				<ui:pagination paginationInfo="${paginationInfo }" type="text" jsFunction="linkPage"/>
-				<button type="button" onclick="checkDelete(document.forms['shopNowOrder'])" class="adminDelBtn">등록하기</button>		
+				<button type="button" onclick="checkRegister(document.forms['shopNowOrder'])" class="adminDelBtn">등록하기</button>		
 			</div>	
 		
 		

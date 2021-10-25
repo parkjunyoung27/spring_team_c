@@ -273,16 +273,26 @@ public class AdminController {
 				
 				int sum = 0;
 				String[] numbers = null;
+				String[] widos = null;
+				String[] kyungdos = null;
 				
 				if(request.getParameter("check") == null) {
 					System.out.println("승인할 가맹점이 없습니다.");
 				}else {
 					numbers = request.getParameterValues("check");
-					for(String string : numbers) {
-						String number = string;
-						System.out.println("승인할 번호: " + number);
-						adminService.registerShop(number);
-					}
+					widos = request.getParameterValues("wido");
+					kyungdos = request.getParameterValues("kyungdo");
+
+					for(int i = 0; i<numbers.length; i++) {
+						String number = numbers[i];
+						String wido = widos[i];
+						String kyungdo = kyungdos[i];
+						Map<String, Object> map = new HashMap<String, Object>();
+						map.put("number", number);
+						map.put("wido", wido);
+						map.put("kyungdo", kyungdo);
+						adminService.registerShop(map);
+					}					
 				}
 			}
 		}

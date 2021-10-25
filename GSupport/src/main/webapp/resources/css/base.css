@@ -51,7 +51,7 @@
 
 .navbar #menu {
 	float: right;
-	width:450px;
+	width:530px;
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -59,7 +59,7 @@
 }
 
 .navbar #menu li.menuli {
-	width: 100px;
+	width: 130px;
 	text-align: center;
 	float: left;
 	background-color: white;
