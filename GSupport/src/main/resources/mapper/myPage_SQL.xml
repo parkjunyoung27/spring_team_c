@@ -178,7 +178,8 @@
 	<select id="mypageBoard" parameterType="HashMap" resultType="HashMap">
 		SELECT *
 		FROM board_view
-		WHERE member_id=#{member_id}
+		WHERE member_id=#{member_id} AND NOT board_delete='1' 
+		ORDER BY board_no DESC LIMIT #{startPage}, #{lastPage}
 	</select>
 	
 		
@@ -186,8 +187,7 @@
 		SELECT COUNT(*) as totalCount3 
 		FROM board_view
 		WHERE member_id = #{member_id} AND NOT board_delete='1'	
-<!-- 		LIMIT #{startPage}, #{lastPage}	-->	
-</select>
+	</select>
 	
 	
 </mapper>

@@ -512,6 +512,7 @@ public class MypageController {
 		ModelAndView mv = new ModelAndView("myPage_board");
 		HttpSession session = request.getSession();
 
+		map.put("member_id", session.getAttribute("member_id"));
 		//*****페이징*****
 		//페이지 번호가 오는지 확인하기
 		int pageNo = 1;
@@ -538,8 +539,7 @@ public class MypageController {
 		//DB로 보내기 위해서 map에 담아주세요.
 		map.put("startPage", startPage);
 		map.put("lastPage", lastPage);
-		map.put("member_id", session.getAttribute("member_id"));
-		
+		System.out.println("멤버아이디="+session.getAttribute("member_id"));
 		List<Map<String, Object>> board = mypageService.mypageBoard(map.getMap());
 		System.out.println(board + " 1!!!!!!!!!!!!!!!!!!!!1");
 
