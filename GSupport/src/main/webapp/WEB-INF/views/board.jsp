@@ -70,13 +70,13 @@ function linkPage(pageNo){
 		<c:import url="./sub_board_menu.jsp" />
 		<!-- 게시판 내용 -->
 		<div id="content">
-			<div id="content_title_border">
+<%-- 			<div id="content_title_border">
 				<c:if test="${board_name eq board_name }">
 					<a href="/GSupport/board.do?categoryNo=${categoryNo}">
 						${board_name} </a>
 				</c:if>
 
-			</div>
+			</div> --%>
 			<ul class="board">
 				<li class="fl tc w15 title t_line">번호</li>
 				<li class="fl tc w50 title t_line">제목</li>

@@ -42,13 +42,13 @@ function board_delete(no1, no2){
 		<!--서브메뉴바 -->
 		<c:import url="./sub_board_menu.jsp" />
 		<div id="content">
-			<div id="content_title_border">
+<%-- 			<div id="content_title_border">
 				<c:if test="${detail.board_name eq detail.board_name }">
 					<a href="/GSupport/board.do?categoryNo=${param.categoryNo }">
 						${detail.board_name} </a>
 				</c:if>
 
-			</div>
+			</div> --%>
 
 		<div id="bdetail_area">
 			<div id="content_title">
