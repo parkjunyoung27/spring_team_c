@@ -18,7 +18,7 @@
                         </div>
                         <p class="sc_text">문의는 운영시간 카카오플러스 채팅으로 가능합니다.</p>
                         <div class="sc_button">
-                            <a href="./board" type="button" class="sc_btn">자주 묻는 질문</a>
+                            <a href="./board.do?categoryNo=2" type="button" class="sc_btn">자주 묻는 질문</a>
                         </div>
                     </div>
                 </div>
@@ -28,7 +28,7 @@
                         <strong class="menu_title">이용안내</strong>
                         <ul class="menu_list">
                             <li class="footer_menu_item">
-                                <a href="#" class="footer_menu_link">About?</a>
+                                <a href="./about.do" class="footer_menu_link">About</a>
                             </li>
                             <li class="footer_menu_item">
                                 <a href="#" class="footer_menu_link">가맹점 등록방법</a>
@@ -42,13 +42,10 @@
                         <strong class="menu_title">고객지원</strong>
                         <ul class="menu_list">
                             <li class="footer_menu_item">
-                                <a href="#" class="footer_menu_link">공지사항</a>
+                                <a href="./board.do?categoryNo=0" class="footer_menu_link">공지사항</a>
                             </li>
                             <li class="footer_menu_item">
                                 <a href="#" class="footer_menu_link">가맹점 게시판</a>
-                            </li>
-                            <li class="footer_menu_item">
-                                <a href="#" class="footer_menu_link">사용자 게시판</a>
                             </li>
                         </ul>
                     </div>

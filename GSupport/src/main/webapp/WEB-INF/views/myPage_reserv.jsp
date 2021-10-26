@@ -72,6 +72,19 @@
 	float: right;
 	text-align: center;
 }
+
+.button_submit1{
+	font-size: 13px;
+	text-align: center;
+	font-weight: bold;
+	background-color: #61ab45;
+	color: white;
+	border:none;
+	cursor:pointer;
+	float:right;
+}
+
+
 </style>
 <body>
 
@@ -161,7 +174,7 @@
 							<c:choose>
 								<c:when
 									test="${r.reservation_status eq 'wait' }">
-									<button class="button_submit" type="submit"
+									<button class="button_submit1" type="submit"
 										onclick="return cancel(${r.shop_no})" >예약 취소</button>
 								</c:when>
 								
