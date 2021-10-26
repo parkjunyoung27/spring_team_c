@@ -179,7 +179,15 @@
 		SELECT *
 		FROM board_view
 		WHERE member_id=#{member_id}
-
 	</select>
+	
+		
+	<select	id="totalCount3" parameterType="HashMap" resultType="HashMap">
+		SELECT COUNT(*) as totalCount3 
+		FROM board_view
+		WHERE member_id = #{member_id} AND NOT board_delete='1'	
+<!-- 		LIMIT #{startPage}, #{lastPage}	-->	
+</select>
+	
 	
 </mapper>

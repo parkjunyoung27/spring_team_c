@@ -1,14 +1,22 @@
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>G원사격 | 작성한 게시글</title>
+<script type="text/javascript">
+function linkPage(pageNo){
+		location.href="./myPage_board.do?pageNo=" + pageNo;
+	
+}
+</script>
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link href="./resources/css/index.css" rel="stylesheet">
@@ -18,6 +26,36 @@
 <style>
 /* 게시판 목록 */
 /* 공통옵션 */
+#boardPaging {
+	text-align: center;
+	margin-top: 30px;
+	text-decoration: none;
+	font-size: large;
+	letter-spacing: 1px;
+}
+
+#boardPaging a {
+	text-decoration: none;
+	color: black;
+}
+
+#boardPaging a:hover {
+	font-weight: 700;
+	color: green;
+}
+
+#boardLine {
+	width: 100%;
+	padding: 0px;
+	cursor: pointer;
+	min-height: 700px;
+}
+
+#boardLineClick:hover {
+	font-weight: 700;
+	color: green;
+}
+
 ul li {
 	list-style: none;
 }
@@ -117,6 +155,11 @@ ul li {
 							</c:choose></li>
 					</c:forEach>
 				</ul>
+			</div>
+						<!-- 페이징 -->
+			<div id="boardPaging">
+				<ui:pagination paginationInfo="${paginationInfo }" type="text"
+					jsFunction="linkPage" />
 			</div>
 
 		</div>

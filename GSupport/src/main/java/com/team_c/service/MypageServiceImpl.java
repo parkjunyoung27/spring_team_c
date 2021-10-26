@@ -119,4 +119,8 @@ public class MypageServiceImpl implements MypageService {
 		return mypageDAO.mypageBoard(map);
 	}
 
+	public int totalCount3(Map<String, Object> map) {
+		return mypageDAO.totalCount3(map);
+	}
+
 }

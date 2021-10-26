@@ -102,4 +102,8 @@ public class MypageDAO extends AbstractDAO {
 	public List<Map<String, Object>> mypageBoard(Map<String, Object> map) {
 		return selectList("mypage.mypageBoard", map);
 	}
+
+	public int totalCount3(Map<String, Object> map) {
+		return Integer.parseInt(String.valueOf(selectOne("mypage.totalCount3", map).get("totalCount3")));
+	}
 }
