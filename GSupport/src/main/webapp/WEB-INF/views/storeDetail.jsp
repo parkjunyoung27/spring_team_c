@@ -50,7 +50,6 @@ body {
 <% for(int i=9; i<=22; i++){ %>
 					
 #time<%=i %>:checked + label{
-border: 3px solid #333;
 background-color: #2fcc71;
 }						
 <% }%>	
