@@ -62,13 +62,13 @@ public class StoreController {
 		String reservRequest = request.getParameter("request");
 		int people = Integer.parseInt(request.getParameter("people"));
 		int shop_no = Integer.parseInt(request.getParameter("shop_no"));
-		
+		int member_no = (int) session.getAttribute("member_no");
 		
 		System.out.println(name); System.out.println(phoneNum);
 		System.out.println(date); System.out.println(reservRequest);
 		System.out.println(id); System.out.println(shop_no);
 		System.out.println(people); System.out.println(reservTime);
-		System.out.println(shop_name);
+		System.out.println(shop_name); System.out.println(member_no);
 		 
 
 		if (name != null && phoneNum != null && date != null && reservTime != null && id != null) {
@@ -81,11 +81,12 @@ public class StoreController {
 			commandMap.put("reservRequest", reservRequest);
 			commandMap.put("people", people);
 			commandMap.put("shop_name", shop_name);
-			
+			commandMap.put("member_no", member_no);
+			System.out.println("커맨드맵1======="+commandMap.getMap());
 			storeService.storeReserv(commandMap.getMap());
 			//return "redirect:/reservSuccess.do";
-			
-
+			storeService.sendReservMsg(commandMap.getMap());
+			System.out.println("커맨드맵2======="+commandMap.getMap());	
 
 			
 			return "redirect:/myPage_reserv.do";
