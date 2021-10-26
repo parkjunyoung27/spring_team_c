@@ -179,8 +179,6 @@
 							
 								<h3>${r.shop_name }</h3>
 								예약 인원 : ${r.people }명 <br> 예약 현황 :
-								<h3>${r.shop_name }</h3>
-								${r.people }명 <br> 예약 현황 :
 								<c:choose>
 									<c:when test="${r.reservation_status eq 'wait' }">
 									<span style="color:green; font-weight:bold;">예약 대기 중</span>
