@@ -115,17 +115,39 @@
 		AND shop_no=#{shop_no}
 	</update>
 	
+	<insert id="reservCancelMsg" parameterType="HashMap">
+		INSERT INTO question(question_sender, question_recipient, question_content) VALUES 
+		(97, 
+		#{member_no}, 
+      	(SELECT shop_name FROM shop WHERE shop_no=#{shop_no}) ' 에 예약 취소 되었습니다')
+		
+	</insert>
+	
 	<update id="ownerReservCancel" parameterType="HashMap">
 		UPDATE reservation SET
 		reservation_status="cancel"
 		WHERE reservation_no=#{reservation_no}
 	</update>
 	
+	<insert id="ownerReservCancelMsg" parameterType="HashMap">
+		INSERT INTO question(question_sender, question_recipient, question_content) VALUES 
+		(#{member_no}, 
+		(SELECT member_no FROM member WHERE member_name=(SELECT member_name FROM reservation WHERE reservation_no=#{reservation_no})), 
+      	#{member_name} '업주 요청으로 예약 취소 되었습니다.')
+	</insert>
+	
 	<update id="ownerReservSuccess" parameterType="HashMap">
 		UPDATE reservation SET
 		reservation_status="success"
 		WHERE reservation_no=#{reservation_no}
 	</update>
+	
+	<insert id="ownerReservSuccessMsg" parameterType="HashMap">
+		INSERT INTO question(question_sender, question_recipient, question_content) VALUES 
+		(#{member_no}, 
+		(SELECT member_no FROM member WHERE member_name=(SELECT member_name FROM reservation WHERE reservation_no=#{reservation_no})), 
+      	#{shop_name} '매장 예약이 승인 되었습니다.')
+	</insert>
 
 	<select id="myPageBookmark" parameterType="HashMap"
 		resultType="HashMap">

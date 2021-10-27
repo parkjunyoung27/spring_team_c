@@ -106,4 +106,16 @@ public class MypageDAO extends AbstractDAO {
 	public int totalCount3(Map<String, Object> map) {
 		return Integer.parseInt(String.valueOf(selectOne("mypage.totalCount3", map).get("totalCount3")));
 	}
+
+	public int reservCancelMsg(Map<String, Object> map) {
+		return sendMessage("mypage.reservCancelMsg", map);
+	}
+
+	public int ownerReservCancelMsg(Map<String, Object> map) {
+		return sendMessage("mypage.ownerReservCancelMsg", map);
+	}
+
+	public int ownerReservSuccessMsg(Map<String, Object> map) {
+		return sendMessage("mypage.ownerReservSuccessMsg", map);
+	}
 }
