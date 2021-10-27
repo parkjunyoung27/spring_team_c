@@ -91,7 +91,7 @@ public class BoardController {
 				
 		//질의
 		List<Map<String, Object>> boardList = boardService.boardList(map.getMap());
-		int commentTotalCount = boardService.commentTotalCount(map.getMap());
+
 		
 		//담기
 		mv.addObject("list", boardList);
@@ -101,11 +101,18 @@ public class BoardController {
 		mv.addObject("paginationInfo", paginationInfo);
 		mv.addObject("pageNo", pageNo);
 		mv.addObject("totalCount", totalCount);
-		mv.addObject("commentTotalCount", commentTotalCount);
+
 						
 		return mv;
 	}
-	
+	@PostMapping("/board")
+	public ModelAndView board2(CommandMap map) {
+		ModelAndView mv = new ModelAndView("board");
+		System.out.println("보드 포스트 : " + map.getMap());
+		int commentTotalCount = boardService.commentTotalCount(map.getMap());
+		mv.addObject("commentTotalCount", commentTotalCount);
+		return mv;
+	}
 	//글쓰기
 	//서버 -> 클라이언트
 	@GetMapping("/write")
@@ -145,9 +152,9 @@ public class BoardController {
 	@GetMapping("/detail")
 	public ModelAndView detail(CommandMap map, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("detail");
-		Map<String, Object> detail = boardService.detail(map.getMap());
 		
 		//질의
+		Map<String, Object> detail = boardService.detail(map.getMap());
 		List<Map<String, Object>> commentList = boardService.commentList(map.getMap());
 		int commentTotalCount = boardService.commentTotalCount(map.getMap());
 		
@@ -231,7 +238,6 @@ public class BoardController {
 		if (session.getAttribute("member_no") != null) {
 			map.put("member_no", session.getAttribute("member_no"));
 			map.put("member_grade", session.getAttribute("grade"));
-			System.out.println("맵값 확인중 : " + map.getMap());
 			boardService.comment_update(map.getMap());
 						
 			return "redirect:/detail.do?categoryNo=" + map.getMap().get("board_cate") + "&board_no=" + map.getMap().get("board_no");

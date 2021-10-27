@@ -87,7 +87,7 @@ function linkPage(pageNo){
 				<c:forEach items="${list }" var="l">
 					<li class="fl tc w15 list t_line lt_line">${l.board_no }</li>
 					<li class="fl tc w50 list t_line lt_line" id="boardLineClick"
-						onclick="location.href='./detail.do?categoryNo=${l.board_category }&board_no=${l.board_no}'">${l.board_title}[${l.board_count }]</li>
+						onclick="location.href='./detail.do?categoryNo=${l.board_category }&board_no=${l.board_no}'">${l.board_title}<c:if test="${categoryNo ne 0 }">[${l.commentTotalCount }]</c:if></li>
 					<li class="fl tc w15 list t_line lt_line"><c:choose>
 							<c:when test="${member_grade eq 3 }">관리자</c:when>
 							<c:otherwise>${l.member_name}</c:otherwise>
@@ -107,11 +107,18 @@ function linkPage(pageNo){
 				</c:forEach>
 			</ul>
 
-			<%-- 			<!-- 글쓰기 -->
-			<c:if test="${sessionScope.id ne null }">
+			<!-- 글쓰기 -->
+			<c:if test="${sessionScope.grade eq 3 && categoryNo eq 0  }">
 				<a href="./write.do?categoryNo=${categoryNo }">글쓰기</a>
 			</c:if>
- --%>
+			<c:if test="${sessionScope.grade gt 1 && categoryNo eq 1 }">
+				<a href="./write.do?categoryNo=${categoryNo }">글쓰기</a>
+			</c:if>
+			<c:if test="${sessionScope.grade ne null && categoryNo eq 2 }">
+				<a href="./write.do?categoryNo=${categoryNo }">글쓰기</a>
+			</c:if>
+			
+			
 			<!-- 페이징 -->
 			<div id="boardPaging">
 				<ui:pagination paginationInfo="${paginationInfo }" type="text"
@@ -143,10 +150,9 @@ function linkPage(pageNo){
 			</div>
 		</div>
 	</div>
-
-
+	
 	<!-- footer -->
 	<%@ include file="./component/footer.jsp"%>
-
+	
 </body>
 </html>

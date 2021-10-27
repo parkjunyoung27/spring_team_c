@@ -27,7 +27,6 @@ function board_delete(no1, no2){
 		location.href="./delete.do?categoryNo="+no1+"&board_no="+no2;
 	}
 }
-//alert("${detail.board_file}");
 </script>
 
 </head>
@@ -48,7 +47,7 @@ function board_delete(no1, no2){
 						${detail.board_name} </a>
 				</c:if>
 
-			</div> --%>
+				</div> --%>
 
 		<div id="bdetail_area">
 			<div id="content_title">
@@ -61,12 +60,10 @@ function board_delete(no1, no2){
 				<div id="dmember">${detail.member_name}
 					<div id="detail_btn">
 						<c:if test="${sessionScope.id eq detail.member_id }">
-							<button
-								onclick="location.href='./update.do?categoryNo=${param.categoryNo }&board_no=${detail.board_no }'">수정하기</button>
+							<button	onclick="location.href='./update.do?categoryNo=${param.categoryNo }&board_no=${detail.board_no }'">수정하기</button>
 						</c:if>
 						<c:if test="${sessionScope.id eq detail.member_id || sessionScope.grade eq '3' }">
-							<button
-								onclick="return board_delete( ${param.categoryNo }, ${detail.board_no })">삭제하기</button>
+							<button	onclick="return board_delete( ${param.categoryNo }, ${detail.board_no })">삭제하기</button>
 						</c:if>
 					</div>
 
@@ -92,15 +89,25 @@ function board_delete(no1, no2){
 			<div id="dcontent">${detail.board_content }</div>
 
 			<div id="dcontent">
-				<c:if test="${detail.board_file ne null }">
-				</c:if>
+				<c:if test="${detail.board_file ne (null) }">
 				<img alt="Can't_load_this_image"
 					src="./resources/upfile/upload/${detail.board_file }">
+				</c:if>
 			</div>
 
-
 			<!-- 댓글달기 -->
-			<%@ include file="./component/comment.jsp"%>
+			<c:if test="${detail.board_category eq 0  }">
+			</c:if>
+			
+			<c:if test="${sessionScope.grade gt 1 && detail.board_category eq 1 }">
+				<%@ include file="./component/comment.jsp"%>
+			</c:if>
+			
+			<c:if test="${detail.board_category eq 2 }">
+				<%@ include file="./component/comment.jsp"%>
+			</c:if>
+			
+			
 
 		</div>
 		</div>

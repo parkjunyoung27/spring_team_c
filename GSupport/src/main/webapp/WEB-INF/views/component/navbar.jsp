@@ -226,8 +226,10 @@ input[id="tab05"]:checked ~ .con5 {
 		<li class="menuli"><a href="./board.do?categoryNo=0" class="">게시판</a>
 			<ul class="son">
 				<li><a href="./board.do?categoryNo=0">공지사항</a></li>
-				<li><a href="./board.do?categoryNo=1">가맹점주</a></li>
 				<li><a Href="./board.do?categoryNo=2">문의사항</a></li>
+				<c:if test="${sessionScope.grade gt 1 }">
+				<li><a href="./board.do?categoryNo=1">점주게시판</a></li>
+				</c:if>
 			</ul></li>
 		<li class="menuli"><c:choose>
 				<c:when test="${sessionScope.name ne null}">
