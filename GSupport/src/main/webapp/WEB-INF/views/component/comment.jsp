@@ -91,7 +91,7 @@ function comment_delete(no1, no2, no3){
 			</form>
 		</div>
 		</c:if>
-		<c:if test="${param.categoryNo eq 2 && sessionScope.grade eq 3 }">
+		<c:if test="${param.categoryNo eq 2 && sessionScope.grade eq 3 || sessionScope.id eq member_id}">
 		<div id="commentWrite">
 			<form action="./commentWrite.do" method="post">
 				<textarea id="commentWriteText" name="comment_content" placeholder="댓글을 입력해주세요. 타인을 비방하는 댓글, 욕설, 도배행위 등은 제재대상이 될 수 있습니다."></textarea>

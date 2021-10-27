@@ -128,17 +128,22 @@ function linkPage(pageNo){
 			</ul>
 
 			<!-- 글쓰기 -->
-			<div class="board_write">
 				<c:if test="${sessionScope.grade eq 3 && categoryNo eq 0  }">
-					<a href="./write.do?categoryNo=${categoryNo }">글쓰기</a>
+					<div class="board_write">
+						<a href="./write.do?categoryNo=${categoryNo }">글쓰기</a>
+					</div>	
 				</c:if>
 				<c:if test="${sessionScope.grade gt 1 && categoryNo eq 1 }">
-					<a href="./write.do?categoryNo=${categoryNo }">글쓰기</a>
+					<div class="board_write">
+						<a href="./write.do?categoryNo=${categoryNo }">글쓰기</a>
+					</div>
 				</c:if>
 				<c:if test="${sessionScope.grade ne null && categoryNo eq 2 }">
-					<a href="./write.do?categoryNo=${categoryNo }">글쓰기</a>
+					<div class="board_write">
+						<a href="./write.do?categoryNo=${categoryNo }">글쓰기</a>
+					</div>
 				</c:if>
-			</div>
+			
 			
 			<!-- 페이징 -->
 			<div id="boardPaging">
