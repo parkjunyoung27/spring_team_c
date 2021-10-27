@@ -50,6 +50,10 @@ public class StoreDAO extends AbstractDAO{
 		return likeCheck("store.likeList", map);
 	}
 
+	public int sendReservMsg(Map<String, Object> map) {
+		return sendMessage("store.sendReservMsg", map);
+	}
+
 	
 
 	

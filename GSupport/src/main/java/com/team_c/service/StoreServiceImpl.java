@@ -52,6 +52,12 @@ public class StoreServiceImpl implements StoreService {
 		return storeDAO.likeList(map);
 	}
 
+	public int sendReservMsg(Map<String, Object> map) {
+		int result = storeDAO.sendReservMsg(map);
+		return result;
+		
+	}
+
 	/*
 	 * public void storeDislike(Map<String, Object> map) { int result =
 	 * storeDAO.storeLikeCheck(map); if(result == 1) {
