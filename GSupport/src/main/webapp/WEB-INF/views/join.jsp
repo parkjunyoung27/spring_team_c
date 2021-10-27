@@ -11,6 +11,9 @@
 <link href="./resources/css/base.css" rel="stylesheet">
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" charset="utf-8"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<!-- AJAX사용 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+</script>
 </head>
 <style>
 
@@ -114,6 +117,7 @@
 	font-size: 14px;
 	transform:translate(-50%);
 	bottom:22%;
+	
 }
 
 #joinSubmit {
@@ -176,12 +180,9 @@
 	background-color: #D6EAF8;
 }
 
-
-
+input::placeholder { opacity: 1 }
 </style>
-<!-- AJAX사용 -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
-</script>
+
 <script type="text/javascript">
 /*비밀번호 일치 검사*/
 
@@ -345,6 +346,7 @@ function checkBirth() {
     
 	if(birth.include('-') == 2 && birth.length() == 10){
     	$("#joinErr").text(" ");
+    	$("#birthDate").css("background-color", "#3ecd3eb8");
     	return true;
     } else {
     	$("#joinErr").text("생년월일을 다시 확인해주세요.");
@@ -362,6 +364,11 @@ function join(){
 	} else {
 		$("#joinErr").text("입력하신 정보를 다시 확인해주세요.");
 	}
+	
+}
+
+function birthTypeChange() {
+	$("#birthDate").attr("type", "date");
 	
 }
 
@@ -395,6 +402,7 @@ function handleOnInputName(e)  {
 				</div>
 				
 				
+				
 		
 		<form id="joinAction" name="joinAction" action="${pageContext.request.contextPath }/join.do" method="post">
 		
@@ -403,7 +411,7 @@ function handleOnInputName(e)  {
 					<input type="password" id="dummyPw" name="pw" style="display:none">
 					<input type="text" id="dummyChannel" name="channel" value="web" style="display:none">
 				<div>
-					<input type="date" id="birthDate" name="birthDate" class="joinInput" placeholder="생년월일" required="required" onchange="checkBirth()" autocomplete="off">
+					<input type="text" id="birthDate" name="birthDate" class="joinInput" placeholder="생년월일" onfocus="birthTypeChange()">
 				</div>	
 					<input type="submit" id="joinForm" value="가입하기" style="display:none">
 		</form>
