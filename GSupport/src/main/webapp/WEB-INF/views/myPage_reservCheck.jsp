@@ -78,6 +78,36 @@
 	text-align: center;
 }
 
+
+.button_submit1{
+	font-size: 13px;
+	text-align: center;
+	font-weight: bold;
+	background-color: #61ab45;
+	color: white;
+	border:none;
+	cursor:pointer;
+	float:right;
+}
+
+
+.button_submit2{
+	margin-left:10px;
+	font-size: 13px;
+	text-align: center;
+	font-weight: bold;
+	background-color: #ff5d5d;
+	color: white;
+	border:none;
+	cursor:pointer;
+	float:right;
+}
+
+
+.a2{
+	font-weight:bold;
+}
+
 </style>
 <body>
 
@@ -160,9 +190,9 @@
 							
 							<c:choose>
 								<c:when test="${r.reservation_status eq 'wait'}">
-																	<button class="button_submit" type="submit"
+																	<button class="button_submit2" type="submit"
 										onclick="return cancel(${r.reservation_no}, ${sessionScope.shop_no })">예약 취소</button>
-											<button class="button_submit" type="submit" 
+											<button class="button_submit1" type="submit" 
 											onclick="return success(${r.reservation_no},  ${sessionScope.shop_no })">
 											예약 승인</button>
 								</c:when>

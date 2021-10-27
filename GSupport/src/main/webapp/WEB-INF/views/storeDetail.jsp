@@ -13,11 +13,11 @@
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;700&display=swap');
 
-body {
+/* body {
     width: 80%;
     margin: 0 auto;
 }
-
+ */
 #storeNameTitle span img:hover {
 	background-image: url("./resources/images/star_after.png")
 }

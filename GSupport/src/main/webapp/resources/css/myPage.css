@@ -210,3 +210,8 @@ a > .disabled {
 #boardPaging a:hover {
 	font-weight: 700;
 }
+
+.column.side a:hover{
+	color:green;
+	font-weight: 800;
+}

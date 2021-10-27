@@ -230,7 +230,7 @@ main header h3 {
 
 #chat .me .message {
 	background-color: #6fbced;
-	min-width: 50px;
+	min-width: 100px;
 	
 }
 
@@ -322,6 +322,11 @@ main header h3 {
 	padding: 20px;
 	background: white;
 }
+
+.a3{
+	font-weight:bold;
+}
+
 /* body {
 	margin: 0;
 	padding: 0;

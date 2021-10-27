@@ -28,6 +28,11 @@
 	color: white;
 	margin-top: 30px;
 }
+
+
+.a9{
+	font-weight:bold;
+}
 </style>
 <script type="text/javascript">
 	$(document).ready(function() {

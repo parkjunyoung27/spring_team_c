@@ -28,6 +28,10 @@
 	color: white;
 	margin-top: 30px;
 }
+
+.a6{
+	font-weight:bold;
+}
 </style>
 <script type="text/javascript">
 	function mypageUpdate() {

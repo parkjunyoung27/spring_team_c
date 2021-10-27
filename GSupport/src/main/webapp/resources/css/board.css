@@ -103,6 +103,11 @@ ul li {
 
 .w50 {
 	width: 50%;
+	text-align:left;
+}
+
+li.fl.tc.w50.title.t_line{
+	text-align:center;	
 }
 
 .title {

@@ -47,6 +47,10 @@
 	margin-bottom: 10px;
 	border-bottom: 1px solid #ebebeb;
 }
+
+.a7{
+	font-weight:bold;
+}
 </style>
 <script type="text/javascript">
 	function myPage_registStore() {

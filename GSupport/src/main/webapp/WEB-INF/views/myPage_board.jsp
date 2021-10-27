@@ -111,6 +111,10 @@ ul li {
 #boardLine {
 	font-size: 13px;
 }
+
+.a4{
+	font-weight:bold;
+}
 </style>
 <body>
 
@@ -137,7 +141,7 @@ ul li {
 					<c:forEach items="${board }" var="board">
 						<li class="fl tc w15 list t_line lt_line">${board.board_no }</li>
 					<li class="fl tc w50 list t_line lt_line" id="boardLineClick"
-						onclick="location.href='./detail.do?categoryNo=${board.board_category }&board_no=${board.board_no}'">${board.board_title}[${board.board_count }]</li>
+						onclick="location.href='./detail.do?categoryNo=${board.board_category }&board_no=${board.board_no}'">${board.board_title}</li>
 						<li class="fl tc w15 list t_line lt_line">
 							${board.member_name}</li>
 						<jsp:useBean id="today" class="java.util.Date" />
