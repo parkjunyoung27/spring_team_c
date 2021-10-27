@@ -85,7 +85,7 @@ public class StoreController {
 			System.out.println("커맨드맵1======="+commandMap.getMap());
 			storeService.storeReserv(commandMap.getMap());
 			//return "redirect:/reservSuccess.do";
-			storeService.sendReservMsg(commandMap.getMap());
+				storeService.sendReservMsg(commandMap.getMap());
 			System.out.println("커맨드맵2======="+commandMap.getMap());	
 
 			

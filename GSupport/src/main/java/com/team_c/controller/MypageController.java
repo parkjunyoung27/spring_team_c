@@ -359,18 +359,23 @@ public class MypageController {
 		return mv;
 	}
 	
-	@RequestMapping("/reservCancel.do")
+	@RequestMapping("/reservCancel.do") //유저가 예약 취소할 때
 	public String reservCancel(CommandMap map, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		
 		String id = (String)session.getAttribute("id");
 		String shop_no = request.getParameter("shop_no");
+		String shop_name = request.getParameter("shop_name");
+		System.out.println("샵네임 = " + shop_name);
+		int member_no = (int) session.getAttribute("member_no");
 		
 		if(id != null && shop_no != null) {
 			map.put("id", id);
 			map.put("shop_no", shop_no);
+			map.put("member_no", member_no);
 			
 			mypageService.reservCancel(map.getMap());
+			//mypageService.reservCancelMsg(map.getMap());
 			System.out.println("삭제성공");
 			return "redirect:/myPage_reserv.do";
 		}else {
@@ -380,24 +385,28 @@ public class MypageController {
 		
 	}
 	
-	@RequestMapping("/ownerReservCancel.do")
+	@RequestMapping("/ownerReservCancel.do")//업주가 예약 취소할 때
 	public String ownerReservCancel(CommandMap map, HttpServletRequest request) {
-		
+		HttpSession session = request.getSession();
 		
 		//String id = (String)session.getAttribute("id");
-		
+		int member_no = (int) session.getAttribute("member_no");
+		String member_name = (String)session.getAttribute("name");
 		String reservation_no = request.getParameter("reservation_no");
 		//String shop_name = request.getParameter("shop_name");
 		
-		System.out.println("노"+reservation_no);
+		//System.out.println("노"+reservation_no);
 		//System.out.println("네"+shop_name);
 		
 		
 		if(reservation_no != null) {
 			map.put("reservation_no", reservation_no);
-			
+			map.put("member_no", member_no);
+			map.put("member_name", member_name);
 			
 			mypageService.ownerReservCancel(map.getMap());
+			mypageService.ownerReservCancelMsg(map.getMap());
+			
 			System.out.println("삭제성공");
 			return "redirect:/myPage_reservCheck.do";
 		}else {
@@ -412,13 +421,20 @@ public class MypageController {
 		HttpSession session = request.getSession();
 		String reservation_no = request.getParameter("reservation_no");
 		int shop_no = (int)session.getAttribute("shop_no");
+		int member_no = (int) session.getAttribute("member_no");
+		String shop_name = (String)session.getAttribute("name");
 		
 		System.out.println("노"+reservation_no);
 		System.out.println("샵넘버============================" + shop_no);
 		if(reservation_no != null) {
 			map.put("reservation_no", reservation_no);
 			map.put("shop_no", shop_no);
+			map.put("shop_name", shop_name);
+			map.put("member_no", member_no);
+			
+			
 			mypageService.ownerReservSuccess(map.getMap());
+			mypageService.ownerReservSuccessMsg(map.getMap());
 			System.out.println("예약성공");
 			return "redirect:/myPage_reservCheck.do?shop_no="+shop_no;
 		}else {

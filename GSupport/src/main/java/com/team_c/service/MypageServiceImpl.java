@@ -123,4 +123,19 @@ public class MypageServiceImpl implements MypageService {
 		return mypageDAO.totalCount3(map);
 	}
 
+	public int reservCancelMsg(Map<String, Object> map) {
+		int result = mypageDAO.reservCancelMsg(map);
+		return result;
+	}
+
+	public int ownerReservCancelMsg(Map<String, Object> map) {
+		int result = mypageDAO.ownerReservCancelMsg(map);
+		return result;
+	}
+
+	public int ownerReservSuccessMsg(Map<String, Object> map) {
+		int result = mypageDAO.ownerReservSuccessMsg(map);
+		return result;
+	}
+
 }

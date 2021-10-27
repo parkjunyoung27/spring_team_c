@@ -18,9 +18,9 @@
 	
 	<insert id="sendReservMsg" parameterType="HashMap">
 		INSERT INTO question(question_sender, question_recipient, question_content) VALUES 
-		((SELECT member_no FROM member WHERE shop_no=#{shop_no}), 
+		(97, 
 		#{member_no}, 
-      	#{date} '' #{reservTime} ' ' #{shop_name} '에 예약 접수 되었습니다.')
+      	#{date} ' ' #{reservTime} ' ' #{shop_name} '에 예약 접수 되었습니다.')
 	</insert>
 	
 	<select id="storeList" parameterType="HashMap" resultType="HashMap">
