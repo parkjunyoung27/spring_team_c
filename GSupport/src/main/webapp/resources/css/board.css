@@ -125,12 +125,13 @@ ul li {
 	letter-spacing: 1px;
 }
 
+
 /*글쓰기*/
 #write_form {
 	width: 100%;
 }
 
-#wrtie_area {
+#write_area {
 	float: left;
 	width: 100%;
 	margin-top: 10px;

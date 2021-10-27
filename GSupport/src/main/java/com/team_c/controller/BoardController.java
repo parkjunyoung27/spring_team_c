@@ -206,7 +206,6 @@ public class BoardController {
 		if (session.getAttribute("member_id") != null) {
 			int result = boardService.delete(map.getMap());
 			System.out.println("삭제 결과 : " + result );
-			System.out.println("커맨드 맵값 : " + map.getMap() );
 
 
 			return "redirect:/board.do?categoryNo=" + map.getMap().get("categoryNo");
@@ -220,7 +219,6 @@ public class BoardController {
 
 		//map에 넣기
 		map.put("member_no", session.getAttribute("member_no"));
-		System.out.println("코멘트 라이트 맵 값 : " + map.getMap());
 		
 		//질의
 		boardService.commentWrite(map.getMap());
@@ -250,7 +248,6 @@ public class BoardController {
 		map.put("member_no", session.getAttribute("member_no"));
 		map.put("member_grade", session.getAttribute("grade"));
 		if (session.getAttribute("member_id") != null) {
-			System.out.println("맵 값 : " + map.getMap());
 			int result = boardService.comment_delete(map.getMap());
 			System.out.println("삭제 결과 : " + result );
 
@@ -259,7 +256,5 @@ public class BoardController {
 			return "redirect:/login.do";
 		}
 	}
-	
-
 
 }

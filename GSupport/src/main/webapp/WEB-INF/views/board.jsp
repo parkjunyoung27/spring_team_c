@@ -56,6 +56,26 @@ function linkPage(pageNo){
 	font-weight: 700;
 	color: green;
 }
+
+.board_write {
+	width: 80px;
+	height: 23px;
+	background-color: black;
+	border-radius: 6px 6px 6px 6px;
+	float: right;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.board_write a {
+	text-decoration: none;
+	color: white;
+	text-align: center;
+	font-weight: bold;
+	font-size: 13px;
+}
+	
 </style>
 
 </head>
@@ -108,16 +128,17 @@ function linkPage(pageNo){
 			</ul>
 
 			<!-- 글쓰기 -->
-			<c:if test="${sessionScope.grade eq 3 && categoryNo eq 0  }">
-				<a href="./write.do?categoryNo=${categoryNo }">글쓰기</a>
-			</c:if>
-			<c:if test="${sessionScope.grade gt 1 && categoryNo eq 1 }">
-				<a href="./write.do?categoryNo=${categoryNo }">글쓰기</a>
-			</c:if>
-			<c:if test="${sessionScope.grade ne null && categoryNo eq 2 }">
-				<a href="./write.do?categoryNo=${categoryNo }">글쓰기</a>
-			</c:if>
-			
+			<div class="board_write">
+				<c:if test="${sessionScope.grade eq 3 && categoryNo eq 0  }">
+					<a href="./write.do?categoryNo=${categoryNo }">글쓰기</a>
+				</c:if>
+				<c:if test="${sessionScope.grade gt 1 && categoryNo eq 1 }">
+					<a href="./write.do?categoryNo=${categoryNo }">글쓰기</a>
+				</c:if>
+				<c:if test="${sessionScope.grade ne null && categoryNo eq 2 }">
+					<a href="./write.do?categoryNo=${categoryNo }">글쓰기</a>
+				</c:if>
+			</div>
 			
 			<!-- 페이징 -->
 			<div id="boardPaging">
