@@ -106,13 +106,13 @@ a > .disabled {
 .card .card-body {
 	padding: 15px 15px 10px
 }
-
+/* 
 .customer-content {
 	float: center;
 	padding-bottom: 50px;
 	border-bottom: 0.5px solid #d8d8d8;
 }
-
+ */
 .customer-content-header {
 	padding-bottom: 20px;
 	position: relative;

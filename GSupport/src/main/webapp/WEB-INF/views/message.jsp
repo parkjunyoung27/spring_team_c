@@ -226,6 +226,7 @@ main header h3 {
 
 #chat .you .message {
 	background-color: #58b666;
+	min-width:100px;
 }
 
 #chat .me .message {

@@ -179,7 +179,7 @@
 							<c:choose>
 								<c:when
 									test="${r.reservation_status eq 'wait' }">
-									<button class="button_submit2" type="submit"
+									<button class="button_submit1" type="submit"
 										onclick="return cancel(${r.shop_no})" >
 										예약 취소
 										</button>
