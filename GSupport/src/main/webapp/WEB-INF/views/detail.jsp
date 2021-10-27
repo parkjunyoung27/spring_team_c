@@ -89,7 +89,7 @@ function board_delete(no1, no2){
 			<div id="dcontent">${detail.board_content }</div>
 
 			<div id="dcontent">
-				<c:if test="${detail.board_file ne (null) }">
+				<c:if test="${detail.board_orifile ne '' }">
 				<img alt="Can't_load_this_image"
 					src="./resources/upfile/upload/${detail.board_file }">
 				</c:if>

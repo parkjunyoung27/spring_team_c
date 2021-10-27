@@ -108,7 +108,6 @@ public class BoardController {
 	@PostMapping("/board")
 	public ModelAndView board2(CommandMap map) {
 		ModelAndView mv = new ModelAndView("board");
-		System.out.println("보드 포스트 : " + map.getMap());
 		int commentTotalCount = boardService.commentTotalCount(map.getMap());
 		mv.addObject("commentTotalCount", commentTotalCount);
 		return mv;
@@ -138,6 +137,7 @@ public class BoardController {
 		
 		//파일 저장하기
 		//경로지정
+		
 		String realPath = servletContext.getRealPath("resources/upfile/");
 		realPath = realPath + "upload";
 		System.out.println("경로 = " + realPath);
@@ -201,8 +201,6 @@ public class BoardController {
 	public String delete(@RequestParam("board_no") int board_no, HttpServletRequest request, CommandMap map) {
 		HttpSession session = request.getSession();
 		
-		System.out.println("맵 값 : " + map.getMap());
-
 		map.put("member_id", session.getAttribute("member_id"));
 		map.put("member_grade", session.getAttribute("grade"));
 		if (session.getAttribute("member_id") != null) {
