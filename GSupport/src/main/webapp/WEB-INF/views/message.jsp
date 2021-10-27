@@ -248,7 +248,7 @@ main header h3 {
 
 #chat .me .triangle {
 	border-color: transparent transparent #6fbced transparent;
-    margin-left: 90%;
+    margin-left: 95%;
 }
 
 .main send {
