@@ -374,8 +374,10 @@ public class MypageController {
 			map.put("shop_no", shop_no);
 			map.put("member_no", member_no);
 			
+			System.out.println("멤버넘버===================="+(member_no));
+			System.out.println("샵넘버===================="+(shop_no));
 			mypageService.reservCancel(map.getMap());
-			//mypageService.reservCancelMsg(map.getMap());
+			mypageService.reservCancelMsg(map.getMap());
 			System.out.println("삭제성공");
 			return "redirect:/myPage_reserv.do";
 		}else {
