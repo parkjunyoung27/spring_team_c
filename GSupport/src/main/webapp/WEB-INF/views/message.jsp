@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>messages</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style type="text/css">
 * {
 	box-sizing: border-box;
@@ -366,16 +367,19 @@ td {
  */
 </style>
 <script type="text/javascript">
-	
+$(function(){
+	//alert($('#chat')[0].scrollHeight);
+	$('#chat').scrollTop($('#chat')[0].scrollHeight);
 	$(".person").on('click', function() {
 		$(this).toggleClass('focus').siblings().removeClass('focus');
-	})
+	});
 	
-	$("#getSender").on('click', function() {
-		alert("D");
-		document.getElementById('#chat').scrollTop = document
-				.getElementById('#chat').scrollHeight;
-	})
+	$(".getSender").on('click', function() {
+		//alert("D");
+		//$('#chat').scrollTop = $('#chat').scrollHeight;
+	});
+	console.log($('#chat').height());
+});
 	
 
 
@@ -400,13 +404,12 @@ td {
 					<aside>
 						<ul>
 							<c:forEach items="${list }" var="q">
-								<li 
-									onclick="location.href='./message.do?openmsg=${q.question_sender }&sendId=${q.member_id} '"
-									<c:if test="${q.question_read eq 0}">style="font-weight:bold" NEW</c:if>
-									>
+								<li onclick="location.href='./message.do?openmsg=${q.question_sender }&sendId=${q.member_id} '" class="getSender"
+									<c:if test="${q.question_read eq 0}">style="font-weight:bold" NEW</c:if>>
 									<div>
-										<h2 id="getSender" onclick="selectSender('${q.member_id }')"><c:if test="${q.question_read eq 1}">style="color:gray;"</c:if>${q.member_name }</h2>
+										<h2 class="getSender"><c:if test="${q.question_read eq 1}">style="color:gray;"</c:if>${q.member_name }</h2>
 									</div>
+								</li>
 							</c:forEach>
 
 						</ul>
