@@ -32,24 +32,11 @@ public class JoinController {
 	public String join(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 
-//		System.out.println(session.getAttribute("joinChannel"));
-//		System.out.println(session.getAttribute("joinChannel") != null);
-
 		if (session.getAttribute("joinChannel") != null) {
 			return "redirect:/oAuthJoin.do";
 		}
 
 		return "join";
-	}
-
-	@GetMapping("/oAuthJoin.do")
-	public String oAuthJoin(HttpServletRequest request) {
-//		UrlPathHelper urlPathHelper = new UrlPathHelper();
-//		String originalURL = urlPathHelper.getOriginatingRequestUri(request);
-//		System.out.print("OriginalURL ==>" + originalURL  );
-//		String before = request.getHeader("referer");
-//		System.out.println("*****************" + before);
-		return "oAuthJoin";
 	}
 
 	@PostMapping("/join.do")
@@ -62,7 +49,7 @@ public class JoinController {
 		System.out.println(join);
 
 		session.invalidate();
-		return "redirect:/index.do";
+		return "redirect:/index.do?login=join";
 	}
 
 	
