@@ -26,7 +26,7 @@
 
 #oAuthJoinForm h2{
 	position:fixed;
-	top:15%;
+	top:37%;
 	width: 80%;
 	left:50%;
 	border: none;
@@ -39,15 +39,15 @@
 
 #oAuthJoinForm p {
 	position:fixed;
-	top:25%;
+	top:10%;
 	width: 90%;
-	left:50%;
+	left:47%;
 	border: none;
 	border-radius: 5px;
 	transform:translate(-50%);
 	text-align: center;
 	margin-bottom: 0px;
-	font-size: 20px;
+	font-size: 16px;
 }
 
 #oAuthJoinErr {
@@ -63,7 +63,8 @@
 	border-radius: 5px;
 	font-size: 14px;
 	transform:translate(-50%);
-	bottom:58%;
+	padding-left: 24px;
+	bottom:40%;
 }
 
 #oAuthBirthDate {
@@ -75,7 +76,8 @@
 	border-radius: 5px;
 	font-size: 14px;
 	transform:translate(-50%);
-	bottom:40%;
+	padding-left: 24px;
+	bottom:30%;
 }
 
 #oAuthJoinSubmit {
@@ -96,6 +98,15 @@
 	cursor:pointer;
 	bottom:15%;
 }
+
+.oAuthJoinInput:active,
+.oAuthJoinInput:focus,
+.oAuthJoinInput:hover {
+	background: #f5f5f5;
+	outline: none;
+	background-color: green;
+}
+
 </style>
 <!-- AJAX사용 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
@@ -148,18 +159,31 @@
 
 	}
 
+	function oAuthBirthTypeChange() {
+		$("#oAuthBirthDate").attr("type", "date");
+	}
+	
+	function oAuthBirthTypeReverse() {
+		$("#oAuthBirthDate").css("background-color", "#3ecd3eb8");
+	}
+
+	
 	function handleOnInputName(e) {
 		e.value = e.value.replace(/[^ㄱ-힣a-zA-Z0-9]/ig, '')
 	}
 </script>
 	<div id ="oAuthJoinForm">
-			<h2>SNS 간 단 회 원 가 입</h2><br>
-			<p id="oAuthJoinErr"></p>
+			<p>
+				<img src="./resources/images/logo.png" alt="logo" class="logo"
+					width="60%"><br>&emsp;"Don't you get hungry"
+			</p>
+			<h2>SNS 간단 회원가입</h2>
+			<div id="oAuthJoinErr"></div>
 		<form action="join.do" method="post">
 			<input type="hidden" id="oAuthId" placeholder="id" value="${sessionScope.memberEmail }">
 			<input type="hidden" id="oAuthPw" placeholder="pw" value="${sessionScope.memberPw }">
-			<input type="text" id="oAuthJoinName" placeholder="닉네임" required="required" onchange="checkoAuthName()" oninput="handleOnInputName(this)"><br>
-			<input type="date" id="oAuthBirthDate" placeholder="생년월일" required="required"><br>
+			<input type="text" id="oAuthJoinName" class="oAuthJoinInput" placeholder="닉네임" required="required" onchange="checkoAuthName()" oninput="handleOnInputName(this)"><br>
+			<input type="text" id="oAuthBirthDate" class="oAuthJoinInput" placeholder="생년월일" required="required" onfocus="oAuthBirthTypeChange()"  onblur="oAuthBirthTypeReverse()"><br>
 			<input type="hidden" id="oAuthChannel" value="${sessionScope.joinChannel }">
 			<input type="submit" id="oAuthJoinForm" value="가입하기" style="display:none">
 		</form>

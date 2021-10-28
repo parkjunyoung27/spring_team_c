@@ -33,7 +33,7 @@
 		
 		var email = '<%=(String) session.getAttribute("member_id")%>';
 
-			alert("회원 탈퇴를 위해서 이메일 인증이 필요합니다.")
+			alert("잠시만 기다려주세요. 회원 탈퇴를 위한 인증 메일을 발송하고 있습니다.")
 			
 			$.ajax({
 				type : 'get',
@@ -45,7 +45,7 @@
 
 					sessionStorage.setItem("sentCode", data);
 
-					var typeCode = prompt("이메일로 발송된 인증번호를 입력해주세요."+ data, "");
+					var typeCode = prompt("이메일로 발송된 인증번호를 입력해주세요.", "");
 
 					console.log(typeCode);
 

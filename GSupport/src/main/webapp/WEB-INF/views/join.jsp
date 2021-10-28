@@ -104,18 +104,6 @@
 	bottom:34%;
 }
 
-#birthDate {
-	position:fixed;
-	width: 60%;
-	left:50%;
-	height: 40px;
-	border: none;
-	border-radius: 5px;
-	font-size: 14px;
-	transform:translate(-50%);
-	bottom:22%;
-	
-}
 
 #joinSubmit {
 	position:fixed;
@@ -136,6 +124,24 @@
 	bottom:10%;
 }
 
+#birthDate {
+	position:fixed;
+	width: 60%;
+	left:50%;
+	height: 40px;
+	border: none;
+	border-radius: 5px;
+	border-bottom: 2px solid #D1D1D4;
+	font-size: 14px;
+	font-weight: 700;
+	background: #f5f5f5;
+	padding: 15px;
+	padding-left: 24px;
+	transform:translate(-50%);
+	bottom:22%;
+	
+}
+
 .joinInput {
 	border: none;
 	color: black;
@@ -151,6 +157,13 @@
 .joinInput:active,
 .joinInput:focus,
 .joinInput:hover {
+	background: #f5f5f5;
+	outline: none;
+	background-color: green;
+}
+#birthDate:active,
+#birthDate:focus,
+#birthDate:hover {
 	background: #f5f5f5;
 	outline: none;
 	background-color: green;
@@ -267,7 +280,7 @@ function sendEmailCode() {
 
 		success : function(data) {
 
-			alert("인증 번호가 발송되었습니다." + data),
+			alert("인증 번호가 발송되었습니다."),
 			sessionStorage.setItem("sentCode", data);
 			
 			var typeCode = prompt("이메일로 발송된 인증번호를 입력해주세요.","");
@@ -356,6 +369,8 @@ function join(){
 	var nameTest = $("#joinNameDummy").val();
 	var pwTest = $("#joinPwDummy").val();
 	
+	
+	
 	if (idTest=="true" && nameTest=="true" && pwTest=="true"){
 		$("#joinErr").text("잠시만 기다려주세요. 인증 메일을 발송하고 있습니다.");
 		new sendEmailCode();
@@ -369,6 +384,11 @@ function birthTypeChange() {
 	$("#birthDate").attr("type", "date");
 	
 }
+function birthTypeReverse() {
+	$("#birthDate").css("background-color", "#3ecd3eb8");
+	
+}
+
 
 function handleOnInput(e) {
 	e.value = e.value.replace(/[^a-z0-9@.-_]/ig, '')
@@ -409,7 +429,7 @@ function handleOnInputName(e)  {
 					<input type="password" id="dummyPw" name="pw" style="display:none">
 					<input type="text" id="dummyChannel" name="channel" value="web" style="display:none">
 				<div>
-					<input type="text" id="birthDate" name="birthDate" class="joinInput" placeholder="생년월일" onfocus="birthTypeChange()">
+					<input type="text" id="birthDate" name="birthDate" placeholder="생년월일" onfocus="birthTypeChange()" onblur="birthTypeReverse()">
 				</div>	
 					<input type="submit" id="joinForm" value="가입하기" style="display:none">
 		</form>
