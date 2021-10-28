@@ -186,10 +186,10 @@ input::placeholder { opacity: 1 }
 <script type="text/javascript">
 /*비밀번호 일치 검사*/
 
-function isSame() {
+function isJoinSame() {
 	var pw1 = $("#joinPw").val();
 	var pw2 = $("#joinConfirmPw").val();
-    
+	
 	if(pw1.length < 6 || pw1.length > 30){
 			$("#joinErr").text("비밀번호를 6자 이상 입력해주세요.");
 			$("#joinPw").css("background-color", "pink");
@@ -395,10 +395,10 @@ function handleOnInputName(e)  {
 					<input type="text" id="joinName" class="joinInput" placeholder="닉네임" required="required" onchange="checkName()" oninput="handleOnInputName(this)">
 				</div>
 				<div>
-					<input type="password" id="joinPw" class="joinInput" placeholder="비밀번호" required="required" onchange="isSame()" >
+					<input type="password" id="joinPw" class="joinInput" placeholder="비밀번호" required="required" onchange="isJoinSame()">
 				</div>
 				<div>
-					<input type="password" id="joinConfirmPw" class="joinInput" placeholder="비밀번호 확인" required="required" onchange="isSame()">
+					<input type="password" id="joinConfirmPw" class="joinInput" placeholder="비밀번호 확인" required="required" onchange="isJoinSame()">
 				</div>
 				
 				
