@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -207,6 +208,7 @@ main header h3 {
 }
 
 #chat .entete {
+	color:grey;
 	margin-bottom: 5px;
 }
 
@@ -227,11 +229,14 @@ main header h3 {
 #chat .you .message {
 	background-color: #58b666;
 	min-width:100px;
+	line-height:30px;
 }
 
 #chat .me .message {
 	background-color: #6fbced;
 	min-width: 100px;
+	line-height:30px;
+	
 	
 }
 
@@ -249,7 +254,7 @@ main header h3 {
 
 #chat .me .triangle {
 	border-color: transparent transparent #6fbced transparent;
-    margin-left: 95%;
+    margin-left: 90%;
 }
 
 .main send {
@@ -411,9 +416,11 @@ $(function(){
 						<ul>
 							<c:forEach items="${list }" var="q">
 								<li onclick="location.href='./message.do?openmsg=${q.question_sender }&sendId=${q.member_id} '" class="getSender"
-									<c:if test="${q.question_read eq 0}">style="font-weight:bold" NEW</c:if>>
+									<c:if test="${q.question_read eq 0}">style="font-weight:bold; color:red;" NEW</c:if>>
 									<div>
-										<h2 class="getSender"><c:if test="${q.question_read eq 1}">style="color:gray;"</c:if>${q.member_name }</h2>
+										<h2 class="getSender">
+										<c:if test="${q.question_read eq 1}">style="color:blue;"</c:if>
+										${q.member_name }</h2>
 									</div>
 								</li>
 							</c:forEach>
@@ -427,8 +434,8 @@ $(function(){
 							<c:when test="${sessionScope.member_id eq dl.question_recipient_id }">
 									<li class="you">
 										<div class="entete">
-											<span class="status green"></span>
-											<h3>${dl.question_date}</h3>
+											<div><h4>${dl.question_sender_id }</h4></div>
+											<div><h3><fmt:formatDate value="${dl.question_date }" pattern="yyyy.MM.dd HH.mm" /></h3></div>
 										</div>
 										<div class="triangle"></div> 
 											<div id="receivedMessage" class="message">
@@ -440,8 +447,8 @@ $(function(){
 							<c:otherwise>
 									<li class="me">
 										<div class="entete">
-											<span class="status green"></span>
-										<h3>${dl.question_date}</h3>
+											<div><h4>${dl.question_sender_id }</h4></div>
+											<div><h3><fmt:formatDate value="${dl.question_date }" pattern="yyyy.MM.dd HH.mm" /></h3></div>
 										</div>
 										<div class="triangle"></div> 
 											<div id="sentMessage" class="message">
