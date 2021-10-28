@@ -118,7 +118,7 @@
 	<insert id="reservCancelMsg" parameterType="HashMap">
 		INSERT INTO question(question_sender, question_recipient, question_content) VALUES 
 		(97, 
-		#{member_no}, CONCAT((SELECT shop_name FROM shop WHERE shop_no=#{shop_no}), '에 예약 취소 되었습니다')
+		#{member_no}, CONCAT((SELECT shop_name FROM shop WHERE shop_no=#{shop_no}), ' 매장 예약이 취소 되었습니다')
 		)
 		
 	</insert>

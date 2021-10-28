@@ -35,13 +35,14 @@
 </style>
 <script type="text/javascript">
 	function mypageUpdate() {
-		if (confirm("수정하시겠습니까?")) {
-			alert("수정 되었습니다.");
-			return true;
-		} else {
-			alert("취소 되었습니다.");
+		theForm=document.info
+		if (theForm.name.value=="" || theForm.phonenum.value=="") {
+			alert("입력칸이 비었습니다. 확인해주세요");
 			return false;
-		}
+		} else {
+			alert("수정되었습니다.");
+			return true;
+		} 
 	}
 </script>
 </head>
@@ -63,7 +64,7 @@
 					</div>
 					<div class="customer-account-container">
 						<div class="customer-formbox">
-							<form action="./myPage_update.do" method="post">
+							<form action="./myPage_update.do" method="post" name="info">
 								<div class="field_row">
 									<div class="field_title">이메일</div>
 									<div class="field_label">
