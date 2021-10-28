@@ -57,11 +57,13 @@ header label.menu {
 
 .sidebar_content>ul {
 	margin: 20px;
+	cursor: pointer;
 }
 
 .sidebar_content>ul>li {
 	border_bottom: 1px solid #ccc;
 	list-style: none;
+	cursor: pointer;
 }
 
 .sidebar_content>ul>li>a {
@@ -71,6 +73,7 @@ header label.menu {
 	padding: 10px;
 	margin: 10px;
 	background: #f5f5f5;
+	cursor: pointer;
 }
 
 .sidebar_content label[for*='sidebar'] {
@@ -79,6 +82,7 @@ header label.menu {
 	left: 0;
 	width: 100%;
 	height: 100%;
+	cursor: pointer;
 	z-index: -1;
 }
 
@@ -104,10 +108,12 @@ header label.menu {
 
 input#sidebar:checked ~ header label {
 	background-position: -24px 0;
+	cursor: pointer;
 }
 
 input#sidebar:checked ~ .sidebar_content {
 	top: 25%;
+	cursor: pointer;
 }
 
 input#sidebar:checked ~ .background {
@@ -238,7 +244,7 @@ input[id="tab05"]:checked ~ .con5 {
 			</ul></li>
 		<li class="menuli"><c:choose>
 				<c:when test="${sessionScope.name ne null}">
-					<a>${sessionScope.name}님 <c:if test="${authUser eq 'kakao'}">
+					<a style="cursor: pointer">${sessionScope.name}님 <c:if test="${authUser eq 'kakao'}">
 							<img id=channel_icon
 								src="${pageContext.request.contextPath}/resources/images/kakao_channel.png">
 						</c:if> <c:if test="${authUser eq 'naver'}">
@@ -252,13 +258,13 @@ input[id="tab05"]:checked ~ .con5 {
 								src="${pageContext.request.contextPath}/resources/images/web_channel.png">
 						</c:if></a>
 
-					<ul class="son">
+					<ul class="son" style="cursor: pointer">
 					<c:if test="${grade eq 3 }">
 						<li><a href="./admin/adminMain.do">관리자홈</a></li>
 					</c:if>
 						<li><a href="./myPage_reserv.do">내 정보</a></li>
 						<li><a href="./message.do">쪽지</a></li>
-						<li><a onclick="onLogoutClick();">로그아웃</a></li>
+						<li><a style="cursor: pointer" onclick="onLogoutClick();">로그아웃</a></li>
 					</ul>
 
 				</c:when>
