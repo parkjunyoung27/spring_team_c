@@ -21,7 +21,8 @@ function writeCheck(){
 <style>
 #boardContainer{
 margin-top:100px;
-height: 900px;
+height: auto;
+overflow: hidden;
 }
 
 #write_area{
