@@ -228,13 +228,13 @@ main header h3 {
 
 #chat .you .message {
 	background-color: #58b666;
-	min-width:100px;
+	min-width:50px;
 	line-height:30px;
 }
 
 #chat .me .message {
 	background-color: #6fbced;
-	min-width: 100px;
+	min-width: 50px;
 	line-height:30px;
 	
 	
