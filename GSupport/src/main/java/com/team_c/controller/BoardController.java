@@ -66,7 +66,7 @@ public class BoardController {
 		//페이지 번호가 오는지 확인하기
 		int pageNo = 1;
 		if(map.containsKey("pageNo")) {
-			pageNo = Integer.parseInt(String.valueOf(map.get("pageNo")));
+			pageNo = util.toInt(map.get("pageNo"));
 		}
 		int listScale = 10;//리스트 크기
 		int pageScale = 10;
