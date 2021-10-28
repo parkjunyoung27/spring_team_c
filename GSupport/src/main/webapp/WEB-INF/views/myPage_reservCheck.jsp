@@ -10,7 +10,12 @@
 <title>My Page Reservation Check</title>
 <script type="text/javascript">
 	function linkPage(pageNo) {
-		location.href = "./myPage_reservCheck.do?pageNo=" + pageNo+"&shop_no="+${sessionScope.shop_no};
+		<c:if test="${status ne null}">
+			location.href = "./myPage_reservCheck.do?pageNo=" + pageNo+"&shop_no="+${sessionScope.shop_no} + "&status=${status}";		
+		</c:if>
+		<c:if test="${status eq null}">
+			location.href = "./myPage_reservCheck.do?pageNo=" + pageNo+"&shop_no="+${sessionScope.shop_no};
+		</c:if>
 	}
 	function cancel(no, sno){
 		if(confirm("예약 취소하시겠습니까?")){

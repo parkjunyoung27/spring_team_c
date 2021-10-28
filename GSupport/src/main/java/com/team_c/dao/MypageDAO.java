@@ -118,4 +118,8 @@ public class MypageDAO extends AbstractDAO {
 	public int ownerReservSuccessMsg(Map<String, Object> map) {
 		return sendMessage("mypage.ownerReservSuccessMsg", map);
 	}
+
+	public List<Map<String, Object>> reservList(Map<String, Object> map) {
+		return selectList("mypage.reservList", map);
+	}
 }

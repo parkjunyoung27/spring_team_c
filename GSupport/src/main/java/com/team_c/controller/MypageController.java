@@ -248,7 +248,7 @@ public class MypageController {
 		if (map.containsKey("pageNo")) {
 			pageNo = Integer.parseInt(String.valueOf(map.get("pageNo")));
 		}
-		int listScale = 3;// 리스트 크기
+		int listScale = 4;// 리스트 크기
 		int pageScale = 10;
 		
 		//id값 받아오기
@@ -257,6 +257,10 @@ public class MypageController {
 		// 토탈 카운트
 		int totalCount = mypageService.totalCount(map.getMap());
 		List<Map<String, Object>> reservationTotal = mypageService.reservationTotal(map.getMap());
+		List<Map<String, Object>> list = mypageService.reservList(map.getMap());
+		if(list.size() > 0) {			
+			mv.addObject("status", list.get(0).get("reservation_status"));
+		}
 		//이걸 분리합니다.
 		for (int i = 0; i < reservationTotal.size(); i++) {
 			if(reservationTotal.get(i).get("reservation_status").equals("wait")) {
@@ -324,7 +328,7 @@ public class MypageController {
 		if (map.containsKey("pageNo")) {
 			pageNo = Integer.parseInt(String.valueOf(map.get("pageNo")));
 		}
-		int listScale = 4;// 리스트 크기
+		int listScale = 6;// 리스트 크기
 		int pageScale = 10;
 		
 		String id = (String)session.getAttribute("id");
@@ -461,7 +465,7 @@ public class MypageController {
 		if (map.containsKey("pageNo")) {
 			pageNo = Integer.parseInt(String.valueOf(map.get("pageNo")));
 		}
-		int listScale = 3;// 리스트 크기
+		int listScale = 4;// 리스트 크기
 		int pageScale = 10;
 		
 		//id값 받아오기
@@ -477,7 +481,13 @@ public class MypageController {
 		int totalCount2 = mypageService.totalCount2(map.getMap());
 		List<Map<String, Object>> ownerReservCheck = mypageService.ownerReservCheck(map.getMap());
 		List<Map<String, Object>> list = mypageService.ownerReservList(map.getMap());
+		//System.out.println(map.getMap());
+		//System.out.println(list);
 		//이걸 분리합니다.
+		if(list.size() > 0) {			
+			mv.addObject("status", list.get(0).get("reservation_status"));
+		}
+		
 		for (int i = 0; i < ownerReservCheck.size(); i++) {
 			if(ownerReservCheck.get(i).get("reservation_status").equals("wait")) {
 				mv.addObject("wait", ownerReservCheck.get(i).get("ownerReservCheck"));

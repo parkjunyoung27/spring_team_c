@@ -9,9 +9,14 @@
 <meta charset="UTF-8">
 <title>My Page Reservation</title>
 <script type="text/javascript">
-	function linkPage(pageNo) {
+function linkPage(pageNo) {
+	<c:if test="${status ne null}">
+		location.href = "./myPage_reserv.do?pageNo=" + pageNo+"&status=${status}";		
+	</c:if>
+	<c:if test="${status eq null}">
 		location.href = "./myPage_reserv.do?pageNo=" + pageNo;
-	}
+	</c:if>
+}
 	function cancel(no){
 		if(confirm("예약 취소하시겠습니까?")){
 			location.href='./reservCancel.do?shop_no='+no

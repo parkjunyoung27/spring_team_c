@@ -138,4 +138,8 @@ public class MypageServiceImpl implements MypageService {
 		return result;
 	}
 
+	public List<Map<String, Object>> reservList(Map<String, Object> map) {
+		return mypageDAO.reservList(map);
+	}
+
 }

@@ -48,7 +48,11 @@
 	</select>
 	
 	<select id="ownerReservList" parameterType="HashMap" resultType="HashMap">
-		SELECT * FROM reservation WHERE owner=(SELECT member_no FROM shop WHERE shop_no=#{shop_no})
+		SELECT * FROM reservation WHERE owner=(SELECT member_no FROM shop WHERE shop_no=#{shop_no}) AND reservation_status=#{status}
+	</select>
+	
+	<select id="reservList" parameterType="HashMap" resultType="HashMap">
+		SELECT * FROM reservation WHERE user=(SELECT member_no FROM member WHERE member_id=#{id}) AND reservation_status=#{status}
 	</select>
 
 	<select id="totalCount" parameterType="HashMap"
