@@ -53,7 +53,7 @@
 			<li>
 			<button type="submit" class="sub_board_menu_button" onclick="location.href='./board.do?categoryNo=1'" 
 			<c:if test="${param.categoryNo eq 1 }">style="color:black; font-weight:800;"</c:if>>
-			점주 게시판 
+			가맹점 게시판 
 			</button>
 <!--	
 		<li><a href="./board.do?categoryNo=0">공지사항</a></li>
