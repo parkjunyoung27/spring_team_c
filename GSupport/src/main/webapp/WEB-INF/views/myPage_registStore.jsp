@@ -51,6 +51,10 @@
 .a7{
 	font-weight:bold;
 }
+
+.customer-account-container{
+	font-size:13px;
+}
 </style>
 <script type="text/javascript">
 	function myPage_registStore() {
@@ -84,7 +88,7 @@
  							<p>
 								가맹점 등록시 아래 사항을 확인하시기 바랍니다. <br> 가맹점 등록은 업주 본인만 가능합니다.<br>
 								등록하시기 전에 회원정보 수정을 통해 본인의 닉네임을 가맹점 이름과 동일하게 수정해주세요. <br> 
-								가맹점 등록 신청시 관리자 검토 후 등록되며 가맹점 찾기/예약 서비스를 이용할 수 있습니다. <br><br><br><br><br>
+								가맹점 등록 신청시 관리자 검토 후 등록되며 가맹점 찾기/예약 서비스를 이용할 수 있습니다. <br><br><br>
 							</p> 
 						<div class="customer-formbox">
 							<form action="./myPage_registStore.do" method="post">

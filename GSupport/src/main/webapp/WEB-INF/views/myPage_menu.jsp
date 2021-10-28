@@ -7,8 +7,8 @@
 	<div class="account_profile">
 		<div class="title">
 			<h2>마이페이지<br></h2>
-			<span class="name"><br><strong>${sessionScope.name}</strong> 님
-				안녕하세요</span>
+			<span class="name"><br>안녕하세요, <br> <strong>${sessionScope.name}</strong> 님
+				</span>
 		</div>
 	</div>
 	<div class="customer_side">

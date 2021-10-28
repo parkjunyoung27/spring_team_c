@@ -314,7 +314,7 @@ main header h3 {
 	padding: 2px;
 	color: black;
 	line-height: 10px;
-	width: auto;
+	width: 200px;
 	display: inline-block;
 	border:none;
 	box-shadow: -0.5px 0.5px 3px 1px #b7b7b7;	
@@ -331,6 +331,30 @@ main header h3 {
 
 .a3{
 	font-weight:bold;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 100px;
+  background-color: #848484ad;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top:50%;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }
 
 /* body {
@@ -376,6 +400,8 @@ td {
 	height: 30px;
 }
  */
+ 
+ 
 </style>
 <script type="text/javascript">
 $(function(){
@@ -434,7 +460,7 @@ $(function(){
 							<c:when test="${sessionScope.member_id eq dl.question_recipient_id }">
 									<li class="you">
 										<div class="entete">
-											<div><h4>${dl.question_sender_id }</h4></div>
+											<div><h4>${dl.question_sender_name }</h4></div>
 											<div><h3><fmt:formatDate value="${dl.question_date }" pattern="yyyy.MM.dd HH.mm" /></h3></div>
 										</div>
 										<div class="triangle"></div> 
@@ -447,7 +473,7 @@ $(function(){
 							<c:otherwise>
 									<li class="me">
 										<div class="entete">
-											<div><h4>${dl.question_sender_id }</h4></div>
+											<div><h4>${dl.question_sender_name }</h4></div>
 											<div><h3><fmt:formatDate value="${dl.question_date }" pattern="yyyy.MM.dd HH.mm" /></h3></div>
 										</div>
 										<div class="triangle"></div> 
@@ -462,13 +488,11 @@ $(function(){
 					</main>
 					<div id="send">
 						<form action="./message.do" method="post">
-							<input type="text" id="sendID" name="sendID" class="send_id" value="${sendId}">
-							 <br> <input
-								type="text" name="content" placeholder="내용을 입력하세요."
-								class="send_text">
-							<button
-								style="background-color: transparent; border: none; float: right; width: 20%; padding: 0px; cursor:point;">
+							<input type="text" id="sendID" name="sendID" class="send_id" value="${sendId}" placeholder="받는 분의 아이디를 입력하세요.">
+							 <br> <input type="text" name="content" placeholder="내용을 입력하세요." class="send_text">
+							<button class="tooltip" style="background-color: transparent; border: none; float: right; width: 20%; padding: 0px; cursor:point;">
 								<img src="http://localhost:8080/GSupport/resources/images/logo2.png" alt="" style="float: right;  width:70px; margin-right:10px;">
+								<span class="tooltiptext"> 메세지 전송 </span>
 							</button>
 
 						</form>

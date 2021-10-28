@@ -198,7 +198,7 @@ li.fl.tc.w50.title.t_line{
 #dcontent {
 	padding: 5px;
 	padding-top: 25px;
-	min-height: 300px;
+	min-height: 100px;
 }
 
 #detail_btn {
