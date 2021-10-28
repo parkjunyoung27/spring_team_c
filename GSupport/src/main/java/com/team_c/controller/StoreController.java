@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -50,7 +51,7 @@ public class StoreController {
 		return mv;
 	}
 
-	@RequestMapping("/storeReserv.do")
+	@PostMapping("/storeReserv.do")
 	public String storeReserv(CommandMap commandMap, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String name = (String)session.getAttribute("name");
@@ -60,6 +61,8 @@ public class StoreController {
 		String reservTime = request.getParameter("reservTime");
 		String id = (String)session.getAttribute("id");
 		String reservRequest = request.getParameter("request");
+		System.out.println("인원수 입력: "+ request.getParameter("people"));
+		System.out.println("date : " + request.getParameter("date"));
 		int people = Integer.parseInt(request.getParameter("people"));
 		int shop_no = Integer.parseInt(request.getParameter("shop_no"));
 		int member_no = (int) session.getAttribute("member_no");

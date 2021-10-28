@@ -60,14 +60,26 @@ background-color: #2fcc71;
 
 <script type="text/javascript">
 //이게 예약 취소버튼을 눌러도 예약이 된것처럼 DB에 올라가서 처리가 됩니다. 
-function ask(){
-	if(confirm("예약하시겠습니까?")){
-		alert("예약 되었습니다.")
-		location.href='./storeReserv.do?shop_no=${storeDetail.shop_no}';
+function ask(form){
+	//alert(document.getElementById("name").value);
+	if (document.getElementById("name").value=="" || document.getElementById("phoneNum").value=="" 
+			|| document.getElementById("people").value=="" || document.getElementById("date").value=="") {
+		alert("입력칸이 비었습니다. 확인해주세요");
+	return false;
+	}
+	var result =confirm("예약하시겠습니까?");
+	//alert(result);
+	
+	if(result == true){
+		form.submit();
+		alert("예약 되었습니다.");
+		return true;
+		
 	} else {
 		alert("예약이 취소되었습니다.");	
 		return false;
 	}
+	
 }
 
 function like(no){
@@ -243,15 +255,17 @@ $(function(){
 					</div>
 					<p>이름 : <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required="required" class="reserv_input" value="${sessionScope.name }" disabled="disabled"></p> 
 					<p>연락처 : <input type="text" id="phoneNum" name="phoneNum" placeholder="연락처를 입력하세요" required="required" class="reserv_input"> </p>
-					<p>인원 : <input type="number" value="1" min="1" max="5" id="people" name="people"required="required" class="reserv_input" style="width:10%"> </p>
+					<p>인원 : <input type="number" value="1" min="1" max="5" id="people" name="people" class="reserv_input" style="width:10%"> </p>
 					<p>날짜 : <input type="date" required="required" class="reserv_input" id="date" name="date"></p>
 					<p>요구사항 : <input type="text" id="request" name="request" placeholder="특이사항 있으시면 입력해주세요." class="reserv_input" style="text-align:right;"></p>
 					<input type="hidden" id="shop_no" name="shop_no" value="${storeDetail.shop_no }">
 					<input type="hidden" id="shop_name" name="shop_name" value="${storeDetail.shop_name }">
-					<div id="reserve_btn_area"><button class="reserv_btn1" type="submit" onclick="return ask()">예약하기</button></div>				
+					<div id="reserve_btn_area">
+						<button class="reserv_btn1" type="button" onclick="return ask(document.forms['reservForm'])">예약하기</button>
+					</div>				
 						<button class="reserv_btn" onclick="location.href='./storeList.do'" style="margin-right:10%">돌아가기</button>
 						<button class="reserv_btn"  type="reset" id="join_reset" style="margin-right:3%">초기화하기</button>
-				</div>
+					</div>
 				</c:when>
 				<c:otherwise>
 					<div id="noReserv">
