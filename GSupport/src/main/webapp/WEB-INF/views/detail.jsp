@@ -95,17 +95,13 @@ function board_delete(no1, no2){
 				</c:if>
 			</div>
 
-			<!-- 댓글달기 -->
-			<c:if test="${detail.board_category eq 0  }">
-			</c:if>
-			
-			<c:if test="${sessionScope.grade gt 1 && detail.board_category eq 1 }">
+			<!-- 댓글쓰기 -->
+			<c:if test="${sessionScope.id ne null }">
 				<%@ include file="./component/comment.jsp"%>
 			</c:if>
 			
-			<c:if test="${detail.board_category eq 2 }">
-				<%@ include file="./component/comment.jsp"%>
-			</c:if>
+
+
 			
 			
 

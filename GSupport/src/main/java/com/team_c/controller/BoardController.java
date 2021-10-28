@@ -91,7 +91,6 @@ public class BoardController {
 				
 		//질의
 		List<Map<String, Object>> boardList = boardService.boardList(map.getMap());
-
 		
 		//담기
 		mv.addObject("list", boardList);
