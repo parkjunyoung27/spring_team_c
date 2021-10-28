@@ -74,7 +74,6 @@ var gu = document.getElementById("gu").value;
 			}
 		}else{
 			sum =1;
-			alert(sum);
 			//alert(document.getElementsByClassName("widoInput")[0].value);
 			
 			if(document.getElementsByClassName("widoInput")[0].value == "" || document.getElementsByClassName("kyungdoInput")[0].value == "" ){

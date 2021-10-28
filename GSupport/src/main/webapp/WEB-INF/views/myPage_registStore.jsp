@@ -57,7 +57,7 @@
 }
 </style>
 <script type="text/javascript">
-	function myPage_registStore() {
+/* 	function myPage_registStore() {
 		if (confirm("가맹점 등록 신청하시겠습니까?")) {
 			alert("신청 되었습니다.");
 			return true;
@@ -65,6 +65,18 @@
 			alert("취소 되었습니다.");
 			return false;
 		}
+	} */
+	function mypageUpdate() {
+		theForm=document.info
+		if (theForm.shop_gu.value=="" || theForm.shop_loc.value=="" || 
+				theForm.shop_tel.value=="" || theForm.shop_opentime.value=="" || 
+				theForm.shop_closetime.value=="") {
+			alert("입력칸이 비었습니다. 확인해주세요");
+			return false;
+		} else {
+			alert("등록되었습니다.");
+			return true;
+		} 
 	}
 </script>
 </head>
@@ -91,7 +103,7 @@
 								가맹점 등록 신청시 관리자 검토 후 등록되며 가맹점 찾기/예약 서비스를 이용할 수 있습니다. <br><br><br>
 							</p> 
 						<div class="customer-formbox">
-							<form action="./myPage_registStore.do" method="post">
+							<form action="./myPage_registStore.do" method="post" name="info">
 								<div class="field_row">
 									<div class="field_title">가게 이름</div>
 									<div class="field_label">
