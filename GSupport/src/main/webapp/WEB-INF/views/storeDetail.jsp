@@ -257,7 +257,7 @@ $(function(){
 					<p>연락처 : <input type="text" id="phoneNum" name="phoneNum" placeholder="연락처를 입력하세요" required="required" class="reserv_input"> </p>
 					<p>인원 : <input type="number" value="1" min="1" max="5" id="people" name="people" class="reserv_input" style="width:10%"> </p>
 					<p>날짜 : <input type="date" required="required" class="reserv_input" id="date" name="date"></p>
-					<p>요구사항 : <input type="text" id="request" name="request" placeholder="특이사항 있으시면 입력해주세요." class="reserv_input" style="text-align:right;"></p>
+					<p>요구사항 : <input type="text" id="request" name="request" placeholder="특이사항 있으시면 입력해주세요." class="reserv_input" style="text-align:center;"></p>
 					<input type="hidden" id="shop_no" name="shop_no" value="${storeDetail.shop_no }">
 					<input type="hidden" id="shop_name" name="shop_name" value="${storeDetail.shop_name }">
 					<div id="reserve_btn_area">
