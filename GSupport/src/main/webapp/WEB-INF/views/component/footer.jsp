@@ -31,10 +31,10 @@
                                 <a href="./about.do" class="footer_menu_link">About</a>
                             </li>
                             <li class="footer_menu_item">
-                                <a href="#" class="footer_menu_link">가맹점 등록방법</a>
+                                <a href="./about.do" class="footer_menu_link">가맹점 등록방법</a>
                             </li>
                             <li class="footer_menu_item">
-                                <a href="#" class="footer_menu_link">가맹점 예약방법</a>
+                                <a href="./about.do" class="footer_menu_link">가맹점 예약방법</a>
                             </li>
                         </ul>
                     </div>
@@ -45,7 +45,10 @@
                                 <a href="./board.do?categoryNo=0" class="footer_menu_link">공지사항</a>
                             </li>
                             <li class="footer_menu_item">
-                                <a href="#" class="footer_menu_link">가맹점 게시판</a>
+                                <a href="./board.do?categoryNo=2" class="footer_menu_link">문의사항</a>
+                            </li>
+                            <li class="footer_menu_item">
+                                <a href="./board.do?categoryNo=1" class="footer_menu_link">가맹점 게시판</a>
                             </li>
                         </ul>
                     </div>

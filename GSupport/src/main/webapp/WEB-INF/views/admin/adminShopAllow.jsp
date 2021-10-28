@@ -8,8 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Admin | 가맹점 예약관리</title>
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <link href="../resources/css/adminPage.css" rel="stylesheet"> 
 <link href="../resources/css/adminPage_menu.css" rel="stylesheet">
 <style>
@@ -57,19 +56,34 @@ var gu = document.getElementById("gu").value;
 	}
 	
 	
-	function checkRegister(form){
-					
+	function checkDelete(form){
 		var sum = 0;
-		var count = form.check.length; //form.name값.길이
-		for(var i =0; i<count; i++){
-			if(form.check[i].checked == true){ //checkbox 체크되어있는지 확인
-				sum += 1;
-				if(document.querySelectorAll('.widoInput')[i].value == "" || document.querySelectorAll('.kyungdoInput')[i].value == "" ){
-					alert("위도, 경도 모두 입력하세요.");
-					return false;
+		var count=1;
+		
+		if(form.check.length >=2){
+			alert("길이 오케이");
+			count = form.check.length;
+			for(var i = 0; i<count; i++){
+				if(form.check[i].checked == true){ //checkbox 체크되어있는지 확인
+					sum += 1;
+					if(document.querySelectorAll('.widoInput')[i].value == "" || document.querySelectorAll('.kyungdoInput')[i].value == "" ){
+						alert("위도, 경도 모두 입력하세요.");
+						return false;
+					}
 				}
 			}
-		}
+		}else{
+			sum =1;
+			alert(sum);
+			//alert(document.getElementsByClassName("widoInput")[0].value);
+			
+			if(document.getElementsByClassName("widoInput")[0].value == "" || document.getElementsByClassName("kyungdoInput")[0].value == "" ){
+				alert("위도, 경도 모두 입력하세요.");
+				return false;
+			}		
+		}; //form.name값.길이
+		
+		
 		
 		if(sum > 0){
 			var test= confirm(sum+"개 승인하시겠습니까?");
@@ -81,7 +95,8 @@ var gu = document.getElementById("gu").value;
 			}
 		}else{
 			return false;
-		}		
+		}
+		
 
 	}
 	
@@ -113,7 +128,7 @@ var gu = document.getElementById("gu").value;
 			
 			<div class="adminContainerOne">
 			
-			<form action="./adminShopAllow.do" method="post" id="shopNowOrder" name="LogOrder">
+			<form action="./adminShopAllow.do" method="post" id="ShopNowOrder" name="ShopNowOrder">
 				<table>
 					<tr>
 						<th class="w1"> <input type="checkbox" name="checkall" onclick="selectAll(this)"> </th>
@@ -143,11 +158,11 @@ var gu = document.getElementById("gu").value;
 					<c:choose>
 						<c:when test="${fn:length(list) gt 0 }">
 							<c:forEach items='${list }' var="l">
-								<tr class="windowOpen">
+								<tr>
 									<td class="w1">
 										<input type="checkbox" name="check" value="${l.get('shop_no')}"  onclick='checkSelectAll()' >
 									</td> 
-									<td class="w1">${l.get("shop_no") } </td>
+									<td class="w1" id="shopNo">${l.get("shop_no") } </td>
 									<td class="w7">${l.get("shop_name") } </td>
 									<td class="widoWrite w5" style="cursor:pointer;">
 										<input class="widoInput" placeholder="위도를 입력해주세요." name="wido" value="${l.get('shop_wido') }">
@@ -155,22 +170,20 @@ var gu = document.getElementById("gu").value;
 									<td class="kyungdoWrite w5" style="cursor:pointer;">
 										<input class="kyungdoInput" placeholder="경도를 입력해주세요." name="kyungdo" value="${l.get('shop_kyungdo') }">
 									</td>											
-									
-									
 									<td class="w3">${l.get("shop_gu") } </td>
 									<td class="w10">${l.get("shop_loc") }</td>	
 									<td class="w5">${l.get("shop_tel") }</td>	
 									<td class="w3">${l.get("shop_opentime") }</td>	
 									<td class="w3">${l.get("shop_closetime") }</td>	
 									<td class="w10">
-									<c:choose>
-										<c:when test="${l.get('shop_notice') ne null}">
-										${fn:substring(l.get("shop_notice"), 0, 15 )}
-										</c:when>
-										<c:otherwise>
-										NULL
-										</c:otherwise>
-									</c:choose>
+										<c:choose>
+											<c:when test="${l.get('shop_notice') ne null}">
+											${fn:substring(l.get("shop_notice"), 0, 15 )}
+											</c:when>
+											<c:otherwise>
+											NULL
+											</c:otherwise>
+										</c:choose>
 									</td>
 								</tr>				
 							</c:forEach>		
@@ -188,9 +201,8 @@ var gu = document.getElementById("gu").value;
 		
 			<div class="adminLogPaging">
 				<ui:pagination paginationInfo="${paginationInfo }" type="text" jsFunction="linkPage"/>
-				<button type="button" onclick="checkRegister(document.forms['shopNowOrder'])" class="adminDelBtn">등록하기</button>		
+				<button type="button" onclick="checkDelete(document.forms['ShopNowOrder'])" class="adminDelBtn">등록하기</button>		
 			</div>	
-		
 		
 		</div>
 	
