@@ -52,10 +52,7 @@
 	transform:translate(-50%);
 	text-align: center;
 	margin-bottom: 0px;
-	font-size: 20px;
-}
-
-#joinErr {
+	font-size: 16px;
 	color:red;
 }
 
@@ -135,6 +132,7 @@
 	padding: 10px;
 	letter-spacing: 5px;
 	font-weight: 600;
+	cursor: pointer;
 	bottom:10%;
 }
 
@@ -415,7 +413,7 @@ function handleOnInputName(e)  {
 				</div>	
 					<input type="submit" id="joinForm" value="가입하기" style="display:none">
 		</form>
-					<input id="joinSubmit" name="joinSubmit" value="메일 인증하고 가입하기" onclick="join()">
+					<input id="joinSubmit" name="joinSubmit" value="메일 인증하고 가입하기" readonly="readonly" onclick="join()">
 		</div>
 		<div class="links">
 			<a><label for="tab01">로그인</label></a> &emsp;|&emsp;<a><label for="tab03">PW 찾기</label></a>

@@ -188,7 +188,7 @@
 				
 				if(rData == 1){
 					$("#setPwErr").text("잠시만 기다려주세요. 인증 메일을 발송하고 있습니다.");
-					new sendEmailCode();
+					new sendNewPwEmailCode();
 				}else{
 					alert("가입되지 않은 이메일 입니다.")
 				}
@@ -200,7 +200,7 @@
 		
 	}
 	
-	function sendEmailCode() {
+	function sendNewPwEmailCode() {
 
 		var email = $("#setNPemail").val();
 		
