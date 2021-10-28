@@ -82,7 +82,27 @@ function disLike(no){
 }
 </script>
 </head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    var dtToday = new Date();
+    
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+    if(month < 10)
+        month = '0' + month.toString();
+    if(day < 10)
+        day = '0' + day.toString();
+    
+    var maxDate = year + '-' + month + '-' + day;
 
+    // or instead:
+    // var maxDate = dtToday.toISOString().substr(0, 10);
+
+    $('#date').attr('min', maxDate);
+});
+</script>
 <body>
 
 	<!-- Navbar -->
