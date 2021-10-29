@@ -209,6 +209,5 @@ function windowOpen(num){
 			'scrollbars=yes, resizable=no, top=0, left=250' );
 }
 
-
 </script>
 

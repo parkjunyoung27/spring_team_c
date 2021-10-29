@@ -388,7 +388,7 @@ margin-top:10px;
 								name="shop_kyungdo" value="${list[0].shop_kyungdo }"> 
 								<input type="text" name="search" value="${search }" class="Cate_searchbox" placeholder="찾으시는 가게를 입력해주세요.">
 							<button type="submit" style="border: none; background: none;">
-								<img src="http://localhost:8080/GSupport/resources/images/search.png" style="height: 45px; margin-left:5px; vertical-align: middle;">
+								<img src="./resources/images/search.png" style="height: 45px; margin-left:5px; vertical-align: middle;">
 							</button>
 						</form>
 					</div>

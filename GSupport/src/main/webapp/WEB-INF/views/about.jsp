@@ -33,7 +33,7 @@
 
 .container2 .section1:nth-child(1) {
 	background:
-		url("http://localhost:8080/GSupport/resources/images/about.png");
+		url("./resources/images/about.png");
 	background-size: cover;
 	background-attachment: fixed;
 }
