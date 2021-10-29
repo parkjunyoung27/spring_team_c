@@ -146,13 +146,11 @@ $(function(){
 				<c:when test="${list eq 0 }">
 					<span style="line-height: 50px;vertical-align: sub; cursor:pointer;" onclick="return like(${storeDetail.shop_no})">
 						<img src="resources/images/star_before.png">
-						[ ${storeDetail.shop_bookmark } ]
 					 </span>
 				</c:when>
 				<c:when test="${list eq 1 }">
 					<span style="line-height: 50px;vertical-align: sub; cursor:pointer;" onclick="return disLike(${storeDetail.shop_no})">
 						<img src="resources/images/star_after.png">
-						[ ${storeDetail.shop_bookmark } ]
 					 </span>
 				</c:when>
 				<c:otherwise>
