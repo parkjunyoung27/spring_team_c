@@ -11,4 +11,14 @@ public class AboutController {
 		return "about";
 	}
 	
+	@GetMapping("/about1.do")
+	public String about1() {
+		return "about1";
+	}
+	
+	@GetMapping("/about2.do")
+	public String about2() {
+		return "about2";
+	}
+	
 }

@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>G원사격</title>
-<link rel="icon" href="${pageContext.request.contextPath }/resources/images/favicon.png">
+<link rel="icon" href="${pageContext.request.contextPath}/resources/images/favicon.png">
 <link href="./resources/css/index.css" rel="stylesheet">
 
 <style>
@@ -63,14 +63,14 @@
 .section .slidelist .left {
 	left: 30px;
 	background:
-		url("http://localhost:8080/GSupport/resources/images/left.png") center
+		url("${pageContext.request.contextPath}/resources/images/left.png") center
 		center/30% no-repeat;
 }
 
 .section .slidelist .right {
 	right: 30px;
 	background:
-		url("http://localhost:8080/GSupport/resources/images/right.png")
+		url("${pageContext.request.contextPath}/resources/images/right.png")
 		center center/30% no-repeat;
 }
 
@@ -102,20 +102,24 @@
 
 		<div class="slidewrap">
 			<ul class="slidelist">
-				<li><label for="slide03" class="left"></label> 
+				<li>
+				<label for="slide03" class="left"></label> 
 				<a href="./storeList.do?guName=%EA%B0%95%EB%82%A8%EA%B5%AC&shop_wido=37.4979395100853&shop_kyungdo=127.02755368008152">
 					<img src="./resources/images/header2.png">
 
 						<label for="slide02" class="right"></label>
 				</a></li>
 				<li><a href="./about.do"> <label for="slide01" class="left"></label>
-						<img
-						src="./resources/images/header1.png">
+						<img src="./resources/images/header1.png">
 
 						<label for="slide03" class="right"></label>
 				</a></li>
-				<li><a> <label for="slide02" class="left"></label> <img
-						src="./resources/images/header3.png">
+
+				<li>
+				<label for="slide02" class="left"></label> 
+				<a href="./about1.do"> <label for="slide02" class="left"></label> 
+				<img src="./resources/images/header3.png">
+
 						<label for="slide01" class="right"></label>
 				</a></li>
 
