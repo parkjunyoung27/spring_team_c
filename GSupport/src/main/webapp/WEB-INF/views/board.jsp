@@ -9,6 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>G원사격 | 게시판</title>
+<link rel="icon" href="${pageContext.request.contextPath }/resources/images/favicon.png">
 <script type="text/javascript">
 function linkPage(pageNo){
 	<c:if test="${searchName != null}">

@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="icon" href="${pageContext.request.contextPath }/resources/images/favicon.png">
 <title>My Page Reservation Check</title>
 <script type="text/javascript">
 	function linkPage(pageNo) {

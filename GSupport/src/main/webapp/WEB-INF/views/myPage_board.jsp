@@ -10,6 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>G원사격 | 작성한 게시글</title>
+<link rel="icon" href="${pageContext.request.contextPath }/resources/images/favicon.png">
 <script type="text/javascript">
 function linkPage(pageNo){
 		location.href="./myPage_board.do?pageNo=" + pageNo;

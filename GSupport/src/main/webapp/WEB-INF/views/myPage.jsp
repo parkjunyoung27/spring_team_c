@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>My Page</title>
+<link rel="icon" href="${pageContext.request.contextPath }/resources/images/favicon.png">
 <script type="text/javascript">
 	function linkPage(pageNo) {
 		location.href = "./myPage.do?pageNo=" + pageNo;
