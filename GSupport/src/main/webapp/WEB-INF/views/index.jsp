@@ -102,20 +102,24 @@
 
 		<div class="slidewrap">
 			<ul class="slidelist">
-				<li><label for="slide03" class="left"></label> 
+				<li>
+				<label for="slide03" class="left"></label> 
 				<a href="./storeList.do?guName=%EA%B0%95%EB%82%A8%EA%B5%AC&shop_wido=37.4979395100853&shop_kyungdo=127.02755368008152">
 					<img src="./resources/images/header2.png">
 
 						<label for="slide02" class="right"></label>
 				</a></li>
 				<li><a href="./about.do"> <label for="slide01" class="left"></label>
-						<img
-						src="./resources/images/header1.png">
+						<img src="./resources/images/header1.png">
 
 						<label for="slide03" class="right"></label>
 				</a></li>
-				<li><a> <label for="slide02" class="left"></label> <img
-						src="./resources/images/header3.png">
+
+				<li>
+				<label for="slide02" class="left"></label> 
+				<a href="./about1.do"> <label for="slide02" class="left"></label> 
+				<img src="./resources/images/header3.png">
+
 						<label for="slide01" class="right"></label>
 				</a></li>
 

@@ -31,10 +31,10 @@
                                 <a href="./about.do" class="footer_menu_link">About</a>
                             </li>
                             <li class="footer_menu_item">
-                                <a href="./about.do" class="footer_menu_link">가맹점 등록방법</a>
+                                <a href="./about1.do" class="footer_menu_link">가맹점 등록방법</a>
                             </li>
                             <li class="footer_menu_item">
-                                <a href="./about.do" class="footer_menu_link">가맹점 예약방법</a>
+                                <a href="./about2.do" class="footer_menu_link">가맹점 예약방법</a>
                             </li>
                         </ul>
                     </div>
