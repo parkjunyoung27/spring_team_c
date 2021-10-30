@@ -501,7 +501,7 @@ function validateRecipient() {
 							<input type="text" id="sendID" name="sendID" class="send_id" value="${sendId}" placeholder="받는 분의 아이디를 입력하세요.">
 							 <br> <input type="text" name="content" placeholder="내용을 입력하세요." class="send_text">
 							<button type="button" class="tooltip" style="background-color: transparent; border: none; float: right; width: 20%; padding: 0px; cursor:point;" onclick="validateRecipient()">
-								<img src="http://localhost:8080/GSupport/resources/images/logo2.png" alt="" style="float: right;  width:70px; margin-right:10px;">
+								<img src="${pageContext.request.contextPath }/resources/images/logo2.png" alt="" style="float: right;  width:70px; margin-right:10px;">
 								<span class="tooltiptext"> 메세지 전송 </span>
 							</button>
 

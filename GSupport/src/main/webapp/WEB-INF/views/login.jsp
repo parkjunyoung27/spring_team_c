@@ -150,7 +150,7 @@
 				<div id="login_other">
 					<!-- <a href="kakaoLogin.do">카카오</a> -->
 					<c:set var="clientId" value="188766d70b45863a165fa74d7d8a455b" />
-					<c:set var="redirectUri" value="http://gsupport.xyz/kakaoLogin.do" />
+					<c:set var="redirectUri" value="https://gsupport.xyz/GSupport/kakaoLogin.do" />
 
 					<a
 						href="https://kauth.kakao.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code"
@@ -159,7 +159,7 @@
 					</a>
 					<!-- 네이버 로그인 화면으로 이동 시키는 URL -->
 					<!-- 네이버 로그인 화면에서 ID, PW를 올바르게 입력하면 callback 메소드 실행 요청 -->
-					&emsp;&emsp;<a href="http://gsupport.xyz/naverlogin.do" class="login_other_img">
+					&emsp;&emsp;<a href="https://gsupport.xyz/GSupport/naverlogin.do" class="login_other_img">
 						<img
 						src="./resources/images/naver_icon.png" />
 					</a>

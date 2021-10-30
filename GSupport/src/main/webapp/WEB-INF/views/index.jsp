@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>G원사격</title>
+<link rel="icon" href="${pageContext.request.contextPath }/resources/images/favicon.png">
 <link href="./resources/css/index.css" rel="stylesheet">
 
 <style>
