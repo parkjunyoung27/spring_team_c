@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>messages</title>
+<link rel="icon" href="${pageContext.request.contextPath}/resources/images/favicon.png">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style type="text/css">
 * {

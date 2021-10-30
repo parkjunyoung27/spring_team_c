@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>G원사격 | 게시판</title>
-<link rel="icon" href="${pageContext.request.contextPath }/resources/images/favicon.png">
+<link rel="icon" href="${pageContext.request.contextPath}/resources/images/favicon.png">
 <script type="text/javascript">
 function linkPage(pageNo){
 	<c:if test="${searchName != null}">
@@ -170,7 +170,7 @@ function linkPage(pageNo){
 						type="hidden" name="categoryNo" value="${categoryNo }">
 					<button type="submit" style="border: none; background: none;">
 						<img
-							src="http://localhost:8080/GSupport/resources/images/search.png"
+							src="${pageContext.request.contextPath}/resources/images/search.png"
 							style="height: 45px; margin-left: 5px; vertical-align: middle;">
 					</button>
 				</form>
