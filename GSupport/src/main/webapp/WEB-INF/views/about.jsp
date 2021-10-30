@@ -87,22 +87,7 @@
 			<div class="content1">
 			</div>
 		</div>
-		<div class="section1">
-			<div class="content1">
-				<h2>asdf</h2>
-				<p>heldjkfljsldkjfleijf ljel jflksdj heldjkfljsldkjfleijf ljel
-					jflksdj heldjkfljsldkjfleijf ljel jflksdj heldjkfljsldkjfleijf ljel
-					jflksdj heldjkfljsldkjfleijf ljel jflksdj</p>
-			</div>
-		</div>
-		<div class="section1">
-			<div class="content1">
-				<h2>asdf</h2>
-				<p>heldjkfljsldkjfleijf ljel jflksdj heldjkfljsldkjfleijf ljel
-					jflksdj heldjkfljsldkjfleijf ljel jflksdj heldjkfljsldkjfleijf ljel
-					jflksdj heldjkfljsldkjfleijf ljel jflksdj</p>
-			</div>
-		</div>
+		
 	</div>
 
 

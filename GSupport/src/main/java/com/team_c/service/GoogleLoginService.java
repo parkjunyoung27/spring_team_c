@@ -23,7 +23,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class GoogleLoginService {
 	private static final String GOOGLE_CLIENT_ID = "883272106142-4gqb73kjc3q4c1gbr34na98dp4usff37.apps.googleusercontent.com";
 	private static final String GOOGLE_CLIENT_SECRET = "nJC0EVVogBKactagnw0dpAgW";
-	private static final String GOOGLE_REDIRECT_URI = "http://localhost:8080/GSupport/googleCallBack.do";
+	private static final String GOOGLE_REDIRECT_URI = "https://gsupport.xyz/GSupport/googleCallBack.do";
 
 	public static JsonNode getAccessToken(String autorize_code) {
 
