@@ -336,6 +336,7 @@ function checkName(){
 			success: function(rData, textStatus, xhr){
 				if(rData == 1){
 					$("#joinErr").text("이미 등록된 이름 입니다.");
+					$("#joinName").css("background-color", "pink");
 					$("#joinNameDummy").val("false");
 				}else{
 					$("#joinErr").text(" ");
@@ -361,6 +362,8 @@ function checkBirth() {
     	return true;
     } else {
     	$("#joinErr").text("생년월일을 다시 확인해주세요.");
+    	$("#birthDate").css("background-color", "pink");
+    	
     }
 }
 

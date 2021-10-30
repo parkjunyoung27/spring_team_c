@@ -249,12 +249,12 @@ main header h3 {
 
 #chat .you .triangle {
 	border-color: transparent transparent #58b666 transparent;
-	margin-left: 15px;
+	margin-left: 2%;
 }
 
 #chat .me .triangle {
 	border-color: transparent transparent #6fbced transparent;
-    margin-left: 90%;
+    margin-left: 95%;
 }
 
 .main send {
