@@ -232,7 +232,7 @@
 										<span style="color:red; font-weight:bold;">예약 취소</span>
 									</c:when>
 								</c:choose>
-								<h4>예약자 아이디 : ${r.member_name }</h4>
+								<h4>예약자 이름 : ${r.member_name }</h4>
 								<h4>요구사항 : ${r.reservation_reservRequest }</h4>
 
 
