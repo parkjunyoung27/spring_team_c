@@ -47,7 +47,7 @@
 	       </li>
 	       <li class="menuli"> <a href="./adminLog.do">로그 관리</a></li>
 	       <li class="menuli"> <a href="./adminAnalytics.do">구글 통계</a></li>
-	       
+	       <li class="menuli"> <a href="../index.do">돌아가기</a></li>	       
 		   <li class="menuli">
 		   	    <c:choose>
 					<c:when test="${sessionScope.id ne null}">

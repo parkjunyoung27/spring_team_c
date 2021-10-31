@@ -13,7 +13,7 @@
 	color:grey;
 	border:none;
 	background:white;
-	cursor:point;
+	cursor:pointer;
 }
 
 </style>
