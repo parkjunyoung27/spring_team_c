@@ -90,8 +90,6 @@ margin-bottom:50px;
 					<!-- 보드제목 -->
 					<input type="text" id="board_title" name="board_title" placeholder="제목을 입력해주세요(40자 이내)">
 					
-					<!-- summernote -->
-					<%@ include file="./component/summernote.jsp"%>	
 					
 					<!-- file -->
 					<input type="file" name="file" accept=".gif, .png, .jpg, .jpeg">
