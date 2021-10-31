@@ -34,7 +34,7 @@ section {
 section.ok{
 	  	background:
 		url("${pageContext.request.contextPath}/resources/images/about2.png");
-	background-size: contain;
+	background-size: cover;
 	background-attachment: fixed;
 }
 
