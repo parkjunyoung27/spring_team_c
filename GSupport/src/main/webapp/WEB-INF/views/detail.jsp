@@ -100,12 +100,6 @@ function board_delete(no1, no2){
 			<c:if test="${sessionScope.id ne null }">
 				<%@ include file="./component/comment.jsp"%>
 			</c:if>
-			
-
-
-			
-			
-
 		</div>
 		</div>
 	</div>

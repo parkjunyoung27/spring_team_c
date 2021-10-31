@@ -52,7 +52,7 @@ $(document).ready(function() {
 </script>
 
 <textarea id="summernote" name="board_content">
-<c:if test="${update.board_content ne ''}">
-${update.board_content }
-</c:if>
+	<c:if test="${update.board_content ne ''}">
+	${update.board_content }
+	</c:if>
 </textarea>
