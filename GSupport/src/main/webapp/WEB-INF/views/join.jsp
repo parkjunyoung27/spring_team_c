@@ -439,7 +439,7 @@ function handleOnInputName(e)  {
 					<input id="joinSubmit" name="joinSubmit" value="메일 인증하고 가입하기" readonly="readonly" onclick="join()">
 		</div>
 		<div class="links">
-			<a><label for="tab01">로그인</label></a> &emsp;|&emsp;<a><label for="tab03">PW 찾기</label></a>
+			<a><label for="tab01" style="cursor:pointer">로그인</label></a> &emsp;|&emsp;<a><label for="tab03" style="cursor:pointer">PW 찾기</label></a>
 		</div>
 					<input type="hidden" id="joinIdDummy" value="">
 					<input type="hidden" id="joinNameDummy" value="">

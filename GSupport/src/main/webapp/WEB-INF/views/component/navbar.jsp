@@ -269,7 +269,7 @@ input[id="tab05"]:checked ~ .con5 {
 
 				</c:when>
 				<c:otherwise>
-					<a><label for="sidebar" class="menu">로그인</label></a>
+					<a><label for="sidebar" class="menu" style="cursor:pointer">로그인</label></a>
 				</c:otherwise>
 			</c:choose></li>
 	</ul>

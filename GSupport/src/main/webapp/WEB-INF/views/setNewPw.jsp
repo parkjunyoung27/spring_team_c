@@ -214,7 +214,7 @@
 
 				sessionStorage.setItem("sentCode", data);
 				$("#setPwErr").text("");
-				var typeCode = prompt("이메일로 발송된 인증번호를 입력해주세요." + data,"");
+				var typeCode = prompt("이메일로 발송된 인증번호를 입력해주세요.","");
 				
 				console.log(typeCode);
 				
@@ -304,7 +304,7 @@
 			<div id="setPwErr"></div>
 
 			
-				<input type="text" id="setNPemail" name="email" class="text-field" oninput="handleOnInput(this)" placeholder="이메일을 입력하세요"
+				<input type="text" id="setNPemail" name="email" class="text-field" oninput="handleOnInput(this)" placeholder="가입하신 이메일을 입력하세요"
 					required="required" style="text-transform: lowercase">
 				<input id="sendCodeSubmit" type="text" readonly="readonly" value="이메일 인증하기" onclick="memberValidate()">
 			
@@ -323,7 +323,7 @@
 
 				
 				<div class="links">
-					<a><label for="tab01">로그인</label></a> &emsp;|&emsp;<a><label for="tab02">회원가입</label></a>
+					<a><label for="tab01" style="cursor:pointer">로그인</label></a> &emsp;|&emsp;<a><label for="tab02" style="cursor:pointer">회원가입</label></a>
 				</div>
 
 			<input type="hidden" id="setNewPwDummy" value="">

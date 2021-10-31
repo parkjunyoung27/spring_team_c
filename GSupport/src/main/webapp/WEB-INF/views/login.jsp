@@ -79,6 +79,7 @@
 	padding: 10px;
 	letter-spacing: 5px;
 	font-weight: 600;
+	cursor:pointer;
 	bottom:18%;
 }
 
@@ -95,6 +96,7 @@
 .links a {
 	font-size: 15px;
 	color: #9B9B98;
+	cursor:pointer;
 }
 
 .login_other_img {
@@ -122,9 +124,9 @@
 		location.href = '${pageContext.request.contextPath}/logout.do';
 	}
 
-	/* function handleOnInput(e) {
+	function handleOnInput(e) {
 		e.value = e.value.replace(/[^a-z0-9@.-_]/ig, '')
-	} */
+	}
 	
 	
 	
@@ -140,7 +142,7 @@
 
 			<form action="${pageContext.request.contextPath}/login.do"
 				method="post">
-				<input type="text" id="id" name="id" class="text-field" oninput="handleOnInput(this)" placeholder="이메일을 입력하세요"
+				<input type="email" id="id" name="id" class="text-field" oninput="handleOnInput(this)" placeholder="이메일을 입력하세요"
 					required="required" style="text-transform: lowercase"> <input type="password" id="pw"
 					name="pw" class="text-field" placeholder="암호를 입력하세요"
 					required="required">
@@ -171,7 +173,7 @@
 				</div>
 
 				<div class="links">
-					<a><label for="tab02">회원 가입</label></a> &emsp;|&emsp;<a><label for="tab03">PW 찾기</label></a>
+					<a><label for="tab02" style="cursor:pointer">회원 가입</label></a> &emsp;|&emsp;<a><label for="tab03" style="cursor:pointer">PW 찾기</label></a>
 				</div>
 
 		</div>
