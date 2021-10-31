@@ -113,7 +113,7 @@ public class BoardController {
 	}
 	//글쓰기
 	//서버 -> 클라이언트
-	@GetMapping("/write")
+	@GetMapping("/write") 
 	public String write(CommandMap map, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		//세션 확인

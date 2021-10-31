@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>G원사격 | 글쓰기</title>
+<title>G원사격 | 글쓰기</title> 
 <link rel="icon" href="${pageContext.request.contextPath }/resources/images/favicon.png">
 <link href="./resources/css/index.css" rel="stylesheet">
 <link href="./resources/css/board.css" rel="stylesheet">
