@@ -47,9 +47,11 @@
                             <li class="footer_menu_item">
                                 <a href="./board.do?categoryNo=2" class="footer_menu_link">문의사항</a>
                             </li>
+                            <c:if test="${sessionScope.grade gt 1 }">
                             <li class="footer_menu_item">
                                 <a href="./board.do?categoryNo=1" class="footer_menu_link">가맹점 게시판</a>
                             </li>
+                            </c:if>
                         </ul>
                     </div>
                 </div>
