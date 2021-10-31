@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자 페이지</title>
+<link rel="icon" href="${pageContext.request.contextPath}/resources/images/favicon.png">
 <link href="../resources/css/index.css" rel="stylesheet"> 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <style>

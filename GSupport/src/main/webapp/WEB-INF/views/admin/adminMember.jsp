@@ -9,6 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Admin | 이용자 현황</title>
+<link rel="icon" href="${pageContext.request.contextPath}/resources/images/favicon.png">
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <link href="../resources/css/adminPage.css" rel="stylesheet"> 
 <link href="../resources/css/adminPage_menu.css" rel="stylesheet">

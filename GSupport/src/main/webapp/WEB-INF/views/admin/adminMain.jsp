@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Admin | 대시 보드</title>
+<link rel="icon" href="${pageContext.request.contextPath}/resources/images/favicon.png">
 <link href="../resources/css/adminPage.css" rel="stylesheet"> 
 <link href="../resources/css/adminPage_menu.css" rel="stylesheet">
 <style>

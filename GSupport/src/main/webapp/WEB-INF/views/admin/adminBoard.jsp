@@ -9,6 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Admin | 게시판 관리</title>
+<link rel="icon" href="${pageContext.request.contextPath}/resources/images/favicon.png">
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
 <link href="../resources/css/adminPage.css" rel="stylesheet"> 
