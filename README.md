@@ -3,7 +3,8 @@
 * 2021.09.23~2021.10.31
 
 <hr/>
-## 개요<br/>
+
+## 개요
 
 ![개요](https://user-images.githubusercontent.com/73810338/143730939-33000fe9-2799-4383-88d5-c1e4e5fe5f24.png)
 
