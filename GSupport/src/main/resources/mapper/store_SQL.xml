@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"	
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="store">
+	
+	<select id="jongnoStoreList" parameterType="HashMap" resultType="HashMap">
+		SELECT * FROM shop WHERE shop_loc LIKE '%종로구%' LIMIT 0, 20
+	</select>
+	
+	<select id="storeDetail" parameterType="HashMap" resultType="HashMap">
+		SELECT * FROM shopview WHERE shop_no=#{shop_no}
+	</select>
+	
+	<insert id="storeReserv" parameterType="HashMap">
+		INSERT INTO reservation (owner, user, shop_no, shop_name, reservation_reservDate, reservation_reservTime, reservation_phonenum, people, reservation_reservRequest, member_name) 
+		VALUES ((SELECT member_no FROM shop WHERE shop_name='${shop_name}'), (SELECT member_no FROM member WHERE member_id=#{id}), #{shop_no}, #{shop_name}, #{date}, #{reservTime}, #{phoneNum}, #{people}, #{reservRequest}, #{name})
+	</insert>
+	
+	<insert id="sendReservMsg" parameterType="HashMap">
+		INSERT INTO question(question_sender, question_recipient, question_content) VALUES 
+		(97, 
+		#{member_no}, 
+      	#{date} ' ' #{reservTime} ' ' #{shop_name} '에 예약 접수 되었습니다.')
+	</insert>
+	
+	<select id="storeList" parameterType="HashMap" resultType="HashMap">
+		SELECT * FROM shop WHERE shop_gu=#{guName} AND shop_register=1 
+		<if test="search != null">
+		AND shop_name LIKE CONCAT('%', #{search}, '%') 
+		</if>
+		LIMIT #{startPage}, #{lastPage}
+	</select>
+	
+	<select id="storeGuList" parameterType="HashMap" resultType="HashMap">
+		SELECT * FROM shop_gu 
+	</select>
+	
+	<select id="totalCount" parameterType="HashMap" resultType="HashMap">
+		SELECT count(*) as totalCount FROM shop WHERE shop_gu=#{guName}
+		<if test="search != null">
+		AND shop_name LIKE CONCAT('%', #{search}, '%') 
+		</if>
+	</select>
+	
+	<insert id="storeLike" parameterType="HashMap">
+		INSERT INTO shop_like (shop_no, member_no) VALUES (#{shop_no}, (SELECT member_no FROM member WHERE member_id=#{id}))
+	</insert>
+	
+	<delete id="storeDislike" parameterType="HashMap">
+		DELETE FROM shop_like WHERE shop_no=#{shop_no} AND member_no=(SELECT member_no FROM member WHERE member_id=#{id})
+	</delete>
+	
+	<select id="storeLikeCheck" parameterType="HashMap" resultType="Integer">
+		SELECT count(*) FROM shop_like WHERE shop_no=#{shop_no} AND member_no=(SELECT member_no FROM member WHERE member_id=#{id})
+	</select>
+	
+	<select id="likeList" parameterType="HashMap" resultType="Integer">
+		SELECT count(*) FROM shop_like WHERE shop_no=#{shop_no} AND member_no=(SELECT member_no FROM member WHERE member_id=#{id})
+	</select>
+	
+	
+</mapper>

@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"	
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mypage">
+
+	<select id="mypageList" parameterType="HashMap"
+		resultType="HashMap">
+		SELECT member_id, member_name, member_pw, member_phonenum,
+		member_email
+		FROM member WHERE member_id=#{member_id}
+	</select>
+
+	<update id="myPageUpdate" parameterType="HashMap">
+		UPDATE member
+		SET
+		member_name=#{name}, member_id=#{id}, member_phonenum=#{phonenum},
+		member_email=#{email}
+		WHERE member_id=#{member_id}
+	</update>
+
+	<select id="shopList" parameterType="HashMap"
+		resultType="HashMap">
+		SELECT shop_name, shop_tel, shop_loc, shop_notice,
+		shop_opentime, shop_closetime
+		FROM shop
+		WHERE member_id=#{member_id}
+	</select>
+
+	<update id="shopUpdate" parameterType="HashMap">
+		UPDATE shop
+		SET
+		shop_name=#{name}, shop_tel=#{tel}, shop_loc=#{loc},
+		shop_notice=#{notice}, shop_opentime=#{opentime},
+		shop_closetime=#{closetime}
+		WHERE member_id=#{member_id} AND
+	</update>
+
+	<select id="reservation" parameterType="HashMap"
+		resultType="HashMap">
+		SELECT * FROM reservation
+		WHERE member_name=(SELECT member_name FROM
+		member where member_id=#{id})
+		<if test="status != null">
+			AND reservation_status = #{status}
+		</if>
+		ORDER BY reservation_no DESC LIMIT #{startPage}, #{lastPage}
+	</select>
+	
+	<select id="ownerReservList" parameterType="HashMap" resultType="HashMap">
+		SELECT * FROM reservation WHERE owner=(SELECT member_no FROM shop WHERE shop_no=#{shop_no}) AND reservation_status=#{status}
+	</select>
+	
+	<select id="reservList" parameterType="HashMap" resultType="HashMap">
+		SELECT * FROM reservation WHERE user=(SELECT member_no FROM member WHERE member_id=#{id}) AND reservation_status=#{status}
+	</select>
+
+	<select id="totalCount" parameterType="HashMap"
+		resultType="HashMap">
+		SELECT COUNT(*) as totalCount FROM reservation
+		WHERE
+		member_name=(SELECT member_name FROM member where member_id=#{id})
+		<if test="status != null">
+			AND reservation_status = #{status}
+		</if>
+	</select>
+	
+	<select id="totalCount2" parameterType="HashMap"
+		resultType="HashMap">
+		SELECT COUNT(*) as totalCount2 FROM reservation
+		WHERE
+		owner=(SELECT member_no FROM shop WHERE shop_no=#{shop_no})
+		<if test="status != null">
+			AND reservation_status = #{status}
+		</if>
+	</select>
+
+	<select id="reservationTotal" parameterType="HashMap" resultType="HashMap">
+		SELECT reservation_status, count(*) as reservationTotal 
+		from reservation
+		WHERE member_name=(SELECT member_name FROM member where member_id=#{id})
+		GROUP by reservation_status
+	</select>
+	
+	<select id="ownerReservCheck" parameterType="HashMap" resultType="HashMap">
+		SELECT reservation_status, count(*) as ownerReservCheck
+		FROM reservation WHERE owner=(SELECT member_no FROM shop WHERE shop_no=#{shop_no})
+		GROUP BY reservation_status
+	</select>
+
+	<select id="reservation2" parameterType="HashMap" resultType="HashMap">
+		SELECT * FROM reservation
+		WHERE owner=(SELECT member_no FROM shop WHERE shop_no=#{shop_no})
+		<if test="status != null">
+			AND reservation_status = #{status}
+		</if>
+		ORDER BY reservation_no DESC LIMIT #{startPage}, #{lastPage}
+	</select>	
+
+	<update id="mypageUpdatePW" parameterType="HashMap">
+		UPDATE member
+		SET
+		member_pw=HEX(AES_ENCRYPT(#{pw1}, 'teamc'))
+		WHERE
+		member_id=#{member_id}
+	</update>
+
+	<delete id="mypageDelete" parameterType="HashMap">
+		DELETE FROM member
+		WHERE
+		member_id=#{member_id}
+	</delete>
+
+	<update id="reservCancel" parameterType="HashMap">
+		UPDATE reservation SET
+		reservation_status="cancel"
+		WHERE member_name=(SELECT member_name FROM
+		member where member_id=#{id})
+		AND shop_no=#{shop_no}
+	</update>
+	
+	<insert id="reservCancelMsg" parameterType="HashMap">
+		INSERT INTO question(question_sender, question_recipient, question_content) VALUES 
+		(97, 
+		#{member_no}, CONCAT((SELECT shop_name FROM shop WHERE shop_no=#{shop_no}), ' 매장 예약이 취소 되었습니다')
+		)
+		
+	</insert>
+	
+	<update id="ownerReservCancel" parameterType="HashMap">
+		UPDATE reservation SET
+		reservation_status="cancel"
+		WHERE reservation_no=#{reservation_no}
+	</update>
+	
+	<insert id="ownerReservCancelMsg" parameterType="HashMap">
+		INSERT INTO question(question_sender, question_recipient, question_content) VALUES 
+		(#{member_no}, 
+		(SELECT member_no FROM member WHERE member_name=(SELECT member_name FROM reservation WHERE reservation_no=#{reservation_no})), 
+      	#{member_name} '업주 요청으로 예약 취소 되었습니다.')
+	</insert>
+	
+	<update id="ownerReservSuccess" parameterType="HashMap">
+		UPDATE reservation SET
+		reservation_status="success"
+		WHERE reservation_no=#{reservation_no}
+	</update>
+	
+	<insert id="ownerReservSuccessMsg" parameterType="HashMap">
+		INSERT INTO question(question_sender, question_recipient, question_content) VALUES 
+		(#{member_no}, 
+		(SELECT member_no FROM member WHERE member_name=(SELECT member_name FROM reservation WHERE reservation_no=#{reservation_no})), 
+      	#{shop_name} '매장 예약이 승인 되었습니다.')
+	</insert>
+
+	<select id="myPageBookmark" parameterType="HashMap"
+		resultType="HashMap">
+		SELECT s.*, l.member_no FROM shop s JOIN shop_like l ON
+		s.shop_no = l.shop_no
+		WHERE l.member_no=(SELECT member_no FROM member
+		where member_id=#{id})
+		ORDER BY l.shop_no DESC LIMIT #{startPage},
+		#{lastPage}
+	</select>
+
+	<select id="myPageShopList" parameterType="HashMap"
+		resultType="HashMap">
+		SELECT * FROM shop WHERE shop_no=#{shop_no}
+	</select>
+
+	<select id="totalCountBookmark" parameterType="HashMap"
+		resultType="HashMap">
+		SELECT COUNT(*) as totalCountBookmark,
+		s.*, l.member_no FROM
+		shop s JOIN shop_like l ON s.shop_no = l.shop_no
+		WHERE
+		l.member_no=(SELECT member_no FROM member where member_id=#{id})
+	</select>
+	
+	<select id="myPage_updateOwner" parameterType="HashMap" resultType="HashMap">
+		SELECT * 
+		FROM shop WHERE member_no=(SELECT member_no FROM member where member_id=#{member_id})
+	</select>
+	
+	<update id="myPage_updateStore" parameterType="HashMap">
+		UPDATE shop 
+		SET shop_name=#{shop_name}, shop_tel=#{shop_tel}, shop_loc=#{shop_loc}, shop_gu=#{shop_gu}, shop_opentime=#{shop_opentime}, shop_closetime=#{shop_closetime}, shop_notice=#{shop_notice} 
+		WHERE member_no=(SELECT member_no FROM member where member_id=#{member_id})
+	</update>
+	
+	<insert id="myPage_registStore" parameterType="HashMap">
+		INSERT INTO shop (shop_name, shop_tel, shop_loc, shop_gu, shop_opentime, shop_closetime, shop_notice, member_no) VALUES (#{shop_name}, #{shop_tel}, #{shop_loc}, 
+		(SELECT shop_gu FROM shop_gu WHERE shop_gu=#{shop_gu}), #{shop_opentime}, #{shop_closetime}, #{shop_notice}, (SELECT member_no FROM member WHERE member_id=#{id}))
+	</insert>
+	
+	<update id="registStoreInsert" parameterType="HashMap">
+		UPDATE member SET shop_no=(SELECT shop_no FROM shop WHERE shop_name=#{shop_name}), member_grade=2 WHERE member_id=#{id}
+	</update>
+	
+	<select id="storeGuList" parameterType="HashMap" resultType="HashMap">
+		SELECT * FROM shop_gu 
+	</select>
+	
+	<select id="mypageBoard" parameterType="HashMap" resultType="HashMap">
+		SELECT *
+		FROM board_view
+		WHERE member_id=#{member_id} AND NOT board_delete='1' 
+		ORDER BY board_no DESC LIMIT #{startPage}, #{lastPage}
+	</select>
+	
+		
+	<select	id="totalCount3" parameterType="HashMap" resultType="HashMap">
+		SELECT COUNT(*) as totalCount3 
+		FROM board_view
+		WHERE member_id = #{member_id} AND NOT board_delete='1'	
+	</select>
+	
+	
+</mapper>

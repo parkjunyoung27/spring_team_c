@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"	
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="join">
+	
+	<insert id="join" parameterType="hashMap">
+		INSERT INTO member (member_id, member_pw, member_name, member_email, member_birth, member_channel) 
+		VALUES(#{id}, HEX(AES_ENCRYPT(#{pw}, 'teamc')), #{name}, #{id}, #{birthDate}, #{channel})
+	</insert>
+	
+	<select id="emailCheck" resultType="integer">
+		SELECT count(*) 
+		FROM memberview
+		WHERE member_email=#{id}  
+	</select>
+	
+	<select id="nameCheck" resultType="integer">
+		SELECT count(*) 
+		FROM memberview
+		WHERE member_name=#{name}  
+	</select>
+	
+</mapper>

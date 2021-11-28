@@ -1,0 +1,91 @@
+<?xml version="1.0"	encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper	namespace="board">
+	<select	id="boardList" resultType="HashMap">
+		SELECT * FROM board_view
+		WHERE board_category = #{categoryNo}
+			AND NOT board_delete='1'
+		<if test="searchName == 'title' and search != null">
+			AND board_title LIKE CONCAT('%', #{search}, '%')
+		</if> 
+		<if test="searchName == 'content' and search != null">
+			AND board_content LIKE CONCAT('%', #{search}, '%')
+		</if> 
+		<if test="searchName == 'writer' and search != null">
+			AND member_id LIKE CONCAT('%', #{search}, '%')
+		</if> 
+		limit #{startPage}, #{lastPage}
+	</select>
+	
+	<select	id="totalCount" parameterType="HashMap" resultType="HashMap">
+		SELECT COUNT(*) as totalCount FROM board_view
+		WHERE board_category = #{categoryNo}
+			AND NOT board_delete='1'
+		<if test="searchName == 'title' and search != null">
+			AND board_title LIKE CONCAT('%', #{search}, '%')
+		</if> 
+		<if test="searchName == 'content' and search != null">
+			AND board_content LIKE CONCAT('%', #{search}, '%')
+		</if> 
+		<if test="searchName == 'writer' and search != null">
+			AND member_id LIKE CONCAT('%', #{search}, '%')
+		</if>
+	</select>
+	
+	<select id="boardCate" resultType="HashMap">
+		SELECT * FROM board_cate
+	</select>
+	
+	<insert id="write" parameterType="HashMap">
+		INSERT INTO board (board_title, board_content, board_category, member_no<if test="board_file != null" >, board_file, board_orifile</if>) 
+		VALUES (#{board_title}, #{board_content}, #{board_cate}, (SELECT member_no from member WHERE member_name = #{member_name})<if test="board_file != null" >, #{board_file}, #{board_orifile}</if>
+		 )	
+	</insert>
+	
+	<select id="detail" resultType="HashMap">
+		SELECT * FROM board_view WHERE board_no=#{board_no }
+	</select>
+
+	<select id="update" resultType="HashMap">
+		UPDATE board SET board_title=#{board_title }, board_content=#{board_content }, board_category=#{board_cate }
+		WHERE board_no=#{board_no } AND member_no=(SELECT member_no FROM member WHERE member_id=#{member_id})
+			OR (board_no=#{board_no } AND ${member_grade}=3)
+	</select>
+
+	<update id="delete" parameterType="HashMap">
+		UPDATE board SET board_delete=1 
+		WHERE (board_no=#{board_no } AND member_no=(SELECT member_no FROM member WHERE member_id=#{member_id}))
+			OR (board_no=#{board_no } AND ${member_grade}=3)
+	</update>
+	
+	<select	id="commentList" resultType="HashMap">
+		SELECT * FROM board_comment_view
+		WHERE board_no=#{board_no}
+			AND NOT comment_delete='1'
+	</select>
+	
+	<select	id="commentTotalCount" parameterType="HashMap" resultType="HashMap">
+		SELECT COUNT(*) as commentTotalCount FROM board_comment_view
+		WHERE board_no=#{board_no}
+			AND NOT comment_delete='1'
+	</select>
+	
+	<insert id="commentWrite" parameterType="HashMap">
+		INSERT INTO board_comment (board_no, comment_content, member_no) 
+		VALUES (#{board_no}, #{comment_content}, #{member_no})	
+	</insert>
+	
+	<update id="commentDelete" parameterType="HashMap">
+		UPDATE board_comment SET comment_delete=1 
+		WHERE (board_cno=#{board_cno } AND member_no=#{member_no})
+			OR (board_cno=#{board_cno } AND ${member_grade}=3)
+	</update>
+	
+	<select id="commentUpdate" resultType="HashMap">
+		UPDATE board_comment SET comment_content=#{ccontent}
+		WHERE (board_cno=#{board_cno } AND member_no=#{member_no})
+			OR (board_cno=#{board_cno } AND ${member_grade}=3)
+	</select>
+	
+	
+</mapper>

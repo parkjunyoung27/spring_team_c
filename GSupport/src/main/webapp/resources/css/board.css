@@ -1,0 +1,364 @@
+@charset "UTF-8";
+
+.board li a {
+	text-decoration: none;
+	color: black;
+}
+
+/*board, write*/
+#content_title_border a {
+	text-decoration: none;
+	color: black;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#boardLine {
+	font-size: 13px;
+}
+
+#sub_board_menu {
+	float: left;
+	width: 20%;
+}
+
+#sub_board_menu a {
+	text-decoration: none;
+	color: grey;
+	font-size: 15px;
+}
+
+#sub_board_menu nav {
+	box-sizing: border-box;
+	margin-top: 20px;
+}
+
+#sub_board_menu nav a {
+	text-decoration: none;
+	color: black;
+	font-size: 15px;
+	font-weight: normal;
+	text-align: left;
+}
+
+#sub_list {
+	padding: 0px;
+}
+
+#sub_list li {
+	
+}
+
+#bwrite a {
+	cursor: pointer;
+}
+
+#bwrite a:hover {
+	font-weight: bold;
+	color: green;
+}
+
+#content {
+	overflow: hidden;
+}
+
+.pagination {
+	padding: 28px 0;
+}
+
+/* 게시판 목록 */
+/* 공통옵션 */
+ul li {
+	list-style: none;
+}
+
+.fl {
+	float: left;
+}
+
+.tc {
+	text-align: center;
+}
+
+#content_title_border {
+	margin-bottom: 20px;
+}
+
+.board {
+	width: 100%;
+	padding: 0px;
+}
+
+.w10 {
+	width: 10%;
+}
+
+.w15 {
+	width: 15%;
+}
+
+.w20 {
+	width: 20%;
+}
+
+.w50 {
+	width: 50%;
+	text-align:left;
+}
+
+li.fl.tc.w50.title.t_line{
+	text-align:center;	
+}
+
+.title {
+	margin-top: 10px;
+	height: 50px;
+	line-height: 50px;
+	background: white;
+	font-weight: bold;
+	border-top: 2px solid black;
+	border-bottom: 2px solid black;
+	letter-spacing: 7px;
+	font-size: medium;
+}
+
+.list {
+	margin-top: 20px;
+	height: 40px;
+	background: white;
+	border-bottom: 1px solid #ebebeb;
+	letter-spacing: 1px;
+}
+
+
+/*글쓰기*/
+#write_form {
+	width: 100%;
+}
+
+#write_area {
+	float: left;
+	width: 100%;
+	margin-top: 10px;
+}
+
+#board_title {
+	width: 81%;
+	height: 40px;
+	margin-bottom: 15px;
+	text-align: center;
+}
+
+#write_submit_btn {
+	margin: 0 auto;
+	display: block;
+	height: 40px;
+	width: 20%;
+	letter-spacing: 2px;
+	background-color: white;
+	border: 1px solid black;
+	border-radius: 5px;
+	margin-top: 30px;
+	font-size: larger;
+	font-weight: 700;
+	color: black;
+}
+
+#write_select {
+	width: 17%;
+	height: 40px;
+	text-align: center;
+	margin-right: 10px;
+}
+
+#bdetail_area {
+	overflow: hidden;
+}
+
+#dtitle {
+	font-size:larger;
+	padding-bottom: 20px;
+}
+
+#dmember {
+	font-size: 15px;
+}
+
+#ddate {
+	color: grey;
+	font-size: small;
+}
+
+#dtitle_area {
+	display: block;
+	font-size: 17px;
+	padding-left: 5px;
+}
+
+#dcontent {
+	padding: 5px;
+	padding-top: 25px;
+	min-height: 100px;
+}
+
+#detail_btn {
+	text-align: end;
+	float: right;
+}
+
+#detail_btn button {
+	cursor: pointer;
+	width: 15%;
+	width: 60px;
+	border: none;
+	background: none;
+}
+
+/* comment */
+#comment {
+	width: 100%;
+	border: none;
+	margin: 0 auto;
+	padding: 5px;
+}
+
+#comment ul {
+	border: none;
+	width: 95%;
+	list-style: none;
+	padding: 5px; <
+	margin: 0 auto;
+}
+
+li#commentContainer {
+	width: 100%;
+	padding: 15px 10px 15px 10px;
+	border-top: 1px solid #c8c8c8;
+}
+
+div#commentbox {
+	width: 100%;
+}
+
+.commentInfoText {
+	margin: 0px;
+	width: 50%;
+	display: inline-block;
+}
+
+.commentModify {
+	float: right;
+}
+
+.commentModify a {
+	text-decoration: none;
+	color: black;
+	cursor: pointer;
+	font-size: smaller;
+}
+
+div#commentContent {
+	margin: 10px 5px;
+}
+
+div#commentWrite {
+	border: none;
+	width: 95%;
+	list-style: none;
+	padding: 5px;
+	margin: 0 auto;
+	margin-top: 10px;
+}
+
+#commentWriteText {
+	width: 100%;
+	margin-top: 20px;
+	padding: 20px;
+	height: 100px;
+	box-shadow: -0.5px 0.5px 3px 1px #b7b7b7;
+	border: none;
+	border-radius: 10px;
+}
+
+#commentWriteBtn {
+	display: block;
+	margin: 0 auto;
+	margin-top: 15px;
+	width: 20%;
+	border-radius: 5px;
+	box-shadow: -0.5px 0.5px 3px 1px #b7b7b7;
+	border: none;
+	cursor: pointer;
+	background-color: #65ad4a;
+	color: white;
+	letter-spacing: 5px;
+	font-size: larger;
+}
+
+#commentWriteBtn:hover {
+	font-weight: 700;
+}
+
+.commentModify a:hover {
+	font-weight: 700;
+	color: green;
+}
+
+.modifyWrite textarea {
+	width: 100%;
+	margin: 0px;
+	padding: 5px;
+	height: 130px;
+}
+
+#modifyWriteBtn {
+	width: 100%;
+	margin-top: 10px;
+	text-align: right;
+	letter-spacing: 7px;
+}
+
+#modifyWriteBtn button {
+	background: white;
+	border: none;
+	font-size: smaller;
+}
+
+#modifyWriteBtn button:hover {
+	background: white;
+	border: none;
+	color: green;
+	font-weight: bold;
+	cursor: point;
+}
+
+#content_title {
+	margin-bottom: 20px;
+	border-bottom: 1px solid #c8c8c8;
+	color: black;
+	display: block;
+}
+
+.Cate_search {
+	width: 80px;
+	height: 40px;
+	border-radius: 5px;
+	text-align: center;
+	font-size: 15px;
+	vertical-align: middle;
+}
+
+.Cate_searchbox {
+	width: 250px;
+	height: 40px;
+	background-color: white;
+	border-radius: 5px;
+	text-align: center;
+	font-size: 15px;
+	vertical-align: middle;
+}
+
+.searchBox {
+	text-align: center;
+	margin-top: 10px;
+}

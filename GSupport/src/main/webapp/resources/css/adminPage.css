@@ -1,0 +1,338 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+/*전체 기본값 */
+
+/*main페이지*/
+*{
+	box-sizing: border-box;
+	margin:0;
+	padding:0;
+}
+
+body{
+	margin: 0;
+	padding: 0;
+	background-color: #505050;
+	color:white;
+}
+
+/*navbar*/
+.navbar{
+	height: 60px;
+    background-color: #3c3c3c;
+    font-family: 'Jua';
+    padding-left: 20px;
+    display: table-cell;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+}
+
+.navbar a {
+    line-height: 60px;
+    color: gold;
+    font-size: 2em;
+    letter-spacing: 1px;
+}
+
+.navbar #menu{
+	float:right;
+	list-style:none;
+	margin: 0;
+	padding: 0;
+	line-height: 60px;	
+	margin-right: 30px;
+}
+
+.navbar #menu li.menuli{
+	width: 120px;
+    text-align: center;
+    float: left;
+    height: 50px;
+    background-color: #3c3c3c;
+}
+
+.navbar #menu li a{
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    width: 100%;
+    cursor: pointer;
+}
+
+.navbar .logo{
+	height: 95%;
+    margin-top: 2px;
+} 
+
+.son{
+	width:100%;
+}
+
+.son li{
+	list-style:none;
+	width:100%;
+	background-color: dimgrey;
+}
+
+/*관리자 메인화면 틀*/
+
+div#wrapper {
+    width: 100%;
+    height: 800px;
+    overflow: hidden;
+    clear: both;
+    margin-top: 60px;
+}
+
+#adminContainer {
+	width: 85%;
+    height: 90%;
+    margin: 0 auto;
+    margin-left: 10%;
+    margin-top: 3%;
+    background-color: #3e4148;
+	padding: 1% 5% 5% 5%;
+	border-radius: 10px;
+	box-shadow: 10px 10px 10px;
+}
+
+.adminContainerList{	
+    width: 31%;
+    height: 48%;
+    background: #02041875;
+    border: 1px solid black;
+    float: left;
+    margin: 1%;
+    border-radius: 10px;
+    box-shadow: 10px 10px #090e28;
+    font-size: 1.5em;
+    font-weight: 800;
+    font-family: sans-serif;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.adminContainerList2{	
+    width: 65%;
+    height: 48%;
+    background: #02041875;
+    border: 1px solid black;
+    float: left;
+    margin: 1%;
+    border-radius: 10px;
+    box-shadow: 10px 10px #090e28;
+    font-size: 1.5em;
+    font-weight: 800;
+    font-family: sans-serif;
+    cursor: pointer;
+   	padding: 10px;
+}
+
+.adminLogo{
+	width: 30%;
+    height: 100%;
+    line-height: 100%;
+    display: inline-block;
+}
+
+.adminLogo2{
+	width: 14%;
+    height: 100%;
+    line-height: 100%;
+    display: inline-block;
+}
+
+.adminLogo img{
+	width: 100%;	
+}
+.adminLogo2 img{
+	width: 100%;	
+}
+
+.adminReport {
+	width: 68%;
+    height: 100%;
+    float: right;
+}
+
+.adminReport2 {
+    width: 78%;
+    height: 100%;
+    float: right;
+    text-align: center;
+}
+
+.adminReport2 p{
+	margin-top:10%;
+}
+
+
+.adminReport h3{
+	text-align: center;	
+}
+
+.adminReport ul{
+	padding: 10px;
+    margin-top: 5px;
+}
+
+.adminReport li {
+    font-size: 0.7em;
+    margin-top: 15px;
+}
+
+/*각 메뉴 페이지들 공통 틀*/
+.adminContainerOne{
+	width: 100%;
+    height: 90%;
+    background: #02041875;
+    border: 1px solid black;
+    float: left;
+    margin: 1%;
+    border-radius: 10px;
+    box-shadow: 10px 10px #090e28;
+    font-size: 1.5em;
+    font-weight: 800;
+    font-family: sans-serif;
+    padding: 10px;
+    overflow: auto;
+    letter-spacing: 1px;
+}
+
+.w1 {width:1%; }
+.w3 {width:3%; }
+.w3 {width:4%; }
+.w5 {width:5%; }
+.w7 {width:7%; }
+.w10 {width:10%; }
+.w15 {width:15%; }
+.w20 {width:20%; }
+.w40 {width:40%; }
+.w50 {width:50%; }
+
+
+/* 어드민 페이지 내 content 틀 */
+/* 테이블, 체크버튼, 페이징 */
+
+table{ /* 테이블*/ 
+	margin: 0 auto;
+	height: 100%;
+	width : 100%;
+	border-collapse: collapse;
+	text-align: center;
+	cursor: auto;
+}
+
+table th{ /*메뉴 제목*/
+height: 39px;
+    font-size: 1em;
+    border-bottom: 2px white solid;
+    text-align: center;
+}
+
+table td{ /* 제목*/ 
+	border-bottom : 1px white solid;
+	font-size: 0.7em;
+	height: 32px;
+}
+
+select#ip {
+    width: 80%;
+    height: 25px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.6em;
+    color:black;
+}
+
+select#target {
+    width: 80%;
+    height: 25px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.6em;
+    color:black;
+}
+
+select#gu {
+    width: 80%;
+    height: 25px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.6em;
+    color:black;
+}
+select#grade {
+    width: 80%;
+    height: 25px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.6em;
+	color:black;
+}
+select#channel {
+    width: 80%;
+    height: 25px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.6em;
+    color:black;
+}
+
+select#gradeOption {
+    width: 80%;
+    height: 25px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.6em;
+    color:black;
+}
+
+.adminLogPaging{
+	clear: both;
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 1.2em;
+}
+
+.adminDelBtn{
+	float: right;
+    width: 8%;
+    height: 30px;
+    background: white;
+    font-weight: 800;
+    margin-top: 5px;
+    cursor: pointer;
+    color: black;
+    line-height: normal;
+}
+
+#adminNone td{
+	border: none;
+    font-size: 2em;
+    height: 500px;
+} 
+    
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}    
+
+
+
+
+
+
+
+

@@ -50,3 +50,5 @@
     board_no (X) -> no (O)
     mem_no (X) -> member_no (O)
     ```
+## Encoding Type
+  * UTF-8

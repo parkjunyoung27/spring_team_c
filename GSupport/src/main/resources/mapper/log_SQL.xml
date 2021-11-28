@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"	
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="log">
+	
+	<insert id="writelog">
+		INSERT INTO log (log_ip, log_target, log_id, log_data) 
+		VALUES( #{ip}, #{target}, #{id}, #{data})
+		
+	</insert>
+
+	
+</mapper>

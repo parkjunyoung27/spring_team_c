@@ -1,0 +1,163 @@
+<?xml version="1.0"	encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper	namespace="admin">
+
+	<select id="access" resultType="HashMap">
+		SELECT * FROM member 
+		where member_id=#{id} AND member_pw=HEX(AES_ENCRYPT(#{pw}, 'teamc'))
+		AND member_grade = 3 
+	</select>
+	
+	<select id="logList" resultType="HashMap">
+		SELECT * FROM log WHERE log_del = 1 
+			<if test="ip != '' and target == ''">
+				AND log_ip = #{ip}
+			</if>
+			
+			<if test="ip == '' and target != ''">
+				AND log_target=#{target}
+			</if>
+			
+			<if test="ip != '' and target != ''">
+				AND log_ip = #{ip} AND log_target=#{target}
+			</if>
+		
+		limit #{startPage}, #{lastPage}
+	</select>
+		
+	<select	id="totalCount" parameterType="HashMap" resultType="HashMap">
+		SELECT COUNT(*) as totalCount FROM log WHERE log_del = 1 
+		<if test="ip != '' and target == ''">
+		AND log_ip = #{ip}
+		</if>
+		
+		<if test="ip == '' and target != ''">
+		AND log_target=#{target}
+		</if>
+		
+		<if test="ip != '' and target != ''">
+		AND log_ip = #{ip} AND log_target=#{target}
+		</if>
+	</select>
+	
+	<select	id="shopNowTotalCount" parameterType="HashMap" resultType="HashMap">
+		SELECT COUNT(*) as totalCount FROM shopview 
+		<if test="gu != ''">
+		WHERE shop_gu = #{gu}
+		</if>
+	</select>
+	
+	<select	id="shopAllowTotalCount" parameterType="HashMap" resultType="HashMap">
+		SELECT COUNT(*) as totalCount FROM shopRegisterView  
+		<if test="gu != ''">
+		WHERE shop_gu = #{gu}
+		</if>
+	</select>
+	
+	<select	id="adminBoardTotalCount" parameterType="HashMap" resultType="HashMap">
+		SELECT COUNT(*) as totalCount FROM board_view 
+		WHERE board_category = #{board_cate}
+		<if test="gradeOption != '' "> 
+		AND member_grade = #{gradeOption}
+		</if>
+	</select>
+	
+	<select	id="memberTotalCount" parameterType="HashMap" resultType="HashMap">
+		SELECT COUNT(*) as totalCount FROM memberview  
+		<if test="channel != '' and gradeOption == ''">
+		WHERE member_channel = #{channel}
+		</if>
+		
+		<if test="channel == '' and gradeOption != ''">
+		WHERE member_grade =#{gradeOption}
+		</if>
+		
+		<if test="channel != '' and gradeOption != ''">
+		WHERE member_channel = #{channel} AND member_grade= #{gradeOption}
+		</if>
+	</select>
+
+	<select	id="ipList" resultType="Object">
+		SELECT DISTINCT log_ip FROM log
+	</select>
+
+	<select	id="targetList" resultType="Object">
+		SELECT DISTINCT log_target FROM log
+	</select>	
+	
+	<update id="deleteLog">
+		UPDATE log SET log_del=0 WHERE log_no=#{number} 
+	</update>
+	
+	<select	id="guList" resultType="Object">
+		SELECT DISTINCT shop_gu FROM shop_gu
+	</select>
+		
+	<select	id="channelList" resultType="Object">
+		SELECT DISTINCT member_channel FROM memberview
+	</select>	
+	
+	<select	id="gradeList" resultType="Object">
+		SELECT DISTINCT member_grade FROM memberview
+	</select>	
+	
+	<select id="dashList" resultType="HashMap">
+		SELECT * FROM monitoring 
+	</select>
+	
+	
+	<select id="shopList" resultType="HashMap">
+		SELECT * FROM shopview  
+		<if test="gu != ''">
+			WHERE shop_gu = #{gu} 
+		</if>
+		limit #{startPage}, #{lastPage}	
+	</select>
+	
+	<select id="shopRegisterViewList" resultType="HashMap">
+		SELECT * FROM shopRegisterView   
+		<if test="gu != ''">
+			WHERE shop_gu = #{gu} 
+		</if>
+		limit #{startPage}, #{lastPage}	
+	</select>
+	
+	<update id="deleteShop">
+		UPDATE shop SET shop_delete=1 WHERE shop_no=#{number} 
+	</update>
+	
+	<update id="deleteAdminBoard">
+		UPDATE board SET board_delete=1 WHERE board_no=#{number} 
+	</update>
+	
+	<select id="memberList" resultType="HashMap">
+		SELECT * FROM memberview  
+		<if test="channel != '' and gradeOption == ''">
+		WHERE member_channel = #{channel} 
+		</if>
+			
+		<if test="channel == '' and gradeOption != ''">
+		WHERE member_grade= #{gradeOption}
+		</if>
+			
+		<if test="channel != '' and gradeOption != ''">
+		WHERE member_channel= #{channel} AND member_grade= #{gradeOption}
+		</if>
+		
+		limit #{startPage}, #{lastPage}
+	</select>
+	
+	<update id="registerShop">
+		UPDATE shop SET shop_register=1, shop_wido=#{wido}, shop_kyungdo=#{kyungdo} WHERE shop_no=#{number} 
+	</update>
+	
+	<select id="adminBoardList" resultType="HashMap">
+		SELECT * FROM board_view WHERE board_category = #{board_cate}
+		<if test="gradeOption != ''">
+		AND member_grade = #{gradeOption} 
+		</if>
+		limit #{startPage}, #{lastPage}
+	</select>
+	
+	
+</mapper>
