@@ -3,6 +3,24 @@
 * 2021.09.23~2021.10.31
 
 <hr/>
+## 개요
+![image](https://user-images.githubusercontent.com/73810338/143730608-a3a24d82-2277-4076-b17a-57b0709b14f4.png)
+
+## skills
+1. OS: Windows 10, Mac, Raspbian 
+2. Framework:  Eclipse (Spring Tool Suite 3 Version: 3.9.17.RELEASE), 전자정부프레임, MyBatis
+3. Database: MySQL, Heidi SQL, DBeaver
+4. Language: Java, JavaScript, JSP, Jquery
+5. Web Application Server: Apache Tomcat v9.0
+6. Markup: CSS, HTML5, XML
+
+## 주요 기능
+
+1.사용자 관점<br/>
+![주요기능](https://user-images.githubusercontent.com/73810338/143730709-ec4b164f-0b97-4abd-b73f-c19dddb9c98a.png)<br/>
+2. 관리자 관점<br/>
+![주요기능 관리자](https://user-images.githubusercontent.com/73810338/143730726-e6bc8e8f-7e5f-49aa-b813-61971154a453.png)<br/>
+
 
 ## Project Setup
 1. 리포지토리와 일치하는 폴더를 워크스페이스로 설정합니다.
