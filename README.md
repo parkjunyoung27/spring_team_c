@@ -21,6 +21,27 @@
 2. 관리자 관점<br/>
 ![주요기능 관리자](https://user-images.githubusercontent.com/73810338/143730726-e6bc8e8f-7e5f-49aa-b813-61971154a453.png)<br/>
 
+## DB 설계 
+![image](https://user-images.githubusercontent.com/73810338/143730804-49377225-8118-486e-8de1-c1dacd916e68.png)
+
+## SiteMap
+![image](https://user-images.githubusercontent.com/73810338/143730810-967dde69-dc9d-4d8d-ba4e-e71c6aa22aa4.png)
+
+## 화면 구현(주요 5가지 화면)
+1. 메인화면 <br/>
+![메인화면](https://user-images.githubusercontent.com/73810338/143730867-31939670-ef87-48e9-8644-888deb88023d.png)<br/>
+
+2. 가맹점 찾기<br/>
+![가맹점 찾기](https://user-images.githubusercontent.com/73810338/143730884-6f7d52be-d126-4ece-beeb-cb311cc7c787.png)<br/>
+
+3. 가맹점 예약<br/>
+![가맹점 예약](https://user-images.githubusercontent.com/73810338/143730889-8dd4b2f5-60a6-40a6-897a-6dfb8ca7ffe6.png)<br/>
+
+4. 관리자 페이지<br/>
+![관리자 페이지](https://user-images.githubusercontent.com/73810338/143730891-e5247e25-979d-46b9-bfdb-243365d78cd9.png)<br/>
+
+5. 관리자 로그관리<br/>
+![관리자 로그관리](https://user-images.githubusercontent.com/73810338/143730897-f8cac8e2-51d9-4e4b-8a1b-ae95bc820a09.png)<br/>
 
 ## Project Setup
 1. 리포지토리와 일치하는 폴더를 워크스페이스로 설정합니다.
